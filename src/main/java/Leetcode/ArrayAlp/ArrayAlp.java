@@ -1,12 +1,10 @@
 package Leetcode.ArrayAlp;
 
-import org.apache.commons.lang3.time.DateUtils;
 import org.junit.Test;
 
-import java.math.BigDecimal;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
+
+import static java.lang.String.valueOf;
 
 /**
  * @Author maoXin
@@ -97,7 +95,10 @@ public class ArrayAlp {
     }
 
     /**
-     * @Description: 一个长度为n-1的递增排序数组中的所有数字都是唯一的，并且每个数字都在范围0～n-1之内。在范围0～n-1内的n个数字中有且只有一个数字不在该数组中，请找出这个数字。
+     * @Description:
+     * 一个长度为n-1的递增排序数组中的所有数字都是唯一的，
+     * 并且每个数字都在范围0～n-1之内。
+     * 在范围0～n-1内的n个数字中有且只有一个数字不在该数组中，请找出这个数字。
      * <p>
      *  
      * <p>
@@ -125,7 +126,9 @@ public class ArrayAlp {
 
 
     /**
-     * @Description: 对于非负整数 X 而言，X 的数组形式是每位数字按从左到右的顺序形成的数组。例如，如果 X = 1231，那么其数组形式为 [1,2,3,1]。
+     * @Description:
+     * 对于非负整数 X 而言，X 的数组形式是每位数字按从左到右的顺序形成的数组。
+     * 例如，如果 X = 1231，那么其数组形式为 [1,2,3,1]。
      * <p>
      * 给定非负整数 X 的数组形式 A，返回整数 X+K 的数组形式。
      * <p>
@@ -211,7 +214,10 @@ public class ArrayAlp {
     }
 
     /**
-     * @Description: 给定长度为 2n 的整数数组 nums ，你的任务是将这些数分成 n 对, 例如 (a1, b1), (a2, b2), ..., (an, bn) ，使得从 1 到 n 的 min(ai, bi) 总和最大。
+     * @Description:
+     * 给定长度为 2n 的整数数组 nums ，你
+     * 的任务是将这些数分成 n 对, 例如 (a1, b1), (a2, b2), ..., (an, bn) ，
+     * 使得从 1 到 n 的 min(ai, bi) 总和最大。
      * <p>
      * 返回该 最大总和 。
      * <p>
@@ -240,7 +246,9 @@ public class ArrayAlp {
     }
 
     /**
-     * @Description: 给定由若干 0 和 1 组成的数组 A。我们定义 N_i：从 A[0] 到 A[i] 的第 i 个子数组被解释为一个二进制数（从最高有效位到最低有效位）。
+     * @Description:
+     * 给定由若干 0 和 1 组成的数组 A。我们定义 N_i：
+     * 从 A[0] 到 A[i] 的第 i 个子数组被解释为一个二进制数（从最高有效位到最低有效位）。
      * <p>
      * 返回布尔值列表 answer，只有当 N_i 可以被 5 整除时，答案 answer[i] 为 true，否则为 false。
      * <p>
@@ -267,6 +275,7 @@ public class ArrayAlp {
      * <p>
      * 官方解答：余数定理a=b%c=b%c%c;（a+b）%c=((a%c)+(b%c))%c,ab%c=((a%c)*(b%c))%c;
      * 求每次的余数    num = (num * 2 + A[i]) % 5 % 5 多次对5取余，结果不会变
+     * O(N) O(N)
      * @Date: 2021/1/12 10:14
      */
     public List<Boolean> prefixesDivBy5(int[] A) {
@@ -281,9 +290,13 @@ public class ArrayAlp {
 
 
     /**
-     * @Description: 假设有一个很长的花坛，一部分地块种植了花，另一部分却没有。可是，花不能种植在相邻的地块上，它们会争夺水源，两者都会死去。
+     * @Description:
+     * 假设有一个很长的花坛，一部分地块种植了花，另一部分却没有。
+     * 可是，花不能种植在相邻的地块上，它们会争夺水源，两者都会死去。
      * <p>
-     * 给你一个整数数组  flowerbed 表示花坛，由若干 0 和 1 组成，其中 0 表示没种植花，1 表示种植了花。另有一个数 n ，能否在不打破种植规则的情况下种入 n 朵花？能则返回 true ，不能则返回 false。
+     * 给你一个整数数组  flowerbed 表示花坛，由若干 0 和 1 组成，
+     * 其中 0 表示没种植花，1 表示种植了花。另有一个数 n ，
+     * 能否在不打破种植规则的情况下种入 n 朵花？能则返回 true ，不能则返回 false。
      * <p>
      *  
      * <p>
@@ -304,6 +317,7 @@ public class ArrayAlp {
      * solution: 2种思路 第一种：先处理数组 最多还能种多少花；第二种：遍历数组，直接种花，if n == 0  true ，遍历结束 n > 0 false
      * 明显第二种时间复杂度要简单些    1 0 0 0 0 1   2
      * 评论区有位道友牛逼啊，两边各加一个零 就不用考虑边界了
+     * O(N) O(N)
      * @Date: 2021/1/13 10:06
      */
     public boolean canPlaceFlowers(int[] flowerbed, int n) {
@@ -376,7 +390,8 @@ public class ArrayAlp {
 
 
     /**
-     * @Description: 给你一个 n 行 m 列的矩阵，最开始的时候，每个单元格中的值都是 0。
+     * @Description:
+     * 给你一个 n 行 m 列的矩阵，最开始的时候，每个单元格中的值都是 0。
      * <p>
      * 另有一个索引数组 indices，indices[i] = [ri, ci] 中的 ri 和 ci 分别表示指定的行和列（从 0 开始编号）。
      * <p>
@@ -402,8 +417,11 @@ public class ArrayAlp {
      * 0 <= indices[i][0] < n
      * 0 <= indices[i][1] < m
      * <p>
-     * solution: first:follow the rule to handle the data indices[];second:calculate the odd num off the indices finally return num
+     * solution:
+     * first:follow the rule to handle the data indices[];
+     * second:calculate the odd num off the indices finally return num
      * arr[0][indices[i][0]]  -- > arr[n][indices[i][0]]    arr[indices[i][1]][0]-->arr[indices[i][1]][m]
+     * O(N*M) N是indices长度  M是Math.max(m,n)   O(N)
      * @Date: 2021/1/13 10:55
      */
     public int oddCells(int n, int m, int[][] indices) {
@@ -430,7 +448,9 @@ public class ArrayAlp {
     }
 
     /**
-     * @Description: 车按国际象棋中的规则移动。东，西，南，北四个基本方向任选其一，然后一直向选定的方向移动，直到满足下列四个条件之一：
+     * @Description:
+     * 车按国际象棋中的规则移动。东，西，南，北四个基本方向任选其一，
+     * 然后一直向选定的方向移动，直到满足下列四个条件之一：
      * <p>
      * 棋手选择主动停下来。
      * 棋子因到达棋盘的边缘而停下。
@@ -438,10 +458,12 @@ public class ArrayAlp {
      * 车不能进入/越过已经放有其他友方棋子（白色的象）的方格，停在友方棋子前。
      * 你现在可以控制车移动一次，请你统计有多少敌方的卒处于你的捕获范围内（即，可以被一步捕获的棋子数）。
      * <p>
-     * solution: 1.以车 R为中心，东南西北四个方位遍历，res计数 one(遇到卒停下来 res++) two(自家的象) three(边界)
+     * solution:
+     * 1.以车 R为中心，东南西北四个方位遍历，res计数 one(遇到卒停下来 res++) two(自家的象) three(边界)
      * 最后return res ; res初始化 0
      * R (x,y)  l w      (x,y)-->(x,0) y--  (x,y)-->(x,w) y++  (x,y)-->(0,y) x-- (x,y)-->(l,y) y++
      * judge if (board[x][y] == p)
+     * O(M*N) M board矩阵的长度 N 寻找卒最远的长度   O(1)
      * @Date: 2021/2/4 15:23
      */
     public int numRookCaptures(char[][] board) {
@@ -477,7 +499,8 @@ public class ArrayAlp {
     }
 
     /**
-     * @Description: Given an array nums of 0s and 1s and an integer k,
+     * @Description:
+     * Given an array nums of 0s and 1s and an integer k,
      * return True if all 1's are at least k places away from each other, otherwise return False.
      * <p>
      * solution: 贪心法 寻找最近两个1的距离  与 k做比较,如果小于 k return false;
@@ -487,6 +510,8 @@ public class ArrayAlp {
      * 1 <= nums.length <= 105
      * 0 <= k <= nums.length
      * nums[i] is 0 or 1
+     *
+     * O(N) O(1) 贪心算法
      * @Date: 2021/2/4 16:07
      */
     public boolean kLengthApart(int[] nums, int k) {
@@ -510,7 +535,9 @@ public class ArrayAlp {
     }
 
     /**
-     * @Description: Given an array arr of integers, check if there exists two integers N and M such that N is the double of M ( i.e. N = 2 * M).
+     * @Description:
+     * Given an array arr of integers,
+     * check if there exists two integers N and M such that N is the double of M ( i.e. N = 2 * M).
      * <p>
      * More formally check if there exists two indices i and j such that :
      * <p>
@@ -522,7 +549,9 @@ public class ArrayAlp {
      * <p>
      * 2 <= arr.length <= 500
      * -10^3 <= arr[i] <= 10^3
-     * solution: 奇数跳过，偶数除以二 找是否存在，存在返回true 否则 false  N*N
+     * solution:
+     * 奇数跳过，偶数除以二 找是否存在，存在返回true 否则 false  N*N
+     * O(N2) O(1)
      * @Date: 2021/2/4 16:30
      */
     public boolean checkIfExist(int[] arr) {
@@ -551,7 +580,8 @@ public class ArrayAlp {
     }
 
     /**
-     * @Description: Given two strings,write a method to decide if one is a permutation of the other.
+     * @Description:
+     * Given two strings,write a method to decide if one is a permutation of the other.
      * <p>
      * Example 1:
      * <p>
@@ -562,7 +592,8 @@ public class ArrayAlp {
      * Input: s1 = "abc", s2 = "bad"
      * Output: false
      * <p>
-     * solution: s1 s2 sort 之后看是否一致
+     * solution: s1 s2 sort 之后看是否一致  O(logN) O(N)  限定字符类型  桶排序也是ok的
+     * 总体思路 排序 + equals
      * @Date: 2021/2/5 13:53
      */
     public boolean CheckPermutation(String s1, String s2) {
@@ -574,7 +605,9 @@ public class ArrayAlp {
     }
 
     /**
-     * @Description: 给定一个整数数组和一个整数 k，判断数组中是否存在两个不同的索引 i 和 j，使得 nums [i] = nums [j]，并且 i 和 j 的差的 绝对值 至多为 k。
+     * @Description:
+     * 给定一个整数数组和一个整数 k，判断数组中是否存在两个不同的索引 i 和 j，
+     * 使得 nums [i] = nums [j]，并且 i 和 j 的差的 绝对值 至多为 k。
      * <p>
      *  
      * <p>
@@ -608,6 +641,8 @@ public class ArrayAlp {
         return false;
     }*/
     //官方解答
+    //滑动窗口解答,set size始终保持在 0-k个内,也只有set 内的元素和当前遍历元素相等,代表存在 返回true
+    // O(N) N:数组长度 O(N) N:最多为K+1
     public boolean containsNearbyDuplicate(int[] nums, int k) {
         Set<Integer> set = new HashSet<>();
         for (int i = 0; i < nums.length; ++i) {
@@ -621,7 +656,8 @@ public class ArrayAlp {
     }
 
     /**
-     * @Description: 给你一个数组 nums 。nums 的源数组中，所有元素与 nums 相同，但按非递减顺序排列。
+     * @Description:
+     * 给你一个数组 nums 。nums 的源数组中，所有元素与 nums 相同，但按非递减顺序排列。
      * <p>
      * 如果 nums 能够由源数组轮转若干位置（包括 0 个位置）得到，则返回 true ；否则，返回 false 。
      * <p>
@@ -648,6 +684,7 @@ public class ArrayAlp {
      * solution: key the array have one discontinuous segment at most,
      * 1.get the flag
      * 2.compare nums[i] > nums[i+1]
+     * O(N) O(1)
      * @Date: 2021/2/8 10:15
      */
     public boolean check(int[] nums) {
@@ -671,7 +708,8 @@ public class ArrayAlp {
     }
 
     /**
-     * @Description: 给你一个整数数组 arr ，以及 a、b 、c 三个整数。请你统计其中好三元组的数量。
+     * @Description:
+     * 给你一个整数数组 arr ，以及 a、b 、c 三个整数。请你统计其中好三元组的数量。
      * <p>
      * 如果三元组 (arr[i], arr[j], arr[k]) 满足下列全部条件，则认为它是一个 好三元组 。
      * <p>
@@ -697,7 +735,7 @@ public class ArrayAlp {
      * 0 <= arr[i] <= 1000
      * 0 <= a, b, c <= 1000
      * solution:
-     * 1.method of exhaustion i j k three cyclic ,add condition
+     * 1.method of exhaustion i j k three cyclic ,add condition O(N3) O(1)
      * @Date: 2021/2/8 14:01
      */
     public int countGoodTriplets(int[] arr, int a, int b, int c) {
@@ -5205,7 +5243,7 @@ public class ArrayAlp {
         StringBuilder str = new StringBuilder();
         //小于2的单独处理
         if (nums.length == 1) {
-            res.add(String.valueOf(nums[0]));
+            res.add(valueOf(nums[0]));
             return res;
         }
         if (nums.length == 2) {
@@ -5970,32 +6008,9 @@ public class ArrayAlp {
 
     @Test
     public void testArray() {
-        int[][] arr = new int[][] {{11,74,0,93},{40,11,74,7}};
-        int[] arr1 = new int[] {-2147483648,1,1};
-        int[] arr2 = new int[]{1,1,2,2,2,3,3,3,3,3,3};
-        String  str = new BigDecimal("638.220").stripTrailingZeros().toPlainString();
-        String cardNo  = "21379129739172319889";
-        System.out.println("***"+cardNo.substring(cardNo.length() - 4));
-        try {
-            Date date = DateUtils.parseDate("2021-03-30 16:32:21", "yyyy-MM-dd HH:mm:ss");
-            Date endDate = new Date();
-            Calendar c1 = Calendar.getInstance();
-            c1.add(Calendar.MONTH,-3);
-            Date startDate = c1.getTime();
-            System.out.println(startDate.after(date));
-            System.out.println((endDate.getTime()));
-            System.out.println(startDate.getTime());
-            System.out.println((endDate.getTime() - startDate.getTime()) / (24 * 60 * 60 * 1000));
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            String startDateString = sdf.format(startDate);
-            String endDateString = sdf.format(endDate);
-            System.out.println(startDateString);
-            System.out.println(endDateString);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        System.out.println(instance.hasGroupsSizeX(arr2));
-
+        int[][] arr = new int[][]{{1,2,3},{4,5,6},{7,8,9}};
+        int[] arr1 = new int[]{4,5,1,2,3};
+        System.out.println(instance.check(arr1));
     }
 
 }

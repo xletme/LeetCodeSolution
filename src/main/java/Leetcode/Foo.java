@@ -32,6 +32,7 @@ public class Foo {
     public void third() throws InterruptedException {
         third.await();
         System.out.println("third");
+        //wait others task are completed, to invoke third.countDown();
     }
 
     public static void main(String[] args) throws InterruptedException {
