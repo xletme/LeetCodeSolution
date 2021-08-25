@@ -755,7 +755,10 @@ public class ArrayAlp {
     }
 
     /**
-     * @Description: 给你一个整数 n 。请你先求出从 1 到 n 的每个整数 10 进制表示下的数位和（每一位上的数字相加），然后把数位和相等的数字放到同一个组中。
+     * @Description:
+     * 给你一个整数 n 。
+     * 请你先求出从 1 到 n 的每个整数 10 进制表示下的数位和（每一位上的数字相加），
+     * 然后把数位和相等的数字放到同一个组中。
      * <p>
      * 请你统计每个组中的数字数目，并返回数字数目并列最多的组有多少个。
      * <p>
@@ -776,8 +779,15 @@ public class ArrayAlp {
      * 提示：
      * <p>
      * 1 <= n <= 10^4
-     * solution: 普通解法  三步 1.分组 2.找出数字最多那组 返回个数 c 3.统计并列最多的 res
+     * solution:
+     * 普通解法
+     * 三步
+     * 1.分组
+     * 2.找出数字最多那组 返回个数
+     * c 3.统计并列最多的 res
      * 用map 来实现吧
+     * O(N+2M) N 遍历数1-n，计算十进制数位和耗时  M arr.length
+     * O(N) arr的数组占用空间
      * @Date: 2021/2/8 14:25
      */
     public int countLargestGroup(int n) {
@@ -823,7 +833,8 @@ public class ArrayAlp {
     }*/
 
     /**
-     * @Description: add the sum of every position of t
+     * @Description:
+     * add the sum of every position of t
      * @Date: 2021/2/20 13:43
      */
     private int predictSum(int t) {
@@ -836,7 +847,8 @@ public class ArrayAlp {
     }
 
     /**
-     * @Description: 给你一个 m * n 的矩阵 grid，矩阵中的元素无论是按行还是按列，都以非递增顺序排列。 
+     * @Description:
+     * 给你一个 m * n 的矩阵 grid，矩阵中的元素无论是按行还是按列，都以非递增顺序排列。 
      * <p>
      * 请你统计并返回 grid 中 负数 的数目。
      * <p>
@@ -866,8 +878,10 @@ public class ArrayAlp {
      * 1 <= m, n <= 100
      * -100 <= grid[i][j] <= 100
      * <p>
-     * solution: 直观的  遍历grid数组 统计负数个数 穷举法
-     * 优化版，非递增  每个二维数组 倒序统计负数个数
+     * solution:
+     * 直观的  遍历grid数组 统计负数个数 穷举法  O(N*M) O(1)
+     * 优化版，非递增  每个二维数组 倒序统计负数个数  O(N*M) O(1)  利用数组的特性
+     * 二分法 二分统计每一行负数个数
      * @Date: 2021/2/20 14:26
      */
     public int countNegatives(int[][] grid) {
@@ -877,18 +891,36 @@ public class ArrayAlp {
                 res += (grid.length - i) * grid[i].length;
                 break;
             }
-            for (int j = grid[i].length - 1; j >= 0; j--) {
+            /*for (int j = grid[i].length - 1; j >= 0; j--) {
                 if (grid[i][j] >= 0) {
                     break;
                 }
                 res++;
-            }
+            }*/
+            res += countNegativesForEachArr(grid[i]);
         }
         return res;
     }
 
+    // 1 1 -1 -2
+    public int countNegativesForEachArr(int[] grid) {
+        int left = 0;
+        int right = grid.length - 1;
+        int mid = 0;
+        while (left <= right) {
+            mid = (left + right) / 2;
+            if (grid[mid] < 0) {
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+        return  grid.length - left;
+    }
+
     /**
-     * @Description: 给你两个整数数组 nums 和 index。你需要按照以下规则创建目标数组：
+     * @Description:
+     * 给你两个整数数组 nums 和 index。你需要按照以下规则创建目标数组：
      * <p>
      * 目标数组 target 最初为空。
      * 按从左到右的顺序依次读取 nums[i] 和 index[i]，在 target 数组中的下标 index[i] 处插入值 nums[i] 。
@@ -935,7 +967,7 @@ public class ArrayAlp {
      * <p>
      * solution: 按照题意
      * wo shabile 用list实现 有可用的api  但我不知道  list.add()在指定位置添加元素 元素后移
-     * a.根据题意add元素  b.list赋值给target数组  O(N2） O(1)
+     * a.根据题意add元素  b.list赋值给target数组  O(N) O(N)
      * @Date: 2021/2/20 14:47
      */
     public int[] createTargetArray(int[] nums, int[] index) {
@@ -951,11 +983,13 @@ public class ArrayAlp {
     }
 
     /**
-     * @Description: 给你一个日期，请你设计一个算法来判断它是对应一周中的哪一天。
+     * @Description:
+     * 给你一个日期，请你设计一个算法来判断它是对应一周中的哪一天。
      * <p>
      * 输入为三个整数：day、month 和 year，分别表示日、月、年。
      * <p>
-     * 您返回的结果必须是这几个值中的一个 {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"}。
+     * 您返回的结果必须是这几个值中的一个 
+     * {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"}。
      * <p>
      *  
      * <p>
@@ -988,12 +1022,15 @@ public class ArrayAlp {
     public String dayOfTheWeek(int day, int month, int year) {
         String[] strArr = new String[]{"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
         int y = year, m = month;
+        //1 2当成去年 13 14月处理
         if (month == 1 || month == 2) {
             --y;
             m += 12;
         }
         int cY = y / 100, yY = y - cY * 100;
+        //关键公式
         int indexWeek = (cY / 4 - 2 * cY + yY + yY / 4 + 26 * (m + 1) / 10 + day - 1) % 7;
+        //变负为正数
         if (indexWeek < 0)
             indexWeek += 7;
         return strArr[indexWeek];
@@ -1001,9 +1038,13 @@ public class ArrayAlp {
 
 
     /**
-     * @Description: 给你一个以行程长度编码压缩的整数列表 nums 。
+     * @Description:
+     * 给你一个以行程长度编码压缩的整数列表 nums 。
      * <p>
-     * 考虑每对相邻的两个元素 [freq, val] = [nums[2*i], nums[2*i+1]] （其中 i >= 0 ），每一对都表示解压后子列表中有 freq 个值为 val 的元素，你需要从左到右连接所有子列表以生成解压后的列表。
+     * 考虑每对相邻的两个元素
+     * [freq, val] = [nums[2*i], nums[2*i+1]] （其中 i >= 0 ），
+     * 每一对都表示解压后子列表中有 freq 个值为 val 的元素，
+     * 你需要从左到右连接所有子列表以生成解压后的列表。
      * <p>
      * 请你返回解压后的列表。
      * <p>
@@ -1050,7 +1091,8 @@ public class ArrayAlp {
     }
 
     /**
-     * @Description: 你有一个炸弹需要拆除，时间紧迫！你的情报员会给你一个长度为 n 的 循环 数组 code 以及一个密钥 k 。
+     * @Description:
+     * 有一个炸弹需要拆除，时间紧迫！你的情报员会给你一个长度为 n 的 循环 数组 code 以及一个密钥 k 。
      * <p>
      * 为了获得正确的密码，你需要替换掉每一个数字。所有数字会 同时 被替换。
      * <p>
@@ -1079,7 +1121,12 @@ public class ArrayAlp {
      * 输出：[12,5,6,13]
      * 解释：解密后的密码为 [3+9, 2+3, 4+2, 9+4] 。注意到数组是循环连接的。如果 k 是负数，那么和为 之前 的数字。
      * <p>
-     * solution: 1.分情况处理  k == 0 k < 0 k > 0  2.替换对应的数字
+     * solution:
+     * 1.分情况处理
+     * k == 0
+     * k < 0
+     * k > 0
+     * 2.替换对应的数字  O(N*K) N code数组长度   O(N) code.length
      * @Date: 2021/2/22 11:18
      */
     public int[] decrypt(int[] code, int k) {
@@ -1110,7 +1157,9 @@ public class ArrayAlp {
     }
 
     /**
-     * @Description: 给定一个非空且只包含非负数的整数数组 nums，数组的度的定义是指数组里任一元素出现频数的最大值。
+     * @Description:
+     * 给定一个非空且只包含非负数的整数数组 nums，
+     * 数组的度的定义是指数组里任一元素出现频数的最大值。
      * <p>
      * 你的任务是在 nums 中找到与 nums 拥有相同大小的度的最短连续子数组，返回其长度。
      * <p>
@@ -1137,7 +1186,7 @@ public class ArrayAlp {
      * 应该在统计最多个数的时候，就把该数字的最短长度记录下
      * Map<Integer,String> nums[i] count:length(记录start end位置)
      * 官方解答 Map<Integer,int[]> int[] 3个元素  count:start:end 每次更新刷新 count end
-     * 可能用到map
+     * 可能用到map  O(N) O(N)
      * @Date: 2021/2/22 15:08
      */
     public int findShortestSubArray(int[] nums) {
@@ -1165,7 +1214,8 @@ public class ArrayAlp {
     }
 
     /**
-     * @Description: 给你一个正整数数组 arr，请你找出一个长度为 m 且在数组中至少重复 k 次的模式。
+     * @Description:
+     * 给你一个正整数数组 arr，请你找出一个长度为 m 且在数组中至少重复 k 次的模式。
      * <p>
      * 模式 是由一个或多个值组成的子数组（连续的子序列），连续 重复多次但 不重叠 。 模式由其长度和重复次数定义。
      * <p>
@@ -1236,7 +1286,7 @@ public class ArrayAlp {
         return false;
     }*/
 
-    //评论区百分比的答案 等下好好看下 他们的思路
+    //评论区百分比的答案 等下好好看下 他们的思路  O(N*M) O(1) 滑动窗口
     public boolean containsPattern(int[] arr, int m, int k) {
         if (arr.length < m * k) {
             return false;
@@ -1276,7 +1326,9 @@ public class ArrayAlp {
     }
 
     /**
-     * @Description: 环形公交路线上有 n 个站，按次序从 0 到 n - 1 进行编号。我们已知每一对相邻公交站之间的距离，distance[i] 表示编号为 i 的车站和编号为 (i + 1) % n 的车站之间的距离。
+     * @Description:
+     * 环形公交路线上有 n 个站，按次序从 0 到 n - 1 进行编号。
+     * 我们已知每一对相邻公交站之间的距离，distance[i] 表示编号为 i 的车站和编号为 (i + 1) % n 的车站之间的距离。
      * <p>
      * 环线上的公交车都可以按顺时针和逆时针的方向行驶。
      * <p>
@@ -1302,6 +1354,7 @@ public class ArrayAlp {
      * [arr[start]---arr[destination])
      * [arr[destination] -- arr[start])  (n + 1) % n
      * has start > destination forever?
+     * O(N) O(1)
      * @Date: 2021/2/25 10:45
      */
     public int distanceBetweenBusStops(int[] distance, int start, int destination) {
@@ -1327,7 +1380,9 @@ public class ArrayAlp {
     }
 
     /**
-     * @Description: 给你一个长度固定的整数数组 arr，请你将该数组中出现的每个零都复写一遍，并将其余的元素向右平移。
+     * @Description:
+     * 给你一个长度固定的整数数组 arr，
+     * 请你将该数组中出现的每个零都复写一遍，并将其余的元素向右平移。
      * <p>
      * 注意：请不要在超过该数组长度的位置写入元素。
      * <p>
@@ -1372,6 +1427,13 @@ public class ArrayAlp {
             }
         }
     }*/
+
+    /**
+     * 1.统计0个数
+     * 2.倒序处理数组
+     * O(N) N arr.length O(1)
+     * @param arr
+     */
     public void duplicateZeros(int[] arr) {
         int possibleDup = 0;
         int len = arr.length - 1;
@@ -1400,7 +1462,9 @@ public class ArrayAlp {
     }
 
     /**
-     * @Description: 给你一个非递减的 有序 整数数组，已知这个数组中恰好有一个整数，它的出现次数超过数组元素总数的 25%。
+     * @Description:
+     * 给你一个非递减的 有序 整数数组，
+     * 已知这个数组中恰好有一个整数，它的出现次数超过数组元素总数的 25%。
      * <p>
      * 请你找到并返回这个整数
      * <p>
@@ -1420,9 +1484,12 @@ public class ArrayAlp {
      * solution: 和众数有点类似
      * 1。arr.length / 4  向上取整 special
      * 2.arr是有序的 asc ，使用count计数 某个数 == special 就返回
+     *
+     * asc 滑动窗口来解决
+     *
      * @Date: 2021/2/25 15:48
      */
-    public int findSpecialInteger(int[] arr) {
+    /*public int findSpecialInteger(int[] arr) {
         double special = (double) arr.length / (double) 4;
         int count = 0;
         int tmp = arr[0];
@@ -1438,16 +1505,53 @@ public class ArrayAlp {
             }
         }
         return 0;
+    }*/
+
+    /**
+     *  asc 滑动窗口来解决
+     *  1.arr.length / 4  向上取整  得到m
+     *  2.（0，m）以m长度为区间截取数据 满足 arr[i] = arr[i + m] 直接返回 arr[i]
+     *  O(N) O(1)
+     * @param arr
+     * @return
+     */
+    public int findSpecialInteger(int[] arr) {
+        int m = (int) Math.ceil((double)arr.length / (double)4);
+        if (arr.length % 4 == 0) {
+            m = arr.length / 4 + 1;
+        }
+        int leftIndex = 0;
+        int rightIndex = m - 1;
+        while (rightIndex < arr.length) {
+            if (arr[leftIndex] == arr[rightIndex++]) {
+                return arr[leftIndex];
+            }
+            leftIndex++;
+        }
+        return 0;
     }
 
     /**
-     * @Description: Alice and Bob have candy bars of different sizes: A[i] is the size of the i-th bar of candy that Alice has, and B[j] is the size of the j-th bar of candy that Bob has.
+     * @Description:
+     * Alice and Bob have candy bars of different sizes:
+     * A[i] is the size of the i-th bar of candy that Alice has,
+     * and B[j] is the size of the j-th bar of candy that Bob has.
      * <p>
-     * Since they are friends, they would like to exchange one candy bar each so that after the exchange, they both have the same total amount of candy.  (The total amount of candy a person has is the sum of the sizes of candy bars they have.)
+     * Since they are friends,
+     * they would like to exchange one candy bar each
+     * so that after the exchange,
+     * they both have the same total amount of candy. 
+     * (The total amount of candy a person has is the sum of the sizes of candy bars they have.)
      * <p>
-     * Return an integer array ans where ans[0] is the size of the candy bar that Alice must exchange, and ans[1] is the size of the candy bar that Bob must exchange.
+     * Return an integer array ans 
+     * where ans[0] is the size of the candy bar
+     * that Alice must exchange,
+     * and ans[1] is the size of the candy bar
+     * that Bob must exchange.
      * <p>
-     * If there are multiple answers, you may return any one of them.  It is guaranteed an answer exists.
+     * If there are multiple answers,
+     * you may return any one of them. 
+     * It is guaranteed an answer exists.
      * <p>
      *  
      * <p>
@@ -1482,6 +1586,7 @@ public class ArrayAlp {
      * 0 return int[];
      * >0 A[i] - B[i] = k-1;
      * <0 B[i] - A[i] = abs(k) - 1
+     * O(N2) O(1)
      * @Date: 2021/2/26 10:53
      */
     public int[] fairCandySwap(int[] A, int[] B) {
@@ -1505,7 +1610,12 @@ public class ArrayAlp {
     }
 
     /**
-     * @Description: The Fibonacci numbers, commonly denoted F(n) form a sequence, called the Fibonacci sequence, such that each number is the sum of the two preceding ones, starting from 0 and 1. That is,
+     * @Description:
+     * The Fibonacci numbers,
+     * commonly denoted F(n) form a sequence,
+     * called the Fibonacci sequence,
+     * such that each number is the sum of the two preceding ones,
+     * starting from 0 and 1. That is,
      * <p>
      * F(0) = 0, F(1) = 1
      * F(n) = F(n - 1) + F(n - 2), for n > 1.
@@ -1527,7 +1637,9 @@ public class ArrayAlp {
      * Constraints:
      * <p>
      * 0 <= n <= 30
-     * solution: fib 不能用递归，，要超时 空间换取时间  O(N) O(N)
+     * solution:
+     * fib 不能用递归，，要超时 空间换取时间
+     * O(N) O(N)
      * @Date: 2021/2/26 11:38
      */
     public int fib(int n) {
@@ -1544,9 +1656,14 @@ public class ArrayAlp {
     }
 
     /**
-     * @Description: 给你一个数组 prices ，其中 prices[i] 是商店里第 i 件商品的价格。
+     * @Description:
+     * 给你一个数组 prices ，
+     * 其中 prices[i] 是商店里第 i 件商品的价格。
      * <p>
-     * 商店里正在进行促销活动，如果你要买第 i 件商品，那么你可以得到与 prices[j] 相等的折扣，其中 j 是满足 j > i 且 prices[j] <= prices[i] 的 最小下标 ，如果没有满足条件的 j ，你将没有任何折扣。
+     * 商店里正在进行促销活动，如果你要买第 i 件商品，
+     * 那么你可以得到与 prices[j] 相等的折扣，
+     *其中 j 是满足 j > i 且 prices[j] <= prices[i] 的 最小下标 ，
+     * 如果没有满足条件的 j ，你将没有任何折扣。
      * <p>
      * 请你返回一个数组，数组中第 i 个元素是折扣后你购买商品 i 最终需要支付的价格。
      * <p>
@@ -1577,7 +1694,9 @@ public class ArrayAlp {
      * 1 <= prices.length <= 500
      * 1 <= prices[i] <= 10^3
      * <p>
-     * solution: 1.正常思维 逆序就一直有折扣，顺序往后延  找到折扣为止  O(N2) O(1)
+     * solution:
+     * 1.正常思维 逆序就一直有折扣，顺序往后延  找到折扣为止
+     * O(N2) O(1)
      * @Date: 2021/2/26 11:45
      */
     public int[] finalPrices(int[] prices) {
@@ -6008,9 +6127,9 @@ public class ArrayAlp {
 
     @Test
     public void testArray() {
-        int[][] arr = new int[][]{{1,2,3},{4,5,6},{7,8,9}};
-        int[] arr1 = new int[]{4,5,1,2,3};
-        System.out.println(instance.check(arr1));
+        int[][] arr = new int[][]{{4,3,2,-1},{3,2,1,-1},{1,1,-1,-2},{-1,-1,-2,-3}};
+        int[] arr1 = new int[]{1,2,3,3};
+        System.out.println(instance.findSpecialInteger(arr1));
     }
 
 }

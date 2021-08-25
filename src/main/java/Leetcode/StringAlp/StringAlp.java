@@ -3,6 +3,8 @@ package Leetcode.StringAlp;
 import org.junit.Test;
 
 import java.util.*;
+import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
@@ -3751,16 +3753,56 @@ public class StringAlp {
         return str2.charAt(0) == str2.charAt(1) && !str1.contains(String.valueOf(str2.charAt(0)));
     }
 
+    public boolean isNum(String str) {
+        for (int i = 0; i < str.length(); i++) {
+            if (!Character.isDigit(str.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public int getAge(Student student) {
+        return Optional.of(student).map(Student::getAge).orElse(null);
+    }
+
     @Test
     public void testStringAlp() {
-        String[] strArr = new String[]{"abc","aabc","bc"};
-        String[] str2 = new String[]{"abcddefg"};
-        String str = "a0b1c2";
-        String[][] doubleArr = new String[][] {{"B","C"},{"D","B"},{"C","A"}};
-        List<List<String>> destList = new ArrayList<>();
-        destList.add(Arrays.asList(doubleArr[0]));
-        destList.add(Arrays.asList(doubleArr[1]));
-        destList.add(Arrays.asList(doubleArr[2]));
-        System.out.println(instance.makeEqual(strArr));
+       Consumer c = System.out::println;
+
+       Function<Integer, Integer> f1 = o -> o + o;
+       Function<Integer, Integer> f2 = o -> o * o;
+       c.accept(f1.andThen(f2).apply(3));
+
+       Student student = new Student(12, "小红");
+        System.out.println(1f == 0.99999999f);
+    }
+
+    static class Student{
+
+        private int age;
+
+        private String name;
+
+        public Student(int age, String name) {
+            this.age = age;
+            this.name = name;
+        }
+
+        public int getAge() {
+            return age;
+        }
+
+        public void setAge(int age) {
+            this.age = age;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
     }
 }
