@@ -5,10 +5,7 @@ import org.apache.poi.xwpf.converter.core.FileImageExtractor;
 import org.apache.poi.xwpf.converter.core.FileURIResolver;
 import org.apache.poi.xwpf.converter.xhtml.XHTMLConverter;
 import org.apache.poi.xwpf.converter.xhtml.XHTMLOptions;
-import org.apache.poi.xwpf.usermodel.XWPFDocument;
-import org.apache.poi.xwpf.usermodel.XWPFParagraph;
-import org.apache.poi.xwpf.usermodel.XWPFRun;
-import org.apache.poi.xwpf.usermodel.XWPFTable;
+import org.apache.poi.xwpf.usermodel.*;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.junit.Test;
 
@@ -19,8 +16,10 @@ import java.util.List;
 
 public class Word07ToHtml {
 
+    private static final Word07ToHtml instance = new Word07ToHtml();
+
     public static void parseToHtml() throws IOException {
-        File f = new File("C:\\Users\\10178\\Desktop\\仓小白合同对接\\copy.docx");
+        File f = new File("C:\\Users\\10178\\Desktop\\tmpDirectory\\年协.docx");
         if (!f.exists()) {
             System.out.println("Sorry File does not Exists!");
         } else {
@@ -140,11 +139,34 @@ public class Word07ToHtml {
         XHTMLConverter.getInstance().convert(document,out,options);
     }
 
-    public static void main(String[] args) {
+    public void printWordHeaderList(String path) {
         try {
-            parseToHtml();
+            InputStream is = new FileInputStream(path);
+            XWPFDocument doc = new XWPFDocument(is);
+            for (int i = 0; i < doc.getHeaderList().size(); i++) {
+                XWPFHeader header = doc.getHeaderList().get(i);
+                List<XWPFParagraph> paragraphs = header.getListParagraph();
+                for (XWPFParagraph paragraph : paragraphs) {
+                    List<XWPFRun> runs = paragraph.getRuns();
+                    for (XWPFRun run : runs) {
+                        if(isSpecialRun(run)) {
+                            System.out.println(run.getText(0));
+                        }
+                    }
+                }
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static boolean isSpecialRun(XWPFRun run) {
+        return (run != null && run.getText(0) != null
+                && run.getFontFamily() != null && ("仿宋").equals(run.getFontFamily())
+                && run.getUnderline().equals(UnderlinePatterns.THICK));
+    }
+
+    public static void main(String[] args) {
+        instance.printWordHeaderList("C:\\Users\\10178\\Desktop\\tmpDirectory\\年协.docx");
     }
 }

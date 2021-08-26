@@ -1712,7 +1712,9 @@ public class ArrayAlp {
     }
 
     /**
-     * @Description: 给定一个范围在  1 ≤ a[i] ≤ n ( n = 数组大小 ) 的 整型数组，数组中的元素一些出现了两次，另一些只出现一次。
+     * @Description:
+     * 给定一个范围在  1 ≤ a[i] ≤ n ( n = 数组大小 ) 的 整型数组，
+     * 数组中的元素一些出现了两次，另一些只出现一次。
      * <p>
      * 找到所有在 [1, n] 范围之间没有出现在数组中的数字。
      * <p>
@@ -1726,7 +1728,9 @@ public class ArrayAlp {
      * 输出:
      * [5,6]
      * <p>
-     * solution: 桶排序 要借助一个O(N)arr空间
+     * solution:
+     * 1.桶排序 要借助一个O(N)arr空间
+     * 2.把小数放大  O(N) O(1)
      * @Date: 2021/2/26 13:39
      */
     /*public List<Integer> findDisappearedNumbers(int[] nums) {
@@ -1757,8 +1761,15 @@ public class ArrayAlp {
         return ret;
     }
 
+
+
     /**
-     * @Description: Given an array A of strings made only from lowercase letters, return a list of all characters that show up in all strings within the list (including duplicates).  For example, if a character occurs 3 times in all strings but not 4 times, you need to include that character three times in the final answer.
+     * @Description:
+     * Given an array A of strings made only from lowercase letters,
+     * return a list of all characters that show up in all strings within the list
+     * (including duplicates).  For example,
+     * if a character occurs 3 times in all strings but not 4 times,
+     * you need to include that character three times in the final answer.
      * <p>
      * You may return the answer in any order.
      * <p>
@@ -1784,7 +1795,7 @@ public class ArrayAlp {
      * 英文单词长度  M 数组长度 N  O(M * N) O(M2)
      * @Date: 2021/2/26 14:20
      */
-    public List<String> commonChars(String[] A) {
+    /*public List<String> commonChars(String[] A) {
         List<String> res = new ArrayList<>();
         Map<Character, Integer> map = new HashMap<>();
         if (A.length == 1) {
@@ -1826,7 +1837,89 @@ public class ArrayAlp {
             }
         }
         return res;
+    }*/
+
+    //O(M*N*Q) N数组A长度 M第一个字符串长度 Q每个字符串长度 O(N)
+   /* public List<String> commonChars(String[] A) {
+        List<String> res = new ArrayList<>();
+        HashMap<Character, Integer> map = new HashMap<>();
+        //先放第一个进去
+        String tmpStr = A[0];
+        for (int i = 0; i < tmpStr.length(); i++) {
+            char key = tmpStr.charAt(i);
+            if (map.containsKey(key)) {
+                map.put(key, map.getOrDefault(key, 0) + 1);
+            } else {
+                map.put(key, 1);
+            }
+        }
+        List<Character> charList = new ArrayList<>(map.keySet());
+        List<Character> willRemoved = new ArrayList<>();
+
+        //遍历A 开始更新 + 过滤
+        if (A.length > 1) {
+            for (int i = 1; i < A.length; i++) {
+                String str = A[i];
+                for (Character character : charList) {
+                    if (!str.contains(character.toString())) {
+                        map.remove(character);
+                        continue;
+                    }
+                    map.put(character,
+                                Math.min(calculateCharCount(str, character), map.get(character)));
+                }
+                charList.removeIf(character -> !str.contains(character.toString()));
+            }
+        }
+
+        for (Map.Entry<Character, Integer> entry : map.entrySet()) {
+            Character key = entry.getKey();
+            Integer value = entry.getValue();
+            for (int i = 0; i < value; i++) {
+                res.add(key.toString());
+            }
+        }
+        return res;
     }
+
+    public int calculateCharCount(String str, Character c) {
+        int count = 0;
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == c) count++;
+        }
+        return count;
+    }*/
+
+        //拉姆达表达式求解  O(N*M) N A的长度  M每个字符串的长度 O(N)
+        public List<String> commonChars(String[] A) {
+           return Arrays.stream(A)
+                   //转CharArr
+                   .map(String::toCharArray)
+                   //bucket sort
+                   .map(chars -> {
+                int[] flags = new int[26];
+                for (char c : chars) {
+                    flags[c - 'a']++;
+                }
+                return flags;
+            }).reduce((f1,f2) -> {
+                //筛选最小值
+                       int[] arr = new int[26];
+                for (int i = 0; i < 26; i++) {
+                    arr[i] = Math.min(f1[i], f2[i]);
+                }
+                return arr;
+            }).map(arr -> {
+                //组装res
+                List<String> res = new ArrayList<>();
+                for (int i = 0; i < 26; i++) {
+                    for (int j = 0; j < arr[i]; j++) {
+                        res.add(String.valueOf((char)(i + 'a')));
+                    }
+                }
+                return res;
+            }).get();
+        }
 
     /**
      * @Description: Given an array of integers arr, a lucky integer is an integer which has a frequency in the array equal to its value.
@@ -6127,9 +6220,8 @@ public class ArrayAlp {
 
     @Test
     public void testArray() {
-        int[][] arr = new int[][]{{4,3,2,-1},{3,2,1,-1},{1,1,-1,-2},{-1,-1,-2,-3}};
-        int[] arr1 = new int[]{1,2,3,3};
-        System.out.println(instance.findSpecialInteger(arr1));
+        String[] str = new String[] {"bella","label","roller"};
+        System.out.println(instance.commonChars(str));
     }
 
 }
