@@ -1922,9 +1922,13 @@ public class ArrayAlp {
         }
 
     /**
-     * @Description: Given an array of integers arr, a lucky integer is an integer which has a frequency in the array equal to its value.
+     * @Description:
+     * Given an array of integers arr,
+     * a lucky integer is an integer which has a frequency in the array equal to its value.
      * <p>
-     * Return a lucky integer in the array. If there are multiple lucky integers return the largest of them. If there is no lucky integer return -1.
+     * Return a lucky integer in the array.
+     * If there are multiple lucky integers return the largest of them.
+     * If there is no lucky integer return -1.
      * <p>
      *  
      * <p>
@@ -1969,16 +1973,18 @@ public class ArrayAlp {
         for (int i : arr) {
             bucket[i]++;
         }
-        for (int i = 1; i < bucket.length; i++) {
-            if (i == bucket[i]) {
-                res = Math.max(i, res);
+        for (int i = bucket.length - 1; i >= 0; i--) {
+            if (i == bucket[i] && bucket[i] != 0) {
+                return i;
             }
         }
         return res;
     }
 
     /**
-     * @Description: Given an integer n, return any array containing n unique integers such that they add up to 0.
+     * @Description:
+     * Given an integer n,
+     * return any array containing n unique integers such that they add up to 0.
      * <p>
      *  
      * <p>
@@ -2027,7 +2033,9 @@ public class ArrayAlp {
     }
 
     /**
-     * @Description: 给你一个整数数组 nums，请你返回其中位数为 偶数 的数字的个数。
+     * @Description:
+     * 给你一个整数数组 nums，
+     * 请你返回其中位数为 偶数 的数字的个数。
      * <p>
      *  
      * <p>
@@ -2070,17 +2078,20 @@ public class ArrayAlp {
             if (count % 2 == 0) {
                 res++;
             }
-            count = 1;
         }
         return res;
     }
 
     /**
-     * @Description: 给你一个整数数组 nums，请编写一个能够返回数组 “中心索引” 的方法。
+     * @Description:
+     * 给你一个整数数组 nums，
+     * 请编写一个能够返回数组 “中心索引” 的方法。
      * <p>
-     * 数组 中心索引 是数组的一个索引，其左侧所有元素相加的和等于右侧所有元素相加的和。
+     * 数组 中心索引 是数组的一个索引，
+     * 其左侧所有元素相加的和等于右侧所有元素相加的和。
      * <p>
-     * 如果数组不存在中心索引，返回 -1 。如果数组有多个中心索引，应该返回最靠近左边的那一个。
+     * 如果数组不存在中心索引，返回 -1 。
+     * 如果数组有多个中心索引，应该返回最靠近左边的那一个。
      * <p>
      * 注意：中心索引可能出现在数组的两端。
      * <p>
@@ -2137,7 +2148,8 @@ public class ArrayAlp {
     }
 
     /**
-     * @Description: A 和 B 在一个 3 x 3 的网格上玩井字棋。
+     * @Description:
+     * A 和 B 在一个 3 x 3 的网格上玩井字棋。
      * <p>
      * 井字棋游戏的规则如下：
      * <p>
@@ -2147,9 +2159,11 @@ public class ArrayAlp {
      * 只要有 3 个相同的（非空）棋子排成一条直线（行、列、对角线）时，游戏结束。
      * 如果所有方块都放满棋子（不为空），游戏也会结束。
      * 游戏结束后，棋子无法再进行任何移动。
-     * 给你一个数组 moves，其中每个元素是大小为 2 的另一个数组（元素分别对应网格的行和列），它按照 A 和 B 的行动顺序（先 A 后 B）记录了两人各自的棋子位置。
+     * 给你一个数组 moves，其中每个元素是大小为 2 的另一个数组（元素分别对应网格的行和列），
+     * 它按照 A 和 B 的行动顺序（先 A 后 B）记录了两人各自的棋子位置。
      * <p>
-     * 如果游戏存在获胜者（A 或 B），就返回该游戏的获胜者；如果游戏以平局结束，则返回 "Draw"；如果仍会有行动（游戏未结束），则返回 "Pending"。
+     * 如果游戏存在获胜者（A 或 B），就返回该游戏的获胜者；如果游戏以平局结束，则返回 "Draw"；
+     * 如果仍会有行动（游戏未结束），则返回 "Pending"。
      * <p>
      * 你可以假设 moves 都 有效（遵循井字棋规则），网格最初是空的，A 将先行动。
      * <p>
@@ -2162,7 +2176,7 @@ public class ArrayAlp {
      * 计算 A  B的情况
      * @Date: 2021/3/1 10:41
      */
-    public String tictactoe(int[][] moves) {
+    /*public String tictactoe(int[][] moves) {
         int aLen = 0;
         int bLen = 0;
         int[][] arr;
@@ -2230,12 +2244,48 @@ public class ArrayAlp {
             }
         }
         return false;
+    }*/
+
+    /**
+     * 思路：
+     * 1.把九宫格 假设成9个二进制位  只有8种情况，可以取得游戏胜利 3横 3竖 2对角
+     * 分别对应10进制 arr[] 7,448,56,73,146,292,84,273
+     * 2.moves 0开始  偶数对应 A 奇数对应 B   每次与 a ^= 1<< (3x + y) 获取 1<< 3x+Y 获取所走的1 异或 保存走的 1
+     * 3.a b 最后的值，与  arr相与  & 如果为 arr中的元素,则游戏结束
+     * 4.特殊情况  == 9 ? Draw :  Pending
+     * O(N) N 9 O(M) M 8
+     * @param moves
+     * @return
+     */
+    public String tictactoe(int[][] moves) {
+        String res = "";
+        int a = 0, b = 0;
+        int[] arr = new int[] {7,448,56,73,146,292,84,273};
+        for (int i = 0; i < moves.length; i++) {
+            if (i % 2 == 0) {
+                a ^= 1<<(3 * moves[i][0] + moves[i][1]);
+            } else {
+                b ^= 1<<(3 * moves[i][0] + moves[i][1]);
+            }
+        }
+
+        for (int i : arr) {
+            if ((i & a) == i) {
+                return "A";
+            }
+            if ((i & b) == i) {
+                return "B";
+            }
+        }
+        return moves.length == 9 ? "Draw" : "Pending";
     }
 
     /**
-     * @Description: You are given an array of strings words and a string chars.
+     * @Description:
+     * You are given an array of strings words and a string chars.
      * <p>
-     * A string is good if it can be formed by characters from chars (each character can only be used once).
+     * A string is good if it can be formed by characters from chars
+     *  (each character can only be used once).
      * <p>
      * Return the sum of lengths of all good strings in words.
      * <p>
@@ -2264,6 +2314,7 @@ public class ArrayAlp {
      * solution:
      * 1.check every word ,judge whether can be make up by the chars, sum+= result
      * 2.hashMap  each c num of word must <= c the num of chars
+     * a little shit
      * @Date: 2021/3/1 14:04
      */
     /*public int countCharacters(String[] words, String chars) {
@@ -2319,9 +2370,12 @@ public class ArrayAlp {
     }
 
     /**
-     * @Description: 给你两个整数数组 arr1 ， arr2 和一个整数 d ，请你返回两个数组之间的 距离值 。
+     * @Description:
+     * 给你两个整数数组 arr1 ， arr2 和一个整数 d 
+     * ，请你返回两个数组之间的 距离值 。
      * <p>
-     * 「距离值」 定义为符合此距离要求的元素数目：对于元素 arr1[i] ，不存在任何元素 arr2[j] 满足 |arr1[i]-arr2[j]| <= d 。
+     * 「距离值」 定义为符合此距离要求的元素数目：对于元素 arr1[i] 
+     * ，不存在任何元素 arr2[j] 满足 |arr1[i]-arr2[j]| <= d 。
      * <p>
      *  
      * <p>
@@ -2362,7 +2416,7 @@ public class ArrayAlp {
      * solution:
      * 1.穷举法 按照题意，arr1 每一个元素 和 arr2的每一个元素做abs运算，如果满足 res++ 最后返回res
      * O(M*N) O(1)
-     * 2.暂时没想到
+     * 2.arr2 排序 +二分查找  O(log(M) * N) O(1)
      * @Date: 2021/3/4 14:14
      */
     public int findTheDistanceValue(int[] arr1, int[] arr2, int d) {
@@ -2384,7 +2438,9 @@ public class ArrayAlp {
     }
 
     /**
-     * @Description: 有一个自行车手打算进行一场公路骑行，这条路线总共由 n + 1 个不同海拔的点组成。自行车手从海拔为 0 的点 0 开始骑行。
+     * @Description:
+     * 有一个自行车手打算进行一场公路骑行，
+     * 这条路线总共由 n + 1 个不同海拔的点组成。自行车手从海拔为 0 的点 0 开始骑行。
      * <p>
      * 给你一个长度为 n 的整数数组 gain ，其中 gain[i] 是点 i 和点 i + 1 的 净海拔高度差（0 <= i < n）。请你返回 最高点的海拔 。
      * <p>
@@ -2422,7 +2478,9 @@ public class ArrayAlp {
     }
 
     /**
-     * @Description: 给定一个二进制矩阵 A，我们想先水平翻转图像，然后反转图像并返回结果。
+     * @Description:
+     * 给定一个二进制矩阵 
+     * A，我们想先水平翻转图像，然后反转图像并返回结果。
      * <p>
      * 水平翻转图片就是将图片的每一行都进行翻转，即逆序。例如，水平翻转 [1, 1, 0] 的结果是 [0, 1, 1]。
      * <p>
@@ -2449,7 +2507,10 @@ public class ArrayAlp {
      * 1 <= A.length = A[0].length <= 20
      * 0 <= A[i][j] <= 1
      * <p>
-     * solution: 1.水平翻转  a[i][j] a[i][a[i].length - i]  2.反向翻转 1--》0 0——》1
+     * solution:
+     * 1.水平翻转  a[i][j] a[i][a[i].length - i]
+     * 2.反向翻转 1--》0 0——》1
+     * O(N) O(1)
      * @Date: 2021/3/4 14:53
      */
     public int[][] flipAndInvertImage(int[][] image) {
@@ -2466,7 +2527,8 @@ public class ArrayAlp {
     }
 
     /**
-     * @Description: 给你一个整数 n 。按下述规则生成一个长度为 n + 1 的数组 nums ：
+     * @Description:
+     * 给你一个整数 n 。按下述规则生成一个长度为 n + 1 的数组 nums ：
      * <p>
      * nums[0] = 0
      * nums[1] = 1
@@ -2509,6 +2571,7 @@ public class ArrayAlp {
      * solution:
      * 1.根据题意，一次生成数 求最大值
      * 2.数学归纳法，现在没想出来 肯定有数学公式之类的
+     * O(N) O(N)
      * @Date: 2021/3/4 15:54
      */
     public int getMaximumGenerated(int n) {
@@ -6220,8 +6283,8 @@ public class ArrayAlp {
 
     @Test
     public void testArray() {
-        String[] str = new String[] {"bella","label","roller"};
-        System.out.println(instance.commonChars(str));
+        String[] str = new String[] {"cat","bt","hat","tree"};
+        System.out.println();
     }
 
 }
