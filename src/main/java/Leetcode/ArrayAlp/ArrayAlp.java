@@ -2775,8 +2775,11 @@ public class ArrayAlp {
     }
 
     /**
-     * @Description: 包含整数的二维矩阵 M 表示一个图片的灰度。你需要设计一个平滑器来让每一个单元的灰度成为平均灰度 (向下舍入) ，
-     * 平均灰度的计算是周围的8个单元和它本身的值求平均，如果周围的单元格不足八个，则尽可能多的利用它们。
+     * @Description:
+     * 包含整数的二维矩阵 M 表示一个图片的灰度。
+     * 你需要设计一个平滑器来让每一个单元的灰度成为平均灰度 (向下舍入) ，
+     * 平均灰度的计算是周围的8个单元和它本身的值求平均，
+     * 如果周围的单元格不足八个，则尽可能多的利用它们。
      * <p>
      * 示例 1:
      * <p>
@@ -2797,7 +2800,11 @@ public class ArrayAlp {
      * 给定矩阵中的整数范围为 [0, 255]。
      * 矩阵的长和宽的范围均为 [1, 150]。
      * <p>
-     * solution: 题目终于读懂了 我擦  计算上下左右 以及斜对角的和  和 个数  sum/count 向下取整  就是最后的值
+     * solution:
+     * 题目终于读懂了 我擦
+     * 计算上下左右 以及斜对角的和
+     * 和 个数  sum/count 向下取整  就是最后的值
+     * O(N) N M数组的中长度 O(M) M是ans数组的空间
      * @Date: 2021/3/9 11:02
      */
     public int[][] imageSmoother(int[][] M) {
@@ -2807,20 +2814,22 @@ public class ArrayAlp {
         for (int r = 0; r < R; ++r)
             for (int c = 0; c < C; ++c) {
                 int count = 0;
-                for (int nr = r - 1; nr <= r + 1; ++nr)
+                for (int nr = r - 1; nr <= r + 1; ++nr) {
                     for (int nc = c - 1; nc <= c + 1; ++nc) {
                         if (0 <= nr && nr < R && 0 <= nc && nc < C) {
                             ans[r][c] += M[nr][nc];
                             count++;
                         }
                     }
+                }
                 ans[r][c] /= count;
             }
         return ans;
     }
 
     /**
-     * @Description: Implement an algorithm to determine if a string has all unique characters.
+     * @Description:
+     * Implement an algorithm to determine if a string has all unique characters.
      * What if you cannot use additional data structures?
      * <p>
      * Example 1:
@@ -2837,7 +2846,10 @@ public class ArrayAlp {
      * <p>
      * 0 <= len(s) <= 100
      * <p>
-     * solution: 1.astr toArray 2.Bucket sort (ascll码表) 3.if element > 1 false else true
+     * solution:
+     * 1.astr toArray
+     * 2.Bucket sort (ascll码表)
+     * 3.if element > 1 false else true
      * O(N) O(N)
      * @Date: 2021/3/9 13:51
      */
@@ -2857,9 +2869,13 @@ public class ArrayAlp {
 
 
     /**
-     * @Description: Given the array candies and the integer extraCandies, where candies[i] represents the number of candies that the ith kid has.
+     * @Description:
+     * Given the array candies and the integer extraCandies,
+     * where candies[i] represents the number of candies that the ith kid has.
      * <p>
-     * For each kid check if there is a way to distribute extraCandies among the kids such that he or she can have the greatest number of candies among them. Notice that multiple kids can have the greatest number of candies.
+     * For each kid check if there is a way to distribute extraCandies among the kids
+     * such that he or she can have the greatest number of candies among them.
+     *  Notice that multiple kids can have the greatest number of candies.
      * <p>
      *  
      * <p>
@@ -2880,7 +2896,10 @@ public class ArrayAlp {
      * 1 <= candies[i] <= 100
      * 1 <= extraCandies <= 50
      * <p>
-     * solution: 1.find greatest num 2.each element + extraCandies compare with it 3.return the array
+     * solution:
+     * 1.find greatest num
+     * 2.each element + extraCandies compare with it
+     * 3.return the array
      * O(N) O(1)
      * @Date: 2021/3/9 14:04
      */
@@ -2901,11 +2920,16 @@ public class ArrayAlp {
     }
 
     /**
-     * @Description: In a given integer array nums, there is always exactly one largest element.
+     * @Description:
+     * In a given integer array nums,
+     * there is always exactly one largest element.
      * <p>
-     * Find whether the largest element in the array is at least twice as much as every other number in the array.
+     * Find whether the largest element in the array
+     * is at least twice as much as every other number
+     * in the array.
      * <p>
-     * If it is, return the index of the largest element, otherwise return -1.
+     * If it is, return the index of the largest element,
+     * otherwise return -1.
      * <p>
      * Example 1:
      * <p>
@@ -2927,7 +2951,11 @@ public class ArrayAlp {
      * nums will have a length in the range [1, 50].
      * Every nums[i] will be an integer in the range [0, 99].
      * <p>
-     * solution: 1.find the max num and record the index 2. judge twice other element compare with max 3.return index
+     * solution:
+     * 1.find the max num and record the index
+     * 2. judge twice other element compare with max
+     * 3.return index
+     * O(N) O(1)
      * @Date: 2021/3/9 15:05
      */
     public int dominantIndex(int[] nums) {
@@ -2949,9 +2977,14 @@ public class ArrayAlp {
 
 
     /**
-     * @Description: Given an unsorted array of integers nums, return the length of the longest continuous increasing subsequence (i.e. subarray). The subsequence must be strictly increasing.
+     * @Description:
+     * Given an unsorted array of integers nums,
+     * return the length of the longest continuous increasing subsequence (i.e. subarray).
+     * The subsequence must be strictly increasing.
      * <p>
-     * A continuous increasing subsequence is defined by two indices l and r (l < r) such that it is [nums[l], nums[l + 1], ..., nums[r - 1], nums[r]] and for each l <= i < r, nums[i] < nums[i + 1].
+     * A continuous increasing subsequence is defined by two indices l and r (l < r)
+     * such that it is [nums[l], nums[l + 1], ..., nums[r - 1], nums[r]] and
+     * for each l <= i < r, nums[i] < nums[i + 1].
      * <p>
      *  
      * <p>
@@ -2975,7 +3008,9 @@ public class ArrayAlp {
      * 0 <= nums.length <= 104
      * -109 <= nums[i] <= 109
      * <p>
-     * solution: traver the nums array ,record the count   compare the max count ,finally return the count
+     * solution:
+     * 1.traver the nums array ,record the count
+     * 2.compare the max count ,finally return the count
      * O(N) O(1)
      * @Date: 2021/3/9 15:14
      */
@@ -2997,9 +3032,13 @@ public class ArrayAlp {
     }
 
     /**
-     * @Description: Given a m * n matrix of distinct numbers, return all lucky numbers in the matrix in any order.
+     * @Description:
+     * Given a m * n matrix of distinct numbers,
+     * return all lucky numbers in the matrix in any order.
      * <p>
-     * A lucky number is an element of the matrix such that it is the minimum element in its row and maximum in its column.
+     * A lucky number is an element of the matrix
+     * such that it is the minimum element in its row and
+     * maximum in its column.
      * <p>
      *  
      * <p>
@@ -3015,8 +3054,8 @@ public class ArrayAlp {
      * Explanation: 12 is the only lucky number since it is the minimum in its row and the maximum in its column.
      * <p>
      * solution:
-     * 1.穷举法  遍历n个元素  行m 列j 依次检查  O(M*N*J) O(1)
-     * 2.寻找每一行最小的数 和每一列最大的数，求并集  O(N 2) O(N)
+     * 1.穷举法  遍历n个元素  行m 列j 依次检查  O(N*M) N 是matrix数组长度 M是该元素 row + column O(1)
+     * 2.寻找每一行最小的数 和每一列最大的数，求并集 O(N) row column rowArr。size * columnArr的最大值 O(M) 新建数组空间
      * @Date: 2021/3/10 9:59
      */
     public List<Integer> luckyNumbers(int[][] matrix) {
@@ -3050,7 +3089,11 @@ public class ArrayAlp {
     }
 
     /**
-     * @Description: A magic index in an array A[0...n-1] is defined to be an index such that A[i] = i. Given a sorted array of integers, write a method to find a magic index, if one exists, in array A. If not, return -1. If there are more than one magic index, return the smallest one.
+     * @Description:
+     * A magic index in an array A[0...n-1] is defined to be an index
+     * such that A[i] = i. Given a sorted array of integers, write a method to find a magic index,
+     * if one exists, in array A. If not, return -1.
+     * If there are more than one magic index, return the smallest one.
      * <p>
      * Example1:
      * <p>
@@ -3065,7 +3108,10 @@ public class ArrayAlp {
      * 1 <= nums.length <= 1000000
      * This problem is the follow-up of the original problem in the book, i.e. the values are not distinct.
      * <p>
-     * solution: traver the nums array,find the num equals the index ,if equals return if not exists return -1
+     * solution:
+     * 1. traver the nums array,find the num equals the index
+     * 2.if equals return if not exists return -1
+     * O(N) O(1)
      * @Date: 2021/3/10 10:34
      */
     public int findMagicIndex(int[] nums) {
@@ -3079,11 +3125,14 @@ public class ArrayAlp {
     }
 
     /**
-     * @Description: Given two integer arrays of equal length target and arr.
+     * @Description:
+     * Given two integer arrays of equal length target and arr.
      * <p>
-     * In one step, you can select any non-empty sub-array of arr and reverse it. You are allowed to make any number of steps.
+     * In one step, you can select any non-empty sub-array of arr and reverse it.
+     * You are allowed to make any number of steps.
      * <p>
-     * Return True if you can make arr equal to target, or False otherwise.
+     * Return True if you can make arr equal to target,
+     * or False otherwise.
      * <p>
      *  
      * <p>
@@ -3105,7 +3154,10 @@ public class ArrayAlp {
      * 1 <= target[i] <= 1000
      * 1 <= arr[i] <= 1000
      * <p>
-     * solution: sort two array , compare to both array ,judge whether they are equals
+     * solution:
+     * 1. sort two array
+     * 2. compare to both array ,judge whether they are equals
+     * O(N) O(1)
      * @Date: 2021/3/10 10:43
      */
     public boolean canBeEqual(int[] target, int[] arr) {
