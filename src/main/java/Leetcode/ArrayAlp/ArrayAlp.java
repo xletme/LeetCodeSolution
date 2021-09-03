@@ -3172,17 +3172,32 @@ public class ArrayAlp {
     }
 
     /**
-     * @Description: The Game of Master Mind is played as follows:
+     * @Description:
+     * The Game of Master Mind is played as follows:
      * <p>
-     * The computer has four slots, and each slot will contain a ball that is red (R). yellow (Y). green (G) or blue (B). For example, the computer might have RGGB (Slot #1 is red, Slots #2 and #3 are green, Slot #4 is blue).
+     * The computer has four slots, and each slot will contain a ball
+     * that is red (R). yellow (Y). green (G) or blue (B).
+     * For example, the computer might have
+     * RGGB (Slot #1 is red, Slots #2 and #3 are green, Slot #4 is blue).
      * <p>
-     * You, the user, are trying to guess the solution. You might, for example, guess YRGB.
+     * You, the user, are trying to guess the solution.
+     * You might, for example, guess YRGB.
      * <p>
-     * When you guess the correct color for the correct slot, you get a "hit:' If you guess a color that exists but is in the wrong slot, you get a "pseudo-hit:' Note that a slot that is a hit can never count as a pseudo-hit.
+     * When you guess the correct color for the correct slot,
+     * you get a "hit:' If you guess a color that exists but is in the wrong slot,
+     * you get a "pseudo-hit:' Note that a slot
+     * that is a hit can never count as a pseudo-hit.
      * <p>
-     * For example, if the actual solution is RGBY and you guess GGRR, you have one hit and one pseudo-hit. Write a method that, given a guess and a solution, returns the number of hits and pseudo-hits.
+     * For example, if the actual solution is
+     * RGBY and you guess GGRR, you have one hit and one pseudo-hit.
+     * Write a method that, given a guess and a solution,
+     * returns the number of hits and pseudo-hits.
      * <p>
-     * Given a sequence of colors solution, and a guess, write a method that return the number of hits and pseudo-hit answer, where answer[0] is the number of hits and answer[1] is the number of pseudo-hit.
+     * Given a sequence of colors solution,
+     * and a guess, write a method that return
+     * the number of hits and pseudo-hit answer,
+     * where answer[0] is the number of hits and
+     * answer[1] is the number of pseudo-hit.
      * <p>
      * Example:
      * <p>
@@ -3194,7 +3209,12 @@ public class ArrayAlp {
      * len(solution) = len(guess) = 4
      * There are only "R","G","B","Y" in solution and guess.
      * <p>
-     * solution: 用hashMap统计 R G B Y 的次数  计算相同非0，最小次数和 为 total  完全相同为 hit   pseudo-hit  = total - hit
+     * solution:
+     * 用hashMap统计 R G B Y 的次数
+     * 计算相同非0，最小次数和 为 total
+     * 完全相同为 hit
+     * pseudo-hit  = total - hit
+     * O(N2) O(N) N==4
      * @Date: 2021/3/10 10:52
      */
     public int[] masterMind(String solution, String guess) {
@@ -3223,6 +3243,9 @@ public class ArrayAlp {
         res[1] = total - hit;
         return res;
     }
+
+
+
 
     private int countNumber(int num) {
         if (num == 0) {
@@ -3255,7 +3278,9 @@ public class ArrayAlp {
      * 解释：对角线的和为：1 + 5 + 9 + 3 + 7 = 25
      * 请注意，元素 mat[1][1] = 5 只会被计算一次。
      *
-     * solution: 1.找出对角元素规律 相加 ： x==y || x+y = mat.length - 1  O(N) O(1)
+     * solution:
+     * 1.找出对角元素规律 相加 ： x==y || x+y = mat.length - 1
+     * O(N) O(1)
      * @Date: 2021/3/11 11:28
      */
     public int diagonalSum(int[][] mat) {
@@ -3291,7 +3316,9 @@ public class ArrayAlp {
      * 输入的数组只包含 0 和 1 。
      * 输入数组的长度是正整数，且不超过 10,000。
      *
-     * solution: 1.用 max来记录连续最大值，用count来记录连续值  每次更新max 2.
+     * solution:
+     * 1.用 max来记录连续最大值，用count来记录连续值
+     * 2.每次更新max  O(N) O(1)
      * @Date: 2021/3/11 13:52
      */
     public int findMaxConsecutiveOnes(int[] nums) {
@@ -3310,7 +3337,8 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 给你一个数组 items ，其中 items[i] = [typei, colori, namei] ，描述第 i 件物品的类型、颜色以及名称。
+     * 给你一个数组 items ，其中 items[i] = [typei, colori, namei] ，
+     * 描述第 i 件物品的类型、颜色以及名称。
      *
      * 另给你一条由两个字符串 ruleKey 和 ruleValue 表示的检索规则。
      *
@@ -3325,12 +3353,18 @@ public class ArrayAlp {
      *
      * 示例 1：
      *
-     * 输入：items = [["phone","blue","pixel"],["computer","silver","lenovo"],["phone","gold","iphone"]], ruleKey = "color", ruleValue = "silver"
+     * 输入：items = [["phone","blue","pixel"],
+     * ["computer","silver","lenovo"],
+     * ["phone","gold","iphone"]],
+     * ruleKey = "color", ruleValue = "silver"
      * 输出：1
      * 解释：只有一件物品匹配检索规则，这件物品是 ["computer","silver","lenovo"] 。
      * 示例 2：
      *
-     * 输入：items = [["phone","blue","pixel"],["computer","silver","phone"],["phone","gold","iphone"]], ruleKey = "type", ruleValue = "phone"
+     * 输入：items = [["phone","blue","pixel"],
+     * ["computer","silver","phone"],
+     * ["phone","gold","iphone"]],
+     * ruleKey = "type", ruleValue = "phone"
      * 输出：2
      * 解释：只有两件物品匹配检索规则，这两件物品分别是 ["phone","blue","pixel"] 和 ["phone","gold","iphone"] 。注意，["computer","silver","phone"] 未匹配检索规则。
      *  
@@ -3341,7 +3375,11 @@ public class ArrayAlp {
      * 1 <= typei.length, colori.length, namei.length, ruleValue.length <= 10
      * ruleKey 等于 "type"、"color"
      *
-     * solution:1.根据ruleKey看是查什么  2.去对应的列查是否有该元素  3.查到就 ++
+     * solution:
+     * 1.根据ruleKey看是查什么
+     * 2.去对应的列查是否有该元素
+     * 3.查到就 ++
+     * O(N) O(1)
      * @Date: 2021/3/11 14:09
      */
     public int countMatches(List<List<String>> items, String ruleKey, String ruleValue) {
@@ -3380,21 +3418,25 @@ public class ArrayAlp {
      * 1 <= k <= n <= 30,000。
      * 所给数据范围 [-10,000，10,000]。
      *
-     * solution: 滑动窗口模型  求最大平均值
-     * @Date: 2021/3/11 14:19
+     * solution:
+     * 1.滑动窗口模型  求最大平均值
+     * O(N) (1)
+     * @Date: 2021/3/11 14:19  TODO 这里
      */
     public double findMaxAverage(int[] nums, int k) {
-        double res;
         int sum = 0;
+        int averageSum = 0;
         for (int i = 0; i < k; i++) {
             sum += nums[i];
         }
-        res = (double) sum / k;
+        averageSum = sum;
         for (int i = k; i < nums.length; i++) {
+            if (nums[i] > nums[i - k]) {
+                averageSum = Math.max(averageSum, sum + nums[i] - nums[i - k]);
+            }
             sum = sum + nums[i] - nums[i - k];
-            res = Math.max(res,(double) sum / k);
         }
-        return res;
+        return (double) averageSum / k;
     }
 
     /**
@@ -6346,8 +6388,8 @@ public class ArrayAlp {
 
     @Test
     public void testArray() {
-        String[] str = new String[] {"cat","bt","hat","tree"};
-        System.out.println();
+        int[] arr = new int[] {0,4,0,3,2};
+        System.out.println(instance.findMaxAverage(arr,1));
     }
 
 }
