@@ -3441,11 +3441,19 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 你在一家生产小球的玩具厂工作，有 n 个小球，编号从 lowLimit 开始，到 highLimit 结束（包括 lowLimit 和 highLimit ，即 n == highLimit - lowLimit + 1）。另有无限数量的盒子，编号从 1 到 infinity 。
+     * 你在一家生产小球的玩具厂工作，有 n 个小球，
+     * 编号从 lowLimit 开始，到 highLimit 结束（
+     * 包括 lowLimit 和 highLimit ，即 n == highLimit - lowLimit + 1）。
+     * 另有无限数量的盒子，编号从 1 到 infinity 。
      *
-     * 你的工作是将每个小球放入盒子中，其中盒子的编号应当等于小球编号上每位数字的和。例如，编号 321 的小球应当放入编号 3 + 2 + 1 = 6 的盒子，而编号 10 的小球应当放入编号 1 + 0 = 1 的盒子。
+     * 你的工作是将每个小球放入盒子中，
+     * 其中盒子的编号应当等于小球编号上每位数字的和。
+     * 例如，编号 321 的小球应当放入编号 3 + 2 + 1 = 6 的盒子，
+     * 而编号 10 的小球应当放入编号 1 + 0 = 1 的盒子。
      *
-     * 给你两个整数 lowLimit 和 highLimit ，返回放有最多小球的盒子中的小球数量。如果有多个盒子都满足放有最多小球，只需返回其中任一盒子的小球数量。
+     * 给你两个整数 lowLimit 和 highLimit ，
+     * 返回放有最多小球的盒子中的小球数量。
+     * 如果有多个盒子都满足放有最多小球，只需返回其中任一盒子的小球数量。
      *
      *  
      *
@@ -3479,7 +3487,11 @@ public class ArrayAlp {
      *
      * 1 <= lowLimit <= highLimit <= 10的5次方
      *
-     * solution: get the rule : 1.calculate first num then ++continuous number   ,to the highLimit numb
+     * solution:
+     * get the rule :
+     * 1.calculate first num then ++continuous number   ,
+     * to the highLimit numb
+     * O(N) O(M) M 46
      * @Date: 2021/3/11 14:47
      */
     public int countBalls(int lowLimit, int highLimit) {
@@ -3525,6 +3537,7 @@ public class ArrayAlp {
      *solution: 先排序
      * 1.数组排序后，分别求出三个最大正数的乘积，以及两个最小负数与最大正数的乘积，二者之间的最大值即为所求答案
      * 2.穷举法
+     * O(logN) O(1)
      * @Date: 2021/3/12 10:37
      */
     public int maximumProduct(int[] nums) {
@@ -3535,7 +3548,8 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 给你一个整数数组 nums，请你选择数组的两个不同下标 i 和 j，使 (nums[i]-1)*(nums[j]-1) 取得最大值。
+     * 给你一个整数数组 nums，请你选择数组的两个不同下标 i 和 j，
+     * 使 (nums[i]-1)*(nums[j]-1) 取得最大值。
      *
      * 请你计算并返回该式的最大值。
      *
@@ -3547,7 +3561,9 @@ public class ArrayAlp {
      * 输出：12
      * 解释：如果选择下标 i=1 和 j=2（下标从 0 开始），则可以获得最大值，(nums[1]-1)*(nums[2]-1) = (4-1)*(5-1) = 3*4 = 12 。
      *
-     * solution: 2最大数相乘 或者 2最小数相乘
+     * solution:
+     * 2最大数相乘 或者 2最小数相乘
+     * O(N) O(1)
      * @Date: 2021/3/12 11:22
      */
     public int maxProduct(int[] nums) {
@@ -3573,7 +3589,8 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 给你一个整数数组 arr ，请你删除最小 5% 的数字和最大 5% 的数字后，剩余数字的平均值。
+     * 给你一个整数数组 arr ，请你删除最小 5% 的数字和最大 5% 的数字后，
+     * 剩余数字的平均值。
      *
      * 与 标准答案 误差在 10-5 的结果都被视为正确结果。
      *
@@ -3604,8 +3621,9 @@ public class ArrayAlp {
      * 0 <= arr[i] <= 105
      *
      * solution:
-     * 1.计算删除哪几个元素 2. a.删除元素 求平均值 需要排序 (桶排序）
-     * 2.
+     * 1.计算删除哪几个元素
+     * 2. a.删除元素 求平均值 需要排序 (桶排序）
+     * O(logN) O(1)
      * @Date: 2021/3/12 13:35
      */
     public double trimMean(int[] arr) {
@@ -3623,8 +3641,6 @@ public class ArrayAlp {
      * 给你个整数数组 arr，其中每个元素都 不相同。
      *
      * 请你找到所有具有最小绝对差的元素对，并且按升序的顺序返回。
-     *
-     *  
      *
      * 示例 1：
      *
@@ -3645,7 +3661,11 @@ public class ArrayAlp {
      * 2 <= arr.length <= 10^5
      * -10^6 <= arr[i] <= 10^6
      *
-     * solution: 1.排序 2.找最小绝对差 3.list 。add  O(logn) O(N)
+     * solution:
+     * 1.排序
+     * 2.找最小绝对差
+     * 3.list 。add
+     * O(logn) O(N)
      * @Date: 2021/3/12 13:50
      */
     public List<List<Integer>> minimumAbsDifference(int[] arr) {
@@ -3669,9 +3689,11 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 给你一个仅由字符 '0' 和 '1' 组成的字符串 s 。一步操作中，你可以将任一 '0' 变成 '1' ，或者将 '1' 变成 '0' 。
+     * 给你一个仅由字符 '0' 和 '1' 组成的字符串 s 。
+     * 一步操作中，你可以将任一 '0' 变成 '1' ，或者将 '1' 变成 '0' 。
      *
-     * 交替字符串 定义为：如果字符串中不存在相邻两个字符相等的情况，那么该字符串就是交替字符串。例如，字符串 "010" 是交替字符串，而字符串 "0100" 不是。
+     * 交替字符串 定义为：如果字符串中不存在相邻两个字符相等的情况，那么该字符串就是交替字符串。
+     * 例如，字符串 "010" 是交替字符串，而字符串 "0100" 不是。
      *
      * 返回使 s 变成 交替字符串 所需的 最少 操作数。
      *
@@ -3702,6 +3724,8 @@ public class ArrayAlp {
      * solution:
      * 1.写个算法排序  为0101 或1010   分别变成0101和1010看哪个变化的次数多
      * 2.对比排序前后的差异
+     * 取1010 0101两种情况最小值
+     * O(N) O(1)
      * @Date: 2021/3/12 14:05
      */
     public int minOperations(String s) {
@@ -3751,11 +3775,14 @@ public class ArrayAlp {
      *                   (0 +4 ) = 4  | (1 +4 ) = 5    |   4
      *                   (4 +2 ) = 6  | (5 +2 ) = 7    |   2
      *
-     * 提示：求 累加和最小值  负数 绝对值 + 1   非负数  1  O(N) O(1)
+     * 提示：
+     *
      *
      * 1 <= nums.length <= 100
      * -100 <= nums[i] <= 100
-     * solution:
+     * solution：
+     * 1.求 累加和最小值  负数 绝对值 + 1   非负数  1
+     *  O(N) O(1)
      * @Date: 2021/3/15 9:54
      */
     public int minStartValue(int[] nums) {
