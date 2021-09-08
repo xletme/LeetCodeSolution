@@ -3805,7 +3805,8 @@ public class ArrayAlp {
      * @Description:
      *如果数组是单调递增或单调递减的，那么它是单调的。
      *
-     * 如果对于所有 i <= j，A[i] <= A[j]，那么数组 A 是单调递增的。 如果对于所有 i <= j，A[i]> = A[j]，那么数组 A 是单调递减的。
+     * 如果对于所有 i <= j，A[i] <= A[j]，那么数组 A 是单调递增的。
+     * 如果对于所有 i <= j，A[i]> = A[j]，那么数组 A 是单调递减的。
      *
      * 当给定的数组 A 是单调数组时返回 true，否则返回 false。
      *
@@ -3813,7 +3814,10 @@ public class ArrayAlp {
      *
      * 1 <= A.length <= 50000
      * -100000 <= A[i] <= 100000
-     * solution: 遍历看 是否单调  ，定义一个flag  特殊：长度2以下 都是单调的  O(N) O(1)
+     * solution:
+     * 遍历看 是否单调  ，定义一个flag
+     * 特殊：长度2以下 都是单调的
+     * O(N) O(1)
      * @Date: 2021/3/15 10:05
      */
     public boolean isMonotonic(int[] A) {
@@ -3828,6 +3832,7 @@ public class ArrayAlp {
             }
         }
         for (int i = 2; i < A.length; i++) {
+            //以递增或者递减特性作为判断条件
             if ((A[i] - A[i - 1] < 0 && isAsc) || (A[i] - A[i - 1] > 0) && !isAsc) {
                 return false;
             }
@@ -3837,7 +3842,8 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。
+     * 给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，
+     * 同时保持非零元素的相对顺序。
      *
      * 示例:
      *
@@ -3850,8 +3856,12 @@ public class ArrayAlp {
      * 尽量减少操作次数。
      *
      * solution:
-     * 双指针  左指针左边是有序数列  右指针和左指针中间都是0  每次替换右指针和左指针元素 直到 结束
+     * 双指针
+     * 左指针左边是有序数列
+     * 右指针和左指针中间都是0
+     * 每次替换右指针和左指针元素 直到 结束
      * 自己没写出来 跟随官方的回答
+     *O(N) O(1)
      * @Date: 2021/3/15 10:18
      */
     public void moveZeroes(int[] nums) {
@@ -3861,8 +3871,10 @@ public class ArrayAlp {
         while (rightIndex < len) {
             if (nums[rightIndex] != 0) {
                 swap(nums,leftIndex,rightIndex);
+                //每次交换左右指针元素都要增加leftIndex
                 leftIndex++;
             }
+            //无论是否移动元素，右指针都要右移
             rightIndex++;
         }
     }
@@ -3875,7 +3887,11 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 给你一个整数 n 和一个整数数组 rounds 。有一条圆形赛道由 n 个扇区组成，扇区编号从 1 到 n 。现将在这条赛道上举办一场马拉松比赛，该马拉松全程由 m 个阶段组成。其中，第 i 个阶段将会从扇区 rounds[i - 1] 开始，到扇区 rounds[i] 结束。举例来说，第 1 阶段从 rounds[0] 开始，到 rounds[1] 结束。
+     * 给你一个整数 n 和一个整数数组 rounds 。
+     * 有一条圆形赛道由 n 个扇区组成，扇区编号从 1 到 n 。
+     * 现将在这条赛道上举办一场马拉松比赛，该马拉松全程由 m 个阶段组成。
+     * 其中，第 i 个阶段将会从扇区 rounds[i - 1] 开始，到扇区 rounds[i] 结束。
+     * 举例来说，第 1 阶段从 rounds[0] 开始，到 rounds[1] 结束。
      *
      * 请你以数组形式返回经过次数最多的那几个扇区，按扇区编号 升序 排列。
      *
@@ -3907,10 +3923,11 @@ public class ArrayAlp {
      * solution:
      * 1.常规思路 按照题意跑完所有数组，然后统计最大值 的list element
      * 2.跑的时候，用hashMap(也可用桶排序 bucket)统计1-n出现的次数 记录最大值  最后遍历hashMap  添加到List
+     * 3.只计算最后一圈，输出跑过的  倒序找到起点元素 ，依次添加元素
      * O(N*M) O(N)
      * @Date: 2021/3/15 11:12
      */
-    public List<Integer> mostVisited(int n, int[] rounds) {
+    /*public List<Integer> mostVisited(int n, int[] rounds) {
         List<Integer> res = new ArrayList<>();
         int[] arr = new int[101];
         int max = Integer.MIN_VALUE;
@@ -3939,10 +3956,33 @@ public class ArrayAlp {
         }
         return res;
     }
-
+*/
+    //直接取首尾元素,输出中间的 闭区间 O(N) O(1)
+    public List<Integer> mostVisited(int n, int[] rounds) {
+        List<Integer> res = new ArrayList<>();
+        int start = rounds[0];
+        int end = rounds[rounds.length - 1];
+        if (start == end) {
+            res.add(start);
+        } else if (start < end) {
+            for (int i = start; i <= end; i++) {
+                res.add(i);
+            }
+        } else {
+            for (int i = start; i <= n; i++) {
+                res.add(i);
+            }
+            for (int i = 1; i <= end; i++) {
+                res.add(i);
+            }
+        }
+        return res;
+    }
     /**
      * @Description:
-     * 给你一个长度为 n 的整数数组，请你判断在 最多 改变 1 个元素的情况下，该数组能否变成一个非递减数列。
+     * 给你一个长度为 n 的整数数组，
+     * 请你判断在 最多 改变 1 个元素的情况下，
+     * 该数组能否变成一个非递减数列。
      *
      * 我们是这样定义一个非递减数列的： 对于数组中任意的 i (0 <= i <= n-2)，总满足 nums[i] <= nums[i + 1]。
      *
@@ -3965,35 +4005,26 @@ public class ArrayAlp {
      * 1 <= n <= 10 ^ 4
      * - 10 ^ 5 <= nums[i] <= 10 ^ 5
      *
-     * solution:  desc >= 2 false O(N) O(1)  换成前面和后面的数字
+     * solution:
+     * desc >= 2 false O(N) O(1)  换成前面和后面的数字
      * @Date: 2021/3/15 15:30
      */
     public boolean checkPossibility(int[] nums) {
-        if (nums.length <= 2) {
-            return true;
-        }
-        int descCount = 0;
-        // -1 4 2 3
-        // 3 4 2 3
-        // 5 7 1 8
-        for (int i = 1; i < nums.length; i++) {
-            if (nums[i] < nums[i - 1]) {
-                descCount++;
-                if (nums.length == 3) {
-                    continue;
+        int n = nums.length, cnt = 0;
+        for (int i = 0; i < n - 1; ++i) {
+            int x = nums[i], y = nums[i + 1];
+            if (x > y) {
+                cnt++;
+                if (cnt > 1) {
+                    return false;
                 }
-                if (i + 1 < nums.length && i - 2 >= 0) {
-                    if (nums[i - 1] > nums[i - 2] && nums[i - 1] > nums[i + 1] && nums[i - 2] > nums[i]) {
-                        return false;
-                    }
+                //这里有一点没能够彻底理解
+                if (i > 0 && y < nums[i - 1]) {
+                    nums[i + 1] = x;
                 }
             }
-            if ((i -3) >= 0 && nums[i] == nums[i - 1] && nums[i - 1] < nums[i - 2] && nums[i - 1] < nums[i - 3]) {
-                return false;
-            }
         }
-
-        return descCount < 2;
+        return true;
     }
 
     /**
@@ -4004,7 +4035,8 @@ public class ArrayAlp {
      *
      * 形式上，dominoes[i] = [a, b] 和 dominoes[j] = [c, d] 等价的前提是 a==c 且 b==d，或是 a==d 且 b==c。
      *
-     * 在 0 <= i < j < dominoes.length 的前提下，找出满足 dominoes[i] 和 dominoes[j] 等价的骨牌对 (i, j) 的数量。
+     * 在 0 <= i < j < dominoes.length 的前提下，
+     * 找出满足 dominoes[i] 和 dominoes[j] 等价的骨牌对 (i, j) 的数量。
      *
      *  
      *
@@ -4041,18 +4073,20 @@ public class ArrayAlp {
         return count;
     }*/
 
-    //题友解答 我的复杂度太高了  dominoes[i][j] 0---9   O(N) O(1)
+    //题友解答 我的复杂度太高了  dominoes[i][j] 0---9   O(N) O(1) 数学变换 + 桶排序
     public int numEquivDominoPairs(int[][] dominoes) {
         int res = 0;
         int[] arr = new int[100];
         for (int i = 0; i < dominoes.length; i++) {
             int m = dominoes[i][0];
             int n = dominoes[i][1];
+            //运用数学运算把 两种情况转化成100以内的同一个整数
             int k = m > n ? m * 10 + n : n * 10 + m;
             arr[k]++;
         }
         for (int i : arr) {
             if (i >= 2) {
+                //运用排列组合只是，计算组合对数
                 res += i * (i - 1) / 2;
             }
         }
@@ -4101,6 +4135,8 @@ public class ArrayAlp {
      * solution:
      * 1.穷举法 两重循环遍历数组 寻找满足条件的 count++ 返回count
      * 2.数学计算  Cn2
+     * 桶排序+排列
+     * O(N) O(1)
      * @Date: 2021/3/16 11:15
      */
     public int numIdenticalPairs(int[] nums) {
@@ -4119,11 +4155,13 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 给你两个整数数组 startTime（开始时间）和 endTime（结束时间），并指定一个整数 queryTime 作为查询时间。
+     * 给你两个整数数组 startTime（开始时间）和 endTime（结束时间），
+     * 并指定一个整数 queryTime 作为查询时间。
      *
      * 已知，第 i 名学生在 startTime[i] 时开始写作业并于 endTime[i] 时完成作业。
      *
-     * 请返回在查询时间 queryTime 时正在做作业的学生人数。形式上，返回能够使 queryTime 处于区间 [startTime[i], endTime[i]]（含）的学生人数。
+     * 请返回在查询时间 queryTime 时正在做作业的学生人数。形式上，
+     * 返回能够使 queryTime 处于区间 [startTime[i], endTime[i]]（含）的学生人数。
      *
      *  
      *
@@ -4148,7 +4186,9 @@ public class ArrayAlp {
      * 1 <= startTime[i] <= endTime[i] <= 1000
      * 1 <= queryTime <= 1000
      *
-     * solution: 1.start[i] <= query <= end[i] count++
+     * solution:
+     * 1.start[i] <= query <= end[i] count++
+     * O(N) O(1)
      * @Date: 2021/3/16 11:21
      */
     public int busyStudent(int[] startTime, int[] endTime, int queryTime) {
@@ -4164,15 +4204,18 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 学校的自助午餐提供圆形和方形的三明治，分别用数字 0 和 1 表示。所有学生站在一个队列里，每个学生要么喜欢圆形的要么喜欢方形的。
+     * 学校的自助午餐提供圆形和方形的三明治，分别用数字 0 和 1 表示。
+     * 所有学生站在一个队列里，每个学生要么喜欢圆形的要么喜欢方形的。
      * 餐厅里三明治的数量与学生的数量相同。所有三明治都放在一个 栈 里，每一轮：
      *
      * 如果队列最前面的学生 喜欢 栈顶的三明治，那么会 拿走它 并离开队列。
      * 否则，这名学生会 放弃这个三明治 并回到队列的尾部。
      * 这个过程会一直持续到队列里所有学生都不喜欢栈顶的三明治为止。
      *
-     * 给你两个整数数组 students 和 sandwiches ，其中 sandwiches[i] 是栈里面第 i​​​​​​ 个三明治的类型（i = 0 是栈的顶部）， 
-     * students[j] 是初始队列里第 j​​​​​​ 名学生对三明治的喜好（j = 0 是队列的最开始位置）。请你返回无法吃午餐的学生数量。
+     * 给你两个整数数组 students 和 sandwiches ，其中 
+     * sandwiches[i] 是栈里面第 i​​​​​​ 个三明治的类型（i = 0 是栈的顶部）， 
+     * students[j] 是初始队列里第 j​​​​​​ 名学生对三明治的喜好（j = 0 是队列的最开始位置）。
+     * 请你返回无法吃午餐的学生数量。
      *
      *  
      *
