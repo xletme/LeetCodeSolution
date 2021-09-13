@@ -4249,7 +4249,10 @@ public class ArrayAlp {
      * solution: 1.按照题意 遍历完一次 count++，再对比下 剩下的元素能否一次性 分完 ，能分完返回0 否则返回count
      * 1错了，退出循环 是以排队无法吃到三明治为止 队列中全是0 或者全是1  返回队列的size  也就是无论如何循环，返回的结果一样
      *
-     * 看了官方解答 写两种思路  a.queue 直接翻译题目  b.思考后 统计学生喜欢 0 1的数量在遍历
+     * 看了官方解答 写两种思路
+     * a.queue 直接翻译题目
+     * b.思考后 统计学生喜欢 0 1的数量在遍历
+     * O(N) O(1)
      * @Date: 2021/3/16 11:27
      */
     public int countStudents(int[] students, int[] sandwiches) {
@@ -4294,9 +4297,12 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 给你一个整数数组 A，只有可以将其划分为三个和相等的非空部分时才返回 true，否则返回 false。
+     * 给你一个整数数组 
+     * A，只有可以将其划分为三个和相等的非空部分时才返回 true，否则返回 false。
      *
-     * 形式上，如果可以找出索引 i+1 < j 且满足 A[0] + A[1] + ... + A[i] == A[i+1] + A[i+2] + ... + A[j-1] == A[j] + A[j-1] + ... + A[A.length - 1] 就可以将数组三等分。
+     * 形式上，如果可以找出索引 i+1 < j 且满足 
+     * A[0] + A[1] + ... + A[i] == A[i+1] + A[i+2] + ... + A[j-1]
+     * == A[j] + A[j-1] + ... + A[A.length - 1] 就可以将数组三等分。
      *
      *  
      *
@@ -4321,7 +4327,8 @@ public class ArrayAlp {
      * 3 <= A.length <= 50000
      * -10^4 <= A[i] <= 10^4
      *
-     * solution: 求和 sum  寻找 sum/3  O(N) O(1)
+     * solution:
+     * 求和 sum  寻找 sum/3  O(N) O(1)
      * @Date: 2021/3/17 11:26
      */
     public boolean canThreePartsEqualSum(int[] arr) {
@@ -4373,7 +4380,9 @@ public class ArrayAlp {
      *  [1,4,6,4,1]
      * ]
      *
-     * solution: 1.使用上一个行来生成下一个行 每一行n个元素
+     * solution:
+     * 1.使用上一个行来生成下一个行 每一行n个元素
+     * O(MN) M行数 N是每行个数 O(N)
      * @Date: 2021/3/17 14:04
      */
     public List<List<Integer>> generate(int numRows) {
@@ -4407,7 +4416,9 @@ public class ArrayAlp {
      * @Description:
      * 给定一个非负索引 k，其中 k ≤ 33，返回杨辉三角的第 k 行。
      *
-     * solution: 和上题一样  return res.get(i);
+     * solution:
+     * 和上题一样  return res.get(i);
+     * O(MN) O(N)
      * @Date: 2021/3/17 14:39
      */
    /* public List<Integer> getRow(int rowIndex) {
@@ -6458,8 +6469,7 @@ public class ArrayAlp {
 
     @Test
     public void testArray() {
-        int[] arr = new int[] {0,4,0,3,2};
-        System.out.println(instance.findMaxAverage(arr,1));
+        instance.getRow(5);
     }
 
 }
