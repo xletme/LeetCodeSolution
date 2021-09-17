@@ -4488,7 +4488,9 @@ public class ArrayAlp {
      * 1 <= digits.length <= 100
      * 0 <= digits[i] <= 9
      *
-     * solution: 使用queue存储各位数字，然后添加到新数组
+     * solution:
+     * 使用queue存储各位数字，然后添加到新数组
+     * O(N) O(1)
      * @Date: 2021/3/17 16:24
      */
     public int[] plusOne(int[] digits) {
@@ -4540,7 +4542,8 @@ public class ArrayAlp {
      *
      * 例如，在字符串 s = "abbxxxxzyy" 中，就含有 "a", "bb", "xxxx", "z" 和 "yy" 这样的一些分组。
      *
-     * 分组可以用区间 [start, end] 表示，其中 start 和 end 分别表示该分组的起始和终止位置的下标。上例中的 "xxxx" 分组用区间表示为 [3,6] 。
+     * 分组可以用区间 [start, end] 表示，其中 start 和 end 分别表示该分组的起始和终止位置的下标。
+     * 上例中的 "xxxx" 分组用区间表示为 [3,6] 。
      *
      * 我们称所有包含大于或等于三个连续字符的分组为 较大分组 。
      *
@@ -4569,8 +4572,11 @@ public class ArrayAlp {
      * 1 <= s.length <= 1000
      * s 仅含小写英文字母
      *
-     * solution: 找连续相同的字符 存map toCharArray （maxContinuous,List<List<Integer>>） return map.getKey
+     * solution: 找
+     * 连续相同的字符 存map toCharArray （maxContinuous,List<List<Integer>>）
+     * return map.getKey
      * 包含大于等于三 的成为较大分组 都要返回
+     * O(N) O(N)
      * @Date: 2021/3/18 11:07
      */
     public List<List<Integer>> largeGroupPositions(String s) {
@@ -4631,8 +4637,11 @@ public class ArrayAlp {
      * 0 <= arr.length <= 105
      * -10的九次方 <= arr[i] <= 10次方
      *
-     * solution: arr去重后排序  去重时记录 element个数  list
+     * solution:
+     * 1.arr去重后排序  去重时记录 element个数  list
      * O(N2) O(N)
+     * 2.找出最大最小值  桶排序，然后在统计具体位置
+     * O(N) O(M)
      * @Date: 2021/3/18 11:43
      */
    /* public int[] arrayRankTransform(int[] arr) {
@@ -4722,7 +4731,8 @@ public class ArrayAlp {
      * -104 <= nums[i] <= 104
      * nums 已按升序排列
      *
-     * solution: 双指针
+     * solution: 双指针移动 去除重复元素
+     * O log(N) O(1)
      * @Date: 2021/3/18 14:51
      */
     /*public int removeDuplicates(int[] nums) {
@@ -4793,8 +4803,11 @@ public class ArrayAlp {
      * 1 <= arr.length <= 104
      * 1 <= arr[i] <= 105
      *
-     * solution: 常规思路 求右边最大元素 放入 arr[i] 末尾元素用 -1
-     * 2.反序   倒数第一 第二直接给出来（不够长特殊处理）  arr[i] = Math.max(arr[i+1],max);
+     * solution:
+     * 常规思路 求右边最大元素 放入 arr[i] 末尾元素用 -1
+     * 2.反序   倒数第一 第二直接给出来（不够长特殊处理）
+     * arr[i] = Math.max(arr[i+1],max);
+     * O(N) O(1)
      *
      * @Date: 2021/3/18 15:35
      */
@@ -4850,7 +4863,9 @@ public class ArrayAlp {
      * 给定矩阵的宽和高范围在 [1, 100]。
      * 给定的 r 和 c 都是正数。
      *
-     * solution:先判断能否转换，不能直接返回  能根据 元素组 转换成 r c矩阵
+     * solution:
+     * 先判断能否转换，不能直接返回  能根据 元素组 转换成 r c矩阵
+     * O(N) O(N)
      * @Date: 2021/3/19 9:55
      */
     public int[][] matrixReshape(int[][] nums, int r, int c) {
@@ -6465,11 +6480,11 @@ public class ArrayAlp {
     }
 
 
-
+    public static final List<String> productPlaceList = Arrays.asList("攀钢","攀钢钒");
 
     @Test
     public void testArray() {
-        instance.getRow(5);
+        System.out.println(productPlaceList.contains("攀钢"));
     }
 
 }
