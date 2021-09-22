@@ -2,6 +2,7 @@ package Leetcode.ArrayAlp;
 
 import org.junit.Test;
 
+import java.math.BigDecimal;
 import java.util.*;
 
 import static java.lang.String.valueOf;
@@ -4889,7 +4890,8 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 给你一个 m x n 的整数网格 accounts ，其中 accounts[i][j] 是第 i​​​​​​​​​​​​ 位客户在第 j 家银行托管的资产数量。返回最富有客户所拥有的 资产总量 。
+     * 给你一个 m x n 的整数网格 accounts ，其中 accounts[i][j]
+     * 是第 i​​​​​​​​​​​​ 位客户在第 j 家银行托管的资产数量。返回最富有客户所拥有的 资产总量 。
      *
      * 客户的 资产总量 就是他们在各家银行托管的资产数量之和。最富有客户就是 资产总量 最大的客户。
      *
@@ -4925,7 +4927,9 @@ public class ArrayAlp {
      * 1 <= m, n <= 50
      * 1 <= accounts[i][j] <= 100
      *
-     * solution: 思路清晰 比较每一行的最大值 ，直接return
+     * solution:
+     * 思路清晰 比较每一行的最大值 ，直接return
+     * O(N) O(1)
      * @Date: 2021/3/19 10:12
      */
     public int maximumWealth(int[][] accounts) {
@@ -4944,7 +4948,8 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 给你一个数组 nums 。数组「动态和」的计算公式为：runningSum[i] = sum(nums[0]…nums[i]) 。
+     * 给你一个数组 nums 。数组「动态和」的计算公式为：
+     * runningSum[i] = sum(nums[0]…nums[i]) 。
      *
      * 请返回 nums 的动态和。
      *
@@ -4971,7 +4976,9 @@ public class ArrayAlp {
      * 1 <= nums.length <= 1000
      * -10^6 <= nums[i] <= 10^6
      *
-     * solution:  nums[i] = nums[i-1] + nums[i]  nums[1] = nums[1]
+     * solution:
+     * nums[i] = nums[i-1] + nums[i]  nums[1] = nums[1]
+     * 类似伏波拉契数列  用空间换取时间，只不过空间是参数传进来的 O(N) O(1)
      * @Date: 2021/3/19 10:17
      */
     public int[] runningSum(int[] nums) {
@@ -4986,7 +4993,8 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。
+     * 给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。
+     * 如果目标值不存在于数组中，返回它将会被按顺序插入的位置。
      *
      * 你可以假设数组中无重复元素。
      *
@@ -5011,6 +5019,7 @@ public class ArrayAlp {
      * if (element == target) return index
      * if (nums[i] < target < nums[i+1]) return i + 1;
      * 直接二分查吧 不然好慢
+     * Olog(N) O(1)
      * @Date: 2021/3/19 10:23
      */
     /*public int searchInsert(int[] nums, int target) {
@@ -5048,7 +5057,8 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 给你一个 m 行 n 列的二维网格 grid 和一个整数 k。你需要将 grid 迁移 k 次。
+     * 给你一个 m 行 n 列的二维网格 grid 和一个整数 k。
+     * 你需要将 grid 迁移 k 次。
      *
      * 每次「迁移」操作将会引发下述活动：
      *
@@ -5086,7 +5096,11 @@ public class ArrayAlp {
      * -1000 <= grid[i][j] <= 1000
      * 0 <= k <= 100
      *
-     * solution: 找规律 计算 横纵坐标值  y = (j + k) % n   x = (i + (j + k ) /n ) % m;
+     * solution:
+     * 找规律 计算 横纵坐标值
+     * y = (j + k) % n
+     * x = (i + (j + k ) /n ) % m;
+     * O(N) O(N)
      * @Date: 2021/3/19 11:23
      */
     public List<List<Integer>> shiftGrid(int[][] grid, int k) {
@@ -5144,6 +5158,7 @@ public class ArrayAlp {
      * 1.常规思路  nums分为两数组  arr1 arr2 ， arr1和 arr2依次插入nums变为新数组  O(N) O(N)
      * 2.copy一个数组   nums[i] = copy[i / 2];
      *             nums[i + 1] = copy[n + i / 2]; i--nums.length i=i+2
+     *             O(N) O(N)
      * @Date: 2021/3/22 13:46
      */
     public int[] shuffle(int[] nums, int n) {
@@ -5157,7 +5172,8 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * LeetCode 设计了一款新式键盘，正在测试其可用性。测试人员将会点击一系列键（总计 n 个），每次一个。
+     * LeetCode 设计了一款新式键盘，正在测试其可用性。
+     * 测试人员将会点击一系列键（总计 n 个），每次一个。
      *
      * 给你一个长度为 n 的字符串 keysPressed ，其中 keysPressed[i] 表示测试序列中第 i 个被按下的键。releaseTimes 是一个升序排列的列表，
      * 其中 releaseTimes[i] 表示松开第 i 个键的时间。字符串和数组的 下标都从 0 开始 。第 0 个键在时间为 0 时被按下，接下来每个键都 恰好 在前一个键松开时被按下。
@@ -6484,7 +6500,9 @@ public class ArrayAlp {
 
     @Test
     public void testArray() {
-        System.out.println(productPlaceList.contains("攀钢"));
+        String s = valueOf(new BigDecimal(500)
+                .multiply(new BigDecimal(67)).multiply(new BigDecimal("0.01")));
+        System.out.println(s);
     }
 
 }
