@@ -5175,10 +5175,14 @@ public class ArrayAlp {
      * LeetCode 设计了一款新式键盘，正在测试其可用性。
      * 测试人员将会点击一系列键（总计 n 个），每次一个。
      *
-     * 给你一个长度为 n 的字符串 keysPressed ，其中 keysPressed[i] 表示测试序列中第 i 个被按下的键。releaseTimes 是一个升序排列的列表，
-     * 其中 releaseTimes[i] 表示松开第 i 个键的时间。字符串和数组的 下标都从 0 开始 。第 0 个键在时间为 0 时被按下，接下来每个键都 恰好 在前一个键松开时被按下。
+     * 给你一个长度为 n 的字符串 keysPressed
+     * 其中 keysPressed[i] 表示测试序列中第 i 个被按下的键。releaseTimes 是一个升序排列的列表，
+     * 其中 releaseTimes[i] 表示松开第 i 个键的时间。
+     * 字符串和数组的 下标都从 0 开始 。第 0 个键在时间为 0 时被按下，接下来每个键都 恰好 在前一个键松开时被按下。
      *
-     * 测试人员想要找出按键 持续时间最长 的键。第 i 次按键的持续时间为 releaseTimes[i] - releaseTimes[i - 1] ，第 0 次按键的持续时间为 releaseTimes[0] 。
+     * 测试人员想要找出按键 持续时间最长 的键。
+     * 第 i 次按键的持续时间为 releaseTimes[i] - releaseTimes[i - 1] ，
+     * 第 0 次按键的持续时间为 releaseTimes[0] 。
      *
      * 注意，测试期间，同一个键可以在不同时刻被多次按下，而每次的持续时间都可能不同。
      *
@@ -5219,7 +5223,9 @@ public class ArrayAlp {
      * releaseTimes[i] < releaseTimes[i+1]
      * keysPressed 仅由小写英文字母组成
      *
-     * solution:1.常规思路  相邻差集，求最大差值  如果相同 也更新下标   最后s.chartAt[index] 返回char
+     * solution:
+     * 1.常规思路  相邻差集，求最大差值  如果相同 也更新下标   最后s.chartAt[index] 返回char
+     * O(N) O(1)
      * @Date: 2021/3/22 14:09
      */
     public char slowestKey(int[] releaseTimes, String keysPressed) {
@@ -5239,7 +5245,9 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 给定一个非负整数数组 A，返回一个数组，在该数组中， A 的所有偶数元素之后跟着所有奇数元素。
+     * 给定一个非负整数数组 A，
+     * 返回一个数组，在该数组中，
+     *  A 的所有偶数元素之后跟着所有奇数元素。
      *
      * 你可以返回满足此条件的任何数组作为答案。
      *
@@ -5258,7 +5266,8 @@ public class ArrayAlp {
      * 0 <= A[i] <= 5000
      *
      * solution:
-     * 双指针 把A的元素复制到新数组  跳出条件 i 或者 j ==A.length 先计算偶数有多少个  O(N) O(N)
+     * 双指针 把A的元素复制到新数组  跳出条件 i 或者 j ==A.length 先计算偶数有多少个
+     * O(N) O(N)
      * @Date: 2021/3/22 14:58
      */
     public int[] sortArrayByParity(int[] A) {
@@ -5279,7 +5288,8 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 给定两个排序后的数组 A 和 B，其中 A 的末端有足够的缓冲空间容纳 B。 编写一个方法，将 B 合并入 A 并排序。
+     * 给定两个排序后的数组 A 和 B，
+     * 其中 A 的末端有足够的缓冲空间容纳 B。 编写一个方法，将 B 合并入 A 并排序。
      *
      * 初始化 A 和 B 的元素数量分别为 m 和 n。
      *
@@ -5299,7 +5309,7 @@ public class ArrayAlp {
      * 2.B从尾部插入  依次对比大小
      * 3.B全部插入到尾部，然后进行sort排序
      * 我写下第二种
-     * 4.双指针  O(M+N)
+     * 4.双指针  O(M+N) 用时间换取空间
      * @Date: 2021/3/23 11:19
      */
     /*public void merge(int[] A, int m, int[] B, int n) {
@@ -5352,11 +5362,15 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 给你一个非负整数数组 nums 。如果存在一个数 x ，使得 nums 中恰好有 x 个元素 大于或者等于 x ，那么就称 nums 是一个 特殊数组 ，而 x 是该数组的 特征值 。
+     * 给你一个非负整数数组 nums 。
+     * 如果存在一个数 x ，使得 nums 中恰好有 x 个元素 大于或者等于 x ，
+     * 那么就称 nums 是一个 特殊数组 ，而 x 是该数组的 特征值 。
      *
      * 注意： x 不必 是 nums 的中的元素。
      *
-     * 如果数组 nums 是一个 特殊数组 ，请返回它的特征值 x 。否则，返回 -1 。可以证明的是，如果 nums 是特殊数组，那么其特征值 x 是 唯一的 。
+     * 如果数组 nums 是一个 特殊数组 ，请返回它的特征值 x 。
+     * 否则，返回 -1 。可以证明的是，
+     * 如果 nums 是特殊数组，那么其特征值 x 是 唯一的 。
      *
      *  
      *
@@ -5390,7 +5404,10 @@ public class ArrayAlp {
      * 1 <= nums.length <= 100
      * 0 <= nums[i] <= 1000
      *
-     * solution: 分别计算大于n的有多少个  0<n<nums.length 桶排序
+     * solution:
+     * 分别计算大于n的有多少个
+     * 0<n<nums.length 桶排序
+     * O(N) O(N)
      * @Date: 2021/3/23 13:39
      */
     public int specialArray(int[] nums) {
@@ -5416,9 +5433,11 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 给你一个大小为 rows x cols 的矩阵 mat，其中 mat[i][j] 是 0 或 1，请返回 矩阵 mat 中特殊位置的数目 。
+     * 给你一个大小为 rows x cols 的矩阵 mat，
+     * 其中 mat[i][j] 是 0 或 1，请返回 矩阵 mat 中特殊位置的数目 。
      *
-     * 特殊位置 定义：如果 mat[i][j] == 1 并且第 i 行和第 j 列中的所有其他元素均为 0（行和列的下标均 从 0 开始 ），则位置 (i, j) 被称为特殊位置。
+     * 特殊位置 定义：如果 mat[i][j] == 1 并且第 i 行和第 j 列中的所有其他元素均为 0（行和列的下标均 从 0 开始 ），
+     * 则位置 (i, j) 被称为特殊位置。
      *
      *  
      *
@@ -5463,6 +5482,7 @@ public class ArrayAlp {
      * solution:
      * 1.常规思路，对mat数组每一个元素为1的进行 判断，看横纵是否都为0   O(M * (len + wide)) O(1)
      * 2.排除法 记录1的位置 排除横纵元素 set add x:y   return rows * cols - set.size
+     * 3.记录所有为1 的坐标位置,利用排除法，去除所有 有横坐标相同或者纵坐标相同的 剩下的数量直接返回  O(n2) O(N)
      * @Date: 2021/3/23 14:11
      */
     public int numSpecial(int[][] mat) {
