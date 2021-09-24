@@ -5577,7 +5577,7 @@ public class ArrayAlp {
      *
      * solution:
      * 1.常规思路 计算左右奇数数组和，然后再相加
-     * 2.有数学公式能计算出来 哪个元素该加多少次 这个公式在评论区看到了
+     * 2.有数学公式能计算出来 哪个元素该加多少次 这个公式在评论区看到了 O(N) O(1)
      *
      * 对任意的一个数arr[i]:
      * 1.左边选奇数个+选arr[i]+右边选奇数个=奇数个数
@@ -5586,6 +5586,7 @@ public class ArrayAlp {
      * 那么问题转化为：
      * 根据左右两边区间大小分别求：选出奇数个的方案数or选出偶数个的方案数
      * 最后排列组合即可。
+     * 新思路：滑动窗口计算 奇数和
      *
      * @Date: 2021/3/24 14:57
      */
@@ -5598,6 +5599,8 @@ public class ArrayAlp {
             int right_even = (right + 1) / 2;
             int left_odd = left / 2;
             int right_odd = right / 2;
+            //上面这五句有点巧妙  实现了  左边偶数*右边偶数 + 左边奇数*右边奇数
+            // i+1 left+1 这个比较巧妙，应该是有理论可以验证的
             res += (left_even * right_even + left_odd * right_odd) * arr[i];
         }
         return res;
