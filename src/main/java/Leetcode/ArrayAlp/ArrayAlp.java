@@ -5613,12 +5613,12 @@ public class ArrayAlp {
      * Andy
      * 你有多久没有看过那片海  你到现在对自己究竟多明白 总是不服输 永远要比别人快 在你前方是否有你要的未来
      * 想到我们的过去都让人感慨 希望所有好朋友都能站起来 还有你曾经曾经疯狂爱上的女孩 再过几年是不是依旧难以忘怀
-     * 可是andy 活着是不虚道理 岁都能可能 暂时的失去勇气 外面不安的世界
-     * 骚动的心情 不能熄灭你曾经拥有制热的鑫 我是真的不会表达我的爱 却很在乎每个人对我的期待
+     * 可是andy 活着是不需道理 谁都可能 暂时的失去勇气 外面不安的世界
+     * 骚动的心情 不能熄灭你曾经拥有炙热的心 我是真的不会表达我的爱 却很在乎每个人对我的期待
      * 平凡的角色 站在小小的舞台，我要那么勇敢的说出来
      *
      * 想到我们的过去都让人感慨 希望所有好朋友都能站起来  还有你曾经疯狂爱上的女孩  再过几年是不是依旧难以忘怀
-     * 可是andy 活着是不虚道理 谁都能可能 暂时的失去勇气 外面不安的世界
+     * 可是andy 活着是不需道理 谁都可能 暂时的失去勇气 外面不安的世界
      * 骚动的心情 不能熄灭你曾经拥有炙热的心
      * 我是真的不会表达我的爱 却很在乎每个人对我的期待
      * 平凡的角色 站在小小的舞台 我要那么勇敢的说出来
@@ -5663,7 +5663,7 @@ public class ArrayAlp {
      * solution: 
      * 1.先计算sum总和  
      * 2.计算每一步，先看影响的结果，奇数变奇数 不动 奇数变偶数  + 结果  偶数变偶数 -前偶数+现有偶数
-     * 3.返回 结果
+     * 3.返回 结果  O(N+M) O(M)
      * @Date: 2021/3/25 14:39
      */
     public int[] sumEvenAfterQueries(int[] A, int[][] queries) {
@@ -5723,7 +5723,7 @@ public class ArrayAlp {
      * 1 <= nums.length <= 100
      * 1 <= nums[i] <= 100
      *
-     * solution: 桶排序，取 bucket[i] = 1的index相加
+     * solution: 桶排序，取 bucket[i] = 1的index相加 O(N) O(N) 后面这个N为101 为桶容量
      * @Date: 2021/3/25 15:35
      */
     public int sumOfUnique(int[] nums) {
@@ -5769,7 +5769,10 @@ public class ArrayAlp {
      * nums 中的所有值都 互不相同
      * nums 按升序排列
      *
-     * solution: 循环遍历数组，用list存放元素 循环条件为 i < nums.length 后一个数比前一个数大一  否则 重新加一个list 得搞一个pre
+     * solution:
+     * 循环遍历数组，用list存放元素
+     * 循环条件为 i < nums.length 后一个数比前一个数大一
+     * 否则 重新加一个list 得搞一个pre
      * @Date: 2021/3/25 15:46
      */
     public List<String> summaryRanges(int[] nums) {
@@ -5917,7 +5920,7 @@ public class ArrayAlp {
     }*/
 
     //第一步不变，求各行的元素累计和  第二步把累加和 * 1000 + 索引值  放入到一个一维数组，排序   取前k个元素  对1000取余，还原为index
-    // O(M*N + Log(M))  O(M)
+    // O(M*N + Log(M))  O(M) 相同数字，比较索引大小的 用这个方式来实现，放大1000倍 排序后，在还原 牛逼
     public int[] kWeakestRows(int[][] mat, int k) {
         int[] res = new int[k];
         int[] largeArr = new int[mat.length];
@@ -5967,7 +5970,7 @@ public class ArrayAlp {
      * -231 <= nums[i] <= 231 - 1
      * solution:
      * 1.常规思路 排序，找第三大的数 找不到就返回最大的数  O(logN)
-     * 2.找三次 第一次找最大的 第二次找第二大 第三次找第三大 定义一个flag标识是否找到
+     * 2.找三次 第一次找最大的 第二次找第二大 第三次找第三大 定义一个flag标识是否找到 O(N*3) O(1)
      * @Date: 2021/3/26 13:56
      */
     /*public int thirdMax(int[] nums) {
@@ -6046,7 +6049,7 @@ public class ArrayAlp {
      * 1 <= arr.length <= 1000
      * 1 <= arr[i] <= 1000
      *
-     * solution: 计数 遍历一遍，然后输出是否有 三个连续的奇数
+     * solution: 计数 遍历一遍，然后输出是否有 三个连续的奇数 O(N) O(1) 2.滑动边框解决 O(N) O(N)
      * @Date: 2021/3/29 10:13
      */
     public boolean threeConsecutiveOdds(int[] arr) {
@@ -6078,7 +6081,7 @@ public class ArrayAlp {
      *
      * 输入：nums = [2,7,11,15], target = 9
      * 输出：[0,1]
-     * 解释：因为 nums[0] + nums[1] == 9 ，返回 [0, 1] 。
+     * 解释：因为 nums[0] + nums[1] == 9 ，返回 [0, 1]。
      * 示例 2：
      *
      * 输入：nums = [3,2,4], target = 6
@@ -6233,7 +6236,7 @@ public class ArrayAlp {
         }
         return true;
     }*/
-    //官方解答 只需要判断  matrix[i][j] 是否等于  matrix[i-1][j-1]
+    //官方解答 只需要判断  matrix[i][j] 是否等于  matrix[i-1][j-1]  O(N) O(N)
     public boolean isToeplitzMatrix(int[][] matrix) {
         for (int i = 1; i < matrix.length; i++) {
             for (int j = 1; j < matrix[i].length; j++) {
