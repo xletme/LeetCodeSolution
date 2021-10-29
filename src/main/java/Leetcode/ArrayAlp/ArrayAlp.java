@@ -2,7 +2,6 @@ package Leetcode.ArrayAlp;
 
 import org.junit.Test;
 
-import java.math.BigDecimal;
 import java.util.*;
 
 import static java.lang.String.valueOf;
@@ -6412,7 +6411,7 @@ public class ArrayAlp {
         return count;
     }*/
 
-    //二分法 找target的右边界 和 target-1的右边界 前者 - 后者,评论区大佬解答
+    //二分法 找target的右边界 和 target-1的右边界 前者 - 后者,评论区大佬解答 O(logN) O(1)
     public int search(int[] nums, int target) {
         return helper(nums,target) - helper(nums,target - 1);
     }
@@ -6475,7 +6474,9 @@ public class ArrayAlp {
      * 0 <= deck[i] < 10000
      *  
      *
-     * solution: 1. deck 检测是否能够分组  , 需要看他们是否有共同的公约数    2.看公约数是否大于2  list存个数 遍历list找最小,
+     * solution:
+     * 1. deck 检测是否能够分组  , 需要看他们是否有共同的公约数
+     * 2.看公约数是否大于2  list存个数 遍历list找最小,
      * @Date: 2021/3/31 10:40
      */
     public boolean hasGroupsSizeX(int[] deck) {
@@ -6495,7 +6496,7 @@ public class ArrayAlp {
         //寻找最大公约数
         int g = list.get(0);
         if (list.size() == 1) {
-            return list.get(0) >= 2;
+            return g >= 2;
         }
         for (Integer integer : list) {
             g = gcd(g, integer);
@@ -6504,6 +6505,7 @@ public class ArrayAlp {
     }
 
     public int gcd(int x, int y) {
+        //这里有点绕
         return x == 0 ? y : gcd(y % x , x);
     }
 
@@ -6548,9 +6550,8 @@ public class ArrayAlp {
 
     @Test
     public void testArray() {
-        String s = valueOf(new BigDecimal(500)
-                .multiply(new BigDecimal(67)).multiply(new BigDecimal("0.01")));
-        System.out.println(s);
+        int[] arr = new int[] {1,1,1,2,2,2,3,3};
+        System.out.println(instance.hasGroupsSizeX(arr));
     }
 
 }
