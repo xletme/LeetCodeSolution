@@ -14,15 +14,18 @@ public class PrintTree {
 
     public static final PrintTree instance = new PrintTree();
 
-    //深度优先 先添加路径，在判断是否为叶子节点 1.root为叶子节点直接添加 path到paths中 2.根节点直接添加val，继续遍历左右子树
+    //深度优先 先添加路径，在判断是否为叶子节点
+    // 1.root为叶子节点直接添加 path到paths中
+    // 2.根节点直接添加val，继续遍历左右子树
     public List<String> binaryTreePaths(TreeNode root) {
         List<String> paths = new ArrayList<>();
         constructPaths(root,"",paths);
         return paths;
     }
 
-    //广度优先 使用队列，上往下依次遍历   1.叶子节点,放入队列 添加到paths中 2.加入队列 循环直至所有节点遍历完成 queue
-
+    //广度优先 使用队列，上往下依次遍历
+    // 1.叶子节点,放入队列 添加到paths中
+    // 2.加入队列 循环直至所有节点遍历完成 queue
     public List<String> breadFirstTree(TreeNode root){
         List<String> paths = new ArrayList<>();
         if(root == null){
@@ -75,7 +78,9 @@ public class PrintTree {
       int val;
       TreeNode left;
       TreeNode right;
-      TreeNode(int x) { val = x; }
+      TreeNode(int x) {
+          val = x;
+      }
   }
 
     public static void main(String[] args) {

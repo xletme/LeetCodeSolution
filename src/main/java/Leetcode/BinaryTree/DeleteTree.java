@@ -8,8 +8,12 @@ package Leetcode.BinaryTree;
 public class DeleteTree {
 
     //删除节点  key > root.val 删除右子树  key < root.val 删除左子树
-    //有点难     删除分以下几种情况：1.叶子节点，直接删除 返回null 2.左子树空右子树不空，右子树继承 3.右子树空左子树不空，左子树继承
-    // 3.左右子树都不空，右子树找一个最小值来继承  或者 左子树找一个最大值来继承
+    //有点难
+    // 删除分以下几种情况：
+    // 1.叶子节点，直接删除 返回null
+    // 2.左子树空右子树不空，右子树继承
+    // 3.右子树空左子树不空，左子树继承
+    // 4.左右子树都不空，右子树找一个最小值来继承  或者 左子树找一个最大值来继承
     public TreeNode deleteNode(TreeNode root, int key) {
         if (root == null) {     // 递归到 root 为 null ，说明找不到要删的节点
             return root;

@@ -1,5 +1,7 @@
 package TestLock;
 
+import org.springframework.util.StopWatch;
+
 /**
  * @Author maoXin
  * @Description
@@ -22,8 +24,13 @@ public class SyncThreadId implements Runnable{
     }
     public static void main(String[] args) {
         SyncThreadId ss=new SyncThreadId();
+        StopWatch sw = new StopWatch();
+        sw.start();
         new Thread(ss).start();
         new Thread(ss).start();
         new Thread(ss).start();
+        sw.stop();
+        System.out.println(sw.prettyPrint());
+
     }
 }

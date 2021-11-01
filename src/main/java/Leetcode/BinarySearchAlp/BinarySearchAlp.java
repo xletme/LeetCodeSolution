@@ -32,7 +32,8 @@ public class BinarySearchAlp {
      * numbers[m] > numbers[j] i = m + 1;
      * numbers[m] < numbers[j] j = m;
      * numbers[m] == numbers[j] j--;
-     * i == j return numbers[j]  O Log(N)
+     * i == j return numbers[j]
+     * O Log(N) O(1)
      * 1.找右边排序数组的第一个元素 返回
      */
     public int minArray(int[] numbers) {
@@ -81,7 +82,8 @@ public class BinarySearchAlp {
      * nums[m] < target i = m + 1;
      * nums[m] > target j = m - 1;
      * nums[m] == target return m;
-     * 顺利跳出循环 return -1; O(log(N))
+     * 顺利跳出循环 return -1;
+     * O(log(N)) O(1)
      * @Date: 2021/6/16 11:30
      */
     public int search(int[] nums, int target) {
@@ -148,7 +150,7 @@ public class BinarySearchAlp {
      * arr[m] == arr[j] j--; return arr[j]
      * @Date: 2021/6/16 11:42
      */
-    public int peakIndexInMountainArray(int[] arr) {
+    /*public int peakIndexInMountainArray(int[] arr) {
         int i = 0;
         int j = arr.length - 1;
         while (i < j) {
@@ -162,6 +164,23 @@ public class BinarySearchAlp {
             }
         }
         return -1;
+    }*/
+
+    public int peakIndexInMountainArray(int[] arr) {
+        int n = arr.length;
+        int left = 1, right = n - 2, ans = 0;
+        while (left <= right) {
+            int mid = (left + right) / 2;
+            if (arr[mid] > arr[mid + 1]) {
+                //正确记录在这里面 提前记录,右指针左移
+                ans = mid;
+                right = mid - 1;
+            } else {
+                //左指针右移使得left <= right不成立,然后输出ans
+                left = mid + 1;
+            }
+        }
+        return ans;
     }
 
     /**
@@ -183,6 +202,7 @@ public class BinarySearchAlp {
      *
      * solution:
      * 和排序数组找 对应的字符串是一样的 特殊字符串处理 ""
+     * O(log(N)) O(1)
      * @Date: 2021/6/17 10:56
      */
     public int findString(String[] words, String s) {
@@ -254,6 +274,7 @@ public class BinarySearchAlp {
      * 目标字母target 是一个小写字母。
      *
      * solution:
+     * 若 target >= letters[length - 1]最大的元素 直接返回letters[0]
      * i = 0, j = letters.length - 1; m = (i + j) / 2;
      * letters[m] < target i = m + 1;
      * letters[m] > target j = m;
@@ -271,16 +292,11 @@ public class BinarySearchAlp {
             } else if (letters[m] > target) {
                 j = m;
             } else {
-                if (m == letters.length - 1) {
-                    return letters[0];
-                } else {
-                    int k = m;
-                    while (k < letters.length) {
-                        if (letters[k] != letters[m]) {
-                            return letters[k];
-                        }
-                        k++;
+                while (m < letters.length) {
+                    if (letters[m] != target) {
+                        return letters[m];
                     }
+                    m++;
                 }
             }
         }
@@ -290,7 +306,8 @@ public class BinarySearchAlp {
     @Test
     public void testAlp() {
         char[] arr = new char[] {'e', 'e', 'n','n'};
-        System.out.println(instance.nextGreatestLetter(arr, 'e'));
+        int[] intArr = new int[]{24,69,100,99,79,78,67,36,26,19};
+        System.out.println(instance.peakIndexInMountainArray(intArr));
     }
 
 }
