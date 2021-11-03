@@ -81,7 +81,9 @@ public class Tree {
      * Output: false
      * solution :
      * 1.deepFirst  p and q,put their node into the two list, then compare the two list if equals  finally return true or false
+     * O(N) O(N)
      * 2.p and q traver in the same order ,if two elements different return false    else to the end return true
+     * O(N) O(N)
      *@创建时间 2020/12/10
      */
     public boolean isSameTree(TreeNode p, TreeNode q) {
@@ -121,13 +123,7 @@ public class Tree {
        int val;
        TreeNode left;
        TreeNode right;
-       TreeNode() {}
        TreeNode(int val) { this.val = val; }
-       TreeNode(int val, TreeNode left, TreeNode right) {
-           this.val = val;
-           this.left = left;
-           this.right = right;
-      }
    }
 
    static class Node {
@@ -150,7 +146,8 @@ public class Tree {
     *@描述
     * Given the root of a binary tree, return its maximum depth.
     *
-    * A binary tree's maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
+    * A binary tree's maximum depth is the number of nodes along the longest path
+    * from the root node down to the farthest leaf node.
     *
     *  
     *
@@ -159,7 +156,8 @@ public class Tree {
     *
     * Input: root = [3,9,20,null,null,15,7]
     * Output: 3
-    * solution: 层次遍历  breadFirst  the difficulty  : how to judge the every bread end  high++,previous  queue.size
+    * solution: 层次遍历  breadFirst  the difficulty  :
+    * how to judge the every bread end  high++,previous  queue.size
     * O(N) O(N)
     *@创建时间 2020/12/10
     */
@@ -206,6 +204,7 @@ public class Tree {
      * solution:
      * 1.breadFirst every bread ,then create a new treeNode.
      * 2.directly swap both left and right
+     * O(N) O(M) 递归调用空间的占用
      *@创建时间 2020/12/10
      */
     public TreeNode invertTree(TreeNode root) {
@@ -225,9 +224,13 @@ public class Tree {
 
     /***
      *@描述
-     * Given a binary search tree (BST), find the lowest common ancestor (LCA) of two given nodes in the BST.
+     * Given a binary search tree (BST), find the lowest common ancestor (LCA) of
+     * two given nodes in the BST.
      *
-     * According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined between two nodes p and q as the lowest node in T that has both p and q as descendants (where we allow a node to be a descendant of itself).”
+     * According to the definition of LCA on Wikipedia: “
+     * The lowest common ancestor is defined between two nodes p and q 
+     * as the lowest node in T that has both p and q as descendants
+     * (where we allow a node to be a descendant of itself).”
      *
      *  
      *
@@ -238,9 +241,12 @@ public class Tree {
      * Output: 6
      * Explanation: The LCA of nodes 2 and 8 is 6.
      * solution:
-     * 1.record the list the two node traver order root--->node  ,then find the the most remote same node ,finally return node
-     * 2.use the special of bst , root.val > both p q   turn left  ; root.val < both p,q turn right; equals any of two ,return the equals
+     * 1.record the list the two node traver order root--->node  ,
+     * then find the the most remote same node ,finally return node
+     * 2.use the special of bst , root.val > both p q   turn left  ;
+     * root.val < both p,q turn right; equals any of two ,return the equals
      * else one blow one above ,return cur root  breadFirst
+     * O(logN) O(1)
      *@创建时间 2020/12/10
      */
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
@@ -301,6 +307,7 @@ public class Tree {
      * There are two left leaves in the binary tree, with values 9 and 15 respectively. Return 24.
      *
      * solution: traver the tree,then sum the val of left node
+     * deepFirst O(N)root的数量 O(M)递归深度
      *@创建时间 2020/12/11
      */
     public int sumOfLeftLeaves(TreeNode root) {
@@ -320,7 +327,8 @@ public class Tree {
 
     /***
      *@描述
-     * Given a binary search tree (BST) with duplicates, find all the mode(s) (the most frequently occurred element) in the given BST.
+     * Given a binary search tree (BST) with duplicates,
+     * find all the mode(s) (the most frequently occurred element) in the given BST.
      *
      * Assume a BST is defined as follows:
      *
@@ -362,6 +370,10 @@ public class Tree {
         }
     }
 
+    /**
+     * @Description: 利用搜索二叉树特性，相等的数 遍历的时候 必然试连续的，更新maxCount和base、answer来达到目的
+     * @Date: 2021/11/3 10:59
+     */
     private void update(int val) {
         if (val == base) {
             count++;
@@ -401,7 +413,9 @@ public class Tree {
      *
      * 解释：
      * 最小绝对差为 1，其中 2 和 1 的差的绝对值为 1（或者 2 和 3）。
-     * solution: 1.inOrder traver  calculate near two element , minAbs(a-b)    base cur abs(b-a)  minAbs
+     * solution: 1.inOrder traver
+     * calculate near two element , minAbs(a-b)    base cur abs(b-a)  minAbs
+     * 2.直接遍历取 最左边的值 和 最右边的值，求绝对值  二叉搜索树特性
      *@创建时间 2020/12/11
      */
     public int getMinimumDifference(TreeNode root) {
@@ -432,7 +446,8 @@ public class Tree {
 
     /***
      *@描述
-     *给定一棵二叉树，你需要计算它的直径长度。一棵二叉树的直径长度是任意两个结点路径长度中的最大值。这条路径可能穿过也可能不穿过根结点。
+     *给定一棵二叉树，你需要计算它的直径长度。一棵二叉树的直径长度是任意两个结点路径长度中的最大值。
+     * 这条路径可能穿过也可能不穿过根结点。
      *
      *  
      *
@@ -451,6 +466,7 @@ public class Tree {
      * every step to update the bigMax
      * 2.官方的推到方法  递归实现          a 思路和上面差不多，分别计算左儿子和右儿子的最大长度，然后  return L+R   b.计算树的高度 使用递归，null 返回0
      * 否则 返回 max(L+R)  作为树的高度  c 在计算高度的方法中更新  bigMax的值     最后返回的时候  bigMax - 1
+     * O(N) O(M)
      *@创建时间 2020/12/15
      */
     public int diameterOfBinaryTree(TreeNode root) {
@@ -470,7 +486,8 @@ public class Tree {
 
     /***
      *@描述
-     *给定两个非空二叉树 s 和 t，检验 s 中是否包含和 t 具有相同结构和节点值的子树。s 的一个子树包括 s 的一个节点和这个节点的所有子孙。s 也可以看做它自身的一棵子树。
+     *给定两个非空二叉树 s 和 t，检验 s 中是否包含和 t 具有相同结构和节点值的子树。
+     * s 的一个子树包括 s 的一个节点和这个节点的所有子孙。s 也可以看做它自身的一棵子树。
      *
      * 示例 1:
      * 给定的树 s:
@@ -486,7 +503,8 @@ public class Tree {
      *   / \
      *  1   2
      *
-     * solution:  1.t 带入 s去遍历每一个节点，看是否有一个节点都满足   O(N2） O(N） the depth of stack  递归
+     * solution:  1.t 带入 s去遍历每一个节点，看是否有一个节点都满足
+     * O(N2） O(N） the depth of stack  递归
      *@创建时间 2020/12/15
      */
     public boolean isSubtree(TreeNode s, TreeNode t) {

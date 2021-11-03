@@ -36,5 +36,7 @@ public class SearchTree {
 
         SearchTree searchTree = new SearchTree();
         TreeNode treeNode2 = searchTree.searchBST(treeNode, 2);
+        System.out.println("success");
+
     }
 }
