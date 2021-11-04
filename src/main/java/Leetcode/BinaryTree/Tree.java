@@ -1,8 +1,9 @@
 package Leetcode.BinaryTree;
 
-import org.junit.Assert;
+import org.apache.commons.lang3.time.DateUtils;
 import org.junit.Test;
 
+import java.text.ParseException;
 import java.util.*;
 
 /**
@@ -30,7 +31,7 @@ public class Tree {
 
     private Set<Integer> set = new HashSet<>();
 
-    private boolean flag = true;
+    private boolean flag = false;
 
     private int maxCount = 0;
 
@@ -579,7 +580,8 @@ public class Tree {
      *@描述
      * 给定两个二叉树，想象当你将它们中的一个覆盖到另一个上时，两个二叉树的一些节点便会重叠。
      *
-     * 你需要将他们合并为一个新的二叉树。合并的规则是如果两个节点重叠，那么将他们的值相加作为节点合并后的新值，否则不为 NULL 的节点将直接作为新二叉树的节点。
+     * 你需要将他们合并为一个新的二叉树。合并的规则是如果两个节点重叠，那么将他们的值相加作为节点合并后的新值，
+     * 否则不为 NULL 的节点将直接作为新二叉树的节点。
      *输入:
      * 	Tree 1                     Tree 2
      *           1                         2
@@ -595,8 +597,11 @@ public class Tree {
      * 	  / \   \
      * 	 5   4   7
      *
-     * solution: traver two tree,node that both have  to add ,else add a new node in condition one have
+     * solution:
+     * traver two tree,node that both have  to add ,
+     * else add a new node in condition one have
      * queue breadTraver
+     * O(max(M,N)) t1、t2 元素最多的值  O(N) 递归的深度
      *@创建时间 2020/12/17
      */
     public TreeNode mergeTrees(TreeNode t1, TreeNode t2) {
@@ -618,11 +623,15 @@ public class Tree {
 
     /***
      *@描述
-     *@Given the root of a Binary Search Tree and a target number k, return true if there exist two elements in the BST such that their sum is equal to the given target.
+     *@Given
+     * the root of a Binary Search Tree and a target number k,
+     * return true if there exist two elements in the BST such that their sum is equal to
+     * the given target.
      *
      * solution:
      * 1.breadFirst then list all the case,convert to find the target sum in the arrayList;
      * 2.bst  preOrder the List is sorted    a traver b findTarget
+     * O(N) O(M)
      *@创建时间 2020/12/17
      */
     public boolean findTarget(TreeNode root, int k) {
@@ -645,9 +654,15 @@ public class Tree {
 
     /***
      *@描述
-     *@Given the root of a binary search tree and the lowest and highest boundaries as low and high, trim the tree so that all its elements lies in [low, high]. Trimming the tree should not change the relative structure of the elements that will remain in the tree (i.e., any node's descendant should remain a descendant). It can be proven that there is a unique answer.
+     *@Given
+     * the root of a binary search tree and the lowest and highest boundaries as low and high,
+     * trim the tree so that all its elements lies in [low, high].
+     * Trimming the tree should not change the relative structure of the elements
+     * that will remain in the tree (i.e., any node's descendant should remain a descendant).
+     * It can be proven that there is a unique answer.
      *
-     * Return the root of the trimmed binary search tree. Note that the root may change depending on the given bounds.
+     * Return the root of the trimmed binary search tree.
+     * Note that the root may change depending on the given bounds.
      *
      *  
      *
@@ -657,8 +672,14 @@ public class Tree {
      * Input: root = [1,0,2], low = 1, high = 2
      * Output: [1,null,2]
      *
-     * solution: 1.traver the tree ,  left  node.val < low    a  no right tree,directly drop   b have right tree root = root.right
-     * right node.val > high a no left tree ,directly drop it else root = root.left   preOrder
+     * solution:
+     * 1.traver the tree ,
+     * left  node.val < low
+     * a  no right tree,directly drop
+     * b have right tree root = root.right
+     * right node.val > high a no left tree ,directly drop it
+     * else root = root.left
+     * preOrder O(N)节点数 O(M)递归消耗的空间 思路比代码重要
      *@创建时间 2020/12/17
      */
     public TreeNode trimBST(TreeNode root, int low, int high) {
@@ -683,13 +704,23 @@ public class Tree {
 
     /***
      *@描述
-     *Given a non-empty special binary tree consisting of nodes with the non-negative value, where each node in this tree has exactly two or zero sub-node. If the node has two sub-nodes, then this node's value is the smaller value among its two sub-nodes. More formally, the property root.val = min(root.left.val, root.right.val) always holds.
+     *Given a non-empty special binary tree consisting of nodes with the non-negative value,
+     * where each node in this tree has exactly two or zero sub-node.
+     * If the node has two sub-nodes, then this node's value is the smaller value
+     * among its two sub-nodes. More formally,
+     * the property root.val = min(root.left.val, root.right.val) always holds.
      *
-     * Given such a binary tree, you need to output the second minimum value in the set made of all the nodes' value in the whole tree.
+     * Given such a binary tree, you need to output the second minimum value
+     * in the set made of all the nodes' value in the whole tree.
      *
-     * If no such second minimum value exists, output -1 instead.
+     * If no such second minimum value exists,
+     * output -1 instead.
      *
-     * solution:  1.use set , if set.size > 1  return second minimum
+     * solution:
+     * 1.use set , if set.size > 1  return second minimum
+     *
+     * min是最小的  secMin是第二小的 Math.min(root.val,secMin)之前没理解到
+     * O(N)节点数 O(N)递归的空间度
      *@创建时间 2020/12/17
      */
     public int findSecondMinimumValue(TreeNode root) {
@@ -711,7 +742,9 @@ public class Tree {
 
     /***
      *@描述
-     *Given a Binary Search Tree (BST) with the root node root, return the minimum difference between the values of any two different nodes in the tree.
+     *Given a Binary Search Tree (BST) with the root node root,
+     * return the minimum difference between the values of any two different nodes
+     * in the tree.
      *
      * Example :
      *
@@ -728,9 +761,15 @@ public class Tree {
      *      / \
      *     1   3
      *
-     * while the minimum difference in this tree is 1, it occurs between node 1 and node 2, also between node 3 and node 2.
+     * while the minimum difference in this tree is 1,
+     * it occurs between node 1 and node 2, also between node 3 and node 2.
      *
-     * solution: 1.暴力穷举法，取绝对值最小的   2.  题看错了 是任意两个节点   pre cur
+     * solution:
+     * 1.暴力穷举法，取绝对值最小的
+     * 2.题看错了 是任意两个节点
+     * BST特点 绝对值最小的 就是 root - root.left 或 root.right - root
+     * pre cur
+     * 顺序遍历  O(N) O(N)
      *@创建时间 2020/12/17
      */
     public int minDiffInBST(TreeNode root) {
@@ -752,7 +791,8 @@ public class Tree {
 
     /***
      *@描述
-     *@给定二叉搜索树的根结点 root，返回值位于范围 [low, high] 之间的所有结点的值的和。
+     *@给定二叉搜索树的根结点
+     * root，返回值位于范围 [low, high] 之间的所有结点的值的和。
      * 输入：root = [10,5,15,3,7,null,18], low = 7, high = 15
      * 输出：32
      *
@@ -780,7 +820,9 @@ public class Tree {
      *
      * 只有给定的树是单值二叉树时，才返回 true；否则返回 false。
      *
-     *solution: int start = root.val  traver the tree ,if not eq  return false ,default true
+     *solution:
+     * int start = root.val  traver the tree ,
+     * if not eq  return false ,default true
      *@创建时间 2020/12/18  O(N) O(1)
      */
     public boolean isUnivalTree(TreeNode root) {
@@ -817,7 +859,12 @@ public class Tree {
      * 输出：22
      * 解释：(100) + (101) + (110) + (111) = 4 + 5 + 6 + 7 = 22
      *
-     * solution: root left right     cur = cur * 2 + root.val  start cur = 0
+     * solution:
+     * root left right
+     * cur = cur * 2 + root.val
+     * start cur = 0
+     * O(N) O(N) 核心思想：根 左 右 先序遍历,
+     * 每层用 cur = cur * 2 + root.val 更新上一次的值,然后回溯整个二叉树
      *@创建时间 2020/12/18
      */
     public int sumRootToLeaf(TreeNode root) {
@@ -863,7 +910,9 @@ public class Tree {
      *@描述
      *@ 给定一棵二叉搜索树，请找出其中第k大的节点。
      *
-     * solution: preOrder use the list ,return the k node val
+     * solution:
+     * preOrder use the list ,return the k node val
+     * 利用二叉树特性,从右往左遍历,k-- 一直到 k == 0,即找到该值
      *@创建时间 2020/12/21   1 2 3 4 5 6
      */
    /* public int kthLargest(TreeNode root, int k) {
@@ -899,7 +948,8 @@ public class Tree {
 
     /***
      *@描述
-     *@ 输入一棵二叉树的根节点，求该树的深度。从根节点到叶节点依次经过的节点（含根、叶节点）形成树的一条路径，最长路径的长度为树的深度。
+     *@ 输入一棵二叉树的根节点，求该树的深度。
+     * 从根节点到叶节点依次经过的节点（含根、叶节点）形成树的一条路径，最长路径的长度为树的深度。
      *
      * 例如：
      *
@@ -941,9 +991,15 @@ public class Tree {
 
    /***
     *@描述
-    *@ 输入一棵二叉树的根节点，判断该树是不是平衡二叉树。如果某二叉树中任意节点的左右子树的深度相差不超过1，那么它就是一棵平衡二叉树。
+    *@ 输入一棵二叉树的根节点，
+    * 判断该树是不是平衡二叉树。如果某二叉树中任意节点的左右子树的深度相差不超过1，
+    * 那么它就是一棵平衡二叉树。
     *
-    *solution: use recusion to implement the question,   Math.abs(maxDepth(root.left),maxDepth(root.right))  > 1 ? true : false;
+    *solution:
+    * use recusion to implement the question,
+    * Math.abs(maxDepth(root.left),maxDepth(root.right))  > 1 ? true : false;
+    * O(N2) 每个节点都要去对比左右子树 O(N)递归占用的栈空间
+    *
     *@创建时间 2020/12/21
     */
     public boolean isBalanced(TreeNode root) {
@@ -971,8 +1027,10 @@ public class Tree {
 
     /***
      *@描述
-     *@ 请实现一个函数，用来判断一棵二叉树是不是对称的。如果一棵二叉树和它的镜像一样，那么它是对称的。
-     * solution:  inOrder   and  outOrder  is the same
+     *@ 请实现一个函数，用来判断一棵二叉树是不是对称的。
+     * 如果一棵二叉树和它的镜像一样，那么它是对称的。
+     * solution:
+     * inOrder   and  outOrder  is the same
      *@创建时间 2020/12/21
      */
     //官方解答
@@ -991,10 +1049,16 @@ public class Tree {
      * @Description
      * @ 给定一个二叉树, 找到该树中两个指定节点的最近公共祖先。
      *
-     * 百度百科中最近公共祖先的定义为：“对于有根树 T 的两个结点 p、q，最近公共祖先表示为一个结点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）。”
+     * 百度百科中最近公共祖先的定义为：“对于有根树 T 的两个结点 p、q，最近公共祖先表示为一个结点 x，
+     * 满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）。”
      *
-     * solution:  有点难 中等难度 用答友的答案，root== p  和 root==q作为条件判断 放在最前面，如果包含一个 则返回root
-     * 最后判断： lNode  rNode   a both are not null ,return root  b. lNode null return rNode c.rNode null return lNode
+     * solution:  有点难 中等难度
+     * 用答友的答案，root== p  和 root==q作为条件判断 放在最前面，
+     * 如果包含一个 则返回root
+     * 最后判断： lNode  rNode
+     * a both are not null ,return root
+     * b. lNode null return rNode
+     * c.rNode null return lNode
      * use recursion and linkedList
      **/
     public TreeNode lowestCommonAncestorNew(TreeNode root, TreeNode p, TreeNode q) {
@@ -1098,27 +1162,36 @@ public class Tree {
         return image;
     }
 
+    private boolean compareBillDate(String infoDate, String prepareDate) {
+        if (infoDate == null || "".equals(infoDate)) {
+            return false;
+        }
+        try {
+            Date cwInfoDate = DateUtils.parseDate(infoDate, "yyyy-MM-dd");
+            Date payPrepareDate = DateUtils.parseDate(prepareDate, "yyyy-MM-dd");
+            return cwInfoDate.after(payPrepareDate) || cwInfoDate.equals(payPrepareDate);
+        } catch (ParseException e) {
+            throw new RuntimeException("到账日期时间解析错误," + e.getMessage());
+        }
+    }
+
    @Test
    public void testIsSameTree() {
-      TreeNode root3 = new TreeNode(3);
+       TreeNode root = new TreeNode(2);
 
-      TreeNode root2 = new TreeNode(2);
-      root2.left = new TreeNode(7);
-      root2.right = new TreeNode(4);
+       TreeNode root1 = new TreeNode(2);
 
-      TreeNode root1 = new TreeNode(1);
-      root1.left = new TreeNode(0);
-      root1.right = new TreeNode(8);
+       TreeNode root2 = new TreeNode(5);
 
-      TreeNode root5 = new TreeNode(5);
-      root5.left = new TreeNode(6);
-      root5.right = root2;
+       root.left = root1;
+       root.right = root2;
 
-      root3.left = root5;
-      root3.right = root1;
+       /*root1.left = new TreeNode(1);
+       root1.right = new TreeNode(3);*/
 
-      int[] arr = new int[]{-10,-3,0,5,9};
+       root2.left = new TreeNode(5);
+       root2.right = new TreeNode(7);
+       System.out.println( instance.findSecondMinimumValue(root));
 
-       Assert.assertEquals(root3,instance.sortedArrayToBST(arr));
    }
 }
