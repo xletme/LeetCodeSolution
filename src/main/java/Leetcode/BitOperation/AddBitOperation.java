@@ -18,12 +18,12 @@ public class AddBitOperation {
       int sum = 0;
       int c = 0;
       while (b != 0){
-          sum = a ^ b;
-          c = (a & b) << 1;
-          a = sum;
-          b = c;
+          sum = a ^ b;   //异或运算保留未进位部分
+          c = (a & b) << 1; //与运算保留进位部分
+          a = sum; //未进位替换未a
+          b = c; //进位替换未b
       }
-      return a;
+      return a; //最后不能进位 即b==0 异或的结果就是加法的结果 相当于是加一个0
     }
 
     //二进制手表思路: 输入num 按规则输出显示可能的时间  0<n<=10  hour:minute  0<=hour<=11  0<=minute<=59
@@ -183,7 +183,8 @@ public class AddBitOperation {
 
     /***
      *@描述
-     * 给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。
+     * 给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。
+     * 找出那个只出现了一次的元素。
      *
      * 说明：
      *
@@ -191,6 +192,7 @@ public class AddBitOperation {
      *
      * solution: 1.使用桶计数  输出 value为1 的索引 （数组size多大好呢？）   hash表  求和sum   集合
      * 2.位运算  所有元素做异或运算 得到最后的值就是 出现一次的元素 ，牛逼啊  官方思路
+     * 现在能理解了 O（N） O（1）
      *@创建时间 2020/12/1
      */
     public int singleNumber(int[] nums) {
@@ -203,7 +205,8 @@ public class AddBitOperation {
 
     /***
      *@描述 给定一个整数，编写一个函数来判断它是否是 2 的幂次方。
-     * solution:bit operation <<   left move  if n == 1
+     * solution:bit operation >>1   left move  if n == 1
+     * O(N) O(1)
      *@创建时间 2020/12/1
      */
     public boolean isPowerOfTwo(int n) {
@@ -225,9 +228,10 @@ public class AddBitOperation {
      * 整数 n 是 4 的幂次方需满足：存在整数 x 使得 n == 4x
      *
      * solution:  类似 2的幂   小于0 return false  否者 traver n  , << 2
-     * 1.0xaaaaaaaa & num == 0 确保  偶数位上没有1
+     * 1.0xaaaaaaaa & num == 0 确保  偶数位上没有1 a就是1010
      * 2.num > 0 确保没有负数
      * 3.num & (num-1) == 0 确保二进制位上只有一个1
+     * O（N） O（1）
      *@创建时间 2020/12/1
      */
     public boolean isPowerOfFour(int num) {
@@ -508,13 +512,6 @@ public class AddBitOperation {
 
     @Test
     public void singleNumberTest(){
-        System.out.println(0x100);
-        Assert.assertEquals(8,instance.xorOperation(5,0));
-    }
-    
-
-    public static void main(String[] args) {
-        System.out.println((int)Math.pow(2,31));
-        System.out.println(Integer.toBinaryString(-(int)Math.pow(2,31)));
+        System.out.println(0x99999999 & 16);
     }
 }
