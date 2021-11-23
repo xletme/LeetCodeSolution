@@ -1,9 +1,9 @@
 package Leetcode.BitOperation;
 
-import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * @Description TODO
@@ -255,7 +255,8 @@ public class AddBitOperation {
 
     /***
      *@描述
-     * You have an integer and you can flip exactly one bit from a 0 to a 1. Write code to find the length of the longest sequence of 1s you could create.
+     * You have an integer and you can flip exactly one bit from a 0 to a 1.
+     * Write code to find the length of the longest sequence of 1s you could create.
      *
      * Example 1:
      *
@@ -268,10 +269,11 @@ public class AddBitOperation {
      *
      * 基础知识： 整数的范围  -2的31次方   到 2的31次方减1  第32位是符号位 1表示负数  0 表示正数
      *
-     * solution: calculate the effective value,and traver to add 1 in the zero position one by one .  request the longest sequence of 1s
-     * 1.找到最高位的数  15 最高位1就是 8    8 * 2 * 2 = 32 - 1  = 31 最高位 i==32 就不管 31二进制1的个数 n = 5
-     * 2.遍历  1 到 5  ,num & 2的n次方   如果为 0 就相加，计算连续1个个数  max 存入  直到结束
-     * 我这思路不严谨，能解决大部分问题 特殊的还处理不了 尤其是负数  和   2的31房左右的树
+     * solution:
+     * 把num先转成2进制string ，接着利用split按‘0’拆分 ，先特殊处理特定的数 ，最后遍历数据求最长连续1序列
+     * O(N) O(N)
+     *
+     *
      *@创建时间 2020/12/9
      */
     /*public int reverseBits(int num) {
@@ -318,8 +320,8 @@ public class AddBitOperation {
         if (num == -1) {
             return arr[0].length();
         }
-        if(arr.length<1 ) {
-            return arr.length+1;
+        if(arr.length < 1 ) {
+            return arr.length + 1;
         }
         int max = arr[0].length();
         int res = max+1;
@@ -335,9 +337,14 @@ public class AddBitOperation {
 
     /***
      *@描述
-     * \Given two integers L and R, find the count of numbers in the range [L, R] (inclusive) having a prime number of set bits in their binary representation.
+     * Given two integers L and R,
+     * find the count of numbers in the range [L, R] (inclusive)
+     * having a prime number of set bits in their binary representation.
      *
-     * (Recall that the number of set bits an integer has is the number of 1s present when written in binary. For example, 21 written in binary is 10101 which has 3 set bits. Also, 1 is not a prime.)
+     * (Recall that the number of set bits an integer
+     * has is the number of 1s present when written in binary.
+     * For example, 21 written in binary is 10101 which has 3 set bits.
+     * Also, 1 is not a prime.)
      *
      * Example 1:
      *
@@ -349,7 +356,8 @@ public class AddBitOperation {
      * 9 -> 1001 (2 set bits , 2 is prime)
      * 10->1010 (2 set bits , 2 is prime)
      * solution: prime ：质数   1 2 3 5 7
-     * 1.traver  (R,L) all nums  ,find require the request  number   O(N)2 O(1)
+     * 1.traver  (R,L) all nums  ,find require the request  number
+     * O(N)2 O(1)
      * 2.
      *@创建时间 2020/12/9
      */
@@ -396,7 +404,10 @@ public class AddBitOperation {
 
     /***
      *@描述
-     * Given a non-negative integer num, return the number of steps to reduce it to zero. If the current number is even, you have to divide it by 2, otherwise, you have to subtract 1 from it.
+     * Given a non-negative integer num,
+     * return the number of steps to reduce it to zero.
+     * If the current number is even, you have to divide it by 2,
+     * otherwise, you have to subtract 1 from it.
      *
      *  
      *
@@ -412,7 +423,9 @@ public class AddBitOperation {
      * Step 5) 2 is even; divide by 2 and obtain 1. 
      * Step 6) 1 is odd; subtract 1 and obtain 0.
      *
-     * solution: follow the given request as up stage
+     * solution:
+     * follow the given request as up stage
+     * O(N) O(1)
      *@创建时间 2020/12/9
      */
     public int numberOfSteps (int num) {
@@ -444,7 +457,8 @@ public class AddBitOperation {
      * Output: 8
      * Explanation: Array nums is equal to [0, 2, 4, 6, 8] where (0 ^ 2 ^ 4 ^ 6 ^ 8) = 8.
      * Where "^" corresponds to bitwise XOR operator.
-     * solution: directly to write the code O(N) O(N)
+     * solution:
+     * directly to write the code O(N) O(1)
      *@创建时间 2020/12/9
      */
     public int xorOperation(int n, int start) {
@@ -469,7 +483,9 @@ public class AddBitOperation {
      * 输入: [1, 2, 3, 2, 2, 2, 5, 4, 2]
      * 输出: 2
      *
-     * solution: find the max element appear most in the array ,compare to the length of array nums
+     * solution:
+     * find the max element appear most in the array ,
+     * compare to the length of array nums
      * hashMap 统计  ++   if(value > nums.length()/2 ) return key
      * O(N) O(N)
      *@创建时间 2020/12/10
@@ -489,8 +505,15 @@ public class AddBitOperation {
         }
         return -1;
     }*/
-   //投票法   mathematics derivation :  众数    思路：  众数 1 非众数 -1   求sum  > 1  , n为数组长度   前a个 sum = 0 --》  剩余的 n-a个  sum > 0 且众数在后面
-    // 当 sum = 0 假设当前 num为众数  最后返回该  num    特殊情况，没有众数  遍历 统计众数的个数， 如果count < len / 2  return -1
+   //投票法   mathematics derivation :  众数
+    // 思路：  众数 1 非众数 -1   求sum  > 1  ,
+    // n为数组长度   前a个 sum = 0 --》
+    // 剩余的 n-a个  sum > 0 且众数在后面
+    // 当 sum = 0 假设当前 num为众数
+    // 最后返回该  num    特殊情况，没有众数  遍历 统计众数的个数，
+    // 如果count < len / 2  return -1
+    // O(N) O(1) 利用了众数的特性
+    //[1, 2, 3, 2, 2, 2, 5, 4, 2]
     public int majorityElement(int[] nums) {
         int votes = 0, x = 0;
         int count = 0;
@@ -512,6 +535,6 @@ public class AddBitOperation {
 
     @Test
     public void singleNumberTest(){
-        System.out.println(0x99999999 & 16);
+        System.out.println(Integer.toBinaryString(-1));
     }
 }

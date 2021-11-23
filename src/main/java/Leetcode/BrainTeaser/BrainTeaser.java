@@ -4,7 +4,6 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Arrays;
-import java.util.Vector;
 
 /**
  * @Author maoXin
@@ -17,13 +16,21 @@ public class BrainTeaser {
 
     /**
      * @Description:
-     *  Given two strings a and b, find the length of the longest uncommon subsequence between them.
+     *  Given two strings a and b,
+     *  find the length of the longest uncommon subsequence between them.
      *
-     * A subsequence of a string s is a string that can be obtained after deleting any number of characters from s. For example, "abc" is a subsequence of "aebdc" because you can delete the underlined characters in "aebdc" to get "abc". Other subsequences of "aebdc" include "aebdc", "aeb", and "" (empty string).
+     * A subsequence of a string s is a string
+     * that can be obtained
+     * after deleting any number of characters from s.
+     * For example, "abc" is a subsequence of "aebdc" because
+     * you can delete the underlined characters in "aebdc" to get "abc".
+     * Other subsequences of "aebdc" include "aebdc", "aeb", and "" (empty string).
      *
-     * An uncommon subsequence between two strings is a string that is a subsequence of one but not the other.
+     * An uncommon subsequence between two strings is a string
+     * that is a subsequence of one but not the other.
      *
-     * Return the length of the longest uncommon subsequence between a and b. If the longest uncommon subsequence doesn't exist, return -1.
+     * Return the length of the longest uncommon subsequence between a and b.
+     * If the longest uncommon subsequence doesn't exist, return -1.
      *
      *  
      *
@@ -31,17 +38,20 @@ public class BrainTeaser {
      *
      * Input: a = "aba", b = "cdc"
      * Output: 3
-     * Explanation: One longest uncommon subsequence is "aba" because "aba" is a subsequence of "aba" but not "cdc".
+     * Explanation: One longest uncommon subsequence is "aba"
+     * because "aba" is a subsequence of "aba" but not "cdc".
      * Note that "cdc" is also a longest uncommon subsequence.
      *
      * solution:真没看懂题目说明  ，看答友的解释才懂的 author：何去何从gw
-     * 看程序自然懂
+     * 看程序自然懂 nb 好不好
      * @Date: 2021/1/5 16:41
      */
     public int findLUSlength(String a, String b) {
         if (a.equals(b)) {
+            //相等则表示不存在
             return -1;
         }
+        //不同则取最大长度的String
         return Math.max(a.length(),b.length());
     }
 
