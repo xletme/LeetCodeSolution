@@ -1,9 +1,10 @@
 package Leetcode.BrainTeaser;
 
-import org.junit.Assert;
 import org.junit.Test;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 
 /**
  * @Author maoXin
@@ -59,11 +60,14 @@ public class BrainTeaser {
      * @Description:
      *  三枚石子放置在数轴上，位置分别为 a，b，c。
      *
-     * 每一回合，我们假设这三枚石子当前分别位于位置 x, y, z 且 x < y < z。从位置 x 或者是位置 z 拿起一枚石子，并将该石子移动到某一整数位置 k 处，其中 x < k < z 且 k != y。
+     * 每一回合，我们假设这三枚石子当前分别位于位置 x, y, z 且 x < y < z。从位置 x 或者是位置 z 拿起一枚石子，
+     * 将该石子移动到某一整数位置 k 处，其中 x < k < z 且 k != y。
      *
      * 当你无法进行任何移动时，即，这些石子的位置连续时，游戏结束。
      *
-     * 要使游戏结束，你可以执行的最小和最大移动次数分别是多少？ 以长度为 2 的数组形式返回答案：answer = [minimum_moves, maximum_moves]
+     * 要使游戏结束，你可以执行的最小和最大移动次数分别是多少？
+     * 以长度为 2 的数组形式返回答案：
+     * answer = [minimum_moves, maximum_moves]
      *
      *  
      *
@@ -81,6 +85,7 @@ public class BrainTeaser {
      * solution: max (b-a-1) + (c-b-1) =  c-a -2   min 0  or 1 or 2
      *
      * 被坑了  1 3 5 特殊情况    需要一步    1移动到4位置 或者 5移动到2位置 1步即可完成，ct
+     * O(1) O(1)
      * @Date: 2021/1/5 16:46
      */
     public int[] numMovesStones(int a, int b, int c) {
@@ -104,6 +109,9 @@ public class BrainTeaser {
             if (Math.abs(a - b) != 1 && Math.abs(c - b) == 1) {
                 res[0] = 1;
             }
+            if (Math.abs(a - b) == 1 && Math.abs(c - b) == 1) {
+                res[0] = 0;
+            }
         }
         return res;
     }
@@ -116,7 +124,8 @@ public class BrainTeaser {
      * 你们轮流进行自己的回合，你作为先手。
      * 每一回合，轮到的人拿掉 1 - 3 块石头。
      * 拿掉最后一块石头的人就是获胜者。
-     * 假设你们每一步都是最优解。请编写一个函数，来判断你是否可以在给定石头数量为 n 的情况下赢得游戏。如果可以赢，返回 true；否则，返回 false 。
+     * 假设你们每一步都是最优解。请编写一个函数，来判断你是否可以在给定石头数量为 n 的情况下赢得游戏。
+     * 如果可以赢，返回 true；否则，返回 false 。
      *
      *  
      *
@@ -140,7 +149,8 @@ public class BrainTeaser {
 
     /**
      * @Description:
-     *  在一个 XY 坐标系中有一些点，我们用数组 coordinates 来分别记录它们的坐标，其中 coordinates[i] = [x, y] 表示横坐标为 x、纵坐标为 y 的点。
+     *  在一个 XY 坐标系中有一些点，我们用数组 coordinates 来分别记录它们的坐标，
+     *  其中 coordinates[i] = [x, y] 表示横坐标为 x、纵坐标为 y 的点。
      *
      * 请你来判断，这些点是否在该坐标系中属于同一条直线上，是则返回 true，否则请返回 false。
      *
@@ -206,7 +216,8 @@ public class BrainTeaser {
         return a % b == 0 ? b : getGCD(b, a % b);
     }*/
 
-    //只能说官方解答 牛逼  找规律1 号吉尔牛皮
+    //只能说官方解答 牛逼  找规律1 号吉尔牛皮  利用同一直线 斜率相同  给除法拆为乘法 x1 * y2 == x2 * y1
+    // O(N) O(1)
     public boolean checkStraightLine(int[][] coordinates) {
         int x1 =coordinates[1][0]-coordinates[0][0];
         int y1 =coordinates[1][1]-coordinates[0][1];
@@ -222,7 +233,8 @@ public class BrainTeaser {
 
     /**
      * @Description:
-     *  平面上有 n 个点，点的位置用整数坐标表示 points[i] = [xi, yi]。请你计算访问所有这些点需要的最小时间（以秒为单位）。
+     *  平面上有 n 个点，点的位置用整数坐标表示 points[i] = [xi, yi]。
+     *  请你计算访问所有这些点需要的最小时间（以秒为单位）。
      *
      * 你可以按照下面的规则在平面上移动：
      *
@@ -285,6 +297,7 @@ public class BrainTeaser {
      * 34  就是这么算出来的   60 - 26 = 34  60 本来有的面积   26 被覆盖的面积
      * 难点：在于计算上下左右重复的次数   面对面的次数  * 2  res = sum * 6 - count * 2
      * sum = sum(grid)  求count
+     * 需要较强的3D空间想象能力 来具体话表面积  O(N) O(1)
      * @Date: 2021/1/7 10:51
      */
     public int surfaceArea(int[][] grid) {
@@ -323,9 +336,6 @@ public class BrainTeaser {
 
     @Test
     public void testNumMoves(){
-        int[] arr1 = new int[] {2, 4};
-        int[] arr2 = new int[] {2, 5};
-        int[][] arr = new int[][] {{1,2},{3,4}};
-       Assert.assertEquals(34,instance.surfaceArea(arr));
+        System.out.println(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date()));
     }
 }

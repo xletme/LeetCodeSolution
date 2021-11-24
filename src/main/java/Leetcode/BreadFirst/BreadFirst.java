@@ -31,7 +31,8 @@ public class BreadFirst {
      *   2   2
      *    \   \
      *    3    3
-     * Follow up: Solve it both recursively and iteratively.
+     * Follow up:
+     * Solve it both recursively and iteratively.
      * 思路 ：
      * 队列+双端队列实现  队列用来广度优先遍历tree    双端队列用来检测结构是否对称
      * size != 1 && size % 2 != 0 直接false
@@ -89,9 +90,11 @@ public class BreadFirst {
     *@描述
     * Given a n-ary tree, find its maximum depth.
     *
-    * The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
+    * The maximum depth is the number of nodes along
+    * he longest path from the root node down to the farthest leaf node.
     *
-    * Nary-Tree input serialization is represented in their level order traversal, each group of children is separated by the null value (See examples).
+    * Nary-Tree input serialization is represented in their level order traversal,
+    * each group of children is separated by the null value (See examples).
     *
     * Example 1:
     *
@@ -127,7 +130,8 @@ public class BreadFirst {
      *@描述
      * Given a binary tree, find its minimum depth.
      *
-     * The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node.
+     * The minimum depth is the number of nodes along
+     * the shortest path from the root node down to the nearest leaf node.
      *
      * Note: A leaf is a node with no children.
      *
@@ -170,7 +174,7 @@ public class BreadFirst {
         return count;
     }*/
 
-    //答友
+    //答友 递归的魅力 盗梦空间 一层一层深入然后一层一层出来
     public int minDepth(TreeNode root) {
         if(root == null){
             return 0;
@@ -391,20 +395,20 @@ public class BreadFirst {
     }
 
     public static void main(String[] args) {
-        Node root = new Node(1);
+        TreeNode root = new TreeNode(1);
 
-        Node treeNode2 = new Node(2);
-        treeNode2.left = new Node(4);
-        treeNode2.right = new Node(5);
+        TreeNode treeNode2 = new TreeNode(2);
+        treeNode2.left = new TreeNode(3);
+        treeNode2.right = new TreeNode(4);
 
-        Node treeNode3 = new Node(3);
-        treeNode3.left = new Node(6);
-        treeNode3.right = new Node(7);
+        TreeNode treeNode3 = new TreeNode(2);
+        treeNode3.left = new TreeNode(4);
+        treeNode3.right = new TreeNode(3);
 
         root.left = treeNode2;
         root.right = treeNode3;
 
-        System.out.println(instance.connect(root));
+        System.out.println(instance.isSymmetric(root));
 
     }
 }
