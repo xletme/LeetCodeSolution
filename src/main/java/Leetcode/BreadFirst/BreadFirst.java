@@ -1,6 +1,9 @@
 package Leetcode.BreadFirst;
 
-import java.util.*;
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 /**
  * @Description
@@ -174,7 +177,7 @@ public class BreadFirst {
         return count;
     }*/
 
-    //答友 递归的魅力 盗梦空间 一层一层深入然后一层一层出来
+    //答友 递归的魅力 盗梦空间 一层一层深入然后一层一层出来  +1的意思 原本有一层 base
     public int minDepth(TreeNode root) {
         if(root == null){
             return 0;
@@ -193,18 +196,24 @@ public class BreadFirst {
 
     /***
      *@描述
-     *  In a binary tree, the root node is at depth 0, and children of each depth k node are at depth k+1.
+     *  In a binary tree, the root node is at depth 0,
+     *  and children of each depth k node are at depth k+1.
      *
-     * Two nodes of a binary tree are cousins if they have the same depth, but have different parents.
+     * Two nodes of a binary tree are cousins if they have the same depth,
+     * but have different parents.
      *
-     * We are given the root of a binary tree with unique values, and the values x and y of two different nodes in the tree.
+     * We are given the root of a binary tree with unique values,
+     * and the values x and y of two different nodes in the tree.
      *
-     * Return true if and only if the nodes corresponding to the values x and y are cousins.
+     * Return true if and only if the nodes
+     * corresponding to the values x and y are cousins.
      *
      *   题目：是否为堂兄弟节点
-     * 思路 ：深度优先搜索判断 该节点的level，  if((level1 == level2 && level1.parents !=  level2.parents)  true else false
+     * 思路 ：深度优先搜索判断 该节点的level，
+     * if((level1 == level2 && level1.parents !=  level2.parents)
+     * true else false
      * root.left.val   root.right.val  root.val
-     * use  p1 p2  p1depth p2depth
+     * use  p1 p2  p1depth p2depth O(N) O(N)
      *
      *
      *@创建时间 2020/11/11
@@ -252,7 +261,8 @@ public class BreadFirst {
 
     /***
      *@描述
-     *请实现一个函数按照之字形顺序打印二叉树，即第一行按照从左到右的顺序打印，第二层按照从右到左的顺序打印，第三行再按照从左到右的顺序打印，其他行以此类推。
+     *请实现一个函数按照之字形顺序打印二叉树，即第一行按照从左到右的顺序打印，
+     * 第二层按照从右到左的顺序打印，第三行再按照从左到右的顺序打印，其他行以此类推。
      *
      * 例如:
      * 给定二叉树: [3,9,20,null,null,15,7],
@@ -272,6 +282,8 @@ public class BreadFirst {
      * 思路 ： 1.和之前简单的 广度优先搜索相似，正序列出所有list  奇数层不变，偶数 做reverse操作
      *        2.奇数 循环不变，偶数从右到左循环
      *
+     *        O(N)TreeNode所有节点 O(N)queue的空间 和 res的空间
+     *
      *@创建时间 2020/11/12
      */
     public List<List<Integer>> levelOrder(TreeNode root) {
@@ -285,18 +297,20 @@ public class BreadFirst {
         while (!queue.isEmpty()){
             int size = queue.size();
             List<Integer> list = new LinkedList<>();
-            for(int i=0;i<size;i++){
+            for(int i = 0; i < size; i++){
                 TreeNode poll = queue.poll();
-                if(flag){
-                    list.add(poll.val);
-                }else {
-                    list.add(0,poll.val);//这个有点高级  巧妙
-                }
-                if(poll.left != null){
-                    queue.offer(poll.left);
-                }
-                if(poll.right != null){
-                    queue.offer(poll.right);
+                if (poll != null) {
+                    if (flag) {
+                        list.add(poll.val);
+                    } else {
+                        list.add(0, poll.val);//这个有点高级  巧妙
+                    }
+                    if (poll.left != null) {
+                        queue.offer(poll.left);
+                    }
+                    if (poll.right != null) {
+                        queue.offer(poll.right);
+                    }
                 }
             }
             flag = !flag;
@@ -309,7 +323,8 @@ public class BreadFirst {
 
     /***
      *@描述
-     * You are given a perfect binary tree where all leaves are on the same level, and every parent has two children. The binary tree has the following definition:
+     * You are given a perfect binary tree where all leaves are on the same level,
+     * and every parent has two children. The binary tree has the following definition:
      *
      * struct Node {
      *   int val;
@@ -317,14 +332,17 @@ public class BreadFirst {
      *   Node *right;
      *   Node *next;
      * }
-     * Populate each next pointer to point to its next right node. If there is no next right node, the next pointer should be set to NULL.
+     * Populate each next pointer to point to its next right node.
+     * If there is no next right node, the next pointer should be set to NULL.
      *
      * Initially, all next pointers are set to NULL.
      *
      * Follow up:
      *
      * You may only use constant extra space.
-     * Recursive approach is fine, you may assume implicit stack space does not count as extra space for this problem.
+     * Recursive approach is fine,
+     * you may assume implicit stack space
+     * does not count as extra space for this problem.
      *  思路 ：
      *  left--> right  right-->nextTree.left  nextTree.left-->nextTree.right     if(==size)  next--> null
      *  广度优先搜索
