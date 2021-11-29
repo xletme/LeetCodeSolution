@@ -57,7 +57,7 @@ public class DepthFirst {
      *   int mid = (left+right)/2;   (left + right + rand.nextInt(2))
      *    if(left > right)  这两个是其中最秒的地方
      *
-     *    二分法随机
+     *    二分法随机  O(N) O(N)
      *@创建时间 2020/11/3
      */
     public TreeNode sortedArrayToBST(int[] nums) {
@@ -94,7 +94,8 @@ public class DepthFirst {
      * their importance value and their direct subordinates' id.
      *
      * For example, employee 1 is the leader of employee 2, and employee 2 is the leader of employee 3.
-     * They have importance value 15, 10 and 5, respectively. Then employee 1 has a data structure like [1, 15, [2]],
+     * They have importance value 15, 10 and 5, respectively.
+     * Then employee 1 has a data structure like [1, 15, [2]],
      * and employee 2 has [2, 10, [3]], and employee 3 has [3, 5, []]. Note that although employee 3 is
      * also a subordinate of employee 1, the relationship is not direct.
      *
@@ -110,6 +111,7 @@ public class DepthFirst {
      *  退出条件  employees == null
      *  递归函数传参数  Employee List<Integer>  int id
      *  把所有员工的 id 下属和他自身的所有员工的 保存到list
+     *  O(N) O(N)
      *@创建时间 2020/11/3
      */
     public int getImportance(List<Employee> employees, int id) {
@@ -132,7 +134,10 @@ public class DepthFirst {
         return sum;
     }
 
-    /**官方实现 把id 员工放入map，做查询 优化我的时间复杂度 空间复杂度 不用去new 空间复杂度也节省了 空间换时间   数据结构 ： hashMap  时间复杂度 O(N) 空间复杂度也是 O(N)   */
+    /**官方实现 把id 员工放入map，做查询
+     * 优化我的时间复杂度 空间复杂度 不用去new
+     * 空间复杂度也节省了 空间换时间
+     * 数据结构 ： hashMap  时间复杂度 O(N) 空间复杂度也是 O(N)   */
     /*public int getImportance(List<Employee> employees, int id) {
         map = new HashMap<>();
         for (Employee employee : employees) {
@@ -185,7 +190,8 @@ public class DepthFirst {
      *                 \
      *                  9
      *
-     * 思路 ：1种：中序遍历列出所有节点，重新组合树    ans.right  inOrderRec(TreeNode root) 这俩很关键
+     * 思路 ：1种：中序遍历列出所有节点，重新组合树
+     * ans.right  inOrderRec(TreeNode root) 这俩很关键
      * 2种：直接在之前的树上 做变动
      * 传每一个节点 ，做以下操作
      * O(2N)  O(N)
@@ -210,18 +216,22 @@ public class DepthFirst {
     }*/
 
     /**  这些人是真的牛逼  对知识点掌握得太好了
-     * 2种直接在  root上改,初始化一个 ans  = new TreeNode(0) ans  cur  依次添加中序遍历的右孩子   核心代码  root.left = null ; cur.right = root; cur = root; */
+     * 2种直接在  root上改,
+     * 初始化一个 ans  = new TreeNode(0) ans  cur
+     * 依次添加中序遍历的右孩子
+     * 核心代码  root.left = null ; cur.right = root; cur = root; */
     public TreeNode increasingBST(TreeNode root){
         TreeNode ans = new TreeNode(0);
          cur = ans;
         inOrderRec(cur);
-        return ans.right;
+        return ans.right;//为啥用定义ans和cur ans用来保存整体的树  cur用来做中间拼接树
     }
 
     private void inOrderRec(TreeNode root){
         if (root != null) {
            inOrderRec(root.left);
-           root.left = null;
+           root.left = null;//这里不知道为啥这样子搞 总体思路和我想的一样 inOrder left and right ，
+            // 顺便create tree
            cur.right = root;
            cur = root;
            inOrderRec(root.right);

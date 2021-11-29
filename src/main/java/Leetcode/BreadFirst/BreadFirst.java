@@ -363,13 +363,14 @@ public class BreadFirst {
                 if(poll != null && poll.left != null && poll.right != null) {
                     queue.offer(poll.left);
                     queue.offer(poll.right);
-                    tmp.next = poll.left;
+                    tmp.next = poll.left; // 1
                     poll.left.next = poll.right;
                     if (i == size - 1) {
                         poll.right.next = null;
                         break;
                     }else {
-                        tmp = poll.right;
+                        tmp = poll.right; // 2
+                        // 1+2步相当于 poll.right.next = 下一个堂兄弟 poll.left,就不会导致有断层
                     }
                 }
             }
@@ -413,20 +414,20 @@ public class BreadFirst {
     }
 
     public static void main(String[] args) {
-        TreeNode root = new TreeNode(1);
+        Node root = new Node(1);
 
-        TreeNode treeNode2 = new TreeNode(2);
-        treeNode2.left = new TreeNode(3);
-        treeNode2.right = new TreeNode(4);
+        Node treeNode2 = new Node(2);
+        treeNode2.left = new Node(3);
+        treeNode2.right = new Node(4);
 
-        TreeNode treeNode3 = new TreeNode(2);
-        treeNode3.left = new TreeNode(4);
-        treeNode3.right = new TreeNode(3);
+        Node treeNode3 = new Node(2);
+        treeNode3.left = new Node(4);
+        treeNode3.right = new Node(3);
 
         root.left = treeNode2;
         root.right = treeNode3;
 
-        System.out.println(instance.isSymmetric(root));
+        System.out.println(instance.connect(root));
 
     }
 }
