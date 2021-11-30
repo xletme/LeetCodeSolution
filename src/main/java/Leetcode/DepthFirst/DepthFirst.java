@@ -248,7 +248,8 @@ public class DepthFirst {
 
     /***
      *@描述
-     * Consider all the leaves of a binary tree, from left to right order, the values of those leaves form a leaf value sequence.
+     * Consider all the leaves of a binary tree, from left to right order,
+     * the values of those leaves form a leaf value sequence.
      *
      * For example, in the given tree above, the leaf value sequence is (6, 7, 4, 9, 8).
      *
@@ -273,6 +274,7 @@ public class DepthFirst {
      * 思路：
      * 1.列举所有的叶子节点，对比是否一样 包括值和顺序
      * 初始化两个list  ,先序遍历  用list存放  最后对比 list
+     * O(N) O(N)
      *2.同时遍历两棵树，得到叶子节点就比较  不一样，直接pass 返回false
      *
      *@创建时间 2020/11/5
@@ -298,7 +300,9 @@ public class DepthFirst {
 
     /***
      *@描述
-     * Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.
+     * Given a binary tree and a sum,
+     * determine if the tree has a root-to-leaf path such that
+     * adding up all the values along the path equals the given sum.
      *
      * Note: A leaf is a node with no children.
      *
@@ -334,7 +338,8 @@ public class DepthFirst {
         }
     }
 
-    //官方解法  sum -val  问题拆分  把树拆分成小二叉树  最后 判断  val equals  sum  每次  sum = sum -val
+    //官方解法  sum -val  问题拆分  把树拆分成小二叉树
+    // 最后 判断  val equals  sum  每次  sum = sum -val  O(N) O(N)空间复杂度是递归所消耗的栈空间
     public boolean hasPathSum(TreeNode root, int sum) {
         if(root == null){
             return false;
@@ -343,6 +348,7 @@ public class DepthFirst {
             return sum == root.val;
         }
         return hasPathSum(root.left,sum - root.val) || hasPathSum(root.right,sum - root.val);
+        //这个|| 就用的很有意思 ，其中有一个就返回true
     }
 
 
@@ -350,7 +356,8 @@ public class DepthFirst {
 
    /***
     *@描述
-    * Given a matrix consists of 0 and 1, find the distance of the nearest 0 for each cell.
+    * Given a matrix consists of 0 and 1,
+    * find the distance of the nearest 0 for each cell.
     *
     *     The distance between two adjacent cells is 1.
     *
@@ -374,6 +381,8 @@ public class DepthFirst {
     *              官方思路 ：0放入队列 从 0 开始遍历，寻找周围的 可以变动的 数字，把0从队列中移除,接着把 刚变动的数字放入队列
     *              建立 up down left right  获取上下左右4个位置，用 seen [][] 对应的二维数组 记录该元素是否访问过
     *              通过  x y  seen  来判断是否对元素做update  已queen  .isEmpty()为条件来作为终止条件
+    *
+    *              O(N)应该是接近4-5n O(N)res seen queue的初始化空间
     *@创建时间 2020/11/6
     */
     public int[][] updateMatrix(int[][] matrix) {
@@ -403,6 +412,11 @@ public class DepthFirst {
                     queue.offer(new int[]{x,y});
                     seen[x][y] = true;
                     res[x][y] = res[poll[0]][poll[1]] + 1;
+                    //这里是精髓  xy是新加入的1坐标
+                    // 可以用来确定后面被1包围的1  第一步先把0上下左右的都给处理了
+                    // 并且使用queue队列 加入后来的1数组
+                    // !seen[x][y]这个东西可以避免重复的累加
+
                 }
             }
         }

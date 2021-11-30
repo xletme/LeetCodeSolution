@@ -6,7 +6,9 @@ import java.util.List;
 public class OrderedStream {
 
     /**
-     * 使用Array来实现   a 构造方法初始化 ptr  array； b insert 检查是否当前ptr是否有值 没有值，则添加 有值 ，则输出连续数值 并置ptr
+     * 使用Array来实现
+     * a 构造方法初始化 ptr  array；
+     * b insert 检查是否当前ptr是否有值 没有值，则添加 有值 ，则输出连续数值 并置ptr
      * c 有值返回连续数组 没值返回空
      */
     private int ptr;
