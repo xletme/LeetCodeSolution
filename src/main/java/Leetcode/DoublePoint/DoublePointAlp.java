@@ -27,8 +27,12 @@ public class DoublePointAlp {
      * 输出: false
      *
      * solution:
-     * 1.处理字符串 s ，只保留字母好数字字符  2.正序和反序遍历 3.判断是否相同 返回 是否是回文
+     * 1.处理字符串 s ，只保留字母好数字字符
+     * 2.正序和反序遍历
+     * 3.判断是否相同 返回 是否是回文
      * 双指针  正反序遍历，根据ascall码保留字母和数字  看 是否相同，判断是否是回文
+     * 双指针 正反遍历，遇到不是子母和字符的跳过，等满足要求的在对比
+     * 不一样的返回false 若全部通过则犯规true 时间复杂度 O(N)空间复杂度 O(1)
      * @Date: 2021/4/30 13:47
      */
     public boolean isPalindrome(String s) {
@@ -82,7 +86,7 @@ public class DoublePointAlp {
      * 我是真的不会表达我的爱 却很在乎每个人对我的期待  平凡的角色 站在小小的舞台
      * 我要那么勇敢的说出来
      *
-     * 外面不安的世界，骚动的心情 不能熄灭曾经拥有炙热的心
+     * 外面不安的世界，骚动的心情 不能熄灭曾经你拥有炙热的心
      * 可是Andy wow  Andy wow 外面不安的世界，骚动的心情
      * 不能熄灭曾经你拥有炙热的心
      * @Date: 2021/4/30 14:25
@@ -119,8 +123,13 @@ public class DoublePointAlp {
      * 输入：["H","a","n","n","a","h"]
      * 输出：["h","a","n","n","a","H"]
      *
-     * solution: define a start end ,start++ end-- loop break condition (start > end) ,
+     * solution:
+     * define a start end
+     * ,start++ end-- loop
+     * break condition (start > end) ,
      * each time swap the both two element
+     *
+     * 双指针 循环 ，用临时变量交互两个元素 O(N) O(1)
      * @Date: 2021/5/8 15:34
      */
     public void reverseString(char[] s) {
@@ -168,12 +177,13 @@ public class DoublePointAlp {
      * typed.length <= 1000
      * name 和 typed 的字符都是小写字母。
      *
-     * solution: 官方理解 1.分三种情况 双指针  i j 分别代表指针
+     * solution: 官方理解
+     * 1.分三种情况 双指针  i j 分别代表指针
      * name[i] == typed[j] i++,j++;
-     * type[j - ] = typed[j] j++ 前提  j > 0
+     * type[j - 1 ] = typed[j] j++ 前提  j > 0
      * else  return false
      * 最后判断  i == name.length  其实是看 name[i] == type[j]是否实现了 name.length 长度次
-     * 跳出循环条件  j < typed.length  && i < name.length
+     * 跳出循环条件  j < typed.length  && i < name.length O(N) O(1)
      * @Date: 2021/5/8 15:46
      */
     public boolean isLongPressedName(String name, String typed) {
@@ -213,6 +223,8 @@ public class DoublePointAlp {
      * solution: 翻转 a e i o u
      * 1.统计元音个数
      * 2.双指针分别遍历首位替换
+     *
+     * 双指针遍历，遇到都是元音字母 才做替换 start <= end 和第一题一样的解法 O(N) O(N)
      * @Date: 2021/5/10 10:35
      */
     public String reverseVowels(String s) {
@@ -260,7 +272,9 @@ public class DoublePointAlp {
      *
      * 子数组是数组中的一个连续数字序列。
      *
-     * 已知子数组 [numsl, numsl+1, ..., numsr-1, numsr] ，若对所有 i（l <= i < r），numsi < numsi+1 都成立，则称这一子数组为 升序 子数组。注意，大小为 1 的子数组也视作 升序 子数组。
+     * 已知子数组 [numsl, numsl+1, ..., numsr-1, numsr] ，
+     * 若对所有 i（l <= i < r），numsi < numsi+1 都成立，则称这一子数组为 升序 子数组。
+     * 注意，大小为 1 的子数组也视作 升序 子数组。
      *
      *  
      *
@@ -290,7 +304,9 @@ public class DoublePointAlp {
      * 1 <= nums.length <= 100
      * 1 <= nums[i] <= 100
      *
-     * solution: 1.定义一个最大值 max  找升序数组 求和 如果不是升序数组了 则替换max O(N)
+     * solution:
+     * 1.定义一个最大值 max  找升序数组 求和 如果不是升序数组了 则替换max O(N)
+     * 这个题没有用到双指针 直接求和就可以做到 O(N) O(1)
      * @Date: 2021/5/10 17:03
      */
     public int maxAscendingSum(int[] nums) {
