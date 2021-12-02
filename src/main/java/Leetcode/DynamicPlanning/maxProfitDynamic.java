@@ -103,6 +103,7 @@ public class maxProfitDynamic {
      *              5  1 4  2  3   5+3=8
      *              6  1 5  2 4    1 1 4  1 2 3   2 4     5+3+5 = 13     1 2 3 5 8 13  伏波拉契数列 递归
      *              f(n) = f(n-1)+f(n-2)   空间换时间,使用map来存放  f(n)
+     *              O(N) O(N)
      *@创建时间 2020/10/10
      */
     public int climbStairs(int n) {
@@ -125,6 +126,7 @@ public class maxProfitDynamic {
      * dynamic planning
      * 连续   初始化 max = nums[0]  sum = 0最前面2数相加和第二个数比较，大于等于 第二个数 sum = 和  否则  sum = 第二个数    max = Math.max(sum,max);
      * nums.length  = 0 直接返回 sum
+     * O(N) O(1)
      *@创建时间 2020/10/10
      */
     public int maxSubArray(int[] nums) {
