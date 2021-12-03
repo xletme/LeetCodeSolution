@@ -161,6 +161,7 @@ public class maxProfitDynamic {
      * a.偷第k间房  max = k-2最大金额 + 第k间房的金额
      * b.偷第k-1间房  max = k-1 最大金额
      * 比较 a b两种的最大值 max(a,b)
+     * O(N) O(1)
      *@创建时间 2020/10/12
      */
     public int rob(int[] nums) {
@@ -198,7 +199,8 @@ public class maxProfitDynamic {
      * 思路：
      * 依次判断 s的 组合是否包含在 t中
      * s : axt   a ax axt 3种  a x t
-     * 在t中找第一个与 字符一致的位置,截取  cut     contains  subString for  
+     * 在t中找第一个与 字符一致的位置,截取  cut     contains  subString for
+     * O(N) O(1)
      *@创建时间 2020/10/12
      */
     public boolean isSubsequence(String s, String t) {
@@ -224,6 +226,7 @@ public class maxProfitDynamic {
      * leetCode评论解答  最后只有两种结果，要么是 sum(n-1) 要么是 sum(n-2)  取倒数第一和第二的最小值
      * res[1] = cost[1]这个很关键
      * 因为后面会用到这个值
+     * O(N) O(N) 动态规划方程： dp[i] = Math.min(dp[i - 1], dp[i - 2)) + cost[i];
      *@创建时间 2020/10/19
      */
     public int minCostClimbingStairs(int[] cost) {
@@ -241,7 +244,7 @@ public class maxProfitDynamic {
         for (int i = 2; i < cost.length; i++) {
             sumSt = res[i-1] ;
             sumDd = res[i-2];
-            res[i] = Math.min(sumDd,sumSt) + cost[i];
+            res[i] = Math.min(sumDd,sumSt) + cost[i];//动态规划方程
         }
         return Math.min(res[cost.length - 1 ],res[cost.length - 2]);
     }
@@ -259,6 +262,8 @@ public class maxProfitDynamic {
      *
      *  任何东西都可以使用穷举法  列出所有的可能，获取最大值
      *
+     *  和小偷偷家一模一样，动态规划方程 dp[i] = Math.max(dp[i - 2] + nums[i], dp[i - 1]);
+     *O(N) O(N)
      *@创建时间 2020/10/22
      */
     public int massage(int[] nums) {
@@ -298,6 +303,7 @@ public class maxProfitDynamic {
      * 和伏波拉契数列类似
      *
      * 定义 数组来存储    定义三个变量  返回  res[n]
+     * O(N) O(N) 动态规划方程： dp[i] = dp[i - 3] + dp[i - 2] + dp[i - 1]
      *@创建时间 2020/10/22
      */
     public int waysToStep(int n) {
