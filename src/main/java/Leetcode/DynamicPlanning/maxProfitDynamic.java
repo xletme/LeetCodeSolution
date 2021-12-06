@@ -340,9 +340,11 @@ public class maxProfitDynamic {
      * 每次 乘以 2 3 5 如果大于  dp[i-1] 就存入数组
      * 分别 乘以 2 3 5 存入数值，置换其中的最小值  比较的对象就是 dp[i] dp[j] *2  *3 *5    找最小可能的值
      * 时间复杂度  o(N2)  空间复杂度 O(N) dp[n] 数组的长度
+     *
+     *
      *@创建时间 2020/10/23
      */
-    public int nthUglyNumber(int n) {
+    /*public int nthUglyNumber(int n) {
         int[] dp = new int[n];
         dp[0] = 1;
         for(int i=1;i<n;i++){
@@ -362,6 +364,40 @@ public class maxProfitDynamic {
             }
         }
         return dp[n-1];
+    }*/
+
+    /**
+     * @Description:
+     *  solution:
+     *
+     *  三指针方法：
+     *      * 1*2 1*3 1*5 2*2 2*3 2*5 3*2 3*3 3*5 找规律 ,每次寻找一个丑数  需要计算下一个合适的 a b c
+     *      * next = Math.min(a, Math.min(b,c));
+     *      * next 与 a b c其中一个重合，则 ++
+     *      * O(N) O(N)
+     * @Date: 2021/12/6 10:49
+     */
+    public int nthUglyNumber(int n) {
+        int[] dp = new int[n];
+        Arrays.fill(dp, 1);
+        int[] arr = new int[] {0, 0, 0};
+        for (int i = 1; i < n; i++) {
+            int a = dp[arr[0]] * 2;
+            int b = dp[arr[1]] * 3;
+            int c = dp[arr[2]] * 5;
+            int next = Math.min(a, Math.min(b, c));
+            dp[i] = next;
+            if (next == a) {
+                ++arr[0];
+            }
+            if (next == b) {
+                ++arr[1];
+            }
+            if (next == c) {
+                ++arr[2];
+            }
+        }
+        return dp[n - 1];
     }
 
     /***
@@ -400,7 +436,9 @@ public class maxProfitDynamic {
      *@描述
      * A robot is located at the top-left corner of a m x n grid (marked 'Start' in the diagram below).
      *
-     * The robot can only move either down or right at any point in time. The robot is trying to reach the bottom-right corner of the grid (marked 'Finish' in the diagram below).
+     * The robot can only move either down or right at any point in time.
+     * The robot is trying to reach the bottom-right corner of the grid (
+     * marked 'Finish' in the diagram below).
      *
      * How many possible unique paths are there?
      *
@@ -408,6 +446,10 @@ public class maxProfitDynamic {
      * Output: 28
      *
      * 思路：
+     * 右下角这个点 = 它左边的点 + 它上面的点 （路径和）
+     * 大事小分 ，一直分到最后只有一个方格  其实就是一个累加
+     * 累加的时候，利用数组来存储上一步的数据，以空间换取时间 O(N) O(N)
+     *
      * 最终的公式：G(m,n) = G(m-1,n)+G(m,n-1)
      * G(1,n) = 1 G(n,1) =1
      *
@@ -474,7 +516,7 @@ public class maxProfitDynamic {
 
     public static void main(String[] args) {
         int[] arr = new int[]{2,1,4,5,3,1,1,3};
-        Arrays.stream(instance.countBits(5)).forEach(System.out::println);
+        System.out.println(instance.countBits(10));
     }
 }
 
