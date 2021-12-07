@@ -42,6 +42,8 @@ public class GreedyAlgorithm {
      * 行走的时候，一步一步走   x y 表示横纵坐标  依次加 direction[0] direction[1]
      * 直到  走完 command  或者 遇到障碍物为止 停下，最后 返回  x*x + y*y
      *  maxDistSquare = Math.max(maxDistSquare, x * x + y * y); 官方的这里没看懂
+     *  directions[]数组做方向数组 模拟转向  set集合模拟障碍物
+     *  O(N) O(N)
      *@创建时间 2020/10/27
      */
     public int robotSim(int[] commands, int[][] obstacles) {
@@ -58,10 +60,13 @@ public class GreedyAlgorithm {
         int max = 0;
         for (int command : commands) {
            if(command == -1){
+               //顺时针 向右转
                direction = (direction+1) % 4;
            }else if(command == -2){
+               //顺时针向右转三下 == 逆时针向左转
                direction = (direction+3) % 4;
            }else {
+               //模拟移动
                int step = 0;
                int [] tmp = directions[direction];
                while (step < command && (!set.contains((x+tmp[0])+" "+(y+tmp[1])))){
@@ -77,17 +82,19 @@ public class GreedyAlgorithm {
 
     /***
      *@描述
-     * Given numBottles full water bottles, you can exchange numExchange empty water bottles for one full water bottle.
+     * Given numBottles full water bottles,
+     * you can exchange numExchange empty water bottles for one full water bottle.
      *
      * The operation of drinking a full water bottle turns it into an empty bottle.
      *
      * Return the maximum number of water bottles you can drink.
      *
      * 思路；贪心算法
-     * 一步一步算，先把所有酒喝完，一瓶一瓶的去换
+     * 一步一步算，先把所有水喝完，一瓶一瓶的去换
      * numBottles  numExchange    emptyBottles = numBottles --
      * 换一瓶  numBottles++，直到emptyBottles < numExchange 为止 返回 numBottles
      * 数据结构 : no use  时间复杂度 O(N)  空间复杂度 O(1)
+     * //解释： numExchange 个空瓶子可以换一瓶水
      *@创建时间 2020/10/28
      */
     public int numWaterBottles(int numBottles, int numExchange) {
@@ -101,24 +108,29 @@ public class GreedyAlgorithm {
 
     /***
      *@描述
-     * A sequence of numbers is called a wiggle sequence if the differences between successive numbers strictly
-     * alternate between positive and negative. The first difference (if one exists) may be either positive or negative.
+     * A sequence of numbers is called a wiggle sequence
+     * if the differences between successive numbers strictly
+     * alternate between positive and negative.
+     * The first difference (if one exists) may be either positive or negative.
      * A sequence with fewer than two elements is trivially a wiggle sequence.
      *
      * For example, [1,7,4,9,2,5] is a wiggle sequence because the differences (6,-3,5,-7,3) are
      * alternately positive and negative. In contrast, [1,4,7,2,5] and [1,7,4,5,5] are not wiggle sequences,
-     * the first because its first two differences are positive and the second because its last difference is zero.
+     * the first because its first two differences are positive and
+     * the second because its last difference is zero.
      *
      * Given a sequence of integers, return the length of the longest subsequence that is a wiggle sequence.
-     * A subsequence is obtained by deleting some number of elements (eventually, also zero) from the original sequence,
+     * A subsequence is obtained by deleting some number of elements (eventually, also zero)
+     * from the original sequence,
      * leaving the remaining elements in their original order.
      *
      * 思路：贪心算法
-     * 下一个数字是  小于 那就找连续最少的，没有连续的就取当前值
+     * 下一个数字是小于那就找连续最少的，没有连续的就取当前值
      * 直到 遍历完 nums 数组
      * 使用stack 来存储 ,连续增加的值 取最大，连续减少的值取最小
      * 最后返回  长度  stack.size(),最后在考虑特殊情况
      * 数据结构 stack   数组
+     * O(N) O(N)
      *@创建时间 2020/10/28
      */
    /* public int wiggleMaxLength(int[] nums) {
@@ -157,6 +169,7 @@ public class GreedyAlgorithm {
         return stack.size();
     }*/
    //官方思路 ： 大体思路和我差不多  没有使用数据结构  使用count int来进行统计 ,上面那个损耗有可能就是stack的原因
+    // O(N) O(1)
     public int wiggleMaxLength(int[] nums) {
         if (nums.length < 2)
             return nums.length;
@@ -589,7 +602,7 @@ public class GreedyAlgorithm {
     @Test
     public void testMinCostToMoveChips(){
         int[] arr = new int[]{1,2,3,4,5};
-        Assert.assertEquals(4,instance.maxProfit(arr));
+        Assert.assertEquals(7,instance.numWaterBottles(7, 5));
     }
 
     public static void main(String[] args) {
