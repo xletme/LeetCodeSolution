@@ -1,8 +1,9 @@
 package Leetcode.GreedyAlgorithm;
 
-import org.junit.Assert;
 import org.junit.Test;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.*;
 
 /**
@@ -190,14 +191,20 @@ public class GreedyAlgorithm {
      * Assume you are an awesome parent and want to give your children some cookies.
      * But, you should give each child at most one cookie.
      *
-     * Each child i has a greed factor g[i], which is the minimum size of a cookie that the child will be content with;
-     * and each cookie j has a size s[j]. If s[j] >= g[i], we can assign the cookie j to the child i,
-     * and the child i will be content. Your goal is to maximize the number of your content children and output the maximum number.
+     * Each child i has a greed factor g[i], which is the minimum size of a cookie
+     * that the child will be content with;
+     * and each cookie j has a size s[j]. If s[j] >= g[i],
+     * we can assign the cookie j to the child i,
+     * and the child i will be content.
+     * Your goal is to maximize the number of your content children
+     * and output the maximum number.
      *
      * 思路：贪心算法
-     * g[i] s[j]  遍历g[i] 把 s[j]中最小的 给 g[i],直到遍历完 g[i] ,每给出一个 s[j]移除 该元素 定义一个res  res++ 最后返回 res
+     * g[i] s[j]  遍历g[i] 把 s[j]中最小的 给 g[i],直到遍历完 g[i] ,
+     * 每给出一个 s[j]移除 该元素 定义一个res  res++ 最后返回 res
      * 最后处理特殊情况
-     * 数据结构 :array linkedList PriorityQueue 来实现  遍历莫法按照从小到大的顺序来，底层是二叉树实现   是按照树形结构来遍历的
+     * 数据结构 :array linkedList PriorityQueue 来实现
+     * 遍历莫法按照从小到大的顺序来，底层是二叉树实现   是按照树形结构来遍历的
      * 时间复杂度 ： O(N2) 空间复杂度：O(N)
      *
      * 对两个 g s进行排序，然后 思路和我一样
@@ -224,33 +231,39 @@ public class GreedyAlgorithm {
 
     /***
      *@描述
-     * You have an initial power of P, an initial score of 0, and a bag of tokens where tokens[i] is the value of the ith token (0-indexed).
+     * You have an initial power of P, an initial score of 0,
+     * and a bag of tokens where tokens[i] is the value of the ith token (0-indexed).
      *
      * Your goal is to maximize your total score by potentially playing each token in one of two ways:
      *
-     * If your current power is at least tokens[i], you may play the ith token face up, losing tokens[i] power and gaining 1 score.
-     * If your current score is at least 1, you may play the ith token face down, gaining tokens[i] power and losing 1 score.
-     * Each token may be played at most once and in any order. You do not have to play all the tokens.
+     * If your current power is at least tokens[i],
+     * you may play the ith token face up, losing tokens[i] power and gaining 1 score.
+     * If your current score is at least 1,
+     * you may play the ith token face down, gaining tokens[i] power and losing 1 score.
+     * Each token may be played at most once and in any order.
+     * You do not have to play all the tokens.
      *
      * Return the largest possible score you can achieve after playing any number of tokens.
      *
      * 思路：贪心算法
-     * 能量用来 翻 令牌组最小的值 获取分,  分用来翻最大的能量的牌 来获取能量     直到 分数为0 && 能量翻不了令牌 返回得分(其中的最大值)
+     * 能量用来 翻 令牌组最小的值 获取分,  分用来翻最大的能量的牌 来获取能量
+     * 直到 分数为0 && 能量翻不了令牌 返回得分(其中的最大值)
      * 数据结构 ： array
+     *思想是贪心算法 实现是 排序 + 双指针 O(N logN) O(1)
      *@创建时间 2020/10/29
      */
     public int bagOfTokensScore(int[] tokens, int P) {
         int res = 0;
-        int M = 0;
-        int j = tokens.length;
+        int M = 0;//最大分数
+        int j = tokens.length;//尾指针
         if(j==0){
             return 0;
         }
         Arrays.sort(tokens);
-        int min = tokens[0];
-        int max = tokens[tokens.length-1];
+        int min = tokens[0];//token数组小值
+        int max = tokens[tokens.length-1];//token数组最大值
         j--;
-        int k = 0;
+        int k = 0;//头指针
         if(P < min){
             return 0;
         }
@@ -296,12 +309,15 @@ public class GreedyAlgorithm {
      *
      * Input: s = "RLRRLLRLRL"
      * Output: 4
-     * Explanation: s can be split into "RL", "RRLL", "RL", "RL", each substring contains same number of 'L' and 'R'.
+     * Explanation: s can be split into "RL", "RRLL", "RL", "RL",
+     * each substring contains same number of 'L' and 'R'.
      *
      * solution :
      *  use a flag to calculate  and write a method to split the sequence
      *  end condition : all character walk one by one to the end
      *  special : two c   both diff  and equal in nums
+     * 这个有特殊条件的 ，s字符串本身必然是一个balance String，这样我们就可以从开头遍历到结尾
+     * 而且就两个字符
      *  use greedy   O(N) O(1)
      *@创建时间 2020/11/20
      */
@@ -328,11 +344,19 @@ public class GreedyAlgorithm {
 
     /***
      *@描述
-     * Given the array nums, obtain a subsequence of the array whose sum of elements is strictly greater than the sum of the non included elements in such subsequence. 
+     * Given the array nums, obtain a subsequence of the array
+     * whose sum of elements is strictly greater than
+     * the sum of the non included elements in such subsequence. 
      *
-     * If there are multiple solutions, return the subsequence with minimum size and if there still exist multiple solutions, return the subsequence with the maximum total sum of all its elements. A subsequence of an array can be obtained by erasing some (possibly zero) elements from the array. 
+     * If there are multiple solutions,
+     * return the subsequence with minimum size and
+     * if there still exist multiple solutions,
+     * return the subsequence with the maximum total sum of all its elements.
+     * A subsequence of an array can be obtained by erasing some (possibly zero)
+     * elements from the array. 
      *
-     * Note that the solution with the given constraints is guaranteed to be unique. Also return the answer sorted in non-increasing order.
+     * Note that the solution with the given constraints is guaranteed to be unique.
+     * Also return the answer sorted in non-increasing order.
      *
      *  
      *
@@ -340,7 +364,10 @@ public class GreedyAlgorithm {
      *
      * Input: nums = [4,3,10,9,8]
      * Output: [10,9]
-     * Explanation: The subsequences [10,9] and [10,8] are minimal such that the sum of their elements is strictly greater than the sum of elements not included, however, the subsequence [10,9] has the maximum total sum of its elements. 
+     * Explanation: The subsequences [10,9] and [10,8] are minimal
+     * such that the sum of their elements is strictly greater than
+     * the sum of elements not included, however,
+     * the subsequence [10,9] has the maximum total sum of its elements. 
      *  solution:
      *   1. sort   sum   traverse return result   O(N log(N))  O(N)
      *   2. sum  find max one by one , return result
@@ -349,11 +376,11 @@ public class GreedyAlgorithm {
     public List<Integer> minSubsequence(int[] nums) {
         List<Integer> res = new LinkedList<>();
         Arrays.sort(nums);
-        int sum = 0;
+        int sum = 0;//原数组总和
         for (int num : nums) {
             sum += num;
         }
-        int tmp = 0;
+        int tmp = 0;//子数组的和
         for (int i = nums.length - 1; i >= 0; i--) {
             tmp += nums[i];
             sum -= nums[i];
@@ -602,7 +629,10 @@ public class GreedyAlgorithm {
     @Test
     public void testMinCostToMoveChips(){
         int[] arr = new int[]{1,2,3,4,5};
-        Assert.assertEquals(7,instance.numWaterBottles(7, 5));
+        //Assert.assertEquals(7,instance.numWaterBottles(7, 5));
+        BigDecimal totalMoney = new BigDecimal("178158.00");
+        BigDecimal totalMoneyNoTax = totalMoney.divide(new BigDecimal("1.13"), 2, RoundingMode.HALF_UP);
+        System.out.println(totalMoneyNoTax);
     }
 
     public static void main(String[] args) {
