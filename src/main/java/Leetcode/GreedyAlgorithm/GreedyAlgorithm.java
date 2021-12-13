@@ -396,9 +396,13 @@ public class GreedyAlgorithm {
      *@描述
      * At a lemonade stand, each lemonade costs $5. 
      *
-     * Customers are standing in a queue to buy from you, and order one at a time (in the order specified by bills).
+     * Customers are standing in a queue to buy from you, and order one at a time
+     * (in the order specified by bills).
      *
-     * Each customer will only buy one lemonade and pay with either a $5, $10, or $20 bill.  You must provide the correct change to each customer, so that the net transaction is that the customer pays $5.
+     * Each customer will only buy one lemonade and 
+     * pay with either a $5, $10, or $20 bill. 
+     * You must provide the correct change to each customer,
+     * so that the net transaction is that the customer pays $5.
      *
      * Note that you don't have any change in hand at first.
      *
@@ -414,7 +418,7 @@ public class GreedyAlgorithm {
      * From the fifth customer, we give a $10 bill and a $5 bill.
      * Since all customers got correct change, we output true.
      *
-     * solution： calculate  a b  a: the count of 5  b: the count of 10
+     * solution： 按顺序按照规则遍历  5快 a++ 10块 a-- b++ 20快 b-- a-- 或者3个a--, 不能满足直接返回false
      * traver the array once and determine the result  O(N)  O(1)
      *
      *@创建时间 2020/11/23
@@ -457,11 +461,16 @@ public class GreedyAlgorithm {
      *@描述
      * We are given an array A of N lowercase letter strings, all of the same length.
      *
-     * Now, we may choose any set of deletion indices, and for each string, we delete all the characters in those indices.
+     * Now, we may choose any set of deletion indices, and for each string,
+     * we delete all the characters in those indices.
      *
-     * For example, if we have an array A = ["abcdef","uvwxyz"] and deletion indices {0, 2, 3}, then the final array after deletions is ["bef", "vyz"], and the remaining columns of A are ["b","v"], ["e","y"], and ["f","z"].  (Formally, the c-th column is [A[0][c], A[1][c], ..., A[A.length-1][c]]).
+     * For example, if we have an array A = ["abcdef","uvwxyz"] and
+     * deletion indices {0, 2, 3}, then the final array after deletions is ["bef", "vyz"], 
+     * and the remaining columns of A are ["b","v"], ["e","y"], and ["f","z"]. 
+     * (Formally, the c-th column is [A[0][c], A[1][c], ..., A[A.length-1][c]]).
      *
-     * Suppose we chose a set of deletion indices D such that after deletions, each remaining column in A is in non-decreasing sorted order.
+     * Suppose we chose a set of deletion indices D such that after deletions,
+     * each remaining column in A is in non-decreasing sorted order.
      *
      * Return the minimum possible value of D.length.
      *
@@ -470,11 +479,13 @@ public class GreedyAlgorithm {
      * Input: A = ["cba","daf","ghi"]
      * Output: 1
      * Explanation:
-     * After choosing D = {1}, each column ["c","d","g"] and ["a","f","i"] are in non-decreasing sorted order.
+     * After choosing D = {1}, each column ["c","d","g"] and ["a","f","i"] are
+     * in non-decreasing sorted order.
      * If we chose D = {}, then a column ["b","a","h"] would not be in non-decreasing sorted order.
      *
      * solution:  A.length  == 1 return 0
-     * traver the each string of array,contract the same index  determine if they are increasing ,yes do nothing  or res++;  return res
+     * traver the each string of array,contract the same index  determine if they are increasing ,
+     * yes do nothing  or res++;  return res
      * O(N2) O(1)
      *@创建时间 2020/11/23
      */
@@ -486,12 +497,12 @@ public class GreedyAlgorithm {
         int sl = A[0].length();
         for (int i = 0; i < sl; i++) {
             for (int j = 0; j < A.length - 1; j++) {
-                String s0 = A[j];
+                String s0 = A[j];//比较相邻的两个数
                 String s1 = A[j+1];
                 int c1 = s0.charAt(i);
                 int c2 = s1.charAt(i);
                 if (c1 > c2) {
-                    res++;
+                    res++;//不满足条件 res++，并跳出当前循环
                     break;
                 }
             }
@@ -501,7 +512,9 @@ public class GreedyAlgorithm {
 
     /***
      *@描述
-     * Given an array A of integers, we must modify the array in the following way: we choose an i and replace A[i] with -A[i], and we repeat this process K times in total.  (We may choose the same index i multiple times.)
+     * Given an array A of integers, we must modify the array in the following way:
+     * we choose an i and replace A[i] with -A[i], and we repeat this process K times in total. 
+     * (We may choose the same index i multiple times.)
      *
      * Return the largest possible sum of the array after modifying it in this way.
      *
@@ -517,8 +530,9 @@ public class GreedyAlgorithm {
      * 1 <= K <= 10000
      * -100 <= A[i] <= 100
      * solution :  traver the array ,sort the array    record the negative counts and  K
-     * if (K =< counts ) change one by one by the order
-     * K  > counts  change counts nums one by one by the order  determine if there is a zero ,yes then return the sum
+     * if (K <= counts ) change one by one by the order
+     * K  > counts  change counts nums one by one by the order
+     * determine if there is a zero ,yes then return the sum
      * else  change the min positive num  if odd  -  else  +
      *  n log (N)   O(1)
      *@创建时间 2020/11/23
@@ -556,6 +570,7 @@ public class GreedyAlgorithm {
             if (flag) {
                 //do nothing
             } else {
+                //下面这里是 可以多次选择同一个下标
                 if ((K - counts) % 2 == 0) {
                     //do nothing
                 } else {
@@ -573,7 +588,8 @@ public class GreedyAlgorithm {
      *@描述
      *  We have n chips, where the position of the ith chip is position[i].
      *
-     * We need to move all the chips to the same position. In one step, we can change the position of the ith chip from position[i] to:
+     * We need to move all the chips to the same position. In one step,
+     * we can change the position of the ith chip from position[i] to:
      *
      * position[i] + 2 or position[i] - 2 with cost = 0.
      * position[i] + 1 or position[i] - 1 with cost = 1.
@@ -582,6 +598,7 @@ public class GreedyAlgorithm {
      * solution: let all the nums join the odd and  even number,then contract the counts each others  the smaller move to another
      * return the smaller counts
      * odd and even could be  0 ,1   actually ,calculate the nums of odd number and even number
+     * O(N) O(1)
      *@创建时间 2020/11/24
      */
     public int minCostToMoveChips(int[] position) {
@@ -598,11 +615,15 @@ public class GreedyAlgorithm {
 
     /***
      *@描述
-     *  Say you have an array prices for which the ith element is the price of a given stock on day i.
+     *  Say you have an array prices for
+     *  which the ith element is the price of a given stock on day i.
      *
-     * Design an algorithm to find the maximum profit. You may complete as many transactions as you like (i.e., buy one and sell one share of the stock multiple times).
+     * Design an algorithm to find the maximum profit.
+     * You may complete as many transactions as you like
+     * (i.e., buy one and sell one share of the stock multiple times).
      *
-     * Note: You may not engage in multiple transactions at the same time (i.e., you must sell the stock before you buy again).
+     * Note: You may not engage in multiple transactions at the same time
+     * (i.e., you must sell the stock before you buy again).
      *
      * Example 1:
      *
@@ -613,6 +634,7 @@ public class GreedyAlgorithm {
      *
      * solution: greedy find the pre n day's max profit
      * one day to one day to add ,then return the res
+     * 找相邻递增区间即可
      * key: compare today and tomorrow  O(N) O(1)
      *@创建时间 2020/11/24
      */
