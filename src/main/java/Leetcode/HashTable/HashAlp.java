@@ -142,7 +142,10 @@ public class HashAlp {
      *
      * 可以假设 s 和 t 长度相同。
      *
-     * solution: 用hash表存储映射关系,检查是否符合题意 map里面存s t的char
+     * solution:
+     * 1.用hash表存储映射关系,检查是否符合题意 map里面存s t的char O(N) O(1)
+     * 2.s t 计数 + 排序 ，最后对比list是否相等 O (NlogN) O(N)
+     *
      * @Date: 2021/4/1 13:36
      */
     public boolean isIsomorphic(String s, String t) {
@@ -230,7 +233,10 @@ public class HashAlp {
      * 输入：words = ["adsdf","sfd"]
      * 输出：["adsdf","sfd"]
      *
-     * solution: traver the words  judge the each element ,whether the element is combine by the same given words
+     * solution: traver the words  judge the each element ,
+     * whether the element is combine by the same given words
+     * 第一个字符确定所在的 字符串行列，判断该行是否能完全打印 能的话添加 不能的话break
+     * O(N*M) N words array.length M word.length O(N) res.size place
      * @Date: 2021/4/2 10:13
      */
     public String[] findWords(String[] words) {
@@ -293,7 +299,10 @@ public class HashAlp {
      * 1 <= nums.length <= 2 * 104
      * -109 <= nums[i] <= 109 这是10的8次方 我日
      *
-     * solutioin: 先统计个数，找 相减==1的个数和最大的，然后相减 map  hashMap可以直接查找 key 和 key + 1的个数
+     * solutioin:
+     * 先统计个数，找 相减==1的个数和最大的，然后相减 map
+     * hashMap可以直接查找 key 和 key + 1的个数
+     * O(N) O(N)
      * @Date: 2021/4/2 10:59
      */
     public int findLHS(int[] nums) {
@@ -336,7 +345,8 @@ public class HashAlp {
      * 1 <= text.length <= 10^4
      * text 全部由小写英文字母组成
      *
-     * solution: 统计 balloon在text中 有多少个  O(N + M) O(N)
+     * solution: 统计 balloon在text中 有多少个
+     * O(N + M) O(N)
      * @Date: 2021/4/2 11:37
      */
     public int maxNumberOfBalloons(String text) {
@@ -351,7 +361,7 @@ public class HashAlp {
                 arr[c]++;
             }
         }
-        min = Math.min(min,arr['b']);
+        min = arr['b'];
         min = Math.min(min,arr['a']);
         min = Math.min(min,arr['n']);
         min = Math.min(min,arr['l'] / 2);
@@ -401,6 +411,14 @@ public class HashAlp {
      * 每个长度为 2 的子序列都恰好含有 1 个主要元素，这意味着长度为 4 的子序列一定含有 2 个主要元素。
      * 因此，只需要比较所有距离为 1，2 或者 3 的邻居元素即可。
      *
+     * 官方思路：
+     * 1。投票法 初始化众数为第1个 count 1  遍历，不是众数 -1 否则 +1 ，count==0更新众数 最后返回众数
+     * 特殊情况 1个元素也满足  对半分的情况 也满足 TODO 这个要大于 N/2才能用
+     * O(N) O(1)
+     *
+     *2.排序 取 A[n/2]就是众数
+     * O(NlogN) O(NlogN)
+     *
      * @Date: 2021/4/2 13:49
      */
     /*public int repeatedNTimes(int[] A) {
@@ -426,6 +444,20 @@ public class HashAlp {
                     return A[i];
 
         return 0;
+    }
+
+    public int majorityElement(int[] nums) {
+        int count = 1;
+        int candidate = nums[0];
+
+        for (int i = 1; i < nums.length; i++) {
+            if (count == 0) {
+                candidate = nums[i];
+            }
+            count += (nums[i] == candidate) ? 1 : -1;
+        }
+
+        return candidate;
     }
 
     /**
@@ -454,7 +486,10 @@ public class HashAlp {
      * 1 <= first.length, second.length <= 10
      * first 和 second 由小写英文字母组成
      *
-     * solution: 遍历一次 text.toCharArray  first + second ++2; 判断是否溢出
+     * solution:
+     * 遍历一次 text.toCharArray  first + second ++2; 判断是否溢出
+     *这个简单 都把first和second提供好了
+     * O(N) O(N)
      * @Date: 2021/4/2 14:16
      */
     public String[] findOcurrences(String text, String first, String second) {
@@ -939,10 +974,8 @@ public class HashAlp {
 
     @Test
     public void testHashAlp() {
-        String[] arr = new String[]{"dgg","dgg","dgg","dgg"};
-        int[] arr1 = new int[]{1,2,2,1,1,3};
-        String str = "dog cat cat fish";
-        System.out.println(instance.wordPattern("abba",str));
+        int[] arr = new int[] {1, 3, 2, 3};
+        System.out.println(instance.repeatedNTimes(arr));
     }
 
 }
