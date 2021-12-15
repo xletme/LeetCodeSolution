@@ -1,5 +1,6 @@
 package Leetcode.HashTable;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.*;
@@ -532,7 +533,11 @@ public class HashAlp {
      * 2 <= nums.length <= 104
      * 1 <= nums[i] <= 104
      *
-     * solution:1.找重复元素  2.找缺失的值
+     * solution:
+     * 1.找重复元素
+     * 2.找缺失的值
+     * 桶排序
+     * O(N) O(N)
      * @Date: 2021/4/2 14:26
      */
     public int[] findErrorNums(int[] nums) {
@@ -558,16 +563,19 @@ public class HashAlp {
      * @Description:
      * 给定一个字符串牌照 licensePlate 和一个字符串数组 words ，请你找出并返回 words 中的 最短补全词 。
      *
-     * 如果单词列表（words）中的一个单词包含牌照（licensePlate）中所有的字母，那么我们称之为 补全词 。在所有完整词中，最短的单词我们称之为 最短补全词 。
+     * 如果单词列表（words）中的一个单词包含牌照（licensePlate）中所有的字母，
+     * 那么我们称之为 补全词 。在所有完整词中，最短的单词我们称之为 最短补全词 。
      *
      * 单词在匹配牌照中的字母时要：
      *
      * 忽略牌照中的数字和空格。
      * 不区分大小写，比如牌照中的 "P" 依然可以匹配单词中的 "p" 字母。
      * 如果某个字母在牌照中出现不止一次，那么该字母在补全词中的出现次数应当一致或者更多。
-     * 例如：licensePlate = "aBc 12c"，那么它由字母 'a'、'b' （忽略大写）和两个 'c' 。可能的 补全词 是 "abccdef"、"caaacab" 以及 "cbca" 。
+     * 例如：licensePlate = "aBc 12c"，那么它由字母 'a'、'b' （忽略大写）和两个 'c' 。可
+     * 能的 补全词 是 "abccdef"、"caaacab" 以及 "cbca" 。
      *
-     * 题目数据保证一定存在一个最短补全词。当有多个单词都符合最短补全词的匹配条件时取单词列表中最靠前的一个。
+     * 题目数据保证一定存在一个最短补全词。
+     * 当有多个单词都符合最短补全词的匹配条件时取单词列表中最靠前的一个。
      *
      *  
      *
@@ -591,7 +599,8 @@ public class HashAlp {
      * solution:
      * 1.确定licensePlate由小写字母组成的 关键词
      * 2.遍历words删选符合条件的word 并记录长度和对应的word
-     * 3.找出符合题意的关键词 返回  O(N*M) O(N)
+     * 3.找出符合题意的关键词 返回
+     * O(N*M) O(N)
      * @Date: 2021/4/6 10:07
      */
     public String shortestCompletingWord(String licensePlate, String[] words) {
@@ -735,7 +744,9 @@ public class HashAlp {
      * 0 <= B.length <= 200
      * A 和 B 都只包含空格和小写字母。
      *
-     * solution: 统计A B 中所有单词，返回次数等于1 的 map
+     * solution:
+     * 统计A B 中所有单词，返回次数等于1 的 map
+     * O(N) O(N)
      * @Date: 2021/4/7 13:42
      */
     public String[] uncommonFromSentences(String A, String B) {
@@ -786,7 +797,11 @@ public class HashAlp {
      * 1 <= arr.length <= 1000
      * -1000 <= arr[i] <= 1000
      *
-     * solution: 计数，看计数后的list有没重复的 重复返回false 否则返回true bucket 两次计数 看是否有大于2的
+     * solution:
+     * 计数，看计数后的list有没重复的 重复返回false 否则返回true
+     * bucket 两次计数 看是否有大于2的
+     * 两次计数是真的顶 真的秒 第一次计数统计arr元素出现次数 第二次计数统计次数有没有重复的 高手
+     * O(N) O(N)
      * @Date: 2021/4/7 14:06
      */
     public boolean uniqueOccurrences(int[] arr) {
@@ -810,7 +825,8 @@ public class HashAlp {
 
     /**
      * @Description:
-     * 在字符串 s 中找出第一个只出现一次的字符。如果没有，返回一个单空格。 s 只包含小写字母。
+     * 在字符串 s 中找出第一个只出现一次的字符。
+     * 如果没有，返回一个单空格。 s 只包含小写字母。
      *
      * 示例:
      *
@@ -825,7 +841,9 @@ public class HashAlp {
      *
      * 0 <= s 的长度 <= 50000
      *
-     * solution: 桶排序 找 ==1的  找第一个用 hashMap
+     * solution:
+     * 桶排序 找 ==1的  找第一个用 hashMap
+     * O(N) O(M) M = 32
      * @Date: 2021/4/7 14:15
      */
     public char firstUniqChar(String s) {
@@ -863,7 +881,8 @@ public class HashAlp {
      *
      * 输入：words = ["apple","app"], order = "abcdefghijklmnopqrstuvwxyz"
      * 输出：false
-     * 解释：当前三个字符 "app" 匹配时，第二个字符串相对短一些，然后根据词典编纂规则 "apple" > "app"，因为 'l' > '∅'，其中 '∅' 是空白字符，定义为比任何其他字符都小（更多信息）。
+     * 解释：当前三个字符 "app" 匹配时，第二个字符串相对短一些，然后根据词典编纂规则 "apple" > "app"，
+     * 因为 'l' > '∅'，其中 '∅' 是空白字符，定义为比任何其他字符都小（更多信息）。
      *  
      *
      * 提示：
@@ -873,7 +892,9 @@ public class HashAlp {
      * order.length == 26
      * 在 words[i] 和 order 中的所有字符都是英文小写字母。
      *
-     * solution: 依次对 words中的相邻元素比较，看出现的先后顺序是否满足题意
+     * solution:
+     * 依次对 words中的相邻元素比较，看出现的先后顺序是否满足题意
+     * O(N * M * K) O(N2)
      * @Date: 2021/4/8 10:29
      */
     public boolean isAlienSorted(String[] words, String order) {
@@ -893,6 +914,7 @@ public class HashAlp {
         if (str1.contains(str2)) {
             return true;
         }
+        //这就是第二种特殊情况  Apple 和App 直接return false
         if (str2.contains(str1)) {
             return false;
         }
@@ -946,7 +968,8 @@ public class HashAlp {
      * 你可以假设 pattern 只包含小写字母， str 包含了由单个空格分隔的小写字母。    
      *
      * solution:
-     * 1.pattern put each character to a map, 隐含条件  pattern.length = str.split(" ") .length;
+     * 1.pattern put each character to a map,
+     * 隐含条件  pattern.length = str.split(" ") .length;
      * 2.依次做检验  O(N) O(N)
      * @Date: 2021/4/8 14:13
      */
@@ -959,10 +982,12 @@ public class HashAlp {
         HashMap<Character,String> map = new HashMap<>();
         for (int i = 0; i < chars.length; i++) {
             if (map.containsKey(chars[i])) {
+                //已存在的键值对 和目前的映射对应不上
                 if (!s1[i].equals(map.get(chars[i]))) {
                     return false;
                 }
             } else {
+                //key value 都校验 value不能被其他的key所占取
                 if (map.containsValue(s1[i])) {
                     return false;
                 }
@@ -974,8 +999,8 @@ public class HashAlp {
 
     @Test
     public void testHashAlp() {
-        int[] arr = new int[] {1, 3, 2, 3};
-        System.out.println(instance.repeatedNTimes(arr));
+        String[] arr = new String[] {"hello","leetcode"};
+        Assert.assertEquals(Boolean.TRUE, instance.isAlienSorted(arr, "hlabcdefgijkmnopqrstuvwxyz"));
     }
 
 }
