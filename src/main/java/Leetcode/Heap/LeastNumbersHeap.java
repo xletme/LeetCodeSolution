@@ -97,8 +97,6 @@ public class LeastNumbersHeap {
     }
 
     public static void main(String[] args) {
-        int[] arr=new int[]{2,7,4,1,8,1};
-
-        System.out.println(heap.lastStoneWeight(arr));
+        System.out.println("DEPO".equals(null));
     }
 }

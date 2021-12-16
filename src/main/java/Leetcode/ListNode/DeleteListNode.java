@@ -32,7 +32,7 @@ public class DeleteListNode {
         node.next.next = new ListNode(4);
         node.next.next.next = new ListNode(5);
         DeleteListNode deleteListNode = new DeleteListNode();
-        deleteListNode.deleteNode(node.next);
+        deleteListNode.deleteNode(node.next.next.next);
         deleteListNode.printNode(node);
     }
 }
