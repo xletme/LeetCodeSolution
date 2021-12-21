@@ -39,6 +39,7 @@ public class MathematicsAlp {
      * 1.a+b转十进制 算结果，再转二进制
      * 2.直接进行二进制加减(位运算  找进位左移，异或找到不进位 当 不进位的时候 就结束)  二进制转10进制 10二进制相加
      * 3. a b先转 CharArray  每一位相加   存一个pre是否进位 每次取 a b的对应位进行计算
+     * O(N) O(N)
      * @Date: 2021/4/12 11:18
      */
     public String addBinary(String a, String b) {
@@ -73,6 +74,12 @@ public class MathematicsAlp {
         return result.reverse().toString();
     }
 
+    /**
+     * @Description:
+     * a^b求不进位 (a & b)求进位 b!=0不进位则返回a
+     * O(N) O(1)
+     * @Date: 2021/12/21 10:50
+     */
     public long twoBinaryAdd(long a, long b) {
         long sum = 0;
         long c = 0;
@@ -85,6 +92,12 @@ public class MathematicsAlp {
         return a;
     }
 
+    /**
+     * @Description:
+     * sum += s.charAt(i) * 2的n次方；
+     * O(N) O(1)
+     * @Date: 2021/12/21 10:52
+     */
     public long binary2Decimal(String str) {
       double sum = 0;
       int length = str.length();

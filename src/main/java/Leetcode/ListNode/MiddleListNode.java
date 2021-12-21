@@ -1,5 +1,7 @@
 package Leetcode.ListNode;
 
+import org.junit.Assert;
+
 /**
  * @Description TODO
  * @Author xiamoxin
@@ -7,6 +9,12 @@ package Leetcode.ListNode;
  **/
 public class MiddleListNode {
 
+    /**
+     * @Description:
+     * solution 快慢指针 找出middleNode
+     *
+     * @Date: 2021/12/21 10:26
+     */
     public ListNode middleNode(ListNode head) {
         if(head.next == null){
             return head;
@@ -41,6 +49,8 @@ public class MiddleListNode {
        // node.next.next.next.next.next = new ListNode(6);
 
         MiddleListNode middleListNode = new MiddleListNode();
-        middleListNode.middleNode(node);
+        ListNode listNode = middleListNode.middleNode(node);
+        ListNode expectNode = new ListNode(3);
+        Assert.assertEquals(expectNode, listNode);
     }
 }

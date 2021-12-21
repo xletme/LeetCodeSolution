@@ -132,8 +132,8 @@ public class IntersectionNode {
         ListNode pre = null;
         ListNode cur = head;
         while (cur != null) {
-            ListNode tmp = cur.next;
-            cur.next = pre;
+            ListNode tmp = cur.next; // 这句和cur = tmp相当于 cur = cur.next 遍历
+            cur.next = pre; //这句和 pre = cur 使得 cur指向 pre ,然后更新pre
             pre = cur;
             cur = tmp;
         }
@@ -143,7 +143,8 @@ public class IntersectionNode {
     /**
      * @Description:
      *
-     * @Date: 2021/4/12 10:24给你一个链表的头节点 head 和一个整数 val ，
+     * @Date: 2021/4/12 10:24
+     * 给你一个链表的头节点 head 和一个整数 val ，
      * 请你删除链表中所有满足 Node.val == val 的节点，并返回 新的头节点 。
      * 示例 1：
      *

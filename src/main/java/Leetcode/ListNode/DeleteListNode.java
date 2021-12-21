@@ -8,6 +8,7 @@ package Leetcode.ListNode;
 public class DeleteListNode {
 
     //思路 ： 删除当前节点,把下个节点的值和next指针 复制到当前节点
+    //题目数据保证需要删除的节点 不是末尾节点 。
     public void deleteNode(ListNode node){
         node.val = node.next.val;
         node.next = node.next.next;

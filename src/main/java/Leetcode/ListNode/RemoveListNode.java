@@ -22,6 +22,7 @@ public class RemoveListNode {
             //当前节点
             ListNode cur = pre.next;
             if(set.contains(cur.val)){
+                //这句就是核心代码 前一个节点的next域指向下下个节点的next域
                 pre.next = pre.next.next;
             }else{
                 set.add(cur.val);
