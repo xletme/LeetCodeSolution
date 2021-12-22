@@ -157,6 +157,7 @@ public class MathematicsAlp {
      * 因为第四行不完整，所以返回3.
      *
      * solution:
+     * 伏波拉契数列取上一个数和下一个数中间为n的，返回上一个数
      * @Date: 2021/4/14 14:02
      */
     public int arrangeCoins(int n) {
@@ -196,7 +197,7 @@ public class MathematicsAlp {
      * 输入：x =
      *
      * solution:
-     * 1.x转string后进行翻转  不在整数范围返回-1 a x.toString  b.reverse c.compare 是否在范围内
+     * 1.x转string后进行翻转  不在整数范围返回0 a x.toString  b.reverse c.compare 是否在范围内
      * 时间复杂度  O(N *M) N是x的位数 M是 erverse parseDouble 至少是2次
      * 空间复杂度  O(N)   StringBuilder的耗时
      * 2.
@@ -338,6 +339,7 @@ public class MathematicsAlp {
      *
      * solution: 1.s.toCharArray 每次截取前两位 看是否在枚举列表中,如果在跳2位 否则跳1位
      * 枚举  特殊字符串 ,求和 特殊字符串6个 4 9 40 90 400 900 搞个map存储  常规字符串  7个
+     * O(N) O(N)
      * @Date: 2021/4/15 13:46
      */
     public int romanToInt(String s) {
@@ -508,7 +510,7 @@ public class MathematicsAlp {
      * solution:
      * 1.循环 对 2 3 5 取余 都不能取余的时候，
      * 取余前先判断 是否是 2 3 5其中的一个 是就返回true 3个都不能取余 返回 false 1特殊处理
-     * O(N）
+     * O(N） O(1)
      * @Date: 2021/4/20 9:57
      */
     /*public boolean isUgly(int n) {
@@ -530,7 +532,7 @@ public class MathematicsAlp {
         return n == 1;
     }*/
 
-    //官方解答
+    //官方解答  O(N） O(1)
     public boolean isUgly(int n) {
         if (n <= 0) {
             return false;
@@ -638,7 +640,8 @@ public class MathematicsAlp {
      * [1,2,3]  =>  [2,3,3]  =>  [3,4,3]  =>  [4,4,4]
      *
      * solution :
-     * 数学法，n-1个数加一（排除最大的数） 等同于 最大的数每次减一   所以 找出数组中最小值,然后每个数做 减法求和
+     * 数学法，n-1个数加一（排除最大的数） 等同于 最大的数每次减一
+     * 所以 找出数组中最小值,然后每个数做 减法求和
      * O(N) O(1)
      * @Date: 2021/4/20 14:29
      */
@@ -680,24 +683,22 @@ public class MathematicsAlp {
      * solution:
      * 1.找齐所有 按规则筛选
      * 2.边找边塞选  L >= W  abs = L - W  ; L * W = area ; 求abs最小的 L W
+     * 3.数学解答方式  由 L >= W 而且 L和W能被area整除  W*W <= L*W = area ==> W <= 根号area
+     * W就该取 根号area的向下的最大值  L就该取根号area向上的最小值
+     * O(N) O(1)
      * @Date: 2021/4/21 10:11
      */
     public int[] constructRectangle(int area) {
         int[] res = new int[2];
-        int min = Integer.MAX_VALUE;
         int sqrt = (int)Math.sqrt(area);
-        int divide = 0;
-        for (int i = sqrt; i <= area; i++) {
+        int i = sqrt;
+        for ( ;i <= area; i++) {
             if (area % i == 0) {
-                divide = area / i;
-                if (i >= divide && (i -divide) < min) {
-                    min = i - divide;
-                    res[0] = i;
-                    res[1] = divide;
-                    break;
-                }
+                break;
             }
         }
+        res[0] = i;
+        res[1] =area / i;
         return res;
     }
 
@@ -735,8 +736,10 @@ public class MathematicsAlp {
      *
      * 1 <= num <= 108
      *
-     * solution: 1.求因子和 然后和num对比 相同为true 相异为false O(N) 1--根号 num
+     * solution:
+     * 1.求因子和 然后和num对比 相同为true 相异为false O(N) 1--根号 num
      * 所有因子加两遍 如果i * i= num 特殊处理
+     * O(N) O(1)
      * @Date: 2021/4/21 14:02
      */
     public boolean checkPerfectNumber(int num) {
@@ -796,7 +799,9 @@ public class MathematicsAlp {
      *
      * [[16,1],[14,3],[14,2],[4,1],[10,1],[11,1],[8,3],[16,2],[13,1],[8,3],[2,2],[9,1],[3,1],[2,2],[6,3]]
      *
-     * solution: 1.找最小的范围数返回  ops里面的操作数来判断 最后求 ops数组最小数乘积
+     * solution:
+     * 1.找最小的范围数返回  ops里面的操作数来判断 最后求 ops数组最小数乘积
+     * O(N) O(1) 纯属于找规律
      * @Date: 2021/4/22 10:05
      */
     public int maxCount(int m, int n, int[][] ops) {
