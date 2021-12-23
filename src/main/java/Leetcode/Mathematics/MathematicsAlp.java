@@ -835,6 +835,10 @@ public class MathematicsAlp {
      * 每个输入参数的边界满足 1 <= left <= right <= 10000。
      *
      * solution:1.在 left 和 right内 判断该数是否是自除数
+     * 1.用 % 10获取尾数
+     * 2./10 获取下一个数
+     * 3.tmp != 0标识循环结束
+     * O(N) O(1)
      * @Date: 2021/4/22 10:25
      */
     public List<Integer> selfDividingNumbers(int left, int right) {
@@ -882,6 +886,7 @@ public class MathematicsAlp {
      *
      * solution:
      * 1.两个条件 能组成三角形且面积最大 三重for循环，传入所在点的横纵坐标 利用公式计算面积
+     * O(N3) O(1)
      * @Date: 2021/4/22 11:18
      */
     public double largestTriangleArea(int[][] points) {
@@ -932,7 +937,10 @@ public class MathematicsAlp {
      * rec1[0] <= rec1[2] 且 rec1[1] <= rec1[3]
      * rec2[0] <= rec2[2] 且 rec2[1] <= rec2[3]
      *
-     * solution: 官方思路  ： 1 判断是否为矩形 2.排查法把 四周不想交的情况选出来，其他就是有重叠的
+     * solution: 官方思路  ：
+     * 1 判断是否为矩形
+     * 2.排查法把 四周不想交的情况选出来，其他就是有重叠的
+     * O(1) O(1)
      * @Date: 2021/4/23 10:15
      */
     public boolean isRectangleOverlap(int[] rec1, int[] rec2) {
@@ -948,7 +956,8 @@ public class MathematicsAlp {
 
     /**
      * @Description:
-     * 给定一个正整数 n，找到并返回 n 的二进制表示中两个 相邻 1 之间的 最长距离 。如果不存在两个相邻的 1，返回 0 。
+     * 给定一个正整数 n，找到并返回 n 的二进制表示中两个 相邻 1 之间的 最长距离 。
+     * 如果不存在两个相邻的 1，返回 0 。
      *
      * 如果只有 0 将两个 1 分隔开（可能不存在 0 ），则认为这两个 1 彼此 相邻 。
      * 两个 1 之间的距离是它们的二进制表示中位置的绝对差。例如，"1001" 中的两个 1 的距离为 3 。 
@@ -992,7 +1001,10 @@ public class MathematicsAlp {
      *
      * 1 <= N <= 10^9
      *
-     * solution: 1. 找特殊情况  全为0 全为 1 只包含一个1 特殊处理  2.while 循环遍历n 计数 取max  O(N)
+     * solution:
+     * 1. 找特殊情况  全为0 全为 1 只包含一个1 特殊处理
+     * 2.while  循环遍历n 计数 取max
+     * O(N) O(1)
      * @Date: 2021/4/23 11:41
      */
     public int binaryGap(int n) {
@@ -1006,12 +1018,14 @@ public class MathematicsAlp {
         while (n != 0) {
             if ((n & 1) == 1) {
                 if (isOne) {
+                    //每次取到相邻1的时候，更新距离最大值
                     max = Math.max(max,count);
                 }
                 isOne = true;
                 count = 1;
             } else {
                 if (isOne) {
+                    //只要前面有1 isOne都为true  count计数++
                     count++;
                 }
             }
@@ -1092,7 +1106,8 @@ public class MathematicsAlp {
 
     /**
      * @Description:
-     * 输入数字 n，按顺序打印出从 1 到最大的 n 位十进制数。比如输入 3，则打印出 1、2、3 一直到最大的 3 位数 999。
+     * 输入数字 n，按顺序打印出从 1 到最大的 n 位十进制数。
+     * 比如输入 3，则打印出 1、2、3 一直到最大的 3 位数 999。
      *
      * 示例 1:
      *
@@ -1105,7 +1120,9 @@ public class MathematicsAlp {
      * 用返回一个整数列表来代替打印
      * n 为正整数
      *
-     * solution: 直接 1....Math.pow(10,n) - 1
+     * solution:
+     * 直接 1....Math.pow(10,n) - 1
+     * O(N) O(N)
      * @Date: 2021/4/26 11:47
      */
     public int[] printNumbers(int n) {
@@ -1150,7 +1167,8 @@ public class MathematicsAlp {
      *
      * solution:
      * 1. 除10余求各数字
-     * 2.求 乘积和 和之差 O(N) O(1)
+     * 2.求 乘积和 和之差
+     * O(N) O(1)
      * @Date: 2021/4/26 13:37
      */
     public int subtractProductAndSum(int n) {
@@ -1204,6 +1222,7 @@ public class MathematicsAlp {
      * solution:
      * 1.只需要翻转首位 6 如果没有，就不翻转  int to String  replaceFirst6 O(N) O(1)
      * 2.除10取余判断6的位置 然后+3* 10的n次方
+     * O(1) O(1)
      * @Date: 2021/4/26 13:44
      */
     public int maximum69Number (int num) {
@@ -1248,6 +1267,8 @@ public class MathematicsAlp {
      * solution:
      * A 1.拆分date按 - 2.判断是否是闰年 3.求实际天数
      * B date解析为日期 Calendar计算天数
+     * 直接使用api
+     *  O(1) O(1)
      * @Date: 2021/4/26 13:52
      */
     /*public int dayOfYear(String date) {
@@ -1316,7 +1337,11 @@ public class MathematicsAlp {
      * 本题与 476：https://leetcode-cn.com/problems/number-complement/ 相同
      * 通过次数13,523提交次数22,805
      *
-     * solution: 1. N ^ oxffff  找出N的最高二进制位  求出2的多少你次方 然后做异或操作
+     * solution:
+     * 1. N ^ oxffff  找出N的最高二进制位
+     * 求出2的多少你次方 然后做异或操作
+     * highestValue * 2 - 1 获取N的最高二进制位  1111111..1111
+     * O(1) O(1)
      * @Date: 2021/4/26 14:17
      */
     public int bitwiseComplement(int N) {
@@ -1354,7 +1379,11 @@ public class MathematicsAlp {
      * 1 <= S.length <= 10000
      * S 只包含字符 "I" 或 "D"。
      *
-     * solution: I 0...X 升序  D Y...X降序 首先确定  Y = s.length; O(N) O(1)
+     * solution:
+     * I 0...X 升序
+     * D Y...X降序 首先确定
+     * Y = s.length;
+     * O(N) O(1)
      * @Date: 2021/4/27 9:58
      */
     public int[] diStringMatch(String s) {
@@ -1891,13 +1920,9 @@ public class MathematicsAlp {
 
     @Test
     public void testMathematicsAlp() {
-        int[][] arr = new int[][]{{1,1},{2,2},{3,3}};
-        List<Double> list = new ArrayList<>();
-        list.add(1.0);
-        list.add(2.0);
-        list.add(3.0);
-        List<Double> testList = Arrays.asList(1.0,3.0);
-        list.clear();
-        System.out.println(instance.sumBase(10,10));
+        OptionalInt first = Arrays.stream(instance.distributeCandies(11, 3)).findFirst();
+        if (first.isPresent()) {
+            System.out.println(first.getAsInt());
+        }
     }
 }
