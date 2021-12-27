@@ -1444,6 +1444,7 @@ public class MathematicsAlp {
      * 2 <= n <= 10^4
      *
      * solution: A + B = N  A and B  both are not the zero decimal Integer
+     * O(N) O(1)
      * @Date: 2021/4/27 11:08
      */
     public int[] getNoZeroIntegers(int n) {
@@ -1499,7 +1500,9 @@ public class MathematicsAlp {
      * 0 <= A[i] <= 10000
      * 0 <= K <= 10000
      *
-     * solution: 1.找出原数组中最大最小值查  和 2 * K做对比  if great 2k   diffValue - 2 * k else 0
+     * solution:
+     * 1.找出原数组中最大最小值查  和 2 * K做对比  if great 2k   diffValue - 2 * k else 0
+     * O(N) O(1)
      * @Date: 2021/4/27 11:16
      */
     public int smallestRangeI(int[] A, int K) {
@@ -1538,11 +1541,20 @@ public class MathematicsAlp {
      * 1.一个一个数
      * 2.用数学公式
      *high/2  - low/2 + high is odd ? 1 : 0
+     * O(N) O(1)
      * @Date: 2021/4/27 11:26
      */
-    public int countOdds(int low, int high) {
+    /*public int countOdds(int low, int high) {
         if (low == high) return 0;
         return high / 2 - low / 2 + (high % 2 == 1 ? 1 : 0);
+    }*/
+
+    public int countOdds(int low, int high) {
+        return countZeroToX(high) - countZeroToX(low - 1);
+    }
+
+    public int countZeroToX(int x) {
+        return (x + 1) >> 1;
     }
 
     /**
@@ -1581,6 +1593,7 @@ public class MathematicsAlp {
      * solution:
      * 1.n 计算有几周  n/7
      * 2.按照规则算 看有没有数学公式可以用
+     * O(1) O(1)
      * @Date: 2021/4/28 10:03
      */
     public int totalMoney(int n) {
@@ -1630,7 +1643,8 @@ public class MathematicsAlp {
      * 1 <= nums.length <= 1000
      * -100 <= nums[i] <= 100
      *
-     * solution：计算 结果是正 负 还是 0  按结果返回 计算负数的个数来判断 如果有0则为 0 O(N) O(1)
+     * solution：计算 结果是正 负 还是 0  按结果返回 计算负数的个数来判断 如果有0则为 0
+     * O(N) O(1)
      * @Date: 2021/4/28 10:58
      */
     public int arraySign(int[] nums) {
@@ -1673,7 +1687,9 @@ public class MathematicsAlp {
      * points[i].length == 2
      * 0 <= points[i][j] <= 100
      *
-     * solution:  1.判断3个点 不在同一条直线上  他们斜率不相等  1 2  1 3 斜率不相等
+     * solution:
+     * 1.判断3个点 不在同一条直线上  他们斜率不相等  1 2  1 3 斜率不相等
+     * O(1) O(1)
      * @Date: 2021/4/28 11:05
      */
     public boolean isBoomerang(int[][] points) {
@@ -1700,6 +1716,7 @@ public class MathematicsAlp {
      * solution:
      * 1.阶乘计算公式  用string计算结尾有几个0
      * 2。特殊算法  偶数 和 5 10 相乘，找规律 看有几个0
+     * O(N) O(1)
      * @Date: 2021/4/28 11:37
      */
     public int trailingZeroes(int n) {
