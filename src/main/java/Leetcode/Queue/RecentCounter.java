@@ -2,6 +2,8 @@ package Leetcode.Queue;
 
 import java.util.ArrayDeque;
 import java.util.Arrays;
+import java.util.Deque;
+import java.util.LinkedList;
 
 /**
  * @Description TODO
@@ -31,7 +33,38 @@ class RecentCounter {
     }
 
     //按照k分组 求出最大值，依次放入新数组，最后返回 分组的时候使用queue
+
+    //官方解答 滑动窗口 单调队列 分形成窗口前和形成窗口后，每次加入元素，删除比加入元素小的所有元素
+    //O(N)  O(1)
     public int[] maxSlidingWindow(int[] nums, int k) {
+        if (nums.length == 0 || k == 0) return new int[0];
+        Deque<Integer> deque = new LinkedList<>();
+        int[] res = new int[nums.length - k + 1];
+        //未形成窗口
+        for (int i = 0; i < k; i++) {
+            while (!deque.isEmpty() && deque.peekLast() < nums[i]) {
+                deque.removeLast();
+            }
+            deque.add(nums[i]);
+        }
+        if (!deque.isEmpty())
+        res[0] = deque.peekFirst();
+        //形成窗口后
+        for (int i = k; i < nums.length; i++) {
+
+            if (!deque.isEmpty() && deque.peekFirst() == nums[i - k]) {
+                deque.removeFirst();
+            }
+            while (!deque.isEmpty() && deque.peekLast() < nums[i]) {
+                deque.removeLast();
+            }
+            deque.add(nums[i]);
+            if (!deque.isEmpty())
+            res[i - k + 1] = deque.peekFirst();
+        }
+        return res;
+    }
+    /*public int[] maxSlidingWindow(int[] nums, int k) {
         if(nums.length == 0){
             return new int[0];
         }
@@ -45,7 +78,7 @@ class RecentCounter {
             queue.clear();
         }
         return res;
-    }
+    }*/
 
     private int maxQueue(ArrayDeque<Integer> queue){
         int res = 0;

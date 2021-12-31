@@ -1758,6 +1758,7 @@ public class MathematicsAlp {
      * 找出n以内有多少个质数p  非质数就是 n-p   排列  App * A(n-p)(n-p)
      * 1.统计质数
      * 2.数学公式计算结果
+     * O(N*M) O(1)
      * @Date: 2021/4/29 10:22
      */
     public int numPrimeArrangements(int n) {
@@ -1876,7 +1877,8 @@ public class MathematicsAlp {
      * 1 <= grid.length = grid[0].length <= 50
      * 0 <= grid[i][j] <= 50
      *
-     * solution:
+     * solution:  官方解答 从顶部看所有不为0的值之和 从侧面看每一行的最大值 从前面看每一列的最大值
+     * O(N2） O(N)
      * @Date: 2021/4/30 11:05
      */
     public int projectionArea(int[][] grid) {
@@ -1888,8 +1890,8 @@ public class MathematicsAlp {
             int bestCol = 0;  // largest of grid[j][i]
             for (int j = 0; j < N; ++j) {
                 if (grid[i][j] > 0) ans++;  // top shadow
-                bestRow = Math.max(bestRow, grid[i][j]);
-                bestCol = Math.max(bestCol, grid[j][i]);
+                bestRow = Math.max(bestRow, grid[i][j]); //行最大值
+                bestCol = Math.max(bestCol, grid[j][i]);//列最大值
             }
             ans += bestRow + bestCol;
         }
@@ -1923,7 +1925,7 @@ public class MathematicsAlp {
      * 1 <= n <= 100
      * 2 <= k <= 10
      *
-     * solution: n转换为k进制  余数相加
+     * solution: n转换为k进制  余数相加  O(N) O(1)
      * @Date: 2021/4/30 13:35
      */
     public int sumBase(int n, int k) {
