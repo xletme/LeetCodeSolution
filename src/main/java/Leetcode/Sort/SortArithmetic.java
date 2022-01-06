@@ -16,7 +16,8 @@ public class SortArithmetic {
 
     /***
      *@描述
-     * Given an array A of non-negative integers, half of the integers in A are odd, and half of the integers are even.
+     * Given an array A of non-negative integers, half of the integers in A are odd, a
+     * nd half of the integers are even.
      *
      * Sort the array so that whenever A[i] is odd, i is odd; and whenever A[i] is even, i is even.
      *
@@ -30,7 +31,9 @@ public class SortArithmetic {
      * Output: [4,5,2,7]
      * Explanation: [4,7,2,5], [2,5,4,7], [2,7,4,5] would also have been accepted.
      *
-     * solution: 1.build two array ,one odd array ,one even array   add both two join the new array   O(2N)  O(2N)
+     * solution:
+     * 1.build two array ,one odd array ,one even array   add both two join the new array
+     * O(2N)  O(2N)
      * 2.traver the array ,swap the element one by one until be suit to the condition
      *@创建时间 2020/11/25
      */
@@ -57,6 +60,7 @@ public class SortArithmetic {
         }
         return res;
     }*/
+    // O(N2) O(N)
     public int[] sortArrayByParityII(int[] A) {
         int j = 1;
         for (int i = 0; i < A.length - 1; i = i + 2) {
@@ -74,7 +78,8 @@ public class SortArithmetic {
 
     /***
      *@描述
-     * Given an array A of positive lengths, return the largest perimeter of a triangle with non-zero area, formed from 3 of these lengths.
+     * Given an array A of positive lengths, return the largest perimeter of a triangle with non-zero area,
+     * formed from 3 of these lengths.
      *
      * If it is impossible to form any triangle of non-zero area, return 0.
      *
@@ -87,7 +92,9 @@ public class SortArithmetic {
      *
      * solution:
      * 1.method of exhaustion(穷举法) maxP  condition, a + b > c   make the p biggest
-     * 2. 题友的思路   先排序   a > b > c > d   abd     b + d > a  because  c > d  so  b + c > a  so abc is the max
+     * 2. 题友的思路   先排序   a > b > c > d   abd     b + d > a
+     * because  c > d  so  b + c > a  so abc is the max
+     * O(logN) O(N)
      *
      *@创建时间 2020/11/25
      */
@@ -106,9 +113,11 @@ public class SortArithmetic {
 
     /***
      *@描述
-     * Given two arrays arr1 and arr2, the elements of arr2 are distinct, and all elements in arr2 are also in arr1.
+     * Given two arrays arr1 and arr2, the elements of arr2 are distinct,
+     * and all elements in arr2 are also in arr1.
      *
-     * Sort the elements of arr1 such that the relative ordering of items in arr1 are the same as in arr2.  Elements that don't appear in arr2 should be placed at the end of arr1 in ascending order.
+     * Sort the elements of arr1 such that the relative ordering of items in arr1 are the same as in arr2. 
+     * Elements that don't appear in arr2 should be placed at the end of arr1 in ascending order.
      *
      *  
      *
@@ -117,9 +126,11 @@ public class SortArithmetic {
      * Input: arr1 = [2,3,1,3,2,4,6,7,9,2,19], arr2 = [2,1,4,3,9,6]
      * Output: [2,2,2,1,4,3,3,9,6,7,19]
      *
-     * solution : 1.element of arr2 put in a hashMap   check arr1 element ,if exist in hashMap  key(array2)--value(counts)
+     * solution :
+     * 1.element of arr2 put in a hashMap
+     * check arr1 element ,if exist in hashMap  key(array2)--value(counts)
      * else put in another list ,  list.sort  + hashMap.get
-     *
+     * O(logN) O(N)
      *@创建时间 2020/11/26
      */
     public int[] relativeSortArray(int[] arr1, int[] arr2) {
@@ -130,6 +141,7 @@ public class SortArithmetic {
             map.put(i,0);
         }
 
+        //分段处理 分两段 , elements in arr2 ; elements not in arr2
         for (int i : arr1) {
             if (map.containsKey(i)) {
                 map.put(i,map.get(i)+1);
@@ -138,9 +150,11 @@ public class SortArithmetic {
             }
         }
 
+        // elements not in arr2 sort
         Collections.sort(list);
         int index = 0;
 
+        //first stage
         for (int value : arr2) {
             Integer tmp = map.get(value);
             for (int j = 0; j < tmp; j++) {
@@ -148,6 +162,7 @@ public class SortArithmetic {
             }
         }
 
+        //second stage
         for (Integer i : list) {
             arr1[index++] = i;
         }
@@ -157,7 +172,10 @@ public class SortArithmetic {
 
     /***
      *@描述
-     * Given an integer array arr. You have to sort the integers in the array in ascending order by the number of 1's in their binary representation and in case of two or more integers have the same number of 1's you have to sort them in ascending order.
+     * Given an integer array arr. You have to sort the integers in the array in ascending
+     * order by the number of 1's in their binary representation
+     * and in case of two or more integers have the same number of 1's
+     * you have to sort them in ascending order.
      *
      * Return the sorted array.
      *

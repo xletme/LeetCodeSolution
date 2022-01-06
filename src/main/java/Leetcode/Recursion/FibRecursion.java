@@ -3,7 +3,6 @@ package Leetcode.Recursion;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -182,7 +181,8 @@ public class FibRecursion {
     //
     /**
      * @Description:
-     *  你正在使用一堆木板建造跳水板。有两种类型的木板，其中长度较短的木板长度为shorter，长度较长的木板长度为longer。你必须正好使用k块木板。编写一个方法，生成跳水板所有可能的长度。
+     *  你正在使用一堆木板建造跳水板。有两种类型的木板，其中长度较短的木板长度为shorter，
+     *  长度较长的木板长度为longer。你必须正好使用k块木板。编写一个方法，生成跳水板所有可能的长度。
      *
      * 返回的长度需要从小到大排列。
      *
@@ -218,7 +218,8 @@ public class FibRecursion {
 
     /**
      * @Description:
-     *  在经典汉诺塔问题中，有 3 根柱子及 N 个不同大小的穿孔圆盘，盘子可以滑入任意一根柱子。一开始，所有盘子自上而下按升序依次套在第一根柱子上(即每一个盘子只能放在更大的盘子上面)。移动圆盘时受到以下限制:
+     *  在经典汉诺塔问题中，有 3 根柱子及 N 个不同大小的穿孔圆盘，盘子可以滑入任意一根柱子。
+     *  一开始，所有盘子自上而下按升序依次套在第一根柱子上(即每一个盘子只能放在更大的盘子上面)。移动圆盘时受到以下限制:
      * (1) 每次只能移动一个盘子;
      * (2) 盘子只能从柱子顶端滑出移到下一根柱子;
      * (3) 盘子只能叠在比它大的盘子上。
@@ -239,8 +240,13 @@ public class FibRecursion {
      *
      * A中盘子的数目不大于14个
      *
-     * solution:  官方解答，采用数学归纳法  有点绕，只能明白大概思路 无法自我解答
-     * O(N) O(N)
+     * solution:
+     * 官方解答，采用数学归纳法  有点绕，只能明白大概思路 无法自我解答
+     * 递归思路 只有一个盘子在A上，简单 直接a.remove c.add
+     * 有两个盘子在A上,小盘子放B 大盘子放C 然后在把小盘子放大盘子上  move(1,A,B) B.add move(2,A,C) C.add  move(1,B,C)
+     * 依次类推  直到N-1个
+     * 复杂度 2的n次方 - 1  空间复杂度 O(N)
+     *
      * @Date: 2021/1/4 15:00
      */
     public void hanota(List<Integer> A, List<Integer> B, List<Integer> C) {
