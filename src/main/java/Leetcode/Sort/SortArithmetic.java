@@ -3,7 +3,10 @@ package Leetcode.Sort;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * @Description
@@ -213,7 +216,8 @@ public class SortArithmetic {
         return res;
     }*/
 
-    //精选  思路 ：先找出位数最大的  乘以 100000  + arr[i]  ，再排序   后面在还原数组  这真的是鬼才  O(n logN) O(N)
+    //精选  思路 ：先找出位数最大的  乘以 100000  + arr[i]  ，再排序   后面在还原数组  这真的是鬼才
+    // O(n logN) O(N)
     public int[] sortByBits(int[] arr) {
         int[] res = new int[arr.length];
         int index = 0;
@@ -242,13 +246,16 @@ public class SortArithmetic {
      * Given a string s. You should re-order the string using the following algorithm:
      *
      * Pick the smallest character from s and append it to the result.
-     * Pick the smallest character from s which is greater than the last appended character to the result and append it.
+     * Pick the smallest character from s which is greater than the last appended character to the result
+     * and append it.
      * Repeat step 2 until you cannot pick more characters.
      * Pick the largest character from s and append it to the result.
-     * Pick the largest character from s which is smaller than the last appended character to the result and append it.
+     * Pick the largest character from s which is smaller than the last appended character to the result
+     * and append it.
      * Repeat step 5 until you cannot pick more characters.
      * Repeat the steps from 1 to 6 until you pick all characters from s.
-     * In each step, If the smallest or the largest character appears more than once you can choose any occurrence and append it to the result.
+     * In each step, If the smallest or the largest character appears more
+     * than once you can choose any occurrence and append it to the result.
      *
      * Return the result string after sorting s with this algorithm.
      *
@@ -265,21 +272,25 @@ public class SortArithmetic {
      * After steps 4, 5 and 6 of the second iteration, result = "abccbaabccba"
      * solution: bucket sort   use bucket to record the count of each character ,then from low to high,from high to low  traver the array
      * until the res.length not below the length of give's s   官方解答
+     * O(N) O(N)
      *@创建时间 2020/11/30
      */
     public String sortString(String s) {
         StringBuffer resStr = new StringBuffer();
         int[] num = new int[26];
+        //bucket排序计数
         for (char c : s.toCharArray()) {
             num[c - 'a']++;
         }
         while (resStr.length() < s.length()) {
+            //1.asc取值
             for (int i = 0; i < 26; i++) {
                 if (num[i] > 0) {
                     resStr.append((char)(i + 'a'));//add element to the resStr then reduce 1
                     num[i]--;
                 }
             }
+            //2.desc取值
             for (int i = 25; i >= 0; i--) {
                 if (num[i] > 0) {
                     resStr.append((char)(i + 'a'));//add element to the resStr then reduce 1
@@ -296,7 +307,9 @@ public class SortArithmetic {
      *
      * Return the average salary of employees excluding the minimum and maximum salary.
      *
-     * solution:  1.find the max and min value,remove  then req the average
+     * solution:
+     * 1.find the max and min value,remove  then req the average
+     * O(N) O(1)
      *@创建时间 2020/11/30
      */
     public double average(int[] salary) {
@@ -317,12 +330,17 @@ public class SortArithmetic {
 
     /***
      *@描述
-     * Given an array of numbers arr. A sequence of numbers is called an arithmetic progression if the difference between any two consecutive elements is the same.
+     * Given an array of numbers arr. 
+     * A sequence of numbers is called an arithmetic progression 
+     * if the difference between any two consecutive elements is the same.
      *
-     * Return true if the array can be rearranged to form an arithmetic progression, otherwise, return false.
+     * Return true if the array can be rearranged to form an arithmetic progression,
+     * otherwise, return false.
      *
      *  
-     * solution : sort the array,then check the difference of two consecutive elements in the same  O(N logN) + O(N)  O(1)
+     * solution :
+     * sort the array,then check the difference of two consecutive elements in the same
+     * O(N logN) + O(N)  O(1)
      *@创建时间 2020/11/30
      */
     public boolean canMakeArithmeticProgression(int[] arr) {
@@ -342,7 +360,8 @@ public class SortArithmetic {
      *@描述
      * Given a string s and an integer array indices of the same length.
      *
-     * The string s will be shuffled such that the character at the ith position moves to indices[i] in the shuffled string.
+     * The string s will be shuffled such that
+     * the character at the ith position moves to indices[i] in the shuffled string.
      *
      * Return the shuffled string.
      *
@@ -355,8 +374,11 @@ public class SortArithmetic {
      * Output: "leetcode"
      * Explanation: As shown, "codeleet" becomes "leetcode" after shuffling.
      *
-     * solution : sort the array - indices ,then traver the array and add the elements to the stringBuffer ,finally convert to string to return
-     * O(N log(N) + N)  O(N)
+     * solution :
+     * sort the array - indices ,
+     * then traver the array and add the elements to the stringBuffer ,
+     * finally convert to string to return
+     * O（N) O(N)
      *@创建时间 2020/11/30
      */
     public String restoreString(String s, int[] indices) {
@@ -371,7 +393,9 @@ public class SortArithmetic {
 
     /***
      *@描述
-     * Given an array of integers nums, sort the array in increasing order based on the frequency of the values. If multiple values have the same frequency, sort them in decreasing order.
+     * Given an array of integers nums, sort the array in increasing order
+     * based on the frequency of the values.
+     * If multiple values have the same frequency, sort them in decreasing order.
      *
      * Return the sorted array.
      *
@@ -384,7 +408,9 @@ public class SortArithmetic {
      * Explanation: '3' has a frequency of 1, '1' has a frequency of 2, and '2' has a frequency of 3.
      * Example 2:
      *
-     * solution: bucket sort  then reverse to input to implements the req of decreasing order
+     * solution:
+     * bucket sort  then reverse to input to implements the req of decreasing order
+     *
      *@创建时间 2020/11/30
      */
    /* public int[] frequencySort(int[] nums) {
@@ -410,7 +436,9 @@ public class SortArithmetic {
         }
         return Arrays.copyOfRange(nums,0,nums.length);//arrayCopy get effective array
     }*/
-   //官方答案
+   //官方答案 放大还原和之前有个题一样，222行那个位置
+    // 思路：前置条件 出现次数count 数字右边界 数字放大count倍+该数字 最后还原 返回答案
+    // O(N) O(N)
     public int[] frequencySort(int[] nums) {
         int[] cnts = new int[201];
         for (int n : nums){//第一步 1
@@ -430,7 +458,9 @@ public class SortArithmetic {
 
     /***
      *@描述
-     * 给你一个整数数组 arr ，数组中的每个整数 互不相同 。另有一个由整数数组构成的数组 pieces，其中的整数也 互不相同 。请你以 任意顺序 连接 pieces 中的数组以形成 arr 。但是，不允许 对每个数组 pieces[i] 中的整数重新排序。
+     * 给你一个整数数组 arr ，数组中的每个整数 互不相同 。
+     * 另有一个由整数数组构成的数组 pieces，其中的整数也 互不相同 。
+     * 请你以 任意顺序 连接 pieces 中的数组以形成 arr 。但是，不允许 对每个数组 pieces[i] 中的整数重新排序。
      *
      * 如果可以连接 pieces 中的数组形成 arr ，返回 true ；否则，返回 false 。
      *
@@ -440,7 +470,11 @@ public class SortArithmetic {
      *
      * 输入：arr = [85], pieces = [[85]]
      * 输出：true
-     * solution:  1.构造HashMap  key pieces[i][0]  value piece  好强的技巧性在里面  2.遍历检查值是否存在
+     * solution:
+     * 1.构造HashMap  key pieces[i][0]  value piece  好强的技巧性在里面
+     * 2.遍历检查值是否存在
+     * 直接两个都转化成一维数组，然后排序 比较是否一样 一样返回true 否则返回false撒
+     * O(logN) O(N)
      *@创建时间 2020/11/30
      */
     public boolean canFormArray(int[] arr, int[][] pieces) {
@@ -471,10 +505,9 @@ public class SortArithmetic {
         Assert.assertEquals(1000,instance.sortByBits(arr)[3]);
     }
 
-    public static void main(String[] args) {
-       int[] arr = new int[]{1,2,3,4,5};
-       int[][] pieces = new int[][]{{1,2,3,4,5}};
-        System.out.println(instance.canFormArray(arr,pieces));
+    public static void main(String[] args) throws ParseException, IOException {
+        for (int i = 0; i < 5; i++)
+            System.out.println(ThreadLocalRandom.current().nextInt(6,9));
     }
 
 }
