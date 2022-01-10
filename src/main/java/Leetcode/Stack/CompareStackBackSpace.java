@@ -66,6 +66,11 @@ public class CompareStackBackSpace {
         return sum;
     }
 
+    /**
+     * @Description:
+     *
+     * @Date: 2022/1/7 16:39
+     */
     //将[1,2,3,...,target[-1]]顺序入栈，谁不在目标数组，谁就出栈。
     //target转list  存在就push 否则 push + pop
     public List<String> buildArray(int[] target, int n) {

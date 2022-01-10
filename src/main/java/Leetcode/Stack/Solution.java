@@ -35,7 +35,7 @@ public class Solution {
      * Output: false
      *  思路 ：
      *  记录左括号 的数量      右括号开始  计数为0 返回false  默认返回true
-     *  队列来实现
+     *  栈来实现
      *  O(N) O(N)
      *@创建时间 2020/11/17
      */
@@ -65,11 +65,13 @@ public class Solution {
 
     /***
      *@描述
-     * Given a string S of lowercase letters, a duplicate removal consists of choosing two adjacent and equal letters, and removing them.
+     * Given a string S of lowercase letters,
+     * a duplicate removal consists of choosing two adjacent and equal letters, and removing them.
      *
      * We repeatedly make duplicate removals on S until we no longer can.
      *
-     * Return the final string after all such duplicate removals have been made.  It is guaranteed the answer is unique.
+     * Return the final string after all such duplicate removals have been made. 
+     * It is guaranteed the answer is unique.
      *
      *  
      *
@@ -78,19 +80,24 @@ public class Solution {
      * Input: "abbaca"
      * Output: "ca"
      * Explanation:
-     * For example, in "abbaca" we could remove "bb" since the letters are adjacent and equal, and this is the only possible move.  The result of this move is that the string is "aaca", of which only "aa" is possible, so the final string is "ca".
+     * For example, in "abbaca" we could remove "bb" since the letters are adjacent and equal,
+     * and this is the only possible move. 
+     * The result of this move is that the string is "aaca", of which only "aa" is possible,
+     * so the final string is "ca".
      * solution :
      *   1.first  S to stack  define two stack
      *   2.loop  if(BB)  pop() continue;
      *   3.define  flag   if loop end  ,no BB flag true
      *   4.flag = true break;
      *
-     *   another way  : while join the stack,judge the cur and stack top element  O(N) O(N)
+     *   another way  : while join the stack,judge the cur and stack top element
+     *   O(N) O(N)
      *@创建时间 2020/11/18
      */
     public String removeDuplicates(String S) {
         Stack<Character> stack = new Stack<>();
         for (char c : S.toCharArray()) {
+            //判断栈顶元素关键,能做到把 abbaca 消除到 ca
             if (stack.isEmpty() || c != stack.peek()) {
                 stack.push(c);
             } else {
@@ -99,7 +106,7 @@ public class Solution {
         }
 
 
-        StringBuffer result = new StringBuffer();
+        StringBuilder result = new StringBuilder();
         while (!stack.isEmpty()) {
             result.append(stack.pop());
         }
@@ -108,9 +115,14 @@ public class Solution {
 
     /***
      *@描述
-     * You are given two arrays (without duplicates) nums1 and nums2 where nums1’s elements are subset of nums2. Find all the next greater numbers for nums1's elements in the corresponding places of nums2.
+     * You are given two arrays (without duplicates) nums1 and nums2
+     * where nums1’s elements are subset of nums2.
+     * Find all the next greater numbers for nums1's elements in the corresponding places of nums2.
      *
-     * The Next Greater Number of a number x in nums1 is the first greater number to its right in nums2. If it does not exist, output -1 for this number.
+     * The Next Greater Number of a number x in nums1 is
+     * the first greater number to its right in nums2.
+     * If it does not exist,
+     * output -1 for this number.
      *
      * Example 1:
      * Input: nums1 = [4,1,2], nums2 = [1,3,4,2].
