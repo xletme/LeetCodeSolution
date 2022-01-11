@@ -3,8 +3,6 @@ package Leetcode.StringAlp;
 import org.junit.Test;
 
 import java.util.*;
-import java.util.function.Consumer;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
@@ -43,7 +41,8 @@ public class StringAlp {
      *
      * solution:
      * 1.依次遍历strs数组，寻找
-     * 2.依次求并集 两种请求退出遍历 a.并集为“” b.数组遍历完成  O(N)
+     * 2.依次求并集 两种请求退出遍历 a.并集为“” b.数组遍历完成
+     * O(N * M) O(1)
      * @Date: 2021/5/11 11:05
      */
     public String longestCommonPrefix(String[] strs) {
@@ -95,7 +94,9 @@ public class StringAlp {
      * 描述前一项，这个数是 11 即 “ 二 个 1 ” ，记作 "21"
      * 描述前一项，这个数是 21 即 “ 一 个 2 + 一 个 1 ” ，记作 "1211"
      * 描述前一项，这个数是 1211 即 “ 一 个 1 + 一 个 2 + 二 个 1 ” ，记作 "111221"
-     * 要 描述 一个数字字符串，首先要将字符串分割为 最小 数量的组，每个组都由连续的最多 相同字符 组成。然后对于每个组，先描述字符的数量，然后描述字符，形成一个描述组。要将描述转换为数字字符串，先将每组中的字符数量用数字替换，再将所有描述组连接起来。
+     * 要 描述 一个数字字符串，首先要将字符串分割为 最小 数量的组，每个组都由连续的最多 相同字符 组成。
+     * 然后对于每个组，先描述字符的数量，然后描述字符，形成一个描述组。
+     * 要将描述转换为数字字符串，先将每组中的字符数量用数字替换，再将所有描述组连接起来。
      *
      * 例如，数字字符串 "3322251" 的描述如下图：
      *
@@ -123,10 +124,41 @@ public class StringAlp {
      * 1 <= n <= 30
      *
      * solution:
+     * 动态规划 每次把前面的数存下来  步长==n为循环终止条件
+     * O(N*M) O(1)
      * @Date: 2021/5/11 11:25
      */
     public String countAndSay(int n) {
-        return null;
+        String res = "1";
+        int index = 1;
+        while (index < n) {
+            res = convertNextStr(res);
+            index++;
+        }
+        return res;
+    }
+
+    /**
+     * @Description: 数数 countAndSay 数一下 有几个几  ，例如  121 就是1个1 1个2 1个1 返回 111211
+     * @Date: 2022/1/11 10:32
+     */
+    private String convertNextStr(String countAndSay) {
+        StringBuilder res = new StringBuilder();
+        for (int i = 0; i < countAndSay.length(); i++) {
+            int count = 1;
+            //当前字符
+            char c = countAndSay.charAt(i);
+            for (int j = i + 1; j < countAndSay.length(); j++) {
+                if (countAndSay.charAt(j) != countAndSay.charAt(i)) {
+                    break;
+                }
+                i++;
+                //当前字符数量
+                count++;
+            }
+            res.append(count).append(c);
+        }
+        return res.toString();
     }
 
     /**
@@ -3768,14 +3800,7 @@ public class StringAlp {
 
     @Test
     public void testStringAlp() {
-       Consumer c = System.out::println;
-
-       Function<Integer, Integer> f1 = o -> o + o;
-       Function<Integer, Integer> f2 = o -> o * o;
-       c.accept(f1.andThen(f2).apply(3));
-
-       Student student = new Student(12, "小红");
-        System.out.println(1f == 0.99999999f);
+        System.out.println(instance.countAndSay(4));
     }
 
     static class Student{
