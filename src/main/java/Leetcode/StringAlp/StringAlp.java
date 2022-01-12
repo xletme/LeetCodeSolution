@@ -1,5 +1,6 @@
 package Leetcode.StringAlp;
 
+import org.apache.commons.lang3.ArrayUtils;
 import org.junit.Test;
 
 import java.util.*;
@@ -183,7 +184,11 @@ public class StringAlp {
      * 1 <= s.length <= 104
      * s 仅有英文字母和空格 ' ' 组成
      *
-     * solution: 1.split Array  2. judge array length() 3.input result
+     * solution:
+     * 1.split Array
+     * 2. judge array length()
+     * 3.input result
+     * O(1) O(N)
      * @Date: 2021/5/12 11:23
      */
     public int lengthOfLastWord(String s) {
@@ -212,7 +217,9 @@ public class StringAlp {
      *
      * 1 <= k < s.length <= 10000
      *
-     * solution: 截取字符串 在进行拼接
+     * solution:
+     * 截取字符串 在进行拼接
+     * O(N)时间复杂度为subString的时间复杂度 O(1)
      * @Date: 2021/5/12 11:35
      */
     public String reverseLeftWords(String s, int n) {
@@ -240,7 +247,10 @@ public class StringAlp {
      *
      * 字符串长度在[0, 50000]范围内。
      *
-     * solution: 1.执行压缩操作 2.如果变短 返回压缩后字符串 否则返回原字符串
+     * solution:
+     * 1.执行压缩操作
+     * 2.如果变短 返回压缩后字符串 否则返回原字符串
+     * O(N) O(1)
      * @Date: 2021/5/12 11:40
      */
     public String compressString(String S) {
@@ -285,7 +295,8 @@ public class StringAlp {
      * solution:
      * 1.split to Array
      * 2.each element do the reverse opt
-     * 3.make up to the String  O(N) O(N)
+     * 3.make up to the String
+     * O(N) O(N)
      * @Date: 2021/5/13 10:35
      */
     /*public String reverseWords(String s) {
@@ -318,6 +329,7 @@ public class StringAlp {
      * 1.相同位相加  循环 Math.min(num1.length,num2.length)次 O(N)  O(1)
      * 2.找一个进位符
      * 3.最后reverse
+     * O(N) O(1)
      * @Date: 2021/5/13 10:45
      */
     public String addStrings(String num1, String num2) {
@@ -386,6 +398,10 @@ public class StringAlp {
      * 如果两个单词间有多余的空格，将反转后单词间的空格减少到只含一个。
      *
      * solution:
+     * 1.拆分数组
+     * 2.反序用builder遍历存储
+     * 3.builder.toString
+     * O(N) O(N)
      * @Date: 2021/5/13 11:11
      */
     public String reverseWords(String s) {
@@ -430,6 +446,9 @@ public class StringAlp {
      * 1.暴力模式 删除每一次，检测是否回文  O(N2) O(N)
      * 2.校验回文  toCharArray 首尾对着校验，
      * 有一个不合适 截取对应的字符串 用string api判断是否是回文
+     * 3.首尾校验s and s.reverse ,有一个不同 则remove对应的字符串 然后正规校验是否回文即可
+     * 或者 不remove，只需记下该下标 等到对应的reverse字符串到该位置时，也跳过 。继续在对应不上 就返回false
+     * O(N) O(N)
      * @Date: 2021/5/14 14:32
      */
     public boolean validPalindrome(String s) {
@@ -487,6 +506,7 @@ public class StringAlp {
      * solution:
      * 1.官方解答  找出 str1 str2 长度的最大公约数 ，然后截取字符串看是否满足题意
      * 2.check 是否是重复的字符串样式  前面1 2都得经过推理才能得到
+     * O(N2) O(1)
      * @Date: 2021/5/14 14:56
      */
     public String gcdOfStrings(String str1, String str2) {
@@ -507,7 +527,7 @@ public class StringAlp {
      * @Description:
      * 只为能靠近你 哪怕一厘米 熬上你 是我落下的恶心爱情不惧岁月的更替 往后的朝夕 不论粉鱼是你就足以
      * you can be just the one  youwant be
-     * doctor actor law
+     * doctor actor lawyer or singer
      * @Date: 2021/5/14 16:45
      */
     public boolean calculateRepeat(String s, String str) {
@@ -544,6 +564,7 @@ public class StringAlp {
      * 我们返回 false，因为它在移动结束时没有返回原点。
      *
      * solution:  上 == 下  左==右 就是原点 其他不是
+     * O(N) O(1)
      * @Date: 2021/5/17 10:46
      */
     public boolean judgeCircle(String moves) {
@@ -3800,7 +3821,14 @@ public class StringAlp {
 
     @Test
     public void testStringAlp() {
-        System.out.println(instance.countAndSay(4));
+        String str = "start";
+        String[][] arr = new String[][] {
+          {"RED", "#FF0000"},
+         {"GREEN", "#00FF00"},
+          {"BLUE", "#0000FF"}};
+        Map<Object, Object> objectObjectMap = ArrayUtils.toMap(arr);
+        System.out.println("success");
+
     }
 
     static class Student{
