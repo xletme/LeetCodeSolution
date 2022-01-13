@@ -1,6 +1,5 @@
 package Leetcode.StringAlp;
 
-import org.apache.commons.lang3.ArrayUtils;
 import org.junit.Test;
 
 import java.util.*;
@@ -618,6 +617,7 @@ public class StringAlp {
      * @Date: 2021/5/17 11:07
      */
     public boolean repeatedSubstringPattern(String s) {
+        //去除首尾的字符串
         String str = s + s;
         return str.substring(1,str.length() - 1).contains(s);
     }
@@ -761,12 +761,7 @@ public class StringAlp {
      * @Date: 2021/5/18 11:12
      */
     public int countSegments(String s) {
-        String[] s1 = s.split(" ");
-        int count = 0;
-        for (String str : s1) {
-            if (!str.equals("")) count++;
-        }
-        return count;
+       return (int)Arrays.stream(s.split(" ")).filter(x -> !x.equals(" ")).count();
     }
 
     /**
@@ -799,7 +794,8 @@ public class StringAlp {
      *
      * solution:  没思路,官方解答
      * 1.按0和1连续段分组
-     * 2.找相邻两个数的最小值（最小值是能组成满足题意的所有数目） 一直累加  O(N)
+     * 2.找相邻两个数的最小值（最小值是能组成满足题意的所有数目） 一直累加
+     * O(N) O(N)
      * @Date: 2021/5/18 11:18
      */
     public int countBinarySubstrings(String s) {
@@ -843,21 +839,21 @@ public class StringAlp {
      * solution:
      * 1.根据题意翻转字符串，添加到list
      * 2.最后拼接list里面的字符串 toString (优化 一边翻转一边StringBuilder添加字符串）
-     * O(N) O(N)
+     * O(N2) O(N)
      * @Date: 2021/5/19 10:24
      */
     public String reverseStr(String s, int k) {
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < s.length(); i+= 2 * k) {
             if (i + k > s.length()) {
-                //少于K个
+                //剩余个数少于K
                 builder.append(new StringBuilder(s.substring(i)).reverse());
             } else if (i + 2 * k > s.length()) {
-                //2K 与 K之间
+                //剩余个数2K 与 K之间
                 builder.append(new StringBuilder(s.substring(i,i + k)).reverse());
                 builder.append(s.substring(i + k));
             } else {
-              // 大于2K
+              // 剩余个数大于2K
                 builder.append(new StringBuilder(s.substring(i,i + k)).reverse());
                 builder.append(s, i + k, i + 2 * k);
             }
@@ -893,7 +889,8 @@ public class StringAlp {
      *
      * solution:
      * 1.把字母全部弄出来排序翻转
-     * 2.然后遍历原字符串 进行替换   O(N) O(N)
+     * 2.然后遍历原字符串 进行替换
+     * O(N) O(N)
      * @Date: 2021/5/19 11:06
      */
     public String reverseOnlyLetters(String s) {
@@ -944,8 +941,7 @@ public class StringAlp {
      * 提示：
      *
      * 字符串长度在 [0, 500000] 范围内。
-     *
-     * solution: 1.S.replace(" ","%20");
+     *O(N) O(1)
      * @Date: 2021/5/19 13:41
      */
     public String replaceSpaces(String S, int length) {
@@ -3821,13 +3817,7 @@ public class StringAlp {
 
     @Test
     public void testStringAlp() {
-        String str = "start";
-        String[][] arr = new String[][] {
-          {"RED", "#FF0000"},
-         {"GREEN", "#00FF00"},
-          {"BLUE", "#0000FF"}};
-        Map<Object, Object> objectObjectMap = ArrayUtils.toMap(arr);
-        System.out.println("success");
+        System.out.println(instance.reverseStr("abcdefg", 2));
 
     }
 
