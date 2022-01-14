@@ -955,7 +955,8 @@ public class StringAlp {
      *
      * 为了方便，所有26个英文字母对应摩尔斯密码表如下：
      *
-     * [".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."]
+     * [".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--",
+     * "-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."]
      * 给定一个单词列表，每个单词可以写成每个字母对应摩尔斯密码的组合。
      * 例如，"cab" 可以写成 "-.-..--..."，(即 "-.-." + ".-" + "-..." 字符串的结合)。
      * 我们将这样一个连接过程称作单词翻译。
@@ -982,9 +983,10 @@ public class StringAlp {
      * 每个单词 words[i]只包含小写字母。
      *
      * solution:
-     * 1.暴力法  找齐所有翻译后的单词 ，依次比较看有几个不同 可用contains 实现 2.也可以用set来实现
+     * 1.暴力法  找齐所有翻译后的单词 ，依次比较看有几个不同 可用contains 实现
+     * 2.也可以用set来实现
      *
-     * O(N*M) M[1,12] O(N)
+     * O(N*M) N[1,100] M[1,12] O(N)
      * @Date: 2021/5/20 9:47
      */
     public int uniqueMorseRepresentations(String[] words) {
@@ -1026,7 +1028,8 @@ public class StringAlp {
      *
      * solution:
      * 1.统计A的个数 大于1 直接false
-     * 2.统计连续L的个数 大于2 直接false O(N) O(1)
+     * 2.统计连续L的个数 大于2 直接false
+     * O(N) O(1)
      * @Date: 2021/5/20 10:25
      */
     public boolean checkRecord(String s) {
@@ -1096,8 +1099,9 @@ public class StringAlp {
      * 所有字符串均由大小写英文字母和空格字符组成。
      *
      * solution:
-     * 1.起点站一个集合 终点站一个集合 ，终点站集合 - 起点站集合 剩下的那个就是 终点 稳不稳
-     * 2.具体实现  2个list  O(N) O(N)
+     * 1.起点站一个集合 终点站一个集合 ，终点站集合 - 起点站集合 剩下的那个就是 终点 稳不稳 稳 ！！！
+     * 2.具体实现  2个list
+     * O(N) O(N)
      * @Date: 2021/5/20 10:54
      */
     public String destCity(List<List<String>> paths) {
@@ -1134,7 +1138,9 @@ public class StringAlp {
      *
      * 你能只调用一次检查子串的方法吗？
      *
-     * solution: 和之前的题类似  s2 + s2 .subString(0,s2.length) .contains()来实现
+     * solution:
+     * 和之前的题类似  s2 + s2 .subString(0,s2.length) .contains()来实现
+     * O(N) O(1)
      * @Date: 2021/5/21 11:02
      */
     public boolean isFlipedString(String s1, String s2) {
@@ -1191,6 +1197,7 @@ public class StringAlp {
      * 1.a b 长度不相等，直接pass
      * 2.遍历 a b 统计ab不同的地方diffCount ,单体重复的最大值 repeatCount
      * （diffCount = 2 && 2处总体相同）  || （diffCount = 0 && repeatCount >= 2）
+     * repeat >= 2就比如abbba 中的 a和b，可以随意交换a 最终结果不变
      * O(N) O(N)  后面时间复杂度可以优化  在于交换的那一步
      * @Date: 2021/5/21 11:16
      */
@@ -1252,9 +1259,10 @@ public class StringAlp {
      * solution:
      * 1.暴力解法 遍历words数组,每有一个满足条件的 count++ 最后返回count
      * 2.words数组先去重,接着使用contains来判断是否满足 set
+     * O(N*M) O(N)
      * @Date: 2021/5/24 11:02
      */
-    public int countConsistentStrings(String allowed, String[] words) {
+    /*public int countConsistentStrings(String allowed, String[] words) {
         int count = 0;
         Set<Character> set = new HashSet<>();
         for (int i = 0; i < allowed.length(); i++) {
@@ -1271,16 +1279,16 @@ public class StringAlp {
             if (flag) count++;
         }
         return count;
-    }
+    }*/
 
     //lambda表达式解法
-    /*public int countConsistentStrings(String allowed, String[] words) {
+    public int countConsistentStrings(String allowed, String[] words) {
         return (int) Arrays.stream(words)
                 .filter(
                         word -> Arrays.stream(word.split(""))
                                 .allMatch(allowed::contains))
                 .count();
-    }*/
+    }
 
     /*public String cancelRepeatStr(String str) {
         StringBuilder builder = new StringBuilder();
@@ -1337,7 +1345,8 @@ public class StringAlp {
      * solution:
      * 1.取i和i后两位字符（前提存在）判断 ，看是否为#
      * 2.不为# 直接转换 a-i i++
-     * 3.为# 连续转三位 j-z i += 3 结果用builder.toString 接收 O(N) O(1)
+     * 3.为# 连续转三位 j-z i += 3 结果用builder.toString 接收
+     * O(N) O(1)
      * //下面是根据ascll码表来做合理转换
      * @Date: 2021/5/24 13:55
      */
@@ -1406,7 +1415,8 @@ public class StringAlp {
      * s 由数字 0-9 和字符 '+'、'-'、'*'、'/'、'('、')' 组成
      * 题目数据保证括号表达式 s 是 有效的括号表达式
      *
-     * solution: 左括号 +1 右括号-1 找最大值 遍历整个s字符串 O(N) O(1)
+     * solution: 左括号 +1 右括号-1 找最大值 遍历整个s字符串
+     * O(N) O(1)
      * @Date: 2021/5/25 10:02
      */
     public int maxDepth(String s) {
@@ -1459,7 +1469,8 @@ public class StringAlp {
      * command 由 "G"、"()" 和/或 "(al)" 按某种顺序组成
      *
      * solution:
-     * 遍历command字符串，进行字符串映射转换  StringBuilder startWith
+     * 遍历command字符串，进行字符串映射转换
+     * StringBuilder startWith
      * O(N) O(1)
      * @Date: 2021/5/25 10:24
      */
@@ -1517,6 +1528,7 @@ public class StringAlp {
      * solution:
      * 1.全部拼接成str equals比较
      * 2.数组遍历依次比较
+     * O(N) O(1)
      * @Date: 2021/5/25 10:38
      */
     public boolean arrayStringsAreEqual(String[] word1, String[] word2) {
@@ -1574,7 +1586,8 @@ public class StringAlp {
      *
      * solution:
      * 只需要保持 ？ 与前后（前后都存在的情况）不同就OK了 遍历字符串s，逐个进行替换
-     * O(N *26) O(N)
+     * 连续重复的这个很关键啊
+     * O(N * M) M[1, 26] O(N)
      * @Date: 2021/5/26 10:09
      */
     public String modifyString(String s) {
@@ -1646,7 +1659,9 @@ public class StringAlp {
      * 单词里只包含字母，不会出现省略号或者其他标点符号。
      *
      * solution:
-     * 1.找出不在banned数组,且出现次数最多的单词   遍历一次banned数组 计数count，paragraph split
+     * 1.找出不在banned数组,且出现次数最多的单词
+     * 遍历一次banned数组 计数count，paragraph split
+     *
      *
      * @Date: 2021/5/26 10:46
      */
@@ -1661,6 +1676,7 @@ public class StringAlp {
         paragraph = paragraph.toLowerCase();
         List<String> ban = Arrays.stream(banned).map(String::toLowerCase).collect(Collectors.toList());
         String[] paraArr = paragraph.split(" ");
+        Arrays.stream(paraArr).filter(x -> !ban.contains(x)).collect(Collectors.groupingBy(x -> x)).values().stream().collect(Collectors.groupingBy(List::size));
         Map<String,Integer> map = new HashMap<>();
         for (String s : paraArr) {
             if (!ban.contains(s) && !s.equals("")) {
@@ -3817,7 +3833,9 @@ public class StringAlp {
 
     @Test
     public void testStringAlp() {
-        System.out.println(instance.reverseStr("abcdefg", 2));
+        String paragraph = "Bob hit a ball, the hit BALL flew far after it was hit.";
+        String[] banned = new String[]{"hit"};
+        System.out.println(instance.mostCommonWord(paragraph, banned));
 
     }
 
