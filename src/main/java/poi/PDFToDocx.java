@@ -45,8 +45,8 @@ public class PDFToDocx {
 
     @Test
     public void testConvert() {
-        String pdfPath="C:\\Users\\10178\\Desktop\\仓小白合同对接\\convert.pdf";
-        String outputPath="C:\\Users\\10178\\Desktop\\仓小白合同对接\\demo.docx";
+        String pdfPath="C:\\Users\\10178\\Desktop\\所有合同最终版本\\20220114修复运营系统合同\\JWD22010500077-副本.pdf";
+        String outputPath="C:\\Users\\10178\\Desktop\\所有合同最终版本\\20220114修复运营系统合同\\JWD22010500077-副本.docx";
         instance.convert(pdfPath,outputPath);
     }
 }

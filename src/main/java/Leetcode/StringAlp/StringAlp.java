@@ -1696,7 +1696,8 @@ public class StringAlp {
      * @Description:
      * 给定一个由空格分割单词的句子 S。每个单词只包含大写或小写字母。
      *
-     * 我们要将句子转换为 “Goat Latin”（一种类似于 猪拉丁文 - Pig Latin 的虚构语言）。
+     * 我们要将句子转换为
+     *  “Goat Latin”（一种类似于 猪拉丁文 - Pig Latin 的虚构语言）。
      *
      * 山羊拉丁文的规则如下：
      *
@@ -1723,7 +1724,9 @@ public class StringAlp {
      * S 中仅包含大小写字母和空格。单词间有且仅有一个空格。
      * 1 <= S.length <= 150。
      *
-     * solution: 1.就按照题意来实现就可以了
+     * solution:
+     * 1.就按照题意来实现就可以了
+     * O(M*N) M N分别是单词长度 和 单词个数 O(N) sentenceArr数组占据的空间
      * @Date: 2021/5/28 10:11
      */
     public String toGoatLatin(String sentence) {
@@ -1787,7 +1790,9 @@ public class StringAlp {
      *
      * 1 <= n <= 500
      *
-     * solution: 奇数 n 个 a ,偶数  1个 a, n-1个b
+     * solution:
+     * 奇数 n 个 a ,偶数  1个 a, n-1个b
+     * O(N) O(1)
      * @Date: 2021/5/28 10:44
      */
     public String generateTheString(int n) {
@@ -1877,7 +1882,8 @@ public class StringAlp {
      * 每封 emails[i] 都包含有且仅有一个 '@' 字符。
      *
      * solution: 遍历emails数组,用规则 划分出每一个需要发送的邮箱,
-     * 然后放入set,最后返回set.size() O(N*M) O(N)
+     * 然后放入set,最后返回set.size()
+     * O(N*M) O(N)
      * @Date: 2021/5/31 10:50
      */
     public int numUniqueEmails(String[] emails) {
@@ -1939,7 +1945,8 @@ public class StringAlp {
      * s 只包含小写英文字母。
      *
      * solution:
-     * 1.遍历 计数,最后返回max  O(N) O(1)
+     * 1.遍历 计数,最后返回max
+     * O(N) O(1)
      * @Date: 2021/5/31 14:00
      */
     public int maxPower(String s) {
@@ -1990,7 +1997,8 @@ public class StringAlp {
      * 题目数据 保证 每个 words[i] 都是独一无二的。
      *
      * solution:
-     * words数组除自己本身之外的所有元素,逐个做包含校验,如果包含则加入list 最后返回这个list O(N2) O(1)
+     * words数组除自己本身之外的所有元素,逐个做包含校验,如果包含则加入list 最后返回这个list
+     * O(N2) O(1)
      * @Date: 2021/5/31 14:12
      */
     public List<String> stringMatching(String[] words) {
