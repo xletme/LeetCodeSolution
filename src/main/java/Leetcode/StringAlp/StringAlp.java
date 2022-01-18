@@ -2062,7 +2062,8 @@ public class StringAlp {
      * 前缀就是紧密附着于词根的语素，中间不能插入其它成分，并且它的位置是固定的——-位于词根之前。（引用自 前缀_百度百科 ）
      *
      * solution:
-     * 1.遍历整个sentence(sentence 先进行split分组Array) 检测到返回下标 +1 ,最后没有检测到就返回 -1 O(N) O(N)
+     * 1.遍历整个sentence(sentence 先进行split分组Array) 检测到返回下标 +1 ,最后没有检测到就返回 -1
+     * O(N) O(N)
      * @Date: 2021/5/31 14:31
      */
     public int isPrefixOfWord(String sentence, String searchWord) {
@@ -2119,6 +2120,7 @@ public class StringAlp {
      * 1.统计小写字母和数字的个数,用arr存储
      * 2.若两者arr.length 相差小于等于1 则按照 length大的依次填写
      * 3.否则返回""
+     * O(N) O(N)
      * @Date: 2021/5/31 14:40
      */
     public String reformat(String s) {
@@ -2199,6 +2201,7 @@ public class StringAlp {
      * 2.找规律  官方解答，
      * a 统计出1的个数  oneCount
      * b.遍历s 0 --> s.length - 1，每次遍历一个数 其实就是模拟切割一次字符串  更新 max = Math.max(max,oneCount+zeroCount)
+     * O(N) O(1)
      * @Date: 2021/6/1 9:50
      */
     public int maxScore(String s) {
@@ -2247,7 +2250,8 @@ public class StringAlp {
      * N 的取值范围是 [1, 10000]。
      *
      * solution:
-     * 遍历 1 --> n ,检查有效数字  有 2 5  6 9  && 没有  3 4 7  O(N*M) O(1)
+     * 遍历 1 --> n ,检查有效数字  有 2 5  6 9  && 没有  3 4 7
+     * O(N*M)N是n M是数字的长度 O(1)
      * @Date: 2021/6/1 10:11
      */
     public int rotatedDigits(int n) {
@@ -2307,7 +2311,8 @@ public class StringAlp {
      * word2：    p   q
      * 合并后：  a p b q c   d
      *
-     * solution:  这种题没意思 O(N) O(1)
+     * solution:  这种题没意思
+     * O(N) O(1)
      * @Date: 2021/6/1 10:43
      */
     public String mergeAlternately(String word1, String word2) {
@@ -2366,7 +2371,10 @@ public class StringAlp {
      * 1 <= s.length <= 300
      * s 只含小写英文字母
      *
-     * solution: 遍历每一次字符串,使用String Api indexOf lastIndexOf来解决 s.last - s.index 更新max
+     * solution:
+     * 遍历每一次字符串,使用String Api indexOf lastIndexOf来解决
+     * s.last - s.index 更新max
+     * O(N) O(1)
      * @Date: 2021/6/2 9:56
      */
     public int maxLengthBetweenEqualCharacters(String s) {
@@ -2408,8 +2416,10 @@ public class StringAlp {
      * sentence 由小写英语字母组成
      *
      * solution:
-     * 1.桶排序 求不为空的个数  O(N) O(26)
-     * 2.往set里面丢 返回set.size == 26 O(N) O(N)
+     * 1.桶排序 求不为空的个数
+     * O(N) O(26)
+     * 2.往set里面丢 返回set.size == 26
+     * O(N) O(N)
      * @Date: 2021/6/2 10:29
      */
     /*public boolean checkIfPangram(String sentence) {
@@ -2469,7 +2479,9 @@ public class StringAlp {
      * s.length 是偶数
      * s 由 大写和小写 字母组成
      *
-     * solution: 统计总的元音字母和一半的元音字母 看是否是2倍关系
+     * solution:
+     * 统计总的元音字母和一半的元音字母 看是否是2倍关系
+     * O(N) O(N)
      * @Date: 2021/6/2 10:38
      */
     public boolean halvesAreAlike(String s) {
@@ -2524,7 +2536,7 @@ public class StringAlp {
      *
      * solution: 搞个坐标x y , 移动记录x y的值 每次判断 x y 是否在之前出现过
      * 之前的用set存起来 是 返回true 遍历完成 返回false
-     * O(N) O(1)
+     * O(N) O(N)
      * @Date: 2021/6/3 10:06
      */
     public boolean isPathCrossing(String path) {
@@ -2580,6 +2592,7 @@ public class StringAlp {
      *
      * solution:
      * 1.计算需要添加多少个. new charArr 2.按题目来实现 3.最后返回  toCharArray StringBuilder
+     * O(N) O(N)
      * @Date: 2021/6/3 10:46
      */
     public String thousandSeparator(int n) {
@@ -2628,6 +2641,7 @@ public class StringAlp {
      * 题目数据保证你可以由输入的字符串生成有效的时间
      *
      * solution: 根据时间规则，返回就OK 看问号的位置 和问号的个数，分类来解决 题友区的解答
+     * O(N) O(1)
      * @Date: 2021/6/4 11:30
      */
     public String maximumTime(String time) {
@@ -2736,6 +2750,8 @@ public class StringAlp {
      * s 仅包含字母 'a'  和 'b'
      *
      * solution:
+     * 仅含有2个字符a b ，根据答案得 要么1 要么2，要么空为0
+     * O(N) O(1)
      * @Date: 2021/6/4 13:46
      */
     public int removePalindromeSub(String s) {
@@ -2780,6 +2796,7 @@ public class StringAlp {
      *
      * solution: s1 s2 toCharArray   ,diffCount count num
      * diffCount == 0 || ( diffCount == 2 && (a[i] == b[j] && a[j] == b[i]))
+     * O(N) O(N)
      * @Date: 2021/6/4 13:55
      */
     public boolean areAlmostEqual(String s1, String s2) {
@@ -2863,7 +2880,8 @@ public class StringAlp {
      *
      * solution:
      * 1.删除 空格 破折号
-     * 2.遍历字符串  特殊处理  仅剩下4 3 2 1个数字的时候 O(N) O(1)
+     * 2.遍历字符串  特殊处理  仅剩下4 3 2 1个数字的时候
+     * O(N) O(1)
      * @Date: 2021/6/7 17:12
      */
     public String reformatNumber(String number) {
@@ -2936,6 +2954,7 @@ public class StringAlp {
      * solution:
      * 1.split to Array
      * 2.取前k个组合起来
+     * O(N) O(N)
      * 第二种思路 找到k截断的位置,直接使用subString来实现
      * @Date: 2021/6/7 17:29
      */
@@ -2989,6 +3008,7 @@ public class StringAlp {
      * solution:
      * 1.先拆分，定义三个数组 分别对三个元素做转换
      * a.第一个截取0--最后两位的位置  b. 这个数组做转换  c.直接取  最后倒序组合
+     * O(N) O(N)
      * @Date: 2021/6/8 10:14
      */
     public String reformatDate(String date) {
@@ -3049,6 +3069,7 @@ public class StringAlp {
      *
      * solution；
      * 1.把整数拆出来，Integer.parseInt 然后往set里面丢  最后返回set的size
+     * O(N) O(N)
      * 是不是可以按照正则表达式替换  下面这个解答是评论区的
      * @Date: 2021/6/8 10:36
      */
@@ -3118,6 +3139,7 @@ public class StringAlp {
      * 1.找出数字和字母日志的个数，新建两个数组来存放
      * 2.字母数组重写compare方法 排序
      * 3.最后按照顺序把 字母和数字数组放进去
+     * O(logN * M) 排序里面 在排序 O(N)
      * @Date: 2021/6/9 9:56
      */
     public String[] reorderLogFiles(String[] logs) {
