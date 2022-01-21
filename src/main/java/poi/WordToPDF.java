@@ -28,8 +28,8 @@ public class WordToPDF {
     }
 
     public static void main(String[] args) throws Exception {
-        String wordPath="C:\\Users\\10178\\Desktop\\短信通知功能\\451824c2f10e47b79b5d2446ba6b6faf_20210812115041.docx";
-        String pdfPath="C:\\Users\\10178\\Desktop\\短信通知功能\\demo.pdf";
+        String wordPath="C:\\Users\\10178\\Desktop\\所有合同最终版本\\20220114修复运营系统合同\\上传阿里云生成的合同\\b339da60767a4478a4c3a7a2b0a2b569.docx";
+        String pdfPath="C:\\Users\\10178\\Desktop\\所有合同最终版本\\20220114修复运营系统合同\\上传阿里云生成的合同\\demo.pdf";
         instance.convertWordToPDF(wordPath,pdfPath);
     }
 }

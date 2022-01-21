@@ -3863,10 +3863,34 @@ public class StringAlp {
 
     @Test
     public void testStringAlp() {
-        String paragraph = "Bob hit a ball, the hit BALL flew far after it was hit.";
-        String[] banned = new String[]{"hit"};
-        System.out.println(instance.mostCommonWord(paragraph, banned));
+        ArrayList<String> list = new ArrayList<>(Arrays.asList("A", "B", "C"));
+        list.forEach(System.out::println);
+    }
 
+    @Test
+    public void testMapPrint() {
+        HashMap<Integer, String> map = new HashMap<>();
+        map.put(1, "string");
+        map.put(3, "str");
+        Set<Integer> keys = map.keySet();
+        for (Integer key : keys) {
+            System.out.println(key);
+        }
+        Collection<String> values = map.values();
+        for (String value : values) {
+            System.out.println(value);
+        }
+        Set<Map.Entry<Integer, String>> entries = map.entrySet();
+        for (Map.Entry<Integer, String> entry : entries) {
+            System.out.println(entry.getKey() + "=" + entry.getValue());
+        }
+        Iterator<Map.Entry<Integer, String>> it = map.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry<Integer, String> next = it.next();
+            System.out.println(next.getKey() + "=" + next.getValue());
+            it.remove();
+        }
+        System.out.println("success");
     }
 
     static class Student{
