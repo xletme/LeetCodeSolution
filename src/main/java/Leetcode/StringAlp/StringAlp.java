@@ -3233,6 +3233,7 @@ public class StringAlp {
      * 1.统计空格和单词的数量
      * 2.用公式 space.num / (word.num - 1) 来计算单词之间的空格数 和 最后单词的空格数
      * 3.最后执行拼接
+     * O(N) O(N)
      * 
      * @Date: 2021/6/9 10:53
      */
@@ -3323,6 +3324,7 @@ public class StringAlp {
      * sequence 和 word 都只包含小写英文字母。
      *
      * solution:题意上说的是连续重复，我日了
+     * O(N) O(1)
      * @Date: 2021/6/10 10:20
      */
     public int maxRepeating(String sequence, String word) {
@@ -3367,7 +3369,8 @@ public class StringAlp {
      * s 中的单词由单个空格分隔。
      * s 不包含任何前导或者后缀空格。
      *
-     * solution: 这个简单，按 空格拆分 取最后一个数字为索引,放入hashMap 最后在按照数字顺序取出来 记录max
+     * solution:
+     * 这个简单，按 空格拆分 取最后一个数字为索引,放入hashMap 最后在按照数字顺序取出来 记录max
      * O(N) O(N)
      * @Date: 2021/6/10 10:44
      */
@@ -3436,6 +3439,7 @@ public class StringAlp {
      * 1.暴力法则 O(N2)复杂度去 比较每两个元素看是否符合题意  写一个判断是否等价的方法
      * 2.判断等价方法 奇偶数拆分 ，排序比较是否相同
      * 没读懂这题目  真的辣鸡
+     * O(N) O(N)
      * @Date: 2021/6/10 11:02
      */
     public int numSpecialEquivGroups(String[] words) {
@@ -3500,7 +3504,8 @@ public class StringAlp {
      * 1 <= s.length <= 500
      * s 只包含小写英文字母和（或）数字。
      *
-     * solution:  max  secondMax  O(N) O(1)
+     * solution:  max  secondMax
+     * O(N) O(1)
      * @Date: 2021/6/11 10:15
      */
     public int secondHighest(String s) {
@@ -3560,7 +3565,8 @@ public class StringAlp {
      * s 只包含小写英文字母和数字。
      * 对所有 奇数 下标处的 i ，满足 shift(s[i-1], s[i]) <= 'z' 。
      *
-     * solution: 按照题意实现 OK toCharArray处理 O(N) O(N)
+     * solution: 按照题意实现 OK toCharArray处理
+     * O(N) O(N)
      * @Date: 2021/6/11 10:47
      */
     public String replaceDigits(String s) {
@@ -3615,6 +3621,7 @@ public class StringAlp {
      * solution:
      * 1.暴力法列出所有组合  判断是否有完美字符串 谁最长 谁最先出现
      * 2.暂时没想到法子 去评论区借鉴一个
+     * O(N2) O(1)
      * @Date: 2021/6/11 10:56
      */
     public String longestNiceSubstring(String s) {
@@ -3701,7 +3708,9 @@ public class StringAlp {
      * firstWord、secondWord 和 targetWord 仅由从 'a' 到 'j' （含 'a' 和 'j' ）的小写英文字母组成。
      *
      * solution:
-     * 1.根据题意 转换 firstWord secondWord targetWord 看是否满足题意
+     * 1.根据题意 转换 firstWord secondWord targetWord
+     * 看是否满足题意
+     * O(N) O(1)
      * @Date: 2021/6/15 10:18
      */
     public boolean isSumEqual(String firstWord, String secondWord, String targetWord) {
@@ -3748,7 +3757,8 @@ public class StringAlp {
      * s​​​​​​ 只包含小写英文字母。
      *
      * solution:
-     * 1.截取三个 字符串，来判断是否是 好字符串  O(N) O(1)
+     * 1.截取三个 字符串，来判断是否是 好字符串
+     * O(N) O(1)
      * @Date: 2021/6/15 10:28
      */
     public int countGoodSubstrings(String s) {
@@ -3798,6 +3808,7 @@ public class StringAlp {
      * 1.求words数组的平均长度
      * 2.统计不和平均长度相等的word(长度相等判断是否相等 不相等直接pass)  word数量大于2直接pass
      * 3.word数量为0 或者 word数量为2 且 str2.removeAll(str1) 剩下两个相同字符串且 字符串不包含在str1内
+     * O(N) O(N)
      * @Date: 2021/6/15 10:45
      */
     public boolean makeEqual(String[] words) {
@@ -3863,8 +3874,8 @@ public class StringAlp {
 
     @Test
     public void testStringAlp() {
-        ArrayList<String> list = new ArrayList<>(Arrays.asList("A", "B", "C"));
-        list.forEach(System.out::println);
+        String[] strArr = new String[] {"abc","acb","bac","bca","cab","cba"};
+        instance.numSpecialEquivGroups(strArr);
     }
 
     @Test

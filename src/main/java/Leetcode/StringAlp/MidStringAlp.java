@@ -47,6 +47,7 @@ public class MidStringAlp {
      * 如果tmpStr包含当前字符串 ， 找到tmpStr当前字符的位置 firstPosition
      * 截取 subString(firstPosition,currentEnd + 1)
      * 不包含，tmpStr取 subString(currentFirst, currentEnd + 1) 同时更新 maxLength
+     * O(N) O(1)
      * @Date: 2021/7/12 11:03
      */
     public int lengthOfLongestSubstring(String s) {
