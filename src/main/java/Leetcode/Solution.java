@@ -665,9 +665,22 @@ public class Solution {
         return  numstr;
     }
 
+    /**
+     * @Description: 求阶乘 10*9*8.。。*3*2*1
+     * 递归实现 需要调用n次
+     * O(N) O(N)
+     * @Date: 2022/2/8 10:19
+     */
+    public int pow(int n) {
+        if (n == 0) {
+            return 1;
+        }
+        return n * pow(n - 1);
+    }
 
     public static void main(String[] args) {
         System.out.println(solution.Decimal2Binary(10));
+        System.out.println(solution.pow(5));
     }
 
 

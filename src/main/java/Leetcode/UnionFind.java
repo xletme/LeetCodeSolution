@@ -74,6 +74,6 @@ public class UnionFind {
     }
 
     public static void main(String[] args) {
-        System.out.println(instance.allCellsDistOrder(2,3,1,2));
+        System.out.println(Arrays.deepToString(instance.allCellsDistOrder(2, 3, 1, 2)));
     }
 }
