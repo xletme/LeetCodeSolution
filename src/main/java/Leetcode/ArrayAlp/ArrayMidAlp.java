@@ -613,6 +613,32 @@ public class ArrayMidAlp {
     }
 
     /**
+     * @Description:  官方解法 ：思路  双指针 + 排序
+     * 从最后往第一个找，找到前面大于后面的元素，记录指针 i j 交互 i j ,从剩下的i+1排序数组
+     * 如果没找到 则排序整个数组
+     * O(logN) O(1)
+     * @Date: 2022/3/1 11:30
+     */
+    /*public void nextPermutation(int[] nums) {
+        for (int i = nums.length - 1; i >= 0; i--) {
+            for (int j = nums.length - 1; j > i; j--) {
+                if (nums[i] < nums[j]) {
+                    swap(nums, i ,j);
+                    Arrays.sort(nums, i + 1, nums.length);
+                    return;
+                }
+            }
+        }
+        Arrays.sort(nums);
+    }*/
+
+    public void swap(int[] nums, int i, int j) {
+        int k = nums[i];
+        nums[i] = nums[j];
+        nums[j] = k;
+    }
+
+    /**
      * @Description:
      * 整数数组 nums 按升序排列，数组中的值 互不相同 。
      *

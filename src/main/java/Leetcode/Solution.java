@@ -1,6 +1,9 @@
 package Leetcode;
 
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import org.junit.Test;
 
 import java.util.*;
 
@@ -678,9 +681,88 @@ public class Solution {
         return n * pow(n - 1);
     }
 
+    /**
+     * @Description: 获取银行简称
+     * @Date: 2022/2/15 10:42
+     */
+    public static String getBankShortName(String bankName){
+        //匹配第一个
+        if(bankName == null){
+            return null;
+        }
+        StringBuilder builder = new StringBuilder();
+        int indexOne = bankName.indexOf("银行");
+        if(indexOne != -1){
+            builder.append(bankName, 0, indexOne);
+            builder.append("银行");
+            return builder.toString();
+        }else if((indexOne = bankName.indexOf("信用")) != -1){
+            builder.append(bankName, 0, indexOne);
+            builder.append("信用社");
+            return builder.toString();
+        }else {
+            return bankName;
+        }
+
+    }
+
+    public void testPrintYell() {
+        Random r = new Random();
+        for (int i = 0; i < 1000; i++) {
+            for (int j = 0; j < 1000; j++) {
+                if(r.nextInt(4) == 0) {
+                    System.out.print("O");
+                } else {
+                    System.out.print("#");
+                }
+            }
+
+            System.out.println("");
+        }
+    }
+
+    public void testPrintB() {
+        Random r = new Random();
+        for (int i = 0; i < 1000; i++) {
+            for (int j = 0; j < 1000; j++) {
+                if(r.nextInt(4) == 0) {
+                    System.out.print("O");
+                } else {
+                    System.out.print("B"); //only line changed
+                }
+            }
+
+            System.out.println("");
+        }
+    }
+
+    @Test
+    public void test() {
+        System.out.println(solution.divide(10, -3));
+    }
+
     public static void main(String[] args) {
-        System.out.println(solution.Decimal2Binary(10));
-        System.out.println(solution.pow(5));
+        List<String> bankNameList = new ArrayList<>(Arrays.asList("中国农业银行四川省成都市青白江支行",
+                "中国银行股份有限公司成都青白江支行", "中国工商银行股份有限公司成都二环路北一段支行", "招商银行成都分行玉双路支行",
+                "成都银行金府路支行", "四川天府银行股份有限公司成都金府支行", "江油市农村信用合作联社", "曲靖市马龙区农村信用合作联社"));
+        for (String s : bankNameList) {
+            System.out.println(getBankShortName(s));
+            //我来告诉你们 断桥是否下过雪 又想起你的脸
+        }
+
+        String bankCardInfo = "{\n" +
+                "    \"bankCode\":\"103653004012\",\n" +
+                "    \"bankName\":\"中国农业银行股份有限公司重庆沙坪坝支行\",\n" +
+                "    \"accountName\":\"重庆祯星物资有限公司\",\n" +
+                "    \"bankShortName\":\"中国农业银行\",\n" +
+                "    \"accountNo\":\"31041101040010206\",\n" +
+                "    \"remark\":\"31595603002974753\"\n" +
+                "}";
+        JSONObject cardJson = JSON.parseObject(bankCardInfo);
+        System.out.println("ccc");
+
+        String[] array = new String[] {"John", "Mary", "Bob"};
+        System.out.println(Arrays.toString(array));
     }
 
 
