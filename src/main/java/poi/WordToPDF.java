@@ -8,6 +8,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * @Author maoXin
@@ -21,7 +24,6 @@ public class WordToPDF {
     public void convertWordToPDF(String wordPath, String pdfPath) throws Exception {
         FileInputStream in = new FileInputStream(wordPath);
         XWPFDocument document = new XWPFDocument(in);
-        document.createNumbering();
         File outFile = new File(pdfPath);
         OutputStream out = new FileOutputStream(outFile);
         PdfOptions options = PdfOptions.create();
@@ -29,8 +31,9 @@ public class WordToPDF {
     }
 
     public static void main(String[] args) throws Exception {
-        String wordPath="C:\\Users\\10178\\Desktop\\所有合同最终版本\\全款寄售合同模板\\生产转pdf出错的合同_20220307144014.docx";
-        String pdfPath="C:\\Users\\10178\\Desktop\\所有合同最终版本\\全款寄售合同模板\\demo.pdf";
+        String wordPath="/Users/maoxin/Desktop/合同文件夹/赊销合同/转换失败的pdf.docx";
+        String pdfPath="/Users/maoxin/Desktop/合同文件夹/赊销合同/demo123.pdf";
+        List<String> strList = Collections.synchronizedList(new ArrayList<>());
         instance.convertWordToPDF(wordPath,pdfPath);
     }
 }

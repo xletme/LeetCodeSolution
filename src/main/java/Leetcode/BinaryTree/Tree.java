@@ -1054,7 +1054,7 @@ public class Tree {
      *
      * solution:  有点难 中等难度
      * 用答友的答案，root== p  和 root==q作为条件判断 放在最前面，
-     * 如果包含一个 则返回root
+     * 如果包含一个 则返回root（因为 p q 是唯一的 且存在的）
      * 最后判断： lNode  rNode
      * a both are not null ,return root
      * b. lNode null return rNode

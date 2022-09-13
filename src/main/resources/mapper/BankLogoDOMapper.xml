@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.management.system.dao.BankLogoDOMapper">
+  <resultMap id="BaseResultMap" type="com.management.system.model.BankLogoDO">
+    <id column="sysno" jdbcType="BIGINT" property="sysno" />
+    <result column="bankclscode" jdbcType="VARCHAR" property="bankclscode" />
+    <result column="bank_name" jdbcType="VARCHAR" property="bankName" />
+    <result column="logo" jdbcType="VARCHAR" property="logo" />
+    <result column="bank_background_image" jdbcType="VARCHAR" property="bankBackgroundImage" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    sysno, bankclscode, bank_name, logo, bank_background_image
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bank_logo
+    where sysno = #{sysno,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from bank_logo
+    where sysno = #{sysno,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.management.system.model.BankLogoDO">
+    insert into bank_logo (sysno, bankclscode, bank_name, 
+      logo, bank_background_image)
+    values (#{sysno,jdbcType=BIGINT}, #{bankclscode,jdbcType=VARCHAR}, #{bankName,jdbcType=VARCHAR}, 
+      #{logo,jdbcType=VARCHAR}, #{bankBackgroundImage,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.management.system.model.BankLogoDO">
+    insert into bank_logo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sysno != null">
+        sysno,
+      </if>
+      <if test="bankclscode != null">
+        bankclscode,
+      </if>
+      <if test="bankName != null">
+        bank_name,
+      </if>
+      <if test="logo != null">
+        logo,
+      </if>
+      <if test="bankBackgroundImage != null">
+        bank_background_image,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sysno != null">
+        #{sysno,jdbcType=BIGINT},
+      </if>
+      <if test="bankclscode != null">
+        #{bankclscode,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null">
+        #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="logo != null">
+        #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankBackgroundImage != null">
+        #{bankBackgroundImage,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.management.system.model.BankLogoDO">
+    update bank_logo
+    <set>
+      <if test="bankclscode != null">
+        bankclscode = #{bankclscode,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null">
+        bank_name = #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="logo != null">
+        logo = #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankBackgroundImage != null">
+        bank_background_image = #{bankBackgroundImage,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where sysno = #{sysno,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.management.system.model.BankLogoDO">
+    update bank_logo
+    set bankclscode = #{bankclscode,jdbcType=VARCHAR},
+      bank_name = #{bankName,jdbcType=VARCHAR},
+      logo = #{logo,jdbcType=VARCHAR},
+      bank_background_image = #{bankBackgroundImage,jdbcType=VARCHAR}
+    where sysno = #{sysno,jdbcType=BIGINT}
+  </update>
+</mapper>

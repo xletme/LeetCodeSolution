@@ -1,5 +1,7 @@
 package Leetcode.Heap;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
@@ -97,6 +99,14 @@ public class LeastNumbersHeap {
     }
 
     public static void main(String[] args) {
-        System.out.println("DEPO".equals(null));
+       String totalPrice1 = "107683.1600";
+       String totalPrice2 = "111587.4000";
+
+       BigDecimal totalAmt = BigDecimal.ZERO;
+       totalAmt = totalAmt.add(new BigDecimal(totalPrice1));
+       totalAmt = totalAmt.add(new BigDecimal(totalPrice2));
+        System.out.println(new BigDecimal(totalAmt.toString()).setScale(2, RoundingMode.HALF_UP));
+        System.out.println(new BigDecimal(totalPrice1).setScale(2, RoundingMode.HALF_UP));
+        System.out.println(new BigDecimal(totalPrice2).setScale(2, RoundingMode.HALF_UP));
     }
 }

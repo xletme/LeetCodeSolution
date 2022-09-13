@@ -1,10 +1,14 @@
 package Leetcode;
 
 
+import Leetcode.pay.*;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import org.junit.Test;
 
+import java.io.*;
+import java.math.BigDecimal;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 /**
@@ -737,8 +741,205 @@ public class Solution {
     }
 
     @Test
-    public void test() {
-        System.out.println(solution.divide(10, -3));
+    public void testJY() {
+        StringBuffer jYTxt = new StringBuffer();
+        String pathName = "/Users/maoxin/Desktop/JY2022081142731.txt";
+        File file = new File(pathName);
+
+        if (file.exists()) {
+            System.out.println("exists");
+            InputStreamReader inputStreamReader = null;
+            try {
+                inputStreamReader = new InputStreamReader(new FileInputStream(file), "GBK");
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                String lineTxt = null;
+                while ((lineTxt = bufferedReader.readLine()) != null) {
+                    jYTxt.append(lineTxt);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.err.println("no exists");
+        }
+
+        String jyStr = jYTxt.toString();
+        String[] jyArr = jyStr.split("&");
+
+        List<JYAccountTradeDetailDO> jyList = new ArrayList<>();
+        int index = 0;
+        for (int i = 0; i < jyArr.length; i = i + 16) {
+            JYAccountTradeDetailDO item = new JYAccountTradeDetailDO();
+            index++;
+            item.setSeqNo(jyArr[i]);
+            item.setTradeTypeDesc(jyArr[i + 1]);
+            item.setBuyerTranNetMemberCode(jyArr[i + 2]);
+            item.setBuyerSubAccountNo(jyArr[i + 3]);
+            item.setBuyerCompanyName(jyArr[i + 4]);
+            item.setSellerTranNetMemberCode(jyArr[i + 5]);
+            item.setSellerSubAccountNo(jyArr[i + 6]);
+            item.setSellerCompanyName(jyArr[i + 7]);
+            item.setTransAmount(jyArr[i + 8]);
+            item.setFee(jyArr[i + 9]);
+            item.setTransDate(jyArr[i + 10]);
+            item.setTransTime(jyArr[i + 11]);
+            String tmpStr = jyArr[i + 10] + " " +  jyArr[i + 11];
+            System.out.println(DateUtils.formatDate(DateUtils.parseDate(tmpStr), "yyyy-MM-dd hh:mm:ss"));
+            item.setTradeFlowNo(jyArr[i + 12]);
+            item.setPlatOrderNo(jyArr[i + 13]);
+            item.setRemark(jyArr[i + 14]);
+            item.setTradeOrderNo(jyArr[i + 15]);
+            jyList.add(item);
+        }
+        System.out.println("success");
+
+    }
+
+    @Test
+    public void testCZ() {
+        StringBuffer cZTxt = new StringBuffer();
+        String pathName = "/Users/maoxin/Desktop/CZ2020072834331.txt";
+        File file = new File(pathName);
+
+        if (file.exists()) {
+            System.out.println("exists");
+            InputStreamReader inputStreamReader = null;
+            try {
+                inputStreamReader = new InputStreamReader(new FileInputStream(file), "GBK");
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                String lineTxt = null;
+                while ((lineTxt = bufferedReader.readLine()) != null) {
+                    cZTxt.append(lineTxt);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.err.println("no exists");
+        }
+
+        String cZStr = cZTxt.toString();
+        String[] cZArr = cZStr.split("&");
+
+        List<CZAccountTradeDetailDO> cZList = new ArrayList<>();
+        for (int i = 0; i < cZArr.length; i = i + 12) {
+            CZAccountTradeDetailDO item = new CZAccountTradeDetailDO();
+            item.setSeqNo(cZArr[i]);
+            item.setTranNetMemberCode(cZArr[i + 1]);
+            item.setSubAccountNo(cZArr[i + 2]);
+            item.setCompanyName(cZArr[i + 3]);
+            item.setTransAmount(cZArr[i + 4]);
+            item.setFee(cZArr[i + 5]);
+            item.setTransDate(cZArr[i + 6]);
+            item.setTransTime(cZArr[i + 7]);
+            item.setTradeFlowNo(cZArr[i + 8]);
+            item.setPlatOrderNo(cZArr[i + 9]);
+            item.setRemark(cZArr[i + 10]);
+            item.setTradeOrderNo(cZArr[i + 11]);
+            cZList.add(item);
+        }
+        System.out.println("success");
+    }
+
+    @Test
+    public void testTX() {
+        StringBuffer tXTxt = new StringBuffer();
+        String pathName = "/Users/maoxin/Desktop/TX2020072831641.txt";
+        File file = new File(pathName);
+
+        if (file.exists()) {
+            System.out.println("exists");
+            InputStreamReader inputStreamReader = null;
+            try {
+                inputStreamReader = new InputStreamReader(new FileInputStream(file), "GBK");
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                String lineTxt = null;
+                while ((lineTxt = bufferedReader.readLine()) != null) {
+                    tXTxt.append(lineTxt);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.err.println("no exists");
+        }
+
+        String tXStr = tXTxt.toString();
+        tXStr = tXStr.replace("&&", "&");
+        String[] tXArr = tXStr.split("&");
+
+        List<TXAccountTradeDetailDO> tXList = new ArrayList<>();
+        for (int i = 0; i < tXArr.length; i = i + 12) {
+            TXAccountTradeDetailDO item = new TXAccountTradeDetailDO();
+            item.setSeqNo(tXArr[i]);
+            item.setTranNetMemberCode(tXArr[i + 1]);
+            item.setSubAccountNo(tXArr[i + 2]);
+            item.setCompanyName(tXArr[i + 3]);
+            item.setTransAmount(tXArr[i + 4]);
+            item.setFee(tXArr[i + 5]);
+            item.setTransDate(tXArr[i + 6]);
+            item.setTransTime(tXArr[i + 7]);
+            item.setTradeFlowNo(tXArr[i + 8]);
+            item.setPlatOrderNo(tXArr[i + 9]);
+            item.setRemark(tXArr[i + 10]);
+            item.setTradeOrderNo(tXArr[i + 11]);
+            tXList.add(item);
+        }
+        System.out.println("success");
+    }
+
+    @Test
+    public void testYE() {
+        //1.新建一个StringBuffer 2.buffer存入字符串 3.拆分成数组 4.加入属性
+        StringBuffer yETxt = new StringBuffer();
+        String pathName = "/Users/maoxin/Desktop/YE2020072831641.txt";
+        File file = new File(pathName);
+        if (file.exists()) {
+            InputStreamReader inputStreamReader = null;
+            try {
+                inputStreamReader = new InputStreamReader(new FileInputStream(file), "UTF-8");
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                String tmpTxt = null;
+                while ((tmpTxt = bufferedReader.readLine()) != null) {
+                    yETxt.append(tmpTxt);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.err.println("no exists file");
+        }
+
+        String yEStr = yETxt.toString();
+        List<YEAccountTradeDetailDO> yEList = new ArrayList<>();
+        String[] yEArr = yEStr.split("&");
+        for (int i = 0; i < yEArr.length; i = i + 4) {
+            YEAccountTradeDetailDO item = new YEAccountTradeDetailDO();
+            item.setSeqNo(yEArr[i]);
+            item.setBuyerTranNetMemberCode(yEArr[i + 1]);
+            item.setBuyerSubAccountNo(yEArr[i + 2]);
+            item.setBalanceAmount(yEArr[i + 3]);
+            yEList.add(item);
+        }
+
+        for (YEAccountTradeDetailDO xxx : yEList) {
+            System.out.println(xxx.getSeqNo() + " : " + xxx.getBuyerTranNetMemberCode()
+            + " : " + xxx.getBuyerSubAccountNo() + " : " + xxx.getBalanceAmount());
+        }
+    }
+
+    @Test
+    public void testSplit() {
+        String czStr = "1&CFhAOOKmKS1WWCPvfQUV8LQ&4273000000001808&四川长虹电器股份有限公司&2331801.59&0.00&20220825&111126&2208250333296858&4270982208250333296853_1&&同名户入金&&2&CwfdY_PlDRHewKSrxcUSfyQ&4273000000001708&成都积微物联集团股份有限公司&100000.00&0.00&20220825&112044&2208250333299354&4270982208250333299349_1&&同名户入金&&3&CwfdY_PlDRHewKSrxcUSfyQ&4273000000001708&成都积微物联集团股份有限公司&100000.00&0.00&20220825&135506&2208250333347754&4270982208250333347742_1&&同名户入金&&4&CFhAOOKmKS1WWCPvfQUV8LQ&4273000000001808&四川长虹电器股份有限公司&100000.00&0.00&20220825&150344&2208250333370554&4270982208250333370543_1&&同名户入金&&";
+        if (czStr.contains("&&")) {
+            czStr =czStr + "haha";
+        }
+        String[] czArr = czStr.split("&");
+        System.out.println(czArr.length);
+
+        String txStr = "1&MgQG47BMcRDals_1Wb7vi8g&4273000000016018&陕西加德纳信息技术有限公司&8.20&0.00&20220825&155127&2208250333389355&HC1551271661413887170&HC1551271661413887170&提现&333&2&CL1SywsIiTK-IsIi2AudqPQ&4273000000011029&薪龙网&914823.23&0.00&20220825&154742&2208250333388411&HC1547421661413662521&HC1547421661413662521&提现&333&";
+        String[] txArr = txStr.split("&");
+        System.out.println(txArr.length);
     }
 
     public static void main(String[] args) {
@@ -764,6 +965,7 @@ public class Solution {
         String[] array = new String[] {"John", "Mary", "Bob"};
         System.out.println(Arrays.toString(array));
     }
+
 
 
 }

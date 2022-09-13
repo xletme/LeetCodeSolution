@@ -2,6 +2,10 @@ package Leetcode.StringAlp;
 
 import org.junit.Test;
 
+import java.sql.Array;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @Author maoXin
  * @Description
@@ -103,12 +107,14 @@ public class MidStringAlp {
      * s 仅由数字和英文字母（大写和/或小写）组成
      *
      * solution:
-     * 1.穷举法，把所有可能组成的字符串都列举出来 选出最长的 ，可以从最长的开始列举，剪枝 优化判断回文方法
-     * 2.动态规划
-     * 3.中心扩散
+     * 1.穷举法，把所有可能组成的字符串都列举出来 选出最长的 ，
+     * 可以从最长的开始列举，剪枝 优化判断回文方法 O（N3） O（1）
+     * 2.动态规划 动态方程 p[i,j] = p[i+1, j-1] ^ (si == sj);
+     * 给定长度子串 一直从两头往中间筛选 O(N2) O(N2)
+     * 3.中心扩散 取奇数或者偶数，一直扩展，找最长的回文子串 ，循环更新 O（N2）O（1）
      * @Date: 2021/8/6 10:18
      */
-    public String longestPalindrome(String s) {
+    /*public String longestPalindrome(String s) {
         if (s.length() < 2){
             return s;
         }
@@ -123,6 +129,64 @@ public class MidStringAlp {
             }
         }
         return null;
+    }*/
+
+    /**
+     * 2.动态规划 动态方程 p[i,j] = p[i+1, j-1] ^ (si == sj);
+     * O(n2) O(n2)
+     * @param s
+     * @return
+     */
+    public String longestPalindrome(String s) {
+        //1。特殊判断 长度小于2 2.初始化动态方程
+        // 3.长度 和 开头两层循环 具体业务逻辑实现
+        //3.1 获取j，即右边界 判断是否越界 3.2 判断两头是否相等 3.3 相等看长度是否转移
+        //4.构成回文串 和 最长的比，看是否更新长度和起始位置
+
+        int len = s.length();
+
+        if (len < 2) {
+            return s;
+        }
+
+        int maxLen = 1;
+        int begin = 0;
+
+        boolean[][] dp = new boolean[len][len];
+        for (int i = 0; i < len; i++) {
+            dp[i][i] = true;
+        }
+
+
+        char[] array = s.toCharArray();
+
+        for (int l = 2; l <= len; l++) {
+
+            for (int i = 0; i < len; i++) {
+
+                int j = l + i - 1;
+
+                if (j >= len) {//3.1
+                    break;
+                }
+
+                if (array[i] != array[j]) {//3.2
+                    dp[i][j] = false;
+                } else {
+                    if (j - i < 3) {//3.3
+                        dp[i][j] = true;
+                    } else {
+                        dp[i][j] = dp[i + 1][j - 1];
+                    }
+                }
+
+                if (dp[i][j] && j - i + 1 > maxLen) {
+                    maxLen = j - i + 1;
+                    begin = i;
+                }
+            }
+        }
+        return s.substring(begin, begin + maxLen);
     }
 
     public boolean isPalindrome(int i, int j, char[] charArray) {
@@ -142,8 +206,19 @@ public class MidStringAlp {
 
     @Test
     public void testMidStringAlp() {
-        System.out.println(instance.longestPalindrome(
-                "bb"));
-        System.out.println("babad".substring(0,4));
+        List<String> urlList = new ArrayList<>();
+        String url1 = "001_yyzz.jpg";
+        String url2 = "001_f_sfz.jpg";
+        String url3 = "002_f_sfz.jpg";
+        String url4 = "001_j_sfz.jpg";
+        String url5 = "002_j_sfz.jpg";
+        urlList.add(url1);
+        urlList.add(url2);
+        urlList.add(url3);
+        urlList.add(url4);
+        urlList.add(url5);
+        for (int i = 0; i < urlList.size(); i++) {
+            System.out.println(urlList.get(i));
+        }
     }
 }
