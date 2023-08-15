@@ -9,8 +9,8 @@
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
         <!-- 数据库连接的信息：驱动类、连接地址、用户名、密码  -->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://10.100.20.71:5000/paymentcenter"
-                        userId="t_jwjs_hc_app" password="DAUKRM5n4ICUdA==">
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://10.100.20.96:3306/park"
+                        userId="root" password="ScpAdmin@96">
             <!-- 防止生成其他库同名表 -->
             <property name="nullCatalogMeansCurrent" value="true"/>
         </jdbcConnection>
@@ -40,8 +40,10 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
         <!--  指定数据库表  -->
-        <table schema="paymentcenter" tableName="bank_logo"
-               domainObjectName="BankLogoDO" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+        <table schema="park" tableName="safety_rule"
+               domainObjectName="SafetyRule" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
             <!--  如果设置为true，生成的model类会直接使用column本身的名字，而不会再使用驼峰命名方法，比如BORN_DATE，生成的属性名字就是BORN_DATE,而不会是bornDate  -->
             <property name="useActualColumnNames" value="false"/>
             <!-- 在有自增ID的时候，都要加上一行 -->

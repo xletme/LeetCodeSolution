@@ -22,6 +22,11 @@
       <option name="url" value="http://nexus.jwell56.com/repository/thirdparty" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="AsposeJavaAPI" />
+      <option name="name" value="Aspose Java API" />
+      <option name="url" value="http://nexus.jwell56.com/repository/maven-public" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="central" />
       <option name="name" value="Central Repository" />
       <option name="url" value="http://nexus.jwell56.com/repository/maven-public" />
@@ -35,6 +40,11 @@
       <option name="id" value="jboss.community" />
       <option name="name" value="JBoss Community repository" />
       <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="com.e-iceblue" />
+      <option name="name" value="e-iceblue" />
+      <option name="url" value="http://nexus.jwell56.com/repository/maven-public" />
     </remote-repository>
   </component>
 </project>

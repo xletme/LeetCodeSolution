@@ -17,11 +17,11 @@ public class ArrayAlp {
 
 
     /**
-     * @Description: 有两种特殊字符。第一种字符可以用一比特0来表示。第二种字符可以用两比特(10 或 11)来表示。
+     * @Description: 有两种特殊字符。第一种字符可以用一比特0来表示。第二种字符可以用两比特(10或11)来表示。
      * <p>
      * 现给一个由若干比特组成的字符串。问最后一个字符是否必定为一个一比特字符。给定的字符串总是由0结束。
      * <p>
-     * 示例 1:
+     * 示例1:
      * <p>
      * 输入:
      * bits = [1, 0, 0]           0 10 0 10 0 0 11 10 11 10 10 0 10 11 0        10结尾  00结尾   10 11
@@ -59,7 +59,7 @@ public class ArrayAlp {
     /**
      * @Description: 输入一个矩阵，按照从外向里以顺时针的顺序依次打印出每一个数字。
      * <p>
-     *  
+     * 
      * <p>
      * 示例 1：
      * <p>
@@ -67,7 +67,7 @@ public class ArrayAlp {
      * 输出：[1,2,3,6,9,8,7,4,5]
      * 示例 2：
      * <p>
-     * 输入：matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
+     * 输入：matrix =[[1,2,3,4],[5,6,7,8],[9,10,11,12]]
      * 输出：[1,2,3,4,8,12,11,10,9,5,6,7]
      * 1  2  3  4
      * 5  6  7  8
@@ -75,6 +75,8 @@ public class ArrayAlp {
      * 矩阵 长 n  宽 m   n * m   int[n * m]
      * solution: 找规律 i =0  matrix[i][0] --- matrix[0][n] ---matrix[m][n] ---matrix[m][0]---matrix[i + 1][0]
      * m-- n-- 搞个计数的
+     * l left r right t top b bottom
+     * 初始值 0 (matrix[0].length - 1) 0 (matrix.length-1)
      * @Date: 2021/1/11 14:59
      */
     public int[] spiralOrder(int[][] matrix) {
@@ -100,13 +102,13 @@ public class ArrayAlp {
      * 并且每个数字都在范围0～n-1之内。
      * 在范围0～n-1内的n个数字中有且只有一个数字不在该数组中，请找出这个数字。
      * <p>
-     *  
+     * 
      * <p>
      * 示例 1:
      * <p>
      * 输入: [0,1,3]
      * 输出: 2
-     * 示例 2:
+     * 示例2:
      * <p>
      * 输入: [0,1,2,3,4,5,6,7,9]
      * 输出: 8
@@ -127,12 +129,12 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 对于非负整数 X 而言，X 的数组形式是每位数字按从左到右的顺序形成的数组。
-     * 例如，如果 X = 1231，那么其数组形式为 [1,2,3,1]。
+     * 对于非负整数X而言，X的数组形式是每位数字按从左到右的顺序形成的数组。
+     * 例如，如果X = 1231，那么其数组形式为[1,2,3,1]。
      * <p>
-     * 给定非负整数 X 的数组形式 A，返回整数 X+K 的数组形式。
+     * 给定非负整数 X 的数组形式A，返回整数X+K的数组形式。
      * <p>
-     *  
+     * 
      * <p>
      * 示例 1：
      * <p>
@@ -215,13 +217,13 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 给定长度为 2n 的整数数组 nums ，你
-     * 的任务是将这些数分成 n 对, 例如 (a1, b1), (a2, b2), ..., (an, bn) ，
-     * 使得从 1 到 n 的 min(ai, bi) 总和最大。
+     * 给定长度为2n的整数数组 nums ，你
+     * 的任务是将这些数分成n 对, 例如 (a1, b1), (a2, b2), ..., (an, bn) ，
+     * 使得从 1 到n 的 min(ai, bi) 总和最大。
      * <p>
      * 返回该 最大总和 。
      * <p>
-     *  
+     * 
      * <p>
      * 示例 1：
      * <p>
@@ -247,12 +249,12 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 给定由若干 0 和 1 组成的数组 A。我们定义 N_i：
-     * 从 A[0] 到 A[i] 的第 i 个子数组被解释为一个二进制数（从最高有效位到最低有效位）。
+     * 给定由若干0和1组成的数组 A。我们定义N_i：
+     * 从A[0] 到A[i]的第 i个子数组被解释为一个二进制数（从最高有效位到最低有效位）。
      * <p>
-     * 返回布尔值列表 answer，只有当 N_i 可以被 5 整除时，答案 answer[i] 为 true，否则为 false。
+     * 返回布尔值列表answer，只有当N_i可以被 5整除时，答案answer[i] 为true，否则为 false。
      * <p>
-     *  
+     * 
      * <p>
      * 示例 1：
      * <p>
@@ -294,11 +296,11 @@ public class ArrayAlp {
      * 假设有一个很长的花坛，一部分地块种植了花，另一部分却没有。
      * 可是，花不能种植在相邻的地块上，它们会争夺水源，两者都会死去。
      * <p>
-     * 给你一个整数数组  flowerbed 表示花坛，由若干 0 和 1 组成，
-     * 其中 0 表示没种植花，1 表示种植了花。另有一个数 n ，
-     * 能否在不打破种植规则的情况下种入 n 朵花？能则返回 true ，不能则返回 false。
+     * 给你一个整数数组flowerbed 表示花坛，由若干 0 和 1 组成，
+     * 其中 0 表示没种植花，1 表示种植了花。另有一个数n ，
+     * 能否在不打破种植规则的情况下种入n朵花？能则返回 true ，不能则返回 false。
      * <p>
-     *  
+     * 
      * <p>
      * 示例 1：
      * <p>
@@ -391,15 +393,15 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 给你一个 n 行 m 列的矩阵，最开始的时候，每个单元格中的值都是 0。
+     * 给你一个n行m列的矩阵，最开始的时候，每个单元格中的值都是 0。
      * <p>
-     * 另有一个索引数组 indices，indices[i] = [ri, ci] 中的 ri 和 ci 分别表示指定的行和列（从 0 开始编号）。
+     * 另有一个索引数组indices，indices[i] = [ri, ci]中的ri 和 ci 分别表示指定的行和列（从 0 开始编号）。
      * <p>
-     * 你需要将每对 [ri, ci] 指定的行和列上的所有单元格的值加 1。
+     * 你需要将每对[ri, ci]指定的行和列上的所有单元格的值加 1。
      * <p>
-     * 请你在执行完所有 indices 指定的增量操作后，返回矩阵中 「奇数值单元格」 的数目。
+     * 请你在执行完所有indices指定的增量操作后，返回矩阵中 「奇数值单元格」 的数目。
      * <p>
-     *  
+     * 
      * <p>
      * 示例 1：
      * <p>
@@ -414,8 +416,8 @@ public class ArrayAlp {
      * 1 <= n <= 50
      * 1 <= m <= 50
      * 1 <= indices.length <= 100
-     * 0 <= indices[i][0] < n
-     * 0 <= indices[i][1] < m
+     * 0 <= indices[i][0] <n
+     * 0 <= indices[i][1] <m
      * <p>
      * solution:
      * first:follow the rule to handle the data indices[];
@@ -539,7 +541,7 @@ public class ArrayAlp {
      * Given an array arr of integers,
      * check if there exists two integers N and M such that N is the double of M ( i.e. N = 2 * M).
      * <p>
-     * More formally check if there exists two indices i and j such that :
+     * More formally check if there existstwo indices i and j such that :
      * <p>
      * i != j
      * 0 <= i, j < arr.length
@@ -606,12 +608,12 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 给定一个整数数组和一个整数 k，判断数组中是否存在两个不同的索引 i 和 j，
-     * 使得 nums [i] = nums [j]，并且 i 和 j 的差的 绝对值 至多为 k。
+     * 给定一个整数数组和一个整数k，判断数组中是否存在两个不同的索引i和j，
+     * 使得nums [i] = nums [j]，并且 i 和 j的差的 绝对值 至多为 k。
      * <p>
-     *  
+     * 
      * <p>
-     * 示例 1:
+     * 示例1:
      * <p>
      * 输入: nums = [1,2,3,1], k = 3
      * 输出: true
@@ -659,13 +661,13 @@ public class ArrayAlp {
      * @Description:
      * 给你一个数组 nums 。nums 的源数组中，所有元素与 nums 相同，但按非递减顺序排列。
      * <p>
-     * 如果 nums 能够由源数组轮转若干位置（包括 0 个位置）得到，则返回 true ；否则，返回 false 。
+     * 如果nums 能够由源数组轮转若干位置（包括 0 个位置）得到，则返回 true ；否则，返回 false 。
      * <p>
      * 源数组中可能存在 重复项 。
      * <p>
      * 注意：我们称数组 A 在轮转 x 个位置后得到长度相同的数组 B ，当它们满足 A[i] == B[(i+x) % A.length] ，其中 % 为取余运算。
      * <p>
-     *  
+     * 
      * <p>
      * 示例 1：
      * <p>
@@ -713,7 +715,7 @@ public class ArrayAlp {
      * <p>
      * 如果三元组 (arr[i], arr[j], arr[k]) 满足下列全部条件，则认为它是一个 好三元组 。
      * <p>
-     * 0 <= i < j < k < arr.length
+     * 0 <= i < j < k <arr.length
      * |arr[i] - arr[j]| <= a
      * |arr[j] - arr[k]| <= b
      * |arr[i] - arr[k]| <= c
@@ -721,7 +723,7 @@ public class ArrayAlp {
      * <p>
      * 返回 好三元组的数量 。
      * <p>
-     *  
+     * 
      * <p>
      * 示例 1：
      * <p>
@@ -756,13 +758,13 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 给你一个整数 n 。
-     * 请你先求出从 1 到 n 的每个整数 10 进制表示下的数位和（每一位上的数字相加），
+     * 给你一个整数 n。
+     * 请你先求出从 1到 n 的每个整数 10 进制表示下的数位和（每一位上的数字相加），
      * 然后把数位和相等的数字放到同一个组中。
      * <p>
      * 请你统计每个组中的数字数目，并返回数字数目并列最多的组有多少个。
      * <p>
-     *  
+     * 
      * <p>
      * 示例 1：
      * <p>
@@ -848,11 +850,11 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 给你一个 m * n 的矩阵 grid，矩阵中的元素无论是按行还是按列，都以非递增顺序排列。 
+     * 给你一个m* n的矩阵grid，矩阵中的元素无论是按行还是按列，都以非递增顺序排列。
      * <p>
-     * 请你统计并返回 grid 中 负数 的数目。
+     * 请你统计并返回grid中 负数 的数目。
      * <p>
-     *  
+     * 
      * <p>
      * 示例 1：
      * <p>
@@ -929,7 +931,7 @@ public class ArrayAlp {
      * <p>
      * 题目保证数字插入位置总是存在。
      * <p>
-     *  
+     * 
      * <p>
      * 示例 1：
      * <p>
@@ -986,12 +988,12 @@ public class ArrayAlp {
      * @Description:
      * 给你一个日期，请你设计一个算法来判断它是对应一周中的哪一天。
      * <p>
-     * 输入为三个整数：day、month 和 year，分别表示日、月、年。
+     * 输入为三个整数：day、month 和year，分别表示日、月、年。
      * <p>
-     * 您返回的结果必须是这几个值中的一个 
+     * 您返回的结果必须是这几个值中的一个
      * {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"}。
      * <p>
-     *  
+     * 
      * <p>
      * 示例 1：
      * <p>
@@ -1039,16 +1041,16 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 给你一个以行程长度编码压缩的整数列表 nums 。
+     * 给你一个以行程长度编码压缩的整数列表nums。
      * <p>
      * 考虑每对相邻的两个元素
-     * [freq, val] = [nums[2*i], nums[2*i+1]] （其中 i >= 0 ），
-     * 每一对都表示解压后子列表中有 freq 个值为 val 的元素，
+     * [freq, val] = [nums[2*i], nums[2*i+1]]（其中i >= 0），
+     * 每一对都表示解压后子列表中有 freq个值为val的元素，
      * 你需要从左到右连接所有子列表以生成解压后的列表。
      * <p>
      * 请你返回解压后的列表。
      * <p>
-     *  
+     * 
      * <p>
      * 示例 1：
      * <p>
@@ -1092,18 +1094,18 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 有一个炸弹需要拆除，时间紧迫！你的情报员会给你一个长度为 n 的 循环 数组 code 以及一个密钥 k 。
+     * 有一个炸弹需要拆除，时间紧迫！你的情报员会给你一个长度为n的循环数组code以及一个密钥k。
      * <p>
-     * 为了获得正确的密码，你需要替换掉每一个数字。所有数字会 同时 被替换。
+     * 为了获得正确的密码，你需要替换掉每一个数字。所有数字会同时被替换。
      * <p>
-     * 如果 k > 0 ，将第 i 个数字用 接下来 k 个数字之和替换。
-     * 如果 k < 0 ，将第 i 个数字用 之前 k 个数字之和替换。
-     * 如果 k == 0 ，将第 i 个数字用 0 替换。
-     * 由于 code 是循环的， code[n-1] 下一个元素是 code[0] ，且 code[0] 前一个元素是 code[n-1] 。
+     * 如果k > 0，将第i个数字用 接下来k个数字之和替换。
+     * 如果k < 0，将第i个数字用 之前k个数字之和替换。
+     * 如果k == 0，将第i个数字用0替换。
+     * 由于code是循环的，code[n-1]下一个元素是code[0]，且code[0]前一个元素是code[n-1]。
      * <p>
-     * 给你 循环 数组 code 和整数密钥 k ，请你返回解密后的结果来拆除炸弹！
+     * 给你 循环数组code和整数密钥k，请你返回解密后的结果来拆除炸弹！
      * <p>
-     *  
+     * 
      * <p>
      * 示例 1：
      * <p>
@@ -1158,12 +1160,12 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 给定一个非空且只包含非负数的整数数组 nums，
+     * 给定一个非空且只包含非负数的整数数组nums，
      * 数组的度的定义是指数组里任一元素出现频数的最大值。
      * <p>
-     * 你的任务是在 nums 中找到与 nums 拥有相同大小的度的最短连续子数组，返回其长度。
+     * 你的任务是在 nums 中找到与nums拥有相同大小的度的最短连续子数组，返回其长度。
      * <p>
-     *  
+     * 
      * <p>
      * 示例 1：
      * <p>
@@ -1219,9 +1221,9 @@ public class ArrayAlp {
      * <p>
      * 模式 是由一个或多个值组成的子数组（连续的子序列），连续 重复多次但 不重叠 。 模式由其长度和重复次数定义。
      * <p>
-     * 如果数组中存在至少重复 k 次且长度为 m 的模式，则返回 true ，否则返回  false 。
+     * 如果数组中存在至少重复 k 次且长度为 m 的模式，则返回 true ，否则返回 false 。
      * <p>
-     *  
+     * 
      * <p>
      * 示例 1：
      * <p>
@@ -1327,14 +1329,14 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 环形公交路线上有 n 个站，按次序从 0 到 n - 1 进行编号。
-     * 我们已知每一对相邻公交站之间的距离，distance[i] 表示编号为 i 的车站和编号为 (i + 1) % n 的车站之间的距离。
+     * 环形公交路线上有n个站，按次序从0到n - 1进行编号。
+     * 我们已知每一对相邻公交站之间的距离，distance[i]表示编号为i的车站和编号为(i + 1) % n的车站之间的距离。
      * <p>
      * 环线上的公交车都可以按顺时针和逆时针的方向行驶。
      * <p>
-     * 返回乘客从出发点 start 到目的地 destination 之间的最短距离。
+     * 返回乘客从出发点start到目的地destination之间的最短距离。
      * <p>
-     *  
+     * 
      * <p>
      * 示例 1：
      * <p>
@@ -1345,7 +1347,7 @@ public class ArrayAlp {
      * 解释：公交站 0 和 1 之间的距离是 1 或 9，最小值是 1。
      * <p>
      * 约束：
-     * 1 <= n <= 10^4
+     * 1 <= n<= 10^4
      * distance.length == n
      * 0 <= start, destination < n
      * 0 <= distance[i] <= 10^4
@@ -1381,14 +1383,14 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 给你一个长度固定的整数数组 arr，
+     * 给你一个长度固定的整数数组arr，
      * 请你将该数组中出现的每个零都复写一遍，并将其余的元素向右平移。
      * <p>
      * 注意：请不要在超过该数组长度的位置写入元素。
      * <p>
-     * 要求：请对输入的数组 就地 进行上述修改，不要从函数返回任何东西。
+     * 要求：请对输入的数组就地进行上述修改，不要从函数返回任何东西。
      * <p>
-     *  
+     * 
      * <p>
      * 示例 1：
      * <p>
@@ -1463,18 +1465,18 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 给你一个非递减的 有序 整数数组，
+     * 给你一个非递减的有序整数数组，
      * 已知这个数组中恰好有一个整数，它的出现次数超过数组元素总数的 25%。
      * <p>
      * 请你找到并返回这个整数
      * <p>
-     *  
+     * 
      * <p>
      * 示例：
      * <p>
      * 输入：arr = [1,2,2,6,6,6,6,7,10]
      * 输出：6
-     *  
+     * 
      * <p>
      * 提示：
      * <p>
@@ -1540,20 +1542,20 @@ public class ArrayAlp {
      * Since they are friends,
      * they would like to exchange one candy bar each
      * so that after the exchange,
-     * they both have the same total amount of candy. 
-     * (The total amount of candy a person has is the sum of the sizes of candy bars they have.)
+     * they both have the same totalamount of candy.
+     * (The total amount of candya person has is the sum of the sizes of candybars they have.)
      * <p>
-     * Return an integer array ans 
+     * Return an integer array ans
      * where ans[0] is the size of the candy bar
      * that Alice must exchange,
      * and ans[1] is the size of the candy bar
      * that Bob must exchange.
      * <p>
      * If there are multiple answers,
-     * you may return any one of them. 
+     * you may return any one of them.
      * It is guaranteed an answer exists.
      * <p>
-     *  
+     * 
      * <p>
      * Example 1:
      * <p>
@@ -1571,7 +1573,7 @@ public class ArrayAlp {
      * <p>
      * Input: A = [1,2,5], B = [2,4]   8 - 6  =  2   5 -4 =1
      * Output: [5,4]
-     *  
+     * 
      * <p>
      * Note:
      * <p>
@@ -1579,8 +1581,8 @@ public class ArrayAlp {
      * 1 <= B.length <= 10000
      * 1 <= A[i] <= 100000
      * 1 <= B[i] <= 100000
-     * It is guaranteed that Alice and Bob have different total amounts of candy.
-     * It is guaranteed there exists an answer.
+     * It is guaranteed that Alice and Bob have different total amounts ofcandy.
+     * It is guaranteed there exists ananswer.
      * <p>
      * solution: 1.compare the k = sum(A)- sum(B)
      * 0 return int[];
@@ -1621,7 +1623,7 @@ public class ArrayAlp {
      * F(n) = F(n - 1) + F(n - 2), for n > 1.
      * Given n, calculate F(n).
      * <p>
-     *  
+     * 
      * <p>
      * Example 1:
      * <p>
@@ -1657,17 +1659,17 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 给你一个数组 prices ，
-     * 其中 prices[i] 是商店里第 i 件商品的价格。
+     * 给你一个数组prices，
+     * 其中prices[i]是商店里第i件商品的价格。
      * <p>
-     * 商店里正在进行促销活动，如果你要买第 i 件商品，
+     * 商店里正在进行促销活动，如果你要买第i件商品，
      * 那么你可以得到与 prices[j] 相等的折扣，
-     *其中 j 是满足 j > i 且 prices[j] <= prices[i] 的 最小下标 ，
-     * 如果没有满足条件的 j ，你将没有任何折扣。
+     *其中j是满足j > i且prices[j] <= prices[i]的最小下标，
+     * 如果没有满足条件的j，你将没有任何折扣。
      * <p>
-     * 请你返回一个数组，数组中第 i 个元素是折扣后你购买商品 i 最终需要支付的价格。
+     * 请你返回一个数组，数组中第i个元素是折扣后你购买商品 i最终需要支付的价格。
      * <p>
-     *  
+     * 
      * <p>
      * 示例 1：
      * <p>
@@ -1687,7 +1689,7 @@ public class ArrayAlp {
      * <p>
      * 输入：prices = [10,1,1,6]  10+1+1-1+1+6
      * 输出：[9,0,1,6]
-     *  
+     * 
      * <p>
      * 提示：
      * <p>
@@ -1713,7 +1715,7 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 给定一个范围在  1 ≤ a[i] ≤ n ( n = 数组大小 ) 的 整型数组，
+     * 给定一个范围在 1 ≤ a[i] ≤ n (n = 数组大小 ) 的 整型数组，
      * 数组中的元素一些出现了两次，另一些只出现一次。
      * <p>
      * 找到所有在 [1, n] 范围之间没有出现在数组中的数字。
@@ -1765,15 +1767,15 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * Given an array A of strings made only from lowercase letters,
+     * Given an arrayA of strings made only from lowercase letters,
      * return a list of all characters that show up in all strings within the list
-     * (including duplicates).  For example,
-     * if a character occurs 3 times in all strings but not 4 times,
-     * you need to include that character three times in the final answer.
+     * (including duplicates).For example,
+     * if a character occurs 3 timesin all strings but not 4 times,
+     * you need to include that character three timesin the final answer.
      * <p>
      * You may return the answer in any order.
      * <p>
-     *  
+     * 
      * <p>
      * Example 1:
      * <p>
@@ -1783,7 +1785,7 @@ public class ArrayAlp {
      * <p>
      * Input: ["cool","lock","cook"]
      * Output: ["c","o"]
-     *  
+     * 
      * <p>
      * Note:
      * <p>
@@ -1926,11 +1928,11 @@ public class ArrayAlp {
      * Given an array of integers arr,
      * a lucky integer is an integer which has a frequency in the array equal to its value.
      * <p>
-     * Return a lucky integer in the array.
+     * Return a lucky integerin the array.
      * If there are multiple lucky integers return the largest of them.
-     * If there is no lucky integer return -1.
+     * If there is no luckyinteger return -1.
      * <p>
-     *  
+     * 
      * <p>
      * Example 1:
      * <p>
@@ -1955,7 +1957,7 @@ public class ArrayAlp {
      * <p>
      * Input: arr = [7,7,7,7,7,7,7]
      * Output: 7
-     *  
+     * 
      * <p>
      * Constraints:
      * <p>
@@ -1986,7 +1988,7 @@ public class ArrayAlp {
      * Given an integer n,
      * return any array containing n unique integers such that they add up to 0.
      * <p>
-     *  
+     * 
      * <p>
      * Example 1:
      * <p>
@@ -2001,7 +2003,7 @@ public class ArrayAlp {
      * <p>
      * Input: n = 1
      * Output: [0]
-     *  
+     * 
      * <p>
      * Constraints:
      * <p>
@@ -2034,21 +2036,21 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 给你一个整数数组 nums，
-     * 请你返回其中位数为 偶数 的数字的个数。
+     * 给你一个整数数组nums，
+     * 请你返回其中位数为偶数的数字的个数。
      * <p>
-     *  
+     * 
      * <p>
      * 示例 1：
      * <p>
      * 输入：nums = [12,345,2,6,7896]
      * 输出：2
      * 解释：
-     * 12 是 2 位数字（位数为偶数） 
-     * 345 是 3 位数字（位数为奇数）  
-     * 2 是 1 位数字（位数为奇数） 
-     * 6 是 1 位数字 位数为奇数） 
-     * 7896 是 4 位数字（位数为偶数）  
+     * 12 是 2 位数字（位数为偶数）
+     * 345 是 3 位数字（位数为奇数）
+     * 2 是 1 位数字（位数为奇数）
+     * 6 是 1 位数字 位数为奇数）
+     * 7896 是 4 位数字（位数为偶数）
      * 因此只有 12 和 7896 是位数为偶数的数字
      * 示例 2：
      * <p>
@@ -2056,7 +2058,7 @@ public class ArrayAlp {
      * 输出：1
      * 解释：
      * 只有 1771 是位数为偶数的数字。
-     *  
+     * 
      * <p>
      * 提示：
      * <p>
@@ -2084,7 +2086,7 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 给你一个整数数组 nums，
+     * 给你一个整数数组nums，
      * 请编写一个能够返回数组 “中心索引” 的方法。
      * <p>
      * 数组 中心索引 是数组的一个索引，
@@ -2095,7 +2097,7 @@ public class ArrayAlp {
      * <p>
      * 注意：中心索引可能出现在数组的两端。
      * <p>
-     *  
+     * 
      * <p>
      * 示例 1：
      * <p>
@@ -2119,12 +2121,12 @@ public class ArrayAlp {
      * 中心索引是 0 。
      * 索引 0 左侧不存在元素，视作和为 0 ；
      * 右侧数之和为 1 + (-1) = 0 ，二者相等。
-     *  
+     * 
      * <p>
      * 提示：
      * <p>
-     * nums 的长度范围为 [0, 10000]。
-     * 任何一个 nums[i] 将会是一个范围在 [-1000, 1000]的整数。
+     * nums 的长度范围为[0, 10000]。
+     * 任何一个nums[i] 将会是一个范围在[-1000, 1000]的整数。
      * <p>
      * solution: res = arr[i] sum(nums) - res / 2 = sum[0...i-1]
      * @Date: 2021/2/26 17:44
@@ -2149,12 +2151,12 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * A 和 B 在一个 3 x 3 的网格上玩井字棋。
+     * A 和B在一个3x3的网格上玩井字棋。
      * <p>
      * 井字棋游戏的规则如下：
      * <p>
      * 玩家轮流将棋子放在空方格 (" ") 上。
-     * 第一个玩家 A 总是用 "X" 作为棋子，而第二个玩家 B 总是用 "O" 作为棋子。
+     * 第一个玩家 A 总是用"X" 作为棋子，而第二个玩家 B 总是用 "O" 作为棋子。
      * "X" 和 "O" 只能放在空方格中，而不能放在已经被占用的方格上。
      * 只要有 3 个相同的（非空）棋子排成一条直线（行、列、对角线）时，游戏结束。
      * 如果所有方块都放满棋子（不为空），游戏也会结束。
@@ -2165,7 +2167,7 @@ public class ArrayAlp {
      * 如果游戏存在获胜者（A 或 B），就返回该游戏的获胜者；如果游戏以平局结束，则返回 "Draw"；
      * 如果仍会有行动（游戏未结束），则返回 "Pending"。
      * <p>
-     * 你可以假设 moves 都 有效（遵循井字棋规则），网格最初是空的，A 将先行动。
+     * 你可以假设moves都 有效（遵循井字棋规则），网格最初是空的，A 将先行动。
      * <p>
      * solution: 3字棋 和五子棋一样的规则，moves记录 A B的行动，A先行。 3点一线 斜率相同
      * 判断A B是否有，哪个有则返回哪个获胜 否则返回 Pending 或者 Draw(无法在走下去了)
@@ -2282,14 +2284,14 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * You are given an array of strings words and a string chars.
+     * You are given an array of stringswordsand a stringchars.
      * <p>
-     * A string is good if it can be formed by characters from chars
-     *  (each character can only be used once).
+     * A string is goodifit can be formed bycharacters from chars
+     * (each charactercan only be used once).
      * <p>
      * Return the sum of lengths of all good strings in words.
      * <p>
-     *  
+     * 
      * <p>
      * Example 1:
      * <p>
@@ -2303,12 +2305,12 @@ public class ArrayAlp {
      * Output: 10
      * Explanation:
      * The strings that can be formed are "hello" and "world" so the answer is 5 + 5 = 10.
-     *  
+     * 
      * <p>
      * Note:
      * <p>
      * 1 <= words.length <= 1000
-     * 1 <= words[i].length, chars.length <= 100
+     * 1 <= words[i].length, chars.length<= 100
      * All strings contain lowercase English letters only.
      * <p>
      * solution:
@@ -2371,13 +2373,13 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 给你两个整数数组 arr1 ， arr2 和一个整数 d 
-     * ，请你返回两个数组之间的 距离值 。
+     * 给你两个整数数组arr1，arr2和一个整数d
+     * ，请你返回两个数组之间的距离值。
      * <p>
-     * 「距离值」 定义为符合此距离要求的元素数目：对于元素 arr1[i] 
-     * ，不存在任何元素 arr2[j] 满足 |arr1[i]-arr2[j]| <= d 。
+     * 「距离值」定义为符合此距离要求的元素数目：对于元素arr1[i]
+     * ，不存在任何元素arr2[j]满足 |arr1[i]-arr2[j]| <= d 。
      * <p>
-     *  
+     * 
      * <p>
      * 示例 1：
      * <p>
@@ -2440,11 +2442,11 @@ public class ArrayAlp {
     /**
      * @Description:
      * 有一个自行车手打算进行一场公路骑行，
-     * 这条路线总共由 n + 1 个不同海拔的点组成。自行车手从海拔为 0 的点 0 开始骑行。
+     * 这条路线总共由n + 1个不同海拔的点组成。自行车手从海拔为 0的点0开始骑行。
      * <p>
-     * 给你一个长度为 n 的整数数组 gain ，其中 gain[i] 是点 i 和点 i + 1 的 净海拔高度差（0 <= i < n）。请你返回 最高点的海拔 。
+     * 给你一个长度为 n的整数数组gain，其中 gain[i]是点 i和点 i + 1的 净海拔高度差（0 <= i < n）。请你返回 最高点的海拔 。
      * <p>
-     *  
+     * 
      * <p>
      * 示例 1：
      * <p>
@@ -2456,7 +2458,7 @@ public class ArrayAlp {
      * 输入：gain = [-4,-3,-2,-1,4,3,2]
      * 输出：0
      * 解释：海拔高度依次为 [0,-4,-7,-9,-10,-6,-3,-1] 。最高海拔为 0 。
-     *  
+     * 
      * <p>
      * 提示：
      * <p>
@@ -2479,14 +2481,14 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 给定一个二进制矩阵 
+     * 给定一个二进制矩阵
      * A，我们想先水平翻转图像，然后反转图像并返回结果。
      * <p>
-     * 水平翻转图片就是将图片的每一行都进行翻转，即逆序。例如，水平翻转 [1, 1, 0] 的结果是 [0, 1, 1]。
+     * 水平翻转图片就是将图片的每一行都进行翻转，即逆序。例如，水平翻转[1, 1, 0]的结果是[0, 1, 1]。
      * <p>
-     * 反转图片的意思是图片中的 0 全部被 1 替换， 1 全部被 0 替换。例如，反转 [0, 1, 1] 的结果是 [1, 0, 0]。
+     * 反转图片的意思是图片中的0全部被1替换，1全部被0替换。例如，反转[0, 1, 1]的结果是[1, 0, 0]。
      * <p>
-     *  
+     * 
      * <p>
      * 示例 1：
      * <p>
@@ -2500,12 +2502,12 @@ public class ArrayAlp {
      * 输出：[[1,1,0,0],[0,1,1,0],[0,0,0,1],[1,0,1,0]]
      * 解释：首先翻转每一行: [[0,0,1,1],[1,0,0,1],[1,1,1,0],[0,1,0,1]]；
      * 然后反转图片: [[1,1,0,0],[0,1,1,0],[0,0,0,1],[1,0,1,0]]
-     *  
+     * 
      * <p>
      * 提示：
      * <p>
      * 1 <= A.length = A[0].length <= 20
-     * 0 <= A[i][j] <= 1
+     * 0 <= A[i][j]<=1
      * <p>
      * solution:
      * 1.水平翻转  a[i][j] a[i][a[i].length - i]
@@ -2536,7 +2538,7 @@ public class ArrayAlp {
      * 当 2 <= 2 * i + 1 <= n 时，nums[2 * i + 1] = nums[i] + nums[i + 1]
      * 返回生成数组 nums 中的 最大 值。
      * <p>
-     *  
+     * 
      * <p>
      * 示例 1：
      * <p>
@@ -2562,7 +2564,7 @@ public class ArrayAlp {
      * 输入：n = 3
      * 输出：2
      * 解释：根据规则，nums[0]、nums[1]、nums[2] 和 nums[3] 之中的最大值是 2
-     *  
+     * 
      * <p>
      * 提示：
      * <p>
@@ -2601,11 +2603,11 @@ public class ArrayAlp {
      * <p>
      * 注意，当一组学生被选中时，他们之间可以以任何可能的方式重新排序，而未被选中的学生应该保持不动。
      * <p>
-     *  
+     * 
      * <p>
      * 示例：
      * <p>
-     * 输入：heights = [1,1,4,2,1,3]
+     * 输入：heights =[1,1,4,2,1,3]
      * 输出：3
      * 解释：
      * 当前数组：[1,1,4,2,1,3]
@@ -2621,7 +2623,7 @@ public class ArrayAlp {
      * <p>
      * 输入：heights = [1,2,3,4,5]
      * 输出：0
-     *  
+     * 
      * <p>
      * 提示：
      * <p>
@@ -2667,14 +2669,14 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 给你一个数组 nums，对于其中每个元素 nums[i]，请你统计数组中比它小的所有数字的数目。
+     * 给你一个数组nums，对于其中每个元素nums[i]，请你统计数组中比它小的所有数字的数目。
      * <p>
-     * 换而言之，对于每个 nums[i] 你必须计算出有效的 j 的数量，
-     * 其中 j 满足 j != i 且 nums[j] < nums[i] 。
+     * 换而言之，对于每个nums[i]你必须计算出有效的j的数量，
+     * 其中 j 满足j != i 且 nums[j] < nums[i]。
      * <p>
      * 以数组形式返回答案。
      * <p>
-     *  
+     * 
      * <p>
      * 示例 1：
      * <p>
@@ -2777,7 +2779,7 @@ public class ArrayAlp {
     /**
      * @Description:
      * 包含整数的二维矩阵 M 表示一个图片的灰度。
-     * 你需要设计一个平滑器来让每一个单元的灰度成为平均灰度 (向下舍入) ，
+     * 你需要设计一个平滑器来让每一个单元的灰度成为平均灰度(向下舍入) ，
      * 平均灰度的计算是周围的8个单元和它本身的值求平均，
      * 如果周围的单元格不足八个，则尽可能多的利用它们。
      * <p>
@@ -2798,7 +2800,7 @@ public class ArrayAlp {
      * 注意:
      * <p>
      * 给定矩阵中的整数范围为 [0, 255]。
-     * 矩阵的长和宽的范围均为 [1, 150]。
+     * 矩阵的长和宽的范围均为[1, 150]。
      * <p>
      * solution:
      * 题目终于读懂了 我擦
@@ -2840,7 +2842,7 @@ public class ArrayAlp {
      * <p>
      * Input: s = "abc"
      * Output: true
-     *  
+     * 
      * <p>
      * Note:
      * <p>
@@ -2875,9 +2877,9 @@ public class ArrayAlp {
      * <p>
      * For each kid check if there is a way to distribute extraCandies among the kids
      * such that he or she can have the greatest number of candies among them.
-     *  Notice that multiple kids can have the greatest number of candies.
+     * Notice that multiple kids can have the greatest number of candies.
      * <p>
-     *  
+     * 
      * <p>
      * Example 1:
      * <p>
@@ -2937,14 +2939,14 @@ public class ArrayAlp {
      * Output: 1
      * Explanation: 6 is the largest integer, and for every other number in the array x,
      * 6 is more than twice as big as x.  The index of value 6 is 1, so we return 1.
-     *  
+     * 
      * <p>
      * Example 2:
      * <p>
      * Input: nums = [1, 2, 3, 4]
      * Output: -1
      * Explanation: 4 isn't at least as big as twice the value of 3, so we return -1.
-     *  
+     * 
      * <p>
      * Note:
      * <p>
@@ -2986,7 +2988,7 @@ public class ArrayAlp {
      * such that it is [nums[l], nums[l + 1], ..., nums[r - 1], nums[r]] and
      * for each l <= i < r, nums[i] < nums[i + 1].
      * <p>
-     *  
+     * 
      * <p>
      * Example 1:
      * <p>
@@ -3001,7 +3003,7 @@ public class ArrayAlp {
      * Output: 1
      * Explanation: The longest continuous increasing subsequence is [2] with length 1. Note that it must be strictly
      * increasing.
-     *  
+     * 
      * <p>
      * Constraints:
      * <p>
@@ -3034,13 +3036,13 @@ public class ArrayAlp {
     /**
      * @Description:
      * Given a m * n matrix of distinct numbers,
-     * return all lucky numbers in the matrix in any order.
+     * return all lucky numbers in thematrix in any order.
      * <p>
      * A lucky number is an element of the matrix
      * such that it is the minimum element in its row and
      * maximum in its column.
      * <p>
-     *  
+     * 
      * <p>
      * Example 1:
      * <p>
@@ -3091,7 +3093,7 @@ public class ArrayAlp {
     /**
      * @Description:
      * A magic index in an array A[0...n-1] is defined to be an index
-     * such that A[i] = i. Given a sorted array of integers, write a method to find a magic index,
+     * such that A[i] = i. Given a sorted array ofintegers, write a method to find a magic index,
      * if one exists, in array A. If not, return -1.
      * If there are more than one magic index, return the smallest one.
      * <p>
@@ -3106,7 +3108,7 @@ public class ArrayAlp {
      * Note:
      * <p>
      * 1 <= nums.length <= 1000000
-     * This problem is the follow-up of the original problem in the book, i.e. the values are not distinct.
+     * This problem is thefollow-up of the original problem in the book, i.e.the values arenot distinct.
      * <p>
      * solution:
      * 1. traver the nums array,find the num equals the index
@@ -3134,7 +3136,7 @@ public class ArrayAlp {
      * Return True if you can make arr equal to target,
      * or False otherwise.
      * <p>
-     *  
+     * 
      * <p>
      * Example 1:
      * <p>
@@ -3207,7 +3209,7 @@ public class ArrayAlp {
      * Note:
      * <p>
      * len(solution) = len(guess) = 4
-     * There are only "R","G","B","Y" in solution and guess.
+     * There are only "R","G","B","Y" in solutionandguess.
      * <p>
      * solution:
      * 用hashMap统计 R G B Y 的次数
@@ -3265,15 +3267,15 @@ public class ArrayAlp {
      *
      * 请你返回在矩阵主对角线上的元素和副对角线上且不在主对角线上元素的和。
      *
-     *  
+     * 
      *
-     * 示例  1：
+     * 示例 1：
      *
      *
      *
      * 输入：mat = [[1,2,3],
-     *             [4,5,6],
-     *             [7,8,9]]
+     *            [4,5,6],
+     *            [7,8,9]]
      * 输出：25
      * 解释：对角线的和为：1 + 5 + 9 + 3 + 7 = 25
      * 请注意，元素 mat[1][1] = 5 只会被计算一次。
@@ -3302,18 +3304,18 @@ public class ArrayAlp {
      * @Description:
      * 给定一个二进制数组， 计算其中最大连续 1 的个数。
      *
-     *  
+     * 
      *
      * 示例：
      *
      * 输入：[1,1,0,1,1,1]
      * 输出：3
      * 解释：开头的两位和最后的三位都是连续 1 ，所以最大连续 1 的个数是 3.
-     *  
+     * 
      *
      * 提示：
      *
-     * 输入的数组只包含 0 和 1 。
+     * 输入的数组只包含0 和 1 。
      * 输入数组的长度是正整数，且不超过 10,000。
      *
      * solution:
@@ -3337,10 +3339,10 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 给你一个数组 items ，其中 items[i] = [typei, colori, namei] ，
+     * 给你一个数组 items ，其中items[i] = [typei, colori, namei] ，
      * 描述第 i 件物品的类型、颜色以及名称。
      *
-     * 另给你一条由两个字符串 ruleKey 和 ruleValue 表示的检索规则。
+     * 另给你一条由两个字符串ruleKey 和 ruleValue 表示的检索规则。
      *
      * 如果第 i 件物品能满足下述条件之一，则认为该物品与给定的检索规则 匹配 ：
      *
@@ -3349,7 +3351,7 @@ public class ArrayAlp {
      * ruleKey == "name" 且 ruleValue == namei 。
      * 统计并返回 匹配检索规则的物品数量 。
      *
-     *  
+     * 
      *
      * 示例 1：
      *
@@ -3367,7 +3369,7 @@ public class ArrayAlp {
      * ruleKey = "type", ruleValue = "phone"
      * 输出：2
      * 解释：只有两件物品匹配检索规则，这两件物品分别是 ["phone","blue","pixel"] 和 ["phone","gold","iphone"] 。注意，["computer","silver","phone"] 未匹配检索规则。
-     *  
+     * 
      *
      * 提示：
      *
@@ -3404,14 +3406,14 @@ public class ArrayAlp {
      * @Description:
      *给定 n 个整数，找出平均数最大且长度为 k 的连续子数组，并输出该最大平均数。
      *
-     *  
+     * 
      *
      * 示例：
      *
      * 输入：[1,12,-5,-6,50,3], k = 4
      * 输出：12.75
      * 解释：最大平均数 (12-5-6+50)/4 = 51/4 = 12.75
-     *  
+     * 
      *
      * 提示：
      *
@@ -3443,7 +3445,7 @@ public class ArrayAlp {
      * @Description:
      * 你在一家生产小球的玩具厂工作，有 n 个小球，
      * 编号从 lowLimit 开始，到 highLimit 结束（
-     * 包括 lowLimit 和 highLimit ，即 n == highLimit - lowLimit + 1）。
+     * 包括 lowLimit 和highLimit ，即n == highLimit - lowLimit + 1）。
      * 另有无限数量的盒子，编号从 1 到 infinity 。
      *
      * 你的工作是将每个小球放入盒子中，
@@ -3455,7 +3457,7 @@ public class ArrayAlp {
      * 返回放有最多小球的盒子中的小球数量。
      * 如果有多个盒子都满足放有最多小球，只需返回其中任一盒子的小球数量。
      *
-     *  
+     * 
      *
      * 示例 1：
      *
@@ -3481,7 +3483,7 @@ public class ArrayAlp {
      * 盒子编号：1 2 3 4 5 6 7 8 9 10 11 12 ...
      * 小球数量：0 1 1 1 1 1 1 1 1 2  0  0  ...
      * 编号 10 的盒子放有最多小球，小球数量为 2 。
-     *  
+     * 
      *
      * 提示：
      *
@@ -3512,7 +3514,7 @@ public class ArrayAlp {
      * @Description:
      * 给你一个整型数组 nums ，在数组中找出由三个数组成的最大乘积，并输出这个乘积。
      *
-     *  
+     * 
      *
      * 示例 1：
      *
@@ -3526,11 +3528,11 @@ public class ArrayAlp {
      *
      * 输入：nums = [-1,-2,-3]
      * 输出：-6
-     *  
+     * 
      *
      * 提示：
      *
-     * 3 <= nums.length <= 104
+     * 3 <= nums.length <=104
      * -1000 <= nums[i] <= 1000
      *
      *
@@ -3553,7 +3555,7 @@ public class ArrayAlp {
      *
      * 请你计算并返回该式的最大值。
      *
-     *  
+     * 
      *
      * 示例 1：
      *
@@ -3589,12 +3591,12 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 给你一个整数数组 arr ，请你删除最小 5% 的数字和最大 5% 的数字后，
+     * 给你一个整数数组arr，请你删除最小5%的数字和最大 5%的数字后，
      * 剩余数字的平均值。
      *
-     * 与 标准答案 误差在 10-5 的结果都被视为正确结果。
+     * 与 标准答案误差在10-5的结果都被视为正确结果。
      *
-     *  
+     * 
      *
      * 示例 1：
      *
@@ -3638,7 +3640,7 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 给你个整数数组 arr，其中每个元素都 不相同。
+     * 给你个整数数组arr，其中每个元素都 不相同。
      *
      * 请你找到所有具有最小绝对差的元素对，并且按升序的顺序返回。
      *
@@ -3654,7 +3656,7 @@ public class ArrayAlp {
      *
      * 输入：arr = [3,8,-10,23,19,-4,-14,27]
      * 输出：[[-14,-10],[19,23],[23,27]]
-     *  
+     * 
      *
      * 提示：
      *
@@ -3697,7 +3699,7 @@ public class ArrayAlp {
      *
      * 返回使 s 变成 交替字符串 所需的 最少 操作数。
      *
-     *  
+     * 
      *
      * 示例 1：
      *
@@ -3714,7 +3716,7 @@ public class ArrayAlp {
      * 输入：s = "1111"
      * 输出：2
      * 解释：需要 2 步操作得到 "0101" 或 "1010" 。
-     *  
+     * 
      *
      * 提示：
      *
@@ -3754,13 +3756,13 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 给你一个整数数组 nums 。你可以选定任意的 正数 startValue 作为初始值。
+     * 给你一个整数数组 nums。你可以选定任意的正数 startValue 作为初始值。
      *
-     * 你需要从左到右遍历 nums 数组，并将 startValue 依次累加上 nums 数组中的值。
+     * 你需要从左到右遍历 nums数组，并将 startValue 依次累加上nums数组中的值。
      *
-     * 请你在确保累加和始终大于等于 1 的前提下，选出一个最小的 正数 作为 startValue 。
+     * 请你在确保累加和始终大于等于 1 的前提下，选出一个最小的正数作为 startValue 。
      *
-     *  
+     * 
      *
      * 示例 1：
      *
@@ -3768,12 +3770,12 @@ public class ArrayAlp {
      * 输出：5
      * 解释：如果你选择 startValue = 4，在第三次累加时，和小于 1 。
      *                 累加求和
-     *                 startValue = 4 | startValue = 5 | nums
-     *                   (4 -3 ) = 1  | (5 -3 ) = 2    |  -3
-     *                   (1 +2 ) = 3  | (2 +2 ) = 4    |   2
-     *                   (3 -3 ) = 0  | (4 -3 ) = 1    |  -3
-     *                   (0 +4 ) = 4  | (1 +4 ) = 5    |   4
-     *                   (4 +2 ) = 6  | (5 +2 ) = 7    |   2
+     *                startValue = 4 | startValue = 5 | nums
+     *                  (4 -3 ) = 1  | (5 -3 ) = 2    |  -3
+     *                  (1 +2 ) = 3  | (2 +2 ) = 4    |   2
+     *                  (3 -3 ) = 0  | (4 -3 ) = 1    |  -3
+     *                  (0 +4 ) = 4  | (1 +4 ) = 5    |   4
+     *                  (4 +2 ) = 6  | (5 +2 ) = 7    |   2
      *
      * 提示：
      *
@@ -3808,7 +3810,7 @@ public class ArrayAlp {
      * 如果对于所有 i <= j，A[i] <= A[j]，那么数组 A 是单调递增的。
      * 如果对于所有 i <= j，A[i]> = A[j]，那么数组 A 是单调递减的。
      *
-     * 当给定的数组 A 是单调数组时返回 true，否则返回 false。
+     * 当给定的数组 A是单调数组时返回 true，否则返回 false。
      *
      * 提示：
      *
@@ -3891,7 +3893,7 @@ public class ArrayAlp {
      * 有一条圆形赛道由 n 个扇区组成，扇区编号从 1 到 n 。
      * 现将在这条赛道上举办一场马拉松比赛，该马拉松全程由 m 个阶段组成。
      * 其中，第 i 个阶段将会从扇区 rounds[i - 1] 开始，到扇区 rounds[i] 结束。
-     * 举例来说，第 1 阶段从 rounds[0] 开始，到 rounds[1] 结束。
+     * 举例来说，第 1 阶段从rounds[0]开始，到rounds[1]结束。
      *
      * 请你以数组形式返回经过次数最多的那几个扇区，按扇区编号 升序 排列。
      *
@@ -3910,7 +3912,7 @@ public class ArrayAlp {
      *
      * 输入：n = 7, rounds = [1,3,5,7]
      * 输出：[1,2,3,4,5,6,7]
-     *  
+     * 
      *
      * 提示：
      *
@@ -3980,13 +3982,13 @@ public class ArrayAlp {
     }
     /**
      * @Description:
-     * 给你一个长度为 n 的整数数组，
-     * 请你判断在 最多 改变 1 个元素的情况下，
+     * 给你一个长度为n的整数数组，
+     * 请你判断在 最多 改变1 个元素的情况下，
      * 该数组能否变成一个非递减数列。
      *
-     * 我们是这样定义一个非递减数列的： 对于数组中任意的 i (0 <= i <= n-2)，总满足 nums[i] <= nums[i + 1]。
+     * 我们是这样定义一个非递减数列的：对于数组中任意的i (0 <= i <= n-2)，总满足 nums[i] <= nums[i + 1]。
      *
-     *  
+     * 
      *
      * 示例 1:
      *
@@ -3998,12 +4000,12 @@ public class ArrayAlp {
      * 输入: nums = [4,2,1]
      * 输出: false
      * 解释: 你不能在只改变一个元素的情况下将其变为非递减数列。
-     *  
+     * 
      *
      * 提示：
      *
      * 1 <= n <= 10 ^ 4
-     * - 10 ^ 5 <= nums[i] <= 10 ^ 5
+     * - 10 ^ 5<= nums[i] <= 10 ^ 5
      *
      * solution:
      * desc >= 2 false O(N) O(1)  换成前面和后面的数字
@@ -4029,22 +4031,22 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 给你一个由一些多米诺骨牌组成的列表 dominoes。
+     * 给你一个由一些多米诺骨牌组成的列表dominoes。
      *
-     * 如果其中某一张多米诺骨牌可以通过旋转 0 度或 180 度得到另一张多米诺骨牌，我们就认为这两张牌是等价的。
+     * 如果其中某一张多米诺骨牌可以通过旋转 0度或 180 度得到另一张多米诺骨牌，我们就认为这两张牌是等价的。
      *
-     * 形式上，dominoes[i] = [a, b] 和 dominoes[j] = [c, d] 等价的前提是 a==c 且 b==d，或是 a==d 且 b==c。
+     * 形式上，dominoes[i] = [a, b]和dominoes[j] = [c, d]等价的前提是a==c且b==d，或是a==d 且b==c。
      *
-     * 在 0 <= i < j < dominoes.length 的前提下，
-     * 找出满足 dominoes[i] 和 dominoes[j] 等价的骨牌对 (i, j) 的数量。
+     * 在0 <= i < j < dominoes.length的前提下，
+     * 找出满足dominoes[i] 和dominoes[j]等价的骨牌对 (i, j) 的数量。
      *
-     *  
+     * 
      *
      * 示例：
      *
      * 输入：dominoes = [[1,2],[2,1],[3,4],[5,6]]
      * 输出：1
-     *  
+     * 
      *
      * 提示：
      *
@@ -4109,7 +4111,7 @@ public class ArrayAlp {
      *
      * 返回好数对的数目。
      *
-     *  
+     * 
      *
      * 示例 1：
      *
@@ -4125,7 +4127,7 @@ public class ArrayAlp {
      *
      * 输入：nums = [1,2,3]
      * 输出：0
-     *  
+     * 
      *
      * 提示：
      *
@@ -4163,7 +4165,7 @@ public class ArrayAlp {
      * 请返回在查询时间 queryTime 时正在做作业的学生人数。形式上，
      * 返回能够使 queryTime 处于区间 [startTime[i], endTime[i]]（含）的学生人数。
      *
-     *  
+     * 
      *
      * 示例 1：
      *
@@ -4184,7 +4186,7 @@ public class ArrayAlp {
      * startTime.length == endTime.length
      * 1 <= startTime.length <= 100
      * 1 <= startTime[i] <= endTime[i] <= 1000
-     * 1 <= queryTime <= 1000
+     * 1 <=queryTime <= 1000
      *
      * solution:
      * 1.start[i] <= query <= end[i] count++
@@ -4204,20 +4206,20 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 学校的自助午餐提供圆形和方形的三明治，分别用数字 0 和 1 表示。
+     * 学校的自助午餐提供圆形和方形的三明治，分别用数字0和1表示。
      * 所有学生站在一个队列里，每个学生要么喜欢圆形的要么喜欢方形的。
-     * 餐厅里三明治的数量与学生的数量相同。所有三明治都放在一个 栈 里，每一轮：
+     * 餐厅里三明治的数量与学生的数量相同。所有三明治都放在一个栈里，每一轮：
      *
-     * 如果队列最前面的学生 喜欢 栈顶的三明治，那么会 拿走它 并离开队列。
-     * 否则，这名学生会 放弃这个三明治 并回到队列的尾部。
+     * 如果队列最前面的学生喜欢栈顶的三明治，那么会拿走它并离开队列。
+     * 否则，这名学生会放弃这个三明治并回到队列的尾部。
      * 这个过程会一直持续到队列里所有学生都不喜欢栈顶的三明治为止。
      *
-     * 给你两个整数数组 students 和 sandwiches ，其中 
-     * sandwiches[i] 是栈里面第 i​​​​​​ 个三明治的类型（i = 0 是栈的顶部）， 
-     * students[j] 是初始队列里第 j​​​​​​ 名学生对三明治的喜好（j = 0 是队列的最开始位置）。
+     * 给你两个整数数组students 和sandwiches，其中
+     * sandwiches[i]是栈里面第i​​​​​​个三明治的类型（i = 0是栈的顶部），
+     * students[j]是初始队列里第j​​​​​​名学生对三明治的喜好（j = 0是队列的最开始位置）。
      * 请你返回无法吃午餐的学生数量。
      *
-     *  
+     * 
      *
      * 示例 1：
      *
@@ -4237,14 +4239,14 @@ public class ArrayAlp {
      *
      * 输入：students = [1,1,1,0,0,1], sandwiches = [1,0,0,0,1,1]
      * 输出：3
-     *  
+     * 
      *
      * 提示：
      *
      * 1 <= students.length, sandwiches.length <= 100
      * students.length == sandwiches.length
-     * sandwiches[i] 要么是 0 ，要么是 1 。
-     * students[i] 要么是 0 ，要么是 1 。
+     * sandwiches[i]要么是0，要么是1。
+     * students[i]要么是0，要么是1。
      *
      * solution: 1.按照题意 遍历完一次 count++，再对比下 剩下的元素能否一次性 分完 ，能分完返回0 否则返回count
      * 1错了，退出循环 是以排队无法吃到三明治为止 队列中全是0 或者全是1  返回队列的size  也就是无论如何循环，返回的结果一样
@@ -4297,14 +4299,14 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 给你一个整数数组 
-     * A，只有可以将其划分为三个和相等的非空部分时才返回 true，否则返回 false。
+     * 给你一个整数数组
+     * A，只有可以将其划分为三个和相等的非空部分时才返回true，否则返回 false。
      *
-     * 形式上，如果可以找出索引 i+1 < j 且满足 
+     * 形式上，如果可以找出索引i+1 < j且满足
      * A[0] + A[1] + ... + A[i] == A[i+1] + A[i+2] + ... + A[j-1]
-     * == A[j] + A[j-1] + ... + A[A.length - 1] 就可以将数组三等分。
+     * == A[j] + A[j-1] + ... + A[A.length - 1]就可以将数组三等分。
      *
-     *  
+     * 
      *
      * 示例 1：
      *
@@ -4320,12 +4322,12 @@ public class ArrayAlp {
      * 输入：[3,3,6,5,-2,2,5,1,-9,4]
      * 输出：true
      * 解释：3 + 3 = 6 = 5 - 2 + 2 + 5 + 1 - 9 + 4
-     *  
+     * 
      *
      * 提示：
      *
      * 3 <= A.length <= 50000
-     * -10^4 <= A[i] <= 10^4
+     * -10^4<= A[i] <= 10^4
      *
      * solution:
      * 求和 sum  寻找 sum/3  O(N) O(1)
@@ -4465,14 +4467,14 @@ public class ArrayAlp {
      *
      * 你可以假设除了整数 0 之外，这个整数不会以零开头。
      *
-     *  
+     * 
      *
-     * 示例 1：
+     * 示例1：
      *
      * 输入：digits = [1,2,3]
      * 输出：[1,2,4]
      * 解释：输入数组表示数字 123。
-     * 示例 2：
+     * 示例2：
      *
      * 输入：digits = [4,3,2,1]
      * 输出：[4,3,2,2]
@@ -4481,7 +4483,7 @@ public class ArrayAlp {
      *
      * 输入：digits = [0]
      * 输出：[1]
-     *  
+     * 
      *
      * 提示：
      *
@@ -4540,7 +4542,7 @@ public class ArrayAlp {
      * @Description:
      * 在一个由小写字母构成的字符串 s 中，包含由一些连续的相同字符所构成的分组。
      *
-     * 例如，在字符串 s = "abbxxxxzyy" 中，就含有 "a", "bb", "xxxx", "z" 和 "yy" 这样的一些分组。
+     * 例如，在字符串 s = "abbxxxxzyy"中，就含有 "a", "bb", "xxxx", "z" 和 "yy" 这样的一些分组。
      *
      * 分组可以用区间 [start, end] 表示，其中 start 和 end 分别表示该分组的起始和终止位置的下标。
      * 上例中的 "xxxx" 分组用区间表示为 [3,6] 。
@@ -4549,9 +4551,9 @@ public class ArrayAlp {
      *
      * 找到每一个 较大分组 的区间，按起始位置下标递增顺序排序后，返回结果。
      *
-     *  
+     * 
      *
-     * 示例 1：
+     * 示例1：
      *
      * 输入：s = "abbxxxxzzy"
      * 输出：[[3,6]]
@@ -4608,14 +4610,14 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 给你一个整数数组 arr ，请你将数组中的每个元素替换为它们排序后的序号。
+     * 给你一个整数数组arr ，请你将数组中的每个元素替换为它们排序后的序号。
      *
      * 序号代表了一个元素有多大。序号编号的规则如下：
      *
      * 序号从 1 开始编号。
      * 一个元素越大，那么序号越大。如果两个元素相等，那么它们的序号相同。
      * 每个数字的序号都应该尽可能地小。
-     *  
+     * 
      *
      * 示例 1：
      *
@@ -4694,7 +4696,7 @@ public class ArrayAlp {
      *
      * 不要使用额外的数组空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。
      *
-     *  
+     * 
      *
      * 说明:
      *
@@ -4710,9 +4712,9 @@ public class ArrayAlp {
      * // 在函数里修改输入数组对于调用者是可见的。
      * // 根据你的函数返回的长度, 它会打印出数组中 该长度范围内 的所有元素。
      * for (int i = 0; i < len; i++) {
-     *     print(nums[i]);
+     *   print(nums[i]);
      * }
-     *  
+     * 
      * 示例 1：
      *
      * 输入：nums = [1,1,2]
@@ -4723,7 +4725,7 @@ public class ArrayAlp {
      * 输入：nums = [0,0,1,1,1,2,2,3,3,4]
      * 输出：5, nums = [0,1,2,3,4]
      * 解释：函数应该返回新的长度 5 ， 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4 。不需要考虑数组中超出新长度后面的元素。
-     *  
+     * 
      *
      * 提示：
      *
@@ -4774,11 +4776,11 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 给你一个数组 arr ，请你将每个元素用它右边最大的元素替换，如果是最后一个元素，用 -1 替换。
+     * 给你一个数组arr，请你将每个元素用它右边最大的元素替换，如果是最后一个元素，用-1 替换。
      *
      * 完成所有替换操作后，请你返回这个数组。
      *
-     *  
+     * 
      *
      * 示例 1：
      *
@@ -4796,7 +4798,7 @@ public class ArrayAlp {
      * 输入：arr = [400]
      * 输出：[-1]
      * 解释：下标 0 的元素右侧没有其他元素。
-     *  
+     * 
      *
      * 提示：
      *
@@ -4894,7 +4896,7 @@ public class ArrayAlp {
      *
      * 客户的 资产总量 就是他们在各家银行托管的资产数量之和。最富有客户就是 资产总量 最大的客户。
      *
-     *  
+     * 
      *
      * 示例 1：
      *
@@ -4917,12 +4919,12 @@ public class ArrayAlp {
      *
      * 输入：accounts = [[2,8,7],[7,1,3],[1,9,5]]
      * 输出：17
-     *  
+     * 
      *
      * 提示：
      *
-     * m == accounts.length
-     * n == accounts[i].length
+     * m ==accounts.length
+     * n ==accounts[i].length
      * 1 <= m, n <= 50
      * 1 <= accounts[i][j] <= 100
      *
@@ -4952,7 +4954,7 @@ public class ArrayAlp {
      *
      * 请返回 nums 的动态和。
      *
-     *  
+     * 
      *
      * 示例 1：
      *
@@ -4968,12 +4970,12 @@ public class ArrayAlp {
      *
      * 输入：nums = [3,1,2,10,1]
      * 输出：[3,4,6,16,17]
-     *  
+     * 
      *
      * 提示：
      *
      * 1 <= nums.length <= 1000
-     * -10^6 <= nums[i] <= 10^6
+     * -10^6<= nums[i] <=10^6
      *
      * solution:
      * nums[i] = nums[i-1] + nums[i]  nums[1] = nums[1]
@@ -5001,7 +5003,7 @@ public class ArrayAlp {
      *
      * 输入: [1,3,5,6], 5
      * 输出: 2
-     * 示例 2:
+     * 示例2:
      *
      * 输入: [1,3,5,6], 2
      * 输出: 1
@@ -5056,17 +5058,17 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 给你一个 m 行 n 列的二维网格 grid 和一个整数 k。
-     * 你需要将 grid 迁移 k 次。
+     * 给你一个 m 行 n列的二维网格grid和一个整数k。
+     * 你需要将grid迁移k次。
      *
      * 每次「迁移」操作将会引发下述活动：
      *
-     * 位于 grid[i][j] 的元素将会移动到 grid[i][j + 1]。
-     * 位于 grid[i][n - 1] 的元素将会移动到 grid[i + 1][0]。
-     * 位于 grid[m - 1][n - 1] 的元素将会移动到 grid[0][0]。
-     * 请你返回 k 次迁移操作后最终得到的 二维网格。
+     * 位于 grid[i][j]的元素将会移动到grid[i][j + 1]。
+     * 位于grid[i][n- 1] 的元素将会移动到grid[i + 1][0]。
+     * 位于 grid[m- 1][n - 1]的元素将会移动到grid[0][0]。
+     * 请你返回k 次迁移操作后最终得到的 二维网格。
      *
-     *  
+     * 
      *
      * 示例 1：
      *
@@ -5084,12 +5086,12 @@ public class ArrayAlp {
      *
      * 输入：grid = [[1,2,3],[4,5,6],[7,8,9]], k = 9
      * 输出：[[1,2,3],[4,5,6],[7,8,9]]
-     *  
+     * 
      *
      * 提示：
      *
-     * m == grid.length
-     * n == grid[i].length
+     * m ==grid.length
+     * n ==grid[i].length
      * 1 <= m <= 50
      * 1 <= n <= 50
      * -1000 <= grid[i][j] <= 1000
@@ -5130,7 +5132,7 @@ public class ArrayAlp {
      *
      * 请你将数组按 [x1,y1,x2,y2,...,xn,yn] 格式重新排列，返回重排后的数组。
      *
-     *  
+     * 
      *
      * 示例 1：
      *
@@ -5145,7 +5147,7 @@ public class ArrayAlp {
      *
      * 输入：nums = [1,1,2,2], n = 2
      * 输出：[1,2,1,2]
-     *  
+     * 
      *
      * 提示：
      *
@@ -5187,7 +5189,7 @@ public class ArrayAlp {
      *
      * 请返回按键 持续时间最长 的键，如果有多个这样的键，则返回 按字母顺序排列最大 的那个键。
      *
-     *  
+     * 
      *
      * 示例 1：
      *
@@ -5211,7 +5213,7 @@ public class ArrayAlp {
      * 按下 'd' ，持续时间 46 - 36 = 10
      * 按下 'a' ，持续时间 62 - 46 = 16
      * 按键持续时间最长的键是 'a' ，持续时间 16
-     *  
+     * 
      *
      * 提示：
      *
@@ -5246,18 +5248,18 @@ public class ArrayAlp {
      * @Description:
      * 给定一个非负整数数组 A，
      * 返回一个数组，在该数组中，
-     *  A 的所有偶数元素之后跟着所有奇数元素。
+     * A 的所有偶数元素之后跟着所有奇数元素。
      *
      * 你可以返回满足此条件的任何数组作为答案。
      *
-     *  
+     * 
      *
      * 示例：
      *
      * 输入：[3,1,2,4]
      * 输出：[2,4,3,1]
      * 输出 [4,2,3,1]，[2,4,1,3] 和 [4,2,1,3] 也会被接受。
-     *  
+     * 
      *
      * 提示：
      *
@@ -5290,7 +5292,7 @@ public class ArrayAlp {
      * 给定两个排序后的数组 A 和 B，
      * 其中 A 的末端有足够的缓冲空间容纳 B。 编写一个方法，将 B 合并入 A 并排序。
      *
-     * 初始化 A 和 B 的元素数量分别为 m 和 n。
+     * 初始化A 和 B 的元素数量分别为m 和 n。
      *
      * 示例:
      *
@@ -5298,7 +5300,7 @@ public class ArrayAlp {
      * A = [1,2,3,0,0,0], m = 3
      * B = [2,5,6],       n = 3
      *
-     * 输出: [1,2,2,3,5,6]
+     * 输出:[1,2,2,3,5,6]
      * 说明:
      *
      * A.length == n + m
@@ -5371,7 +5373,7 @@ public class ArrayAlp {
      * 否则，返回 -1 。可以证明的是，
      * 如果 nums 是特殊数组，那么其特征值 x 是 唯一的 。
      *
-     *  
+     * 
      *
      * 示例 1：
      *
@@ -5396,7 +5398,7 @@ public class ArrayAlp {
      *
      * 输入：nums = [3,6,7,7,0]
      * 输出：-1
-     *  
+     * 
      *
      * 提示：
      *
@@ -5433,43 +5435,43 @@ public class ArrayAlp {
     /**
      * @Description:
      * 给你一个大小为 rows x cols 的矩阵 mat，
-     * 其中 mat[i][j] 是 0 或 1，请返回 矩阵 mat 中特殊位置的数目 。
+     * 其中 mat[i][j] 是 0 或 1，请返回 矩阵mat 中特殊位置的数目 。
      *
      * 特殊位置 定义：如果 mat[i][j] == 1 并且第 i 行和第 j 列中的所有其他元素均为 0（行和列的下标均 从 0 开始 ），
      * 则位置 (i, j) 被称为特殊位置。
      *
-     *  
+     * 
      *
      * 示例 1：
      *
      * 输入：mat = [[1,0,0],
-     *             [0,0,1],
-     *             [1,0,0]]
+     *            [0,0,1],
+     *            [1,0,0]]
      * 输出：1
      * 解释：(1,2) 是一个特殊位置，因为 mat[1][2] == 1 且所处的行和列上所有其他元素都是 0
      * 示例 2：
      *
      * 输入：mat = [[1,0,0],
-     *             [0,1,0],
-     *             [0,0,1]]
+     *            [0,1,0],
+     *            [0,0,1]]
      * 输出：3
      * 解释：(0,0), (1,1) 和 (2,2) 都是特殊位置
      * 示例 3：
      *
      * 输入：mat = [[0,0,0,1],
-     *             [1,0,0,0],
-     *             [0,1,1,0],
-     *             [0,0,0,0]]
+     *            [1,0,0,0],
+     *            [0,1,1,0],
+     *            [0,0,0,0]]
      * 输出：2
      * 示例 4：
      *
      * 输入：mat = [[0,0,0,0,0],
-     *             [1,0,0,0,0],
-     *             [0,1,0,0,0],
-     *             [0,0,1,0,0],
-     *             [0,0,0,1,1]]
+     *            [1,0,0,0,0],
+     *            [0,1,0,0,0],
+     *            [0,0,1,0,0],
+     *            [0,0,0,1,1]]
      * 输出：3
-     *  
+     * 
      *
      * 提示：
      *
@@ -5537,11 +5539,11 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 给你一个正整数数组 arr ，请你计算所有可能的奇数长度子数组的和。
+     * 给你一个正整数数组arr，请你计算所有可能的奇数长度子数组的和。
      *
      * 子数组 定义为原数组中的一个连续子序列。
      *
-     * 请你返回 arr 中 所有奇数长度子数组的和 。
+     * 请你返回 arr中 所有奇数长度子数组的和 。
      *
      * 示例 1：
      *
@@ -5567,7 +5569,7 @@ public class ArrayAlp {
      *
      * 输入：arr = [10,11,12]
      * 输出：66
-     *  
+     * 
      *
      * 提示：
      *
@@ -5628,16 +5630,16 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     *给出一个整数数组 A 和一个查询数组 queries。
+     *给出一个整数数组A和一个查询数组queries。
      *
-     * 对于第 i 次查询，有 val = queries[i][0], index = queries[i][1]，我们会把 val 加到 A[index] 上。
-     * 然后，第 i 次查询的答案是 A 中偶数值的和。
+     * 对于第i次查询，有val =queries[i][0], index= queries[i][1]，我们会把val加到A[index]上。
+     * 然后，第i次查询的答案是 A 中偶数值的和。
      *
-     * （此处给定的 index = queries[i][1] 是从 0 开始的索引，每次查询都会永久修改数组 A。）
+     * （此处给定的index = queries[i][1]是从 0 开始的索引，每次查询都会永久修改数组A。）
      *
-     * 返回所有查询的答案。你的答案应当以数组 answer 给出，answer[i] 为第 i 次查询的答案。
+     * 返回所有查询的答案。你的答案应当以数组answer给出，answer[i]为第i次查询的答案。
      *
-     *  
+     * 
      *
      * 示例：
      *
@@ -5649,7 +5651,7 @@ public class ArrayAlp {
      * 将 -3 加到 A[1] 上之后，数组为 [2,-1,3,4]，偶数值之和为 2 + 4 = 6。
      * 将 -4 加到 A[0] 上之后，数组为 [-2,-1,3,4]，偶数值之和为 -2 + 4 = 2。
      * 将 2 加到 A[3] 上之后，数组为 [-2,-1,3,6]，偶数值之和为 -2 + 6 = 4。
-     *  
+     * 
      *
      * 提示：
      *
@@ -5694,11 +5696,11 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 给你一个整数数组 nums 。数组中唯一元素是那些只出现 恰好一次 的元素。
+     * 给你一个整数数组nums。数组中唯一元素是那些只出现恰好一次的元素。
      *
-     * 请你返回 nums 中唯一元素的 和 。
+     * 请你返回 nums中唯一元素的 和。
      *
-     *  
+     * 
      *
      * 示例 1：
      *
@@ -5715,7 +5717,7 @@ public class ArrayAlp {
      * 输入：nums = [1,2,3,4,5]
      * 输出：15
      * 解释：唯一元素为 [1,2,3,4,5] ，和为 15 。
-     *  
+     * 
      *
      * 提示：
      *
@@ -5750,7 +5752,7 @@ public class ArrayAlp {
      *
      * "a->b" ，如果 a != b
      * "a" ，如果 a == b
-     *  
+     * 
      *
      * 示例 1：
      *
@@ -5842,9 +5844,9 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 给你一个大小为 m * n 的矩阵 mat，矩阵由若干军人和平民组成，分别用 1 和 0 表示。
-     * 请你返回矩阵中战斗力最弱的 k 行的索引，按从最弱到最强排序。
-     * 如果第 i 行的军人数量少于第 j 行，或者两行军人数量相同但 i 小于 j，那么我们认为第 i 行的战斗力比第 j 行弱。
+     * 给你一个大小为m* n的矩阵mat，矩阵由若干军人和平民组成，分别用 1 和 0 表示。
+     * 请你返回矩阵中战斗力最弱的k行的索引，按从最弱到最强排序。
+     * 如果第i行的军人数量少于第j行，或者两行军人数量相同但 i 小于 j，那么我们认为第 i 行的战斗力比第 j 行弱。
      * 军人 总是 排在一行中的靠前位置，也就是说 1 总是出现在 0 之前。
      *
      * 示例 1：
@@ -5944,7 +5946,7 @@ public class ArrayAlp {
      * @Description:
      * 给你一个非空数组，返回此数组中 第三大的数 。如果不存在，则返回数组中最大的数。
      *
-     *  
+     * 
      *
      * 示例 1：
      *
@@ -6029,7 +6031,7 @@ public class ArrayAlp {
      * @Description:
      * 给你一个整数数组 arr，请你判断数组中是否存在连续三个元素都是奇数的情况：如果存在，请返回 true ；否则，返回 false 。
      *
-     *  
+     * 
      *
      * 示例 1：
      *
@@ -6041,7 +6043,7 @@ public class ArrayAlp {
      * 输入：arr = [1,2,34,3,4,5,7,23,12]
      * 输出：true
      * 解释：存在连续三个元素都是奇数的情况，即 [5,7,23] 。
-     *  
+     * 
      *
      * 提示：
      *
@@ -6068,13 +6070,13 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 的那 两个 整数，并返回它们的数组下标。
+     * 给定一个整数数组 nums和一个整数目标值 target，请你在该数组中找出 和为目标值 的那两个整数，并返回它们的数组下标。
      *
      * 你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。
      *
      * 你可以按任意顺序返回答案。
      *
-     *  
+     * 
      *
      * 示例 1：
      *
@@ -6089,7 +6091,7 @@ public class ArrayAlp {
      *
      * 输入：nums = [3,3], target = 6
      * 输出：[0,1]
-     *  
+     * 
      *
      * 提示：
      *
@@ -6129,7 +6131,7 @@ public class ArrayAlp {
      * 输入：
      * [2, 3, 1, 0, 2, 5, 3]
      * 输出：2 或 3
-     *  
+     * 
      *
      * 限制：
      *
@@ -6183,7 +6185,7 @@ public class ArrayAlp {
      *
      * 如果矩阵上每一条由左上到右下的对角线上的元素都相同，那么这个矩阵是 托普利茨矩阵 。
      *
-     *  
+     * 
      *
      * 输入：matrix = [[1,2,3,4],[5,1,2,3],[9,5,1,2]]
      * 输出：true
@@ -6249,14 +6251,14 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 给定一个已按照 升序排列  的整数数组 numbers ，请你从数组中找出两个数满足相加之和等于目标数 target 。
+     * 给定一个已按照 升序排列 的整数数组numbers ，请你从数组中找出两个数满足相加之和等于目标数target 。
      *
      * 函数应该以长度为 2 的整数数组的形式返回这两个数的下标值。numbers 的下标 从 1 开始计数 ，
      * 所以答案数组应当满足 1 <= answer[0] < answer[1] <= numbers.length 。
      *
      * 你可以假设每个输入只对应唯一的答案，而且你不可以重复使用相同的元素。
      *
-     *  
+     * 
      * 示例 1：
      *
      * 输入：numbers = [2,7,11,15], target = 9
@@ -6270,7 +6272,7 @@ public class ArrayAlp {
      *
      * 输入：numbers = [-1,0], target = -1
      * 输出：[1,2]
-     *  
+     * 
      *
      * 提示：
      *
@@ -6318,12 +6320,12 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * 给定一个整数数组 arr，如果它是有效的山脉数组就返回 true，否则返回 false。
+     * 给定一个整数数组 arr，如果它是有效的山脉数组就返回true，否则返回 false。
      *
      * 让我们回顾一下，如果 A 满足下述条件，那么它是一个山脉数组：
      *
      * arr.length >= 3
-     * 在 0 < i < arr.length - 1 条件下，存在 i 使得：
+     * 在0 < i< arr.length - 1条件下，存在i使得：
      * arr[0] < arr[1] < ... arr[i-1] < arr[i]
      * arr[i] > arr[i+1] > ... > arr[arr.length - 1]
      *
@@ -6339,7 +6341,7 @@ public class ArrayAlp {
      *
      * 输入：arr = [0,3,2,1]
      * 输出：true
-     *  
+     * 
      *
      * 提示：
      *
@@ -6379,17 +6381,17 @@ public class ArrayAlp {
      * @Description:
      * 统计一个数字在排序数组中出现的次数。
      *
-     *  
+     * 
      *
      * 示例 1:
      *
      * 输入: nums = [5,7,7,8,8,10], target = 8
      * 输出: 2
-     * 示例 2:
+     * 示例2:
      *
      * 输入: nums = [5,7,7,8,8,10], target = 6
      * 输出: 0
-     *  
+     * 
      *
      * 限制：
      *
@@ -6436,11 +6438,11 @@ public class ArrayAlp {
      *
      * 此时，你需要选定一个数字 X，使我们可以将整副牌按下述规则分成 1 组或更多组：
      *
-     * 每组都有 X 张牌。
+     * 每组都有X张牌。
      * 组内所有的牌上都写着相同的整数。
-     * 仅当你可选的 X >= 2 时返回 true。
+     * 仅当你可选的 X >= 2 时返回true。
      *
-     *  
+     * 
      *
      * 示例 1：
      *
@@ -6471,8 +6473,8 @@ public class ArrayAlp {
      * 提示：
      *
      * 1 <= deck.length <= 10000
-     * 0 <= deck[i] < 10000
-     *  
+     * 0 <= deck[i] <10000
+     * 
      *
      * solution:
      * 1. deck 检测是否能够分组  , 需要看他们是否有共同的公约数
@@ -6522,7 +6524,7 @@ public class ArrayAlp {
      *
      * 输入：matrix = [[1,2,3],[4,5,6]]
      * 输出：[[1,4],[2,5],[3,6]]
-     *  
+     * 
      *
      * 提示：
      *
@@ -6550,8 +6552,9 @@ public class ArrayAlp {
 
     @Test
     public void testArray() {
-        int[] arr = new int[] {1,1,1,2,2,2,3,3};
-        System.out.println(instance.hasGroupsSizeX(arr));
+        int[] arr = {1, 2, 3, 4};
+        List<Integer> list = instance.addToArrayForm(arr, 47);
+        list.forEach(System.out::println);
     }
 
 }
