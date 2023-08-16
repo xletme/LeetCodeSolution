@@ -421,7 +421,7 @@ public class ArrayAlp {
      * <p>
      * solution:
      * first:follow the rule to handle the data indices[];
-     * second:calculate the odd num off the indices finally return num
+     * second:calculate the odd num of the indices finally return num
      * arr[0][indices[i][0]]  -- > arr[n][indices[i][0]]    arr[indices[i][1]][0]-->arr[indices[i][1]][m]
      * O(N*M) N是indices长度  M是Math.max(m,n)   O(N)
      * @Date: 2021/1/13 10:55
@@ -449,7 +449,7 @@ public class ArrayAlp {
         return res;
     }
 
-    /**
+    /** #todo since here
      * @Description:
      * 车按国际象棋中的规则移动。东，西，南，北四个基本方向任选其一，
      * 然后一直向选定的方向移动，直到满足下列四个条件之一：
