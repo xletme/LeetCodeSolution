@@ -449,7 +449,7 @@ public class ArrayAlp {
         return res;
     }
 
-    /** #todo since here
+    /**
      * @Description:
      * 车按国际象棋中的规则移动。东，西，南，北四个基本方向任选其一，
      * 然后一直向选定的方向移动，直到满足下列四个条件之一：
@@ -465,7 +465,7 @@ public class ArrayAlp {
      * 最后return res ; res初始化 0
      * R (x,y)  l w      (x,y)-->(x,0) y--  (x,y)-->(x,w) y++  (x,y)-->(0,y) x-- (x,y)-->(l,y) y++
      * judge if (board[x][y] == p)
-     * O(M*N) M board矩阵的长度 N 寻找卒最远的长度   O(1)
+     * 8*8*4*M = 256*N O(M*N) M = 256 空间复杂度 O(1) 只建立两个方向数组
      * @Date: 2021/2/4 15:23
      */
     public int numRookCaptures(char[][] board) {
@@ -482,6 +482,7 @@ public class ArrayAlp {
                     for (int k = 0; k < 4; k++) {
                         int x = i, y = j;
                         while (true) {
+                            //dx和dy数组上面对立，表示上下左右各移动一个
                             x += dx[k];
                             y += dy[k];
                             if (x < 0 || x >= 8 || y < 0 || y >= 8 || board[x][y] == 'B') {
@@ -541,7 +542,7 @@ public class ArrayAlp {
      * Given an array arr of integers,
      * check if there exists two integers N and M such that N is the double of M ( i.e. N = 2 * M).
      * <p>
-     * More formally check if there existstwo indices i and j such that :
+     * More formally check if there exists two indices i and j such that :
      * <p>
      * i != j
      * 0 <= i, j < arr.length
@@ -552,11 +553,14 @@ public class ArrayAlp {
      * 2 <= arr.length <= 500
      * -10^3 <= arr[i] <= 10^3
      * solution:
-     * 奇数跳过，偶数除以二 找是否存在，存在返回true 否则 false  N*N
+     * 1.常规思路 ：奇数跳过，偶数除以二 找是否存在，存在返回true 否则 false  N*N
      * O(N2) O(1)
+     * 2.引用HashSet，遍历数组arr，奇数放set。偶数放本身和本身/2 ,如果set返回false,则返回结果true
+     * 有重复的要处理下，搞个set 如果重复，则不放，相当于去重,还要特殊处理0，特殊处理除法。有点麻烦的
+     * O(N) O(N)
      * @Date: 2021/2/4 16:30
      */
-    public boolean checkIfExist(int[] arr) {
+    /*public boolean checkIfExist(int[] arr) {
         for (int i : arr) {
             if (i % 2 == 0 && i != 0) {
                 int tmp = i / 2;
@@ -579,10 +583,30 @@ public class ArrayAlp {
             }
         }
         return false;
+    }*/
+    public boolean checkIfExist(int[] arr) {
+        HashSet<Double> set = new HashSet<>();
+        HashSet<Integer> repeatSet = new HashSet<>();
+        for (int i : arr) {
+            if (repeatSet.add(i)) {
+                if (i % 2 == 0 && i != 0) {
+                    if (!set.add((double)i / 2)) {
+                        return true;
+                    }
+                }
+                if (!set.add((double)i)) {
+                    return true;
+                }
+            } else if (i == 0) {
+                return true;
+            }
+        }
+        return false;
     }
 
+
     /**
-     * @Description:
+     * @Description: #todo there
      * Given two strings,write a method to decide if one is a permutation of the other.
      * <p>
      * Example 1:
@@ -6552,9 +6576,8 @@ public class ArrayAlp {
 
     @Test
     public void testArray() {
-        int[] arr = {1, 2, 3, 4};
-        List<Integer> list = instance.addToArrayForm(arr, 47);
-        list.forEach(System.out::println);
+        int[] arr = new int[] {-2,0,10,-19,4,6,-8};
+        System.out.println(instance.checkIfExist(arr));
     }
 
 }
