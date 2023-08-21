@@ -606,7 +606,7 @@ public class ArrayAlp {
 
 
     /**
-     * @Description: #todo there
+     * @Description: #
      * Given two strings,write a method to decide if one is a permutation of the other.
      * <p>
      * Example 1:
@@ -650,7 +650,8 @@ public class ArrayAlp {
      * 输入: nums = [1,2,3,1,2,3], k = 2
      * 输出: false
      * <p>
-     * solution: 1.存在一组索引 在距离最大的两个索引，求其绝对值 最小值  返回 abs <= k 2.不存在 返回false
+     * solution: 1.存在一组索引 在距离最大的两个索引，求其绝对值 最小值
+     * 返回 abs <= k 2.不存在 返回false
      * @Date: 2021/2/5 14:05
      */
     //雕兄解答
@@ -873,7 +874,7 @@ public class ArrayAlp {
     }
 
     /**
-     * @Description:
+     * @Description: todo there
      * 给你一个m* n的矩阵grid，矩阵中的元素无论是按行还是按列，都以非递增顺序排列。
      * <p>
      * 请你统计并返回grid中 负数 的数目。
