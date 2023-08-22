@@ -874,7 +874,7 @@ public class ArrayAlp {
     }
 
     /**
-     * @Description: todo there
+     * @Description:
      * 给你一个m* n的矩阵grid，矩阵中的元素无论是按行还是按列，都以非递增顺序排列。
      * <p>
      * 请你统计并返回grid中 负数 的数目。
@@ -907,7 +907,7 @@ public class ArrayAlp {
      * <p>
      * solution:
      * 直观的  遍历grid数组 统计负数个数 穷举法  O(N*M) O(1)
-     * 优化版，非递增  每个二维数组 倒序统计负数个数  O(N*M) O(1)  利用数组的特性
+     * 优化版，非递增  每个二维数组 倒序统计负数个数  O(M * logN) O(1)  利用数组的特性
      * 二分法 二分统计每一行负数个数
      * @Date: 2021/2/20 14:26
      */
@@ -1065,7 +1065,7 @@ public class ArrayAlp {
 
 
     /**
-     * @Description:
+     * @Description: todo here
      * 给你一个以行程长度编码压缩的整数列表nums。
      * <p>
      * 考虑每对相邻的两个元素
@@ -3448,7 +3448,7 @@ public class ArrayAlp {
      * solution:
      * 1.滑动窗口模型  求最大平均值
      * O(N) (1)
-     * @Date: 2021/3/11 14:19  TODO 这里
+     * @Date: 2021/3/11 14:19
      */
     public double findMaxAverage(int[] nums, int k) {
         int sum = 0;
