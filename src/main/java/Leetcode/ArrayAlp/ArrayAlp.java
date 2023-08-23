@@ -1065,7 +1065,7 @@ public class ArrayAlp {
 
 
     /**
-     * @Description: todo here
+     * @Description:
      * 给你一个以行程长度编码压缩的整数列表nums。
      * <p>
      * 考虑每对相邻的两个元素
@@ -1209,7 +1209,9 @@ public class ArrayAlp {
      * 约束：
      * nums.length 在1到 50,000 区间范围内。
      * nums[i] 是一个在 0 到 49,999 范围内的整数。
-     * solution: 1.找出出现次数最多的 2.1个就直接请求出现第一个到出现最后一个的距离 多个就依次求，然后取最小的 ×掉 这种方法不可取
+     * solution:
+     * 1.找出出现次数最多的
+     * 2.1个就直接请求出现第一个到出现最后一个的距离 多个就依次求，然后取最小的 ×掉 这种方法不可取
      * 应该在统计最多个数的时候，就把该数字的最短长度记录下
      * Map<Integer,String> nums[i] count:length(记录start end位置)
      * 官方解答 Map<Integer,int[]> int[] 3个元素  count:start:end 每次更新刷新 count end
@@ -1241,7 +1243,7 @@ public class ArrayAlp {
     }
 
     /**
-     * @Description:
+     * @Description: todo there
      * 给你一个正整数数组 arr，请你找出一个长度为 m 且在数组中至少重复 k 次的模式。
      * <p>
      * 模式 是由一个或多个值组成的子数组（连续的子序列），连续 重复多次但 不重叠 。 模式由其长度和重复次数定义。
