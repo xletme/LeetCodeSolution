@@ -1243,7 +1243,7 @@ public class ArrayAlp {
     }
 
     /**
-     * @Description: todo there
+     * @Description:
      * 给你一个正整数数组 arr，请你找出一个长度为 m 且在数组中至少重复 k 次的模式。
      * <p>
      * 模式 是由一个或多个值组成的子数组（连续的子序列），连续 重复多次但 不重叠 。 模式由其长度和重复次数定义。
@@ -1459,7 +1459,7 @@ public class ArrayAlp {
 
     /**
      * 1.统计0个数
-     * 2.倒序处理数组
+     * 2.倒序处理数组  这个是真的nb 倒序
      * O(N) N arr.length O(1)
      * @param arr
      */
@@ -1491,7 +1491,7 @@ public class ArrayAlp {
     }
 
     /**
-     * @Description:
+     * @Description: todo there
      * 给你一个非递减的有序整数数组，
      * 已知这个数组中恰好有一个整数，它的出现次数超过数组元素总数的 25%。
      * <p>
