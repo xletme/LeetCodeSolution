@@ -1569,8 +1569,8 @@ public class ArrayAlp {
      * Since they are friends,
      * they would like to exchange one candy bar each
      * so that after the exchange,
-     * they both have the same totalamount of candy.
-     * (The total amount of candya person has is the sum of the sizes of candybars they have.)
+     * they both have the same total amount of candy.
+     * (The total amount of candy a person has is the sum of the sizes of candy bars they have.)
      * <p>
      * Return an integer array ans
      * where ans[0] is the size of the candy bar
@@ -1793,7 +1793,7 @@ public class ArrayAlp {
 
 
     /**
-     * @Description:
+     * @Description: todo here
      * Given an arrayA of strings made only from lowercase letters,
      * return a list of all characters that show up in all strings within the list
      * (including duplicates).For example,
