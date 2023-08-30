@@ -1793,7 +1793,7 @@ public class ArrayAlp {
 
 
     /**
-     * @Description: todo here
+     * @Description:
      * Given an arrayA of strings made only from lowercase letters,
      * return a list of all characters that show up in all strings within the list
      * (including duplicates).For example,
@@ -1820,8 +1820,11 @@ public class ArrayAlp {
      * 1 <= A[i].length <= 100
      * A[i][j] is a lowercase letter
      * <p>
-     * solution: 以 A[0]为目标, cool 比如这种   用hashMap存储  c 1,o 2,l 1;往后一直检测 count数取最小的，最后在打印
+     * solution: 1.以 A[0]为目标, cool 比如这种   用hashMap存储  c 1,o 2,l 1;
+     * 往后一直检测 count数取最小的，最后在打印
      * 英文单词长度  M 数组长度 N  O(M * N) O(M2)
+     * 2.遍历数组A，写个方法，比较A[i] 与A[i+1]的并集，然后把结果str,与下一个元素取并集，一直到结束打印
+     * O(N*M*K)
      * @Date: 2021/2/26 14:20
      */
     /*public List<String> commonChars(String[] A) {
@@ -2010,6 +2013,8 @@ public class ArrayAlp {
         return res;
     }
 
+
+
     /**
      * @Description:
      * Given an integer n,
@@ -2093,6 +2098,7 @@ public class ArrayAlp {
      * 1 <= nums[i] <= 10^5
      * <p>
      * solution: 判断奇偶数，计数count 最后return
+     * 主要考察判断偶数的技巧 除10取余
      * @Date: 2021/2/26 17:33
      */
     public int findNumbers(int[] nums) {
@@ -2111,7 +2117,7 @@ public class ArrayAlp {
         return res;
     }
 
-    /**
+    /** todo there
      * @Description:
      * 给你一个整数数组nums，
      * 请编写一个能够返回数组 “中心索引” 的方法。
