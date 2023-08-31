@@ -2117,7 +2117,7 @@ public class ArrayAlp {
         return res;
     }
 
-    /** todo there
+    /**
      * @Description:
      * 给你一个整数数组nums，
      * 请编写一个能够返回数组 “中心索引” 的方法。
@@ -2162,6 +2162,7 @@ public class ArrayAlp {
      * 任何一个nums[i] 将会是一个范围在[-1000, 1000]的整数。
      * <p>
      * solution: res = arr[i] sum(nums) - res / 2 = sum[0...i-1]
+     * O(N) O(1)
      * @Date: 2021/2/26 17:44
      */
     public int pivotIndex(int[] nums) {
@@ -2184,7 +2185,7 @@ public class ArrayAlp {
 
     /**
      * @Description:
-     * A 和B在一个3x3的网格上玩井字棋。
+     * A 和 B在一个3x3的网格上玩井字棋。
      * <p>
      * 井字棋游戏的规则如下：
      * <p>
@@ -2319,8 +2320,8 @@ public class ArrayAlp {
      * @Description:
      * You are given an array of stringswordsand a stringchars.
      * <p>
-     * A string is goodifit can be formed bycharacters from chars
-     * (each charactercan only be used once).
+     * A string is good if it can be formed by characters from chars
+     * (each character can only be used once).
      * <p>
      * Return the sum of lengths of all good strings in words.
      * <p>
@@ -2561,7 +2562,7 @@ public class ArrayAlp {
         return image;
     }
 
-    /**
+    /** todo here
      * @Description:
      * 给你一个整数 n 。按下述规则生成一个长度为 n + 1 的数组 nums ：
      * <p>
