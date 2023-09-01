@@ -2562,7 +2562,7 @@ public class ArrayAlp {
         return image;
     }
 
-    /** todo here
+    /**
      * @Description:
      * 给你一个整数 n 。按下述规则生成一个长度为 n + 1 的数组 nums ：
      * <p>
@@ -2667,6 +2667,8 @@ public class ArrayAlp {
      * solution:
      * 桶排序 与排序不同的 Count++，反正就是排序后找不同
      * O(N) N arr.length O(M) M 101
+     *
+     * O(N*M*K) N height.length M=101 K最大重复的元素长度
      * @Date: 2021/3/4 16:12
      */
     /*public int heightChecker(int[] heights) {
@@ -2746,6 +2748,7 @@ public class ArrayAlp {
         }
         return res;
     }*/
+    // O(N) O(M)
     public int[] smallerNumbersThanCurrent(int[] nums) {
         int[] cnt = new int[101];
         int[] ret = new int[nums.length];
@@ -2754,6 +2757,7 @@ public class ArrayAlp {
             cnt[num]++;
         }
         for (int i = 1; i <= 100; i++) {
+            //这一步关键 把101以内的每一个数都统计了，比自己小的数
             cnt[i] += cnt[i - 1];
         }
         for (int i = 0; i < n; i++) {
@@ -2863,7 +2867,7 @@ public class ArrayAlp {
         return ans;
     }
 
-    /**
+    /** todo here
      * @Description:
      * Implement an algorithm to determine if a string has all unique characters.
      * What if you cannot use additional data structures?
@@ -6586,8 +6590,8 @@ public class ArrayAlp {
 
     @Test
     public void testArray() {
-        int[] arr = new int[] {-2,0,10,-19,4,6,-8};
-        System.out.println(instance.checkIfExist(arr));
+        int[] arr = new int[] {8,1,2,2,3};
+        System.out.println(instance.smallerNumbersThanCurrent(arr));
     }
 
 }
