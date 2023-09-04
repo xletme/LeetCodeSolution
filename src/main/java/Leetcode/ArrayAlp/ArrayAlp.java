@@ -2867,7 +2867,7 @@ public class ArrayAlp {
         return ans;
     }
 
-    /** todo here
+    /**
      * @Description:
      * Implement an algorithm to determine if a string has all unique characters.
      * What if you cannot use additional data structures?
@@ -3129,7 +3129,7 @@ public class ArrayAlp {
     }
 
     /**
-     * @Description:
+     * @Description: todo here
      * A magic index in an array A[0...n-1] is defined to be an index
      * such that A[i] = i. Given a sorted array ofintegers, write a method to find a magic index,
      * if one exists, in array A. If not, return -1.
