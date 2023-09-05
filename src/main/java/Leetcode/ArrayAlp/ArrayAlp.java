@@ -3129,9 +3129,9 @@ public class ArrayAlp {
     }
 
     /**
-     * @Description: todo here
+     * @Description:
      * A magic index in an array A[0...n-1] is defined to be an index
-     * such that A[i] = i. Given a sorted array ofintegers, write a method to find a magic index,
+     * such that A[i] = i. Given a sorted array of integers, write a method to find a magic index,
      * if one exists, in array A. If not, return -1.
      * If there are more than one magic index, return the smallest one.
      * <p>
@@ -3146,7 +3146,7 @@ public class ArrayAlp {
      * Note:
      * <p>
      * 1 <= nums.length <= 1000000
-     * This problem is thefollow-up of the original problem in the book, i.e.the values arenot distinct.
+     * This problem is the follow-up of the original problem in the book, i.e.the values are not distinct.
      * <p>
      * solution:
      * 1. traver the nums array,find the num equals the index
@@ -3197,7 +3197,7 @@ public class ArrayAlp {
      * solution:
      * 1. sort two array
      * 2. compare to both array ,judge whether they are equals
-     * O(N) O(1)
+     * O(logN) O(1)
      * @Date: 2021/3/10 10:43
      */
     public boolean canBeEqual(int[] target, int[] arr) {
@@ -3247,7 +3247,7 @@ public class ArrayAlp {
      * Note:
      * <p>
      * len(solution) = len(guess) = 4
-     * There are only "R","G","B","Y" in solutionandguess.
+     * There are only "R","G","B","Y" in solution and guess.
      * <p>
      * solution:
      * 用hashMap统计 R G B Y 的次数
@@ -3480,7 +3480,7 @@ public class ArrayAlp {
     }
 
     /**
-     * @Description:
+     * @Description: todo here
      * 你在一家生产小球的玩具厂工作，有 n 个小球，
      * 编号从 lowLimit 开始，到 highLimit 结束（
      * 包括 lowLimit 和highLimit ，即n == highLimit - lowLimit + 1）。
