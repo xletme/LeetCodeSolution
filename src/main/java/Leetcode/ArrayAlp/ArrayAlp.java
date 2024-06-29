@@ -6590,8 +6590,8 @@ public class ArrayAlp {
 
     @Test
     public void testArray() {
-        int[] arr = new int[] {8,1,2,2,3};
-        System.out.println(instance.smallerNumbersThanCurrent(arr));
+        String rate = " 15 ";
+        System.out.println(rate.trim().split("%")[0]);
     }
 
 }

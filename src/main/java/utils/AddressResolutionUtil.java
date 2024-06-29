@@ -38,6 +38,8 @@ public class AddressResolutionUtil {
         return table;
     }
 
+    
+
     public static void main(String[] args) {
         System.out.println(addressResolution("湖北省武汉市洪山区"));
     }

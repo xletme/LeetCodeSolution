@@ -79,8 +79,8 @@ public class WordToPDF {
 
 
     public static void main(String[] args) throws Exception {
-        String wordPath="/Users/maoxin/Desktop/合同文件夹/平台寄售采购合同/未命名.docx";
-        String pdfPath="/Users/maoxin/Desktop/合同文件夹/平台寄售采购合同/未命名.pdf";
-        instance.wordToPdf(wordPath,pdfPath);
+        String wordPath="/Users/maoxin/Desktop/合同文件夹/平台寄售采购合同/副本11.docx";
+        String pdfPath="/Users/maoxin/Desktop/合同文件夹/平台寄售采购合同/副本11.pdf";
+        instance.convertWordToPDF(wordPath,pdfPath);
     }
 }
