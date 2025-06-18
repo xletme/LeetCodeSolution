@@ -49,7 +49,7 @@ public class WordProcessor {
     }
 
     public static void main(String[] args) {
-        File file = new File("/Users/maoxin/Desktop/中信银行/银行资料/文件模板/123.docx");
+        File file = new File("");
         ArrayList<String> goodsList = Lists.newArrayList("1", "2", "3");
 
         replaceDataInWordDocument(goodsList, file);
